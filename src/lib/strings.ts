@@ -151,6 +151,14 @@ export const en = {
     title: "Get help",
     call: "Call",
     lines: {
+      emergency: {
+        name: "Ambulance & fire",
+        detail: "Emergencies. Also gives 24/7 medical advice and tells you which hospitals and pharmacies are open.",
+      },
+      mentalHealthCrisis: {
+        name: "Suicide prevention & mental health line",
+        detail: "24/7 counseling if you're struggling or worried about someone. Mainly in Korean.",
+      },
       police: {
         name: "Police",
         detail: "Emergencies, or if you sent money or are in danger. English interpretation available.",
@@ -171,6 +179,92 @@ export const en = {
         name: "Immigration Contact Center",
         detail: "Check if a visa or immigration message is real. Many languages available.",
       },
+    },
+  },
+
+  local: {
+    intro: "Find help close to you.",
+    hospital: {
+      title: "Hospital & pharmacy helper",
+      question: "What do you need?",
+      options: {
+        emergency: { label: "Emergency", hint: "Call 119 now" },
+        doctor: { label: "See a doctor", hint: "Not an emergency" },
+        pharmacy: { label: "Find a pharmacy", hint: "Medicine and prescriptions" },
+        dental: { label: "Dental", hint: "Toothache, cleaning" },
+        mentalHealth: { label: "Mental health", hint: "Stress, anxiety, low mood" },
+      },
+    },
+    disclaimer: "Not medical advice. In an emergency call 119.",
+    back: "Back",
+    emergency: {
+      title: "Emergency",
+      callTitle: "Call 119",
+      callBody: "For an ambulance or fire. Open 24 hours.",
+      callButton: "Call 119",
+      tellThem: "Tell them:",
+      tellList: [
+        "Where you are (address, or a nearby building or station)",
+        "What happened",
+        "Your phone number",
+      ],
+      notSureTitle: "Not sure it's an emergency?",
+      notSureBody:
+        "119 also gives medical advice by phone and tells you which hospitals and pharmacies are open at night and on holidays.",
+      egenLink: "Find open ERs and pharmacies (E-Gen, Korean)",
+      findEr: "Find a nearby emergency room",
+    },
+    doctor: {
+      title: "See a doctor",
+      pickerTitle: "What's wrong?",
+      pickerHint: "Pick the closest match. This only suggests the type of clinic, not a diagnosis.",
+      clinicTitle: "Clinic to visit",
+      also: "Or:",
+      phrasesTitle: "Say this at the clinic",
+      bringTitle: "What to bring",
+      bringList: [
+        "ARC (외국인등록증)",
+        "Passport",
+        "Health insurance card, if you have one",
+        "A list of medicines you take",
+      ],
+      bringNote: "Ticks are not saved.",
+    },
+    pharmacy: {
+      title: "Find a pharmacy",
+      phrasesTitle: "Pharmacy phrases",
+      afterHours: "At night or on holidays, call 119 or check E-Gen to find an open pharmacy.",
+      egenLink: "Open E-Gen (Korean)",
+    },
+    dental: {
+      title: "Dental",
+      phrasesTitle: "Say this at the dentist",
+    },
+    mentalHealth: {
+      title: "Mental health",
+      crisisTitle: "Need to talk now?",
+      centerTitle: "Or try a public center",
+      crisisBody: "If you might hurt yourself or you're in danger right now, call 119.",
+      phrasesTitle: "Useful phrases",
+      reassurance: "Seeing a doctor for stress, sleep or mood problems is common, and it's okay to ask for help.",
+    },
+    clinic: {
+      findNearby: "Find nearby",
+      locating: "Getting your location…",
+      openIn: "Open in:",
+      apps: { naver: "Naver Map", kakao: "Kakao Map", google: "Google Maps" },
+      locationNote:
+        "Your location stays on your phone. It's only added to the Google Maps link. Naver and Kakao use their own location.",
+      locationDenied: "Location is off. The map app will search near where it thinks you are.",
+    },
+    phrases: {
+      copy: "Copy",
+      copied: "Copied",
+      showLarge: "Show",
+      close: "Close",
+      showToStaff: "Show this to staff",
+      blankHint: "Point to the ___ or say the word.",
+      reviewNote: "Phrases not yet reviewed by a native speaker.",
     },
   },
 

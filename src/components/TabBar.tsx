@@ -21,12 +21,13 @@ export function TabBar() {
     >
       <ul className="mx-auto grid max-w-lg grid-cols-4">
         {TABS.map((tab) => {
-          const active = pathname === tab.href;
+          // Sub-pages (e.g. /local/doctor) keep their tab highlighted.
+          const active = tab.href === "/" ? pathname === "/" : pathname.startsWith(tab.href);
           return (
             <li key={tab.href}>
               <Link
                 href={tab.href}
-                aria-current={active ? "page" : undefined}
+                aria-current={pathname === tab.href ? "page" : active ? "true" : undefined}
                 className={`flex min-h-14 flex-col items-center justify-center gap-0.5 text-sm focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
                   active ? "font-bold text-accent" : "text-muted"
                 }`}
