@@ -1,11 +1,14 @@
 "use client";
 
+import { Lock } from "lucide-react";
 import { useDistrict } from "@/hooks/useDistrict";
+import { t } from "@/lib/strings";
 import { AirCard } from "./AirCard";
 import { CardError } from "./Card";
 import { DistrictPicker } from "./DistrictPicker";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { ExchangeCard } from "./ExchangeCard";
+import { ListGroup, ListRow } from "./ui/List";
 import { SlangCard } from "./SlangCard";
 import { WeatherCard } from "./WeatherCard";
 
@@ -34,6 +37,9 @@ export function HomeScreen() {
       <ErrorBoundary fallback={fallback}>
         <SlangCard />
       </ErrorBoundary>
+      <ListGroup>
+        <ListRow href="/privacy" icon={Lock} tone="neutral" title={t.privacy.link} />
+      </ListGroup>
     </div>
   );
 }

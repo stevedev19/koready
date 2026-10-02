@@ -1,0 +1,35 @@
+import type { Metadata } from "next";
+import { Card } from "@/components/Card";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { REPORT_EMAIL } from "@/lib/config";
+import { t } from "@/lib/strings";
+
+const s = t.privacy;
+
+export const metadata: Metadata = { title: s.title };
+
+export default function PrivacyPage() {
+  return (
+    <div className="space-y-4">
+      <PageHeader title={s.title} subtitle={s.updated} back={{ href: "/", label: t.tabs.home }} />
+      <p className="px-1 text-lg">{s.intro}</p>
+      {s.sections.map((section) => (
+        <Card key={section.title} title={section.title}>
+          <ul className="list-disc space-y-1.5 pl-5">
+            {section.body.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+        </Card>
+      ))}
+      {REPORT_EMAIL && (
+        <p className="px-1">
+          {s.contact}{" "}
+          <a href={`mailto:${REPORT_EMAIL}`} className="inline-flex min-h-12 items-center font-bold text-accent underline underline-offset-2">
+            {REPORT_EMAIL}
+          </a>
+        </p>
+      )}
+    </div>
+  );
+}

@@ -17,6 +17,13 @@ Production build (needed to test the service worker / offline mode):
 npm run build && npm start
 ```
 
+## Deploying
+
+- Node 22 (`engines` in `package.json` and `.nvmrc`); Vercel uses the `engines` value.
+- No environment variables are needed: every API used is key-free. See `.env.example`.
+- Before deploying: `npm run lint && npm run test:scam && npm run test:alerts && npm run build`.
+- Privacy page: `/privacy` (linked from Home and Safety). Pasted messages never leave the browser and are never logged.
+
 ## Data sources (all free, no API keys)
 
 | Card | Source | Cache | Terms |

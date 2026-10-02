@@ -443,6 +443,66 @@ export const en = {
     },
   },
 
+  privacy: {
+    title: "Privacy",
+    link: "Privacy: what stays on your phone",
+    updated: "Last updated: 2026-10-02",
+    intro: "Korea Survival Kit has no accounts, no ads and no tracking or analytics. Here is exactly what happens to your information.",
+    sections: [
+      {
+        title: "Messages you paste",
+        body: [
+          "The scam checker and alert translator run entirely in your browser.",
+          "What you paste is never sent to our server, never saved, and never logged. It is gone when you leave the page.",
+          "Spellcheck and autofill are turned off in those text boxes so the text isn't shared with keyboard or spellcheck services.",
+        ],
+      },
+      {
+        title: "Saved on your phone only",
+        body: [
+          "Your chosen district and the trail stops you mark as visited are saved in your browser's storage on this device.",
+          "Nothing else is saved. Health choices, checklist ticks and search words are kept in memory only and cleared when you leave the page.",
+          "To delete saved data, clear this site's data in your browser settings.",
+        ],
+      },
+      {
+        title: "Your location",
+        body: [
+          "The app asks for your location only when you tap \"Find nearby\".",
+          "It stays in your browser. It is rounded to about 100 m and added only to the Google Maps link if you open it. Naver and Kakao links don't include it.",
+          "Your location is never sent to our server or stored.",
+        ],
+      },
+      {
+        title: "Weather, air quality and exchange rates",
+        body: [
+          "Our server fetches these from Open-Meteo and Frankfurter, using the center point of the district you picked, not your location.",
+          "Results are cached and shared by everyone who picks the same district.",
+        ],
+      },
+      {
+        title: "Links to other services",
+        body: [
+          "Map apps, phone calls and government or tourism websites you open from this app are run by others, and their own privacy policies apply.",
+        ],
+      },
+      {
+        title: "Technical logs",
+        body: [
+          "Like any website, our hosting provider may keep standard request logs (such as IP address and the page requested) for security and reliability.",
+          "Our own code only logs errors from the weather and exchange-rate services. It never logs anything you type or paste.",
+        ],
+      },
+      {
+        title: "Offline use",
+        body: [
+          "The app stores its own pages and files on your device so it can work offline. This contains no personal information.",
+        ],
+      },
+    ],
+    contact: "Questions about privacy?",
+  },
+
   offline: {
     title: "You're offline",
     body: "Check your connection and try again. Pages you opened before may still work.",
