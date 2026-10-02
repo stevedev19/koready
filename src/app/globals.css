@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
+/* Colors chosen for WCAG AA contrast in both themes. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #f4f5f7;
+  --surface: #ffffff;
+  --foreground: #111827;
+  --muted: #4b5563;
+  --border: #e5e7eb;
+  --accent: #1d4ed8;
+  --accent-contrast: #ffffff;
+  --danger: #b91c1c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b0f17;
+    --surface: #161b26;
+    --foreground: #f3f4f6;
+    --muted: #b6bcc8;
+    --border: #2a3140;
+    --accent: #93b4ff;
+    --accent-contrast: #0b0f17;
+    --danger: #fca5a5;
   }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-danger: var(--danger);
+  /* System fonts: fast, and include Hangul (Apple SD Gothic Neo / Malgun Gothic / Noto Sans KR). */
+  --font-sans: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }
