@@ -1,0 +1,247 @@
+{
+  "notes": "Only public, tourist-friendly places verified on official tourism sources. Descriptions are our own. Every stop needs review before launch.",
+  "trails": [
+    {
+      "id": "gangneung-jumunjin",
+      "title": "Gangneung coast: BTS, Goblin & the fish market",
+      "region": "Gangneung, Gangwon",
+      "regionKo": "강원 강릉",
+      "tags": [
+        "kpop",
+        "kdrama",
+        "food",
+        "nature"
+      ],
+      "estimatedTime": "4–5 hours",
+      "difficulty": "Easy: flat beach walks, with a short taxi or bus ride between some stops",
+      "bestSeason": "Spring to autumn. The coast is cold and windy in winter.",
+      "gettingThere": [
+        "Take a KTX train from Seoul to Gangneung Station.",
+        "From Gangneung Station, city buses 300, 302 and 314 run north toward Jumunjin. Check current routes at the station, as this comes from a 2019 guide.",
+        "A taxi from Gangneung Station to the first stop is the simplest option."
+      ],
+      "respectNote": "Jumunjin is a working fishing town. Keep photo stops short, don't block the harbor, piers or market stalls, and take your trash with you.",
+      "sources": [
+        "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=0d54daff-d391-4afd-bf65-ba6eb5e449d2"
+      ],
+      "stops": [
+        {
+          "id": "bts-bus-stop",
+          "name": "BTS Bus Stop at Hyangho Beach",
+          "nameKo": "향호해변 BTS 버스정류장",
+          "kind": "Photo spot by the beach",
+          "relatedWork": {
+            "title": "You Never Walk Alone (BTS album)",
+            "type": "Music"
+          },
+          "why": "A rebuilt version of the seaside bus stop set from a BTS album shoot. It isn't a real bus stop.",
+          "hours": null,
+          "cost": "Free",
+          "source": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=200162",
+          "reviewNote": "KTO's English page names the album 'Young Forever (2016)'; KTO's Korean pages say the 2017 repackage, 'You Never Walk Alone'.",
+          "mapQuery": "향호해변 BTS 버스정류장",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%ED%96%A5%ED%98%B8%ED%95%B4%EB%B3%80%20BTS%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5",
+            "kakao": "https://map.kakao.com/link/search/%ED%96%A5%ED%98%B8%ED%95%B4%EB%B3%80%20BTS%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5",
+            "google": "https://www.google.com/maps/search/?api=1&query=%ED%96%A5%ED%98%B8%ED%95%B4%EB%B3%80%20BTS%20%EB%B2%84%EC%8A%A4%EC%A0%95%EB%A5%98%EC%9E%A5"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        },
+        {
+          "id": "sodol-adul-rock",
+          "name": "Sodol Adul Rock Park",
+          "nameKo": "소돌아들바위공원",
+          "kind": "Coastal rock park",
+          "relatedWork": null,
+          "why": "Odd-shaped sea rocks with a local wish-making legend, and a short coastal walk.",
+          "hours": "Until 7 PM (April–October). No evening entry because it's a military area. From a 2019 KTO guide, so check before you go.",
+          "cost": null,
+          "source": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=2f6ad2ae-f53c-4f36-a812-520a3bd693b8",
+          "mapQuery": "소돌아들바위공원",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%EC%86%8C%EB%8F%8C%EC%95%84%EB%93%A4%EB%B0%94%EC%9C%84%EA%B3%B5%EC%9B%90",
+            "kakao": "https://map.kakao.com/link/search/%EC%86%8C%EB%8F%8C%EC%95%84%EB%93%A4%EB%B0%94%EC%9C%84%EA%B3%B5%EC%9B%90",
+            "google": "https://www.google.com/maps/search/?api=1&query=%EC%86%8C%EB%8F%8C%EC%95%84%EB%93%A4%EB%B0%94%EC%9C%84%EA%B3%B5%EC%9B%90"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        },
+        {
+          "id": "sodol-port",
+          "name": "Sodol Port red lighthouse",
+          "nameKo": "소돌항",
+          "kind": "Small fishing harbor",
+          "relatedWork": {
+            "title": "The Glory",
+            "type": "K-drama"
+          },
+          "why": "A small harbor with a red lighthouse and breakwater that appears in the drama.",
+          "hours": null,
+          "cost": null,
+          "source": "https://korean.visitkorea.or.kr/detail/rem_detail.do?cotid=0d54daff-d391-4afd-bf65-ba6eb5e449d2",
+          "mapQuery": "강릉 소돌항",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%EA%B0%95%EB%A6%89%20%EC%86%8C%EB%8F%8C%ED%95%AD",
+            "kakao": "https://map.kakao.com/link/search/%EA%B0%95%EB%A6%89%20%EC%86%8C%EB%8F%8C%ED%95%AD",
+            "google": "https://www.google.com/maps/search/?api=1&query=%EA%B0%95%EB%A6%89%20%EC%86%8C%EB%8F%8C%ED%95%AD"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        },
+        {
+          "id": "jumunjin-fish-market",
+          "name": "Jumunjin Fish Market",
+          "nameKo": "주문진수산시장",
+          "kind": "Traditional seafood market",
+          "relatedWork": null,
+          "why": "The east coast's biggest seafood market, running since 1936. Buy fresh or dried seafood, or eat sashimi on the spot.",
+          "hours": "07:00–22:00 on weekdays (VisitKorea)",
+          "cost": "Prices vary by stall",
+          "source": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=90550",
+          "mapQuery": "주문진수산시장",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%EC%A3%BC%EB%AC%B8%EC%A7%84%EC%88%98%EC%82%B0%EC%8B%9C%EC%9E%A5",
+            "kakao": "https://map.kakao.com/link/search/%EC%A3%BC%EB%AC%B8%EC%A7%84%EC%88%98%EC%82%B0%EC%8B%9C%EC%9E%A5",
+            "google": "https://www.google.com/maps/search/?api=1&query=%EC%A3%BC%EB%AC%B8%EC%A7%84%EC%88%98%EC%82%B0%EC%8B%9C%EC%9E%A5"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        },
+        {
+          "id": "yeongjin-goblin",
+          "name": "Yeongjin Beach breakwater (Goblin filming spot)",
+          "nameKo": "영진해변 도깨비 촬영지",
+          "kind": "Beach breakwater",
+          "relatedWork": {
+            "title": "Guardian: The Lonely and Great God (Goblin)",
+            "type": "K-drama"
+          },
+          "why": "The breakwater where the drama's leads first meet. Fans still come to take photos here.",
+          "hours": "Open 24 hours (VisitKorea)",
+          "cost": "Free",
+          "source": "https://english.visitkorea.or.kr/svc/whereToGo/locIntrdn/rgnContentsView.do?vcontsId=174269",
+          "reviewNote": "VisitKorea English calls this 'Jumunjin Breakwater' (1609 Haean-ro); KTO Korean says it is a breakwater at Yeongjin Beach. Confirm both point to the same spot.",
+          "mapQuery": "영진해변",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%EC%98%81%EC%A7%84%ED%95%B4%EB%B3%80",
+            "kakao": "https://map.kakao.com/link/search/%EC%98%81%EC%A7%84%ED%95%B4%EB%B3%80",
+            "google": "https://www.google.com/maps/search/?api=1&query=%EC%98%81%EC%A7%84%ED%95%B4%EB%B3%80"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        }
+      ]
+    },
+    {
+      "id": "busan-nampo-film",
+      "title": "Busan on screen: Nampo markets to Huinnyeoul",
+      "region": "Busan",
+      "regionKo": "부산",
+      "tags": [
+        "film",
+        "food",
+        "culture"
+      ],
+      "estimatedTime": "4–5 hours",
+      "difficulty": "Easy in Nampo. Huinnyeoul sits on a cliff, with steep alleys and stairs.",
+      "bestSeason": "Year-round. The Busan International Film Festival takes over BIFF Square every autumn.",
+      "gettingThere": [
+        "Take a KTX train to Busan Station, then Busan Metro Line 1 to Nampo Station.",
+        "BIFF Square is about 5 minutes on foot from Nampo Station Exit 3.",
+        "For Huinnyeoul, take bus 7, 71 or 508 from near Nampo Station Exit 6 to the 영선동 백련사 (Yeongseon-dong Baengnyeonsa) stop."
+      ],
+      "respectNote": "Huinnyeoul is a village where people live. Keep your voice down, don't go into private homes, gardens or doorways, don't photograph residents, and avoid visiting late in the day.",
+      "sources": [
+        "https://visitbusan.net/index.do?lang_cd=en&menuCd=DOM_000000302002001000&uc_seq=454"
+      ],
+      "stops": [
+        {
+          "id": "biff-square",
+          "name": "BIFF Square",
+          "nameKo": "BIFF광장",
+          "kind": "Film street and street-food area",
+          "relatedWork": {
+            "title": "Busan International Film Festival",
+            "type": "Film"
+          },
+          "why": "The street where Busan's film festival started in 1996, with filmmakers' handprints set in the pavement and lots of street food.",
+          "hours": null,
+          "cost": "Free",
+          "source": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=95411&menuSn=351",
+          "mapQuery": "부산 BIFF광장",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%20BIFF%EA%B4%91%EC%9E%A5",
+            "kakao": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20BIFF%EA%B4%91%EC%9E%A5",
+            "google": "https://www.google.com/maps/search/?api=1&query=%EB%B6%80%EC%82%B0%20BIFF%EA%B4%91%EC%9E%A5"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        },
+        {
+          "id": "gukje-market",
+          "name": "Gukje Market",
+          "nameKo": "국제시장",
+          "kind": "Traditional market",
+          "relatedWork": {
+            "title": "Ode to My Father",
+            "type": "Film"
+          },
+          "why": "A huge, maze-like market that grew up after the Korean War. The family shop from the film is still a popular photo stop.",
+          "hours": "09:00–20:00, varies by shop. Closed Sundays.",
+          "cost": "Prices vary by shop",
+          "source": "https://www.visitbusan.net/index.do?menuCd=DOM_000000201003001000&lang_cd=ko&uc_seq=399",
+          "mapQuery": "부산 국제시장",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%EB%B6%80%EC%82%B0%20%EA%B5%AD%EC%A0%9C%EC%8B%9C%EC%9E%A5",
+            "kakao": "https://map.kakao.com/link/search/%EB%B6%80%EC%82%B0%20%EA%B5%AD%EC%A0%9C%EC%8B%9C%EC%9E%A5",
+            "google": "https://www.google.com/maps/search/?api=1&query=%EB%B6%80%EC%82%B0%20%EA%B5%AD%EC%A0%9C%EC%8B%9C%EC%9E%A5"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        },
+        {
+          "id": "jagalchi-market",
+          "name": "Jagalchi Market",
+          "nameKo": "자갈치시장",
+          "kind": "Seafood market",
+          "relatedWork": null,
+          "why": "One of Korea's biggest fish markets. The alleys around it are full of grilled-fish and eel restaurants.",
+          "hours": "05:00–22:00. Closed on the 1st, 3rd and 5th Tuesday of each month.",
+          "cost": "Prices vary by shop",
+          "source": "https://www.visitbusan.net/index.do?menuCd=DOM_000000201003001000&lang_cd=ko&uc_seq=412",
+          "mapQuery": "자갈치시장",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%EC%9E%90%EA%B0%88%EC%B9%98%EC%8B%9C%EC%9E%A5",
+            "kakao": "https://map.kakao.com/link/search/%EC%9E%90%EA%B0%88%EC%B9%98%EC%8B%9C%EC%9E%A5",
+            "google": "https://www.google.com/maps/search/?api=1&query=%EC%9E%90%EA%B0%88%EC%B9%98%EC%8B%9C%EC%9E%A5"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        },
+        {
+          "id": "huinnyeoul",
+          "name": "Huinnyeoul Culture Village",
+          "nameKo": "흰여울문화마을",
+          "kind": "Cliffside village and coastal walk",
+          "relatedWork": {
+            "title": "The Attorney",
+            "type": "Film"
+          },
+          "why": "Narrow alleys on a sea cliff with small cafes, workshops and open sea views, plus the coastal walking path below.",
+          "hours": "Village open daily. Info center (film archive) 10:00–18:00, closed Jan 1, Seollal and Chuseok. Please avoid late visits.",
+          "cost": "Free",
+          "source": "https://www.yeongdo.go.kr/tour/01462/01463.web?idx=2177&amode=view",
+          "mapQuery": "흰여울문화마을",
+          "mapLinks": {
+            "naver": "https://map.naver.com/p/search/%ED%9D%B0%EC%97%AC%EC%9A%B8%EB%AC%B8%ED%99%94%EB%A7%88%EC%9D%84",
+            "kakao": "https://map.kakao.com/link/search/%ED%9D%B0%EC%97%AC%EC%9A%B8%EB%AC%B8%ED%99%94%EB%A7%88%EC%9D%84",
+            "google": "https://www.google.com/maps/search/?api=1&query=%ED%9D%B0%EC%97%AC%EC%9A%B8%EB%AC%B8%ED%99%94%EB%A7%88%EC%9D%84"
+          },
+          "last_checked": "2026-10-02",
+          "needs_review": true
+        }
+      ]
+    }
+  ]
+}
