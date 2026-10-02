@@ -57,7 +57,7 @@ export function Segmented<T extends string>({
             aria-pressed={selected}
             onClick={() => onChange(o.value)}
             className={`min-h-12 flex-1 rounded-[0.6875rem] px-2 text-[0.9375rem] font-bold transition-colors ${
-              selected ? "bg-surface text-foreground shadow-[0_1px_3px_rgb(0_0_0/0.12)]" : "text-muted"
+              selected ? "bg-surface text-foreground shadow-card ring-1 ring-inset ring-border" : "text-muted"
             }`}
           >
             {o.label}

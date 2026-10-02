@@ -1,9 +1,10 @@
 import type { LucideIcon } from "lucide-react";
 
-export type Tone = "blue" | "green" | "teal" | "amber" | "red" | "violet" | "neutral";
+export type Tone = "blue" | "jade" | "green" | "teal" | "amber" | "red" | "violet" | "neutral";
 
 const TONES: Record<Tone, string> = {
   blue: "bg-accent-soft text-accent",
+  jade: "bg-jade-soft text-jade-icon",
   green: "bg-success-soft text-success",
   teal: "bg-info-soft text-info",
   amber: "bg-warning-soft text-warning",

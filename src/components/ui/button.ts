@@ -8,7 +8,7 @@ const base =
 const variants: Record<ButtonVariant, string> = {
   primary: "bg-accent text-accent-contrast",
   tonal: "bg-accent-soft text-accent",
-  secondary: "bg-surface-2 text-foreground",
+  secondary: "bg-surface text-foreground ring-[1.5px] ring-inset ring-border-strong",
   danger: "bg-danger text-danger-contrast",
   emergency: "bg-emergency text-emergency-contrast",
   text: "bg-transparent text-accent",

@@ -26,8 +26,8 @@ export function Disclaimer({ children }: { children: ReactNode }) {
 export type StatusTone = "danger" | "warning" | "neutral";
 
 const STATUS: Record<StatusTone, { icon: LucideIcon; box: string; head: string }> = {
-  danger: { icon: OctagonAlert, box: "bg-danger-soft", head: "text-danger" },
-  warning: { icon: TriangleAlert, box: "bg-warning-soft", head: "text-warning" },
+  danger: { icon: OctagonAlert, box: "bg-danger-soft ring-2 ring-inset ring-danger", head: "text-danger" },
+  warning: { icon: TriangleAlert, box: "bg-warning-soft ring-2 ring-inset ring-warning", head: "text-warning" },
   // Deliberately neutral (not green): used for "no obvious signs", never "safe".
   neutral: { icon: SearchCheck, box: "bg-surface ring-2 ring-inset ring-border-strong", head: "text-foreground" },
 };

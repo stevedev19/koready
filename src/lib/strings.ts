@@ -35,6 +35,16 @@ export const en = {
     close: "Close",
   },
 
+  // Quiet shortcut in the top bar of every screen. Numbers come from helpLines.ts.
+  emergencyShortcut: {
+    open: "Emergency calls: 119 or 112",
+    title: "Emergency",
+    titleKo: "긴급 전화",
+    ambulanceNote: "Also 24h medical advice",
+    policeNote: "English interpretation available",
+    more: "What to say, nearest ER",
+  },
+
   weather: {
     title: "Weather",
     feelsLike: "Feels like",
