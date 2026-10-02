@@ -1,0 +1,602 @@
+[
+  {
+    "id": "daebak",
+    "term": "대박",
+    "romanization": "daebak",
+    "meaning": "Awesome, amazing; also \"no way!\" for big news (good or bad).",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "와, 이 콘서트 진짜 대박이다!",
+        "en": "Wow, this concert is seriously amazing!"
+      },
+      {
+        "ko": "시험 다 맞았어? 대박!",
+        "en": "You got everything right on the test? No way!"
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "heol",
+    "term": "헐",
+    "romanization": "heol",
+    "meaning": "\"OMG\" / \"What?!\" — a reaction of shock or disbelief.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "헐, 지갑을 집에 두고 왔어.",
+        "en": "OMG, I left my wallet at home."
+      },
+      {
+        "ko": "헐, 벌써 12시야?",
+        "en": "What?! It's already midnight?"
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "kkuljaem",
+    "term": "꿀잼",
+    "romanization": "kkul-jaem",
+    "meaning": "Super fun or entertaining (literally \"honey fun\").",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "이 드라마 완전 꿀잼이야.",
+        "en": "This drama is so much fun."
+      },
+      {
+        "ko": "어제 파티 꿀잼이었어.",
+        "en": "Yesterday's party was a blast."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "nojaem",
+    "term": "노잼",
+    "romanization": "no-jaem",
+    "meaning": "Boring, not fun (from English \"no\" + 재미 \"fun\").",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "그 영화 생각보다 노잼이었어.",
+        "en": "That movie was more boring than I expected."
+      },
+      {
+        "ko": "오늘 수업 너무 노잼이다.",
+        "en": "Today's class is so boring."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "matjeom",
+    "term": "맛점",
+    "romanization": "mat-jeom",
+    "meaning": "\"Have a tasty lunch!\" — short for 맛있는 점심. Common in office chats.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "다들 맛점하세요!",
+        "en": "Enjoy your lunch, everyone!"
+      },
+      {
+        "ko": "오늘 맛점하셨어요?",
+        "en": "Did you have a nice lunch today?"
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "bulgeum",
+    "term": "불금",
+    "romanization": "bul-geum",
+    "meaning": "\"Fire Friday\" — Friday night, time to go out and have fun.",
+    "tone": "playful",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "불금인데 뭐 해?",
+        "en": "It's Friday night, what are you up to?"
+      },
+      {
+        "ko": "불금이라 홍대에 사람이 엄청 많아.",
+        "en": "Hongdae is packed because it's Friday night."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "chimaek",
+    "term": "치맥",
+    "romanization": "chi-maek",
+    "meaning": "Fried chicken and beer (치킨 + 맥주), a classic Korean combo.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "한강에서 치맥 어때?",
+        "en": "How about chicken and beer by the Han River?"
+      },
+      {
+        "ko": "축구 볼 때는 치맥이지.",
+        "en": "Watching soccer means chicken and beer."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "eoljuga",
+    "term": "얼죽아",
+    "romanization": "eol-juk-a",
+    "meaning": "Short for \"I'll drink iced americano even if I freeze to death.\" Someone who always orders iced coffee.",
+    "tone": "playful",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "한겨울에도 아아 마셔? 진짜 얼죽아네.",
+        "en": "You drink iced americano in midwinter? You're a true eoljuga."
+      },
+      {
+        "ko": "저는 얼죽아라서 항상 아이스로 시켜요.",
+        "en": "I'm an eoljuga, so I always order iced."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "gapbunssa",
+    "term": "갑분싸",
+    "romanization": "gap-bun-ssa",
+    "meaning": "When the mood suddenly turns awkward (갑자기 분위기 싸해짐).",
+    "tone": "playful",
+    "usage_level": "casual",
+    "examples": [
+      {
+        "ko": "그 농담 때문에 갑분싸 됐어.",
+        "en": "That joke made the mood suddenly awkward."
+      },
+      {
+        "ko": "회의 중에 갑분싸였어.",
+        "en": "Things got awkward out of nowhere during the meeting."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "inssa",
+    "term": "인싸",
+    "romanization": "in-ssa",
+    "meaning": "A popular, outgoing person who is \"in\" with the crowd (from \"insider\").",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "걔는 학교에서 완전 인싸야.",
+        "en": "They're super popular at school."
+      },
+      {
+        "ko": "요즘 인싸들은 다 이 앱 써.",
+        "en": "All the cool kids use this app these days."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "assa",
+    "term": "아싸",
+    "romanization": "a-ssa",
+    "meaning": "A loner or outsider (from \"outsider\"). Often used to describe yourself jokingly.",
+    "tone": "playful",
+    "usage_level": "casual",
+    "examples": [
+      {
+        "ko": "나는 대학교 때 완전 아싸였어.",
+        "en": "I was a total loner in college."
+      },
+      {
+        "ko": "아싸라서 점심은 혼자 먹어요.",
+        "en": "I'm a bit of a loner, so I eat lunch alone."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "sseom",
+    "term": "썸",
+    "romanization": "sseom",
+    "meaning": "A \"something\" — the stage before dating when two people like each other.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "너 요즘 누구랑 썸 타?",
+        "en": "Do you have a thing going with someone lately?"
+      },
+      {
+        "ko": "우리 그냥 썸 타는 중이야.",
+        "en": "We're just in the \"talking\" stage."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "namsachin",
+    "term": "남사친",
+    "romanization": "nam-sa-chin",
+    "meaning": "A guy friend who is just a friend (남자 사람 친구). Female version: 여사친.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "그냥 남사친이야, 오해하지 마.",
+        "en": "He's just a guy friend, don't get the wrong idea."
+      },
+      {
+        "ko": "남사친이랑 영화 보러 가.",
+        "en": "I'm going to the movies with a guy friend."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "geumsappa",
+    "term": "금사빠",
+    "romanization": "geum-sa-ppa",
+    "meaning": "Someone who falls in love very quickly (금방 사랑에 빠지는 사람).",
+    "tone": "playful",
+    "usage_level": "casual",
+    "examples": [
+      {
+        "ko": "나 금사빠라서 또 반했어.",
+        "en": "I fall for people fast, so I've got a crush again."
+      },
+      {
+        "ko": "걔는 진짜 금사빠야.",
+        "en": "They fall in love way too easily."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "kkondae",
+    "term": "꼰대",
+    "romanization": "kkon-dae",
+    "meaning": "A preachy, condescending older person or boss who insists on \"how things used to be.\" Insulting.",
+    "tone": "rude",
+    "usage_level": "risky",
+    "examples": [
+      {
+        "ko": "우리 부장님 완전 꼰대야.",
+        "en": "Our department head is such a kkondae."
+      },
+      {
+        "ko": "꼰대처럼 말하기 싫지만, 일찍 와.",
+        "en": "I don't want to sound preachy, but come early."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "hwaiting",
+    "term": "파이팅",
+    "romanization": "hwai-ting",
+    "meaning": "\"You can do it!\" — encouragement (from English \"fighting\").",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "면접 잘 봐, 파이팅!",
+        "en": "Good luck with your interview, you got this!"
+      },
+      {
+        "ko": "오늘도 파이팅하세요!",
+        "en": "Do your best today too!"
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "ajaegaegeu",
+    "term": "아재개그",
+    "romanization": "a-jae gae-geu",
+    "meaning": "A cheesy \"dad joke,\" usually a pun.",
+    "tone": "playful",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "또 아재개그야? 하나도 안 웃겨.",
+        "en": "Another dad joke? Not funny at all."
+      },
+      {
+        "ko": "팀장님은 아재개그를 너무 좋아해.",
+        "en": "Our team leader loves dad jokes."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "geukhyeom",
+    "term": "극혐",
+    "romanization": "geuk-hyeom",
+    "meaning": "\"Extremely disgusting\" / \"I absolutely hate it.\" Strong and harsh.",
+    "tone": "rude",
+    "usage_level": "risky",
+    "examples": [
+      {
+        "ko": "바퀴벌레는 진짜 극혐이야.",
+        "en": "I absolutely hate cockroaches."
+      },
+      {
+        "ko": "그런 말은 극혐이야.",
+        "en": "Saying things like that is gross."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "menbung",
+    "term": "멘붕",
+    "romanization": "men-bung",
+    "meaning": "A mental breakdown or meltdown; feeling completely overwhelmed (멘탈 붕괴).",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "비자 서류를 잃어버려서 멘붕 왔어.",
+        "en": "I lost my visa documents and totally panicked."
+      },
+      {
+        "ko": "시험 문제 보고 멘붕이었어.",
+        "en": "I froze when I saw the exam questions."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "sohwakhaeng",
+    "term": "소확행",
+    "romanization": "so-hwak-haeng",
+    "meaning": "A small but certain happiness (작지만 확실한 행복), like a good coffee.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "퇴근 후 맥주 한 잔이 내 소확행이야.",
+        "en": "A beer after work is my little happiness."
+      },
+      {
+        "ko": "주말 아침 늦잠은 소확행이지.",
+        "en": "Sleeping in on weekend mornings is a small joy."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "worabael",
+    "term": "워라밸",
+    "romanization": "wo-ra-bael",
+    "meaning": "Work-life balance (from English).",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "이 회사는 워라밸이 좋아요.",
+        "en": "This company has good work-life balance."
+      },
+      {
+        "ko": "워라밸 때문에 이직했어.",
+        "en": "I changed jobs for better work-life balance."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "honbap",
+    "term": "혼밥",
+    "romanization": "hon-bap",
+    "meaning": "Eating alone (혼자 + 밥). Similar: 혼술 (drinking alone).",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "오늘은 혼밥하려고.",
+        "en": "I'm going to eat alone today."
+      },
+      {
+        "ko": "이 식당은 혼밥하기 좋아.",
+        "en": "This restaurant is great for eating alone."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "ppallippalli",
+    "term": "빨리빨리",
+    "romanization": "ppal-li ppal-li",
+    "meaning": "\"Hurry, hurry!\" — also describes Korea's fast-paced culture.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "빨리빨리! 버스 온다!",
+        "en": "Hurry! The bus is coming!"
+      },
+      {
+        "ko": "한국의 빨리빨리 문화에 익숙해졌어.",
+        "en": "I've gotten used to Korea's ppalli-ppalli culture."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "eomchina",
+    "term": "엄친아",
+    "romanization": "eom-chin-a",
+    "meaning": "\"Mom's friend's son\" — the annoyingly perfect person you're always compared to. Female: 엄친딸.",
+    "tone": "playful",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "걔는 공부도 잘하고 잘생긴 엄친아야.",
+        "en": "He's smart and handsome, a real \"mom's friend's son.\""
+      },
+      {
+        "ko": "엄친아랑 비교하지 마세요.",
+        "en": "Please don't compare me to the perfect kid."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "anmulangung",
+    "term": "안물안궁",
+    "romanization": "an-mul-an-gung",
+    "meaning": "\"Didn't ask, don't care\" (안 물어봤고 안 궁금해). Dismissive.",
+    "tone": "rude",
+    "usage_level": "risky",
+    "examples": [
+      {
+        "ko": "네 연애 얘기는 안물안궁이야.",
+        "en": "I didn't ask about your love life, and I don't care."
+      },
+      {
+        "ko": "안물안궁, 그만 말해.",
+        "en": "Didn't ask, stop talking."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "nep",
+    "term": "넵",
+    "romanization": "nep",
+    "meaning": "An eager, polite \"Yes!\" used in work messages; softer than 네.",
+    "tone": "formal",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "넵, 확인했습니다!",
+        "en": "Yes, I've checked it!"
+      },
+      {
+        "ko": "넵, 내일까지 보내드릴게요.",
+        "en": "Yes, I'll send it to you by tomorrow."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "silhwanya",
+    "term": "실화냐",
+    "romanization": "sil-hwa-nya",
+    "meaning": "\"Is this for real?!\" — used when something is unbelievable.",
+    "tone": "casual",
+    "usage_level": "casual",
+    "examples": [
+      {
+        "ko": "이 가격 실화냐?",
+        "en": "Is this price for real?"
+      },
+      {
+        "ko": "벌써 금요일이라니, 실화냐?",
+        "en": "It's already Friday? Seriously?"
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "gukrul",
+    "term": "국룰",
+    "romanization": "gung-nul",
+    "meaning": "\"National rule\" — an unwritten rule everyone follows.",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "삼겹살에는 소주가 국룰이지.",
+        "en": "Soju with samgyeopsal is the unwritten rule."
+      },
+      {
+        "ko": "노래방 마지막 곡은 발라드가 국룰이야.",
+        "en": "The last song at karaoke is always a ballad."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "gatsaeng",
+    "term": "갓생",
+    "romanization": "gat-saeng",
+    "meaning": "Living a highly productive, disciplined life (\"god\" + 인생 \"life\").",
+    "tone": "casual",
+    "usage_level": "safe",
+    "examples": [
+      {
+        "ko": "요즘 아침 6시에 일어나서 갓생 살아.",
+        "en": "These days I wake up at 6 and live my best productive life."
+      },
+      {
+        "ko": "갓생 살기 프로젝트 시작!",
+        "en": "Starting my \"productive life\" project!"
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  },
+  {
+    "id": "kingbatne",
+    "term": "킹받네",
+    "romanization": "king-bat-ne",
+    "meaning": "\"So annoying!\" — a playful, exaggerated way to say something irritates you.",
+    "tone": "playful",
+    "usage_level": "casual",
+    "examples": [
+      {
+        "ko": "친구가 내 과자 다 먹었어. 킹받네.",
+        "en": "My friend ate all my snacks. So annoying."
+      },
+      {
+        "ko": "그 표정 진짜 킹받아.",
+        "en": "That face is seriously annoying."
+      }
+    ],
+    "last_verified": null,
+    "needs_native_review": true
+  }
+]
