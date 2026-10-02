@@ -1,0 +1,338 @@
+{
+  "district": { "id": "gangnam", "name": "Gangnam-gu", "nameKo": "강남구", "city": "Seoul" },
+  "last_checked": "2026-10-02",
+  "needs_native_review": true,
+  "sources": [
+    {
+      "title": "Gangnam Resource Circulation Portal: household waste (schedule, bags)",
+      "url": "https://clean.gangnam.go.kr/use/guid/USEGUID01000000.do?contentId=con2411150004",
+      "published": null
+    },
+    {
+      "title": "Gangnam Resource Circulation Portal: recycling by item",
+      "url": "https://clean.gangnam.go.kr/use/guid/USEGUID01000000.do?contentId=con2411150005",
+      "published": null
+    },
+    {
+      "title": "Gangnam-gu Office: waste disposal guide",
+      "url": "https://www.gangnam.go.kr/board/waste/6/view.do?mid=ID02_011109",
+      "published": "2020-11-25"
+    },
+    {
+      "title": "Gangnam-gu Office: bulky waste",
+      "url": "https://www.gangnam.go.kr/board/waste/1/view.do?mid=ID02_011109",
+      "published": "2017-03-28"
+    }
+  ],
+  "contact": {
+    "name": "Resource Circulation Division (자원순환과)",
+    "phone": "02-3423-5993",
+    "source": "https://clean.gangnam.go.kr/use/guid/USEGUID01000000.do?contentId=con2411150005"
+  },
+  "schedule": {
+    "time": "8 PM to 5 AM the next morning",
+    "place": "In front of your own house or business.",
+    "appliesTo": "Houses, villas (빌라) and small shops. Apartment complexes and buildings over 1,000 m² set their own days and places.",
+    "streams": {
+      "general": { "label": "General & food waste", "days": ["sun", "mon", "tue", "wed", "thu", "fri"] },
+      "recyclables": { "label": "Plastics, cans & glass", "days": ["sun", "mon", "tue", "wed", "fri"] },
+      "clearPetVinyl": { "label": "Clear PET bottles & plastic film", "days": ["thu"] }
+    }
+  },
+  "bins": {
+    "generalBag": { "name": "General waste bag", "nameKo": "일반 종량제 봉투", "how": "The district's paid trash bag, sold at local shops." },
+    "foodBag": { "name": "Food waste bag → food waste bin", "nameKo": "음식물 종량제 봉투", "how": "Put the bag into the food waste collection bin (음식물쓰레기 수집용기)." },
+    "ppBag": { "name": "Non-burnable waste bag (PP bag)", "nameKo": "태워서는 안되는 쓰레기용 봉투 (PP봉투)", "how": "A separate bag for things that must not be burned. More than ten 20 L bags counts as bulky waste." },
+    "clearBag": { "name": "Clear or see-through bag, or white net", "nameKo": "투명·반투명 봉투 / 백색 그물망", "how": "Only on Thursdays." },
+    "greenNet": { "name": "Green recycling net", "nameKo": "녹색 그물망", "how": "Mixed recyclables, on recycling days (not Thursday or Saturday)." },
+    "paper": { "name": "Paper recycling", "nameKo": "종이류", "how": "Tie it up or put it in a box. Keep it dry." },
+    "cartons": { "name": "Paper cartons & cups", "nameKo": "종이팩류", "how": "Paper recycling, after rinsing and flattening." },
+    "metal": { "name": "Cans & scrap metal", "nameKo": "캔·고철류", "how": "Can and scrap-metal collection." },
+    "styrofoam": { "name": "Styrofoam recycling", "nameKo": "스티로폼", "how": "Tie it together or put it in a clear plastic bag." },
+    "smallAppliance": { "name": "Free small-appliance pickup", "nameKo": "소형폐가전 무상수거", "how": "Tell the district's collection company first. They give you a date to put it out." },
+    "glass": { "name": "Glass bottles", "nameKo": "유리병류", "how": "Glass recycling." },
+    "batteryBox": { "name": "Battery collection box", "nameKo": "폐건전지 수거함", "how": "At community service centers (주민센터) and on residential streets; apartments have their own box. Collected on Thursdays." },
+    "lampBox": { "name": "Fluorescent lamp collection box", "nameKo": "폐형광등 수거함", "how": "Same places as the battery boxes." },
+    "medicineBox": { "name": "Medicine collection box or postbox", "nameKo": "폐의약품 수거함 / 우체통", "how": "Seal it first." },
+    "oilBox": { "name": "Used cooking oil collection box", "nameKo": "폐식용유 수거함", "how": "Locations are on the Gangnam recycling portal map." },
+    "clothingBin": { "name": "Clothing collection bin", "nameKo": "의류수거함", "how": "Only clean, reusable items." },
+    "bulky": { "name": "Bulky waste (book a pickup)", "nameKo": "대형생활폐기물", "how": "Book at least 3 days ahead by phone with the collection company or online at the district office. There is a fee per item. Put the receipt or booking number on the item. Picked up Monday to Saturday (not Sundays or public holidays)." },
+    "depositReturn": { "name": "Return to a store for the deposit", "nameKo": "빈용기 보증금 환급", "how": "Bottles with the deposit logo go back to supermarkets or convenience stores that sell them." }
+  },
+  "categories": {
+    "plastic": "Plastic & film",
+    "paper": "Paper",
+    "glassMetal": "Glass & metal",
+    "food": "Food",
+    "hazardous": "Batteries, lamps & medicine",
+    "large": "Large items & clothes",
+    "other": "Other"
+  },
+  "items": [
+    {
+      "id": "clear_pet",
+      "category": "plastic",
+      "name": "Clear plastic bottle (water, drinks)",
+      "nameKo": "투명페트병",
+      "aliases": ["water bottle", "pet bottle", "soda bottle", "plastic bottle", "생수병", "페트병"],
+      "bin": "clearBag",
+      "prep": ["Empty and rinse", "Remove the label", "Crush it and close the cap"],
+      "schedule": "clearPetVinyl"
+    },
+    {
+      "id": "plastic_other",
+      "category": "plastic",
+      "name": "Other plastics (colored bottles, containers, cups)",
+      "nameKo": "일반 플라스틱 (유색페트병)",
+      "aliases": ["plastic container", "colored bottle", "takeout cup", "plastic cup", "fruit container", "yogurt bottle", "shampoo bottle", "플라스틱", "플라스틱 용기", "일회용컵"],
+      "bin": "greenNet",
+      "prep": ["Empty it and remove leftovers"],
+      "schedule": "recyclables",
+      "note": "Clear disposable cups and clear fruit containers go here too. They are not clear PET bottles."
+    },
+    {
+      "id": "vinyl",
+      "category": "plastic",
+      "name": "Plastic bags & wrappers (snack, ramyeon, bubble wrap)",
+      "nameKo": "비닐류",
+      "aliases": ["plastic bag", "plastic film", "wrapper", "snack bag", "chip bag", "bubble wrap", "ramen packet", "coffee stick", "비닐", "봉지", "뽁뽁이", "에어캡"],
+      "bin": "clearBag",
+      "prep": ["Empty and rinse", "Squash it down", "Collect only plastic film in the bag"],
+      "schedule": "clearPetVinyl",
+      "note": "If you can't rinse it clean, put it in the PP bag instead. Tablecloths, foil-lined film and duvet covers can't be recycled as film."
+    },
+    {
+      "id": "styrofoam",
+      "category": "plastic",
+      "name": "Styrofoam (white)",
+      "nameKo": "스티로폼",
+      "aliases": ["styrofoam", "polystyrene", "foam box", "packing foam", "스티로폼"],
+      "bin": "styrofoam",
+      "prep": ["Remove tape, stickers and shipping labels", "Tie it together or put it in a clear bag"],
+      "schedule": null,
+      "pickupNote": "The district doesn't say which day for Styrofoam. Check your building's notice board.",
+      "note": "Colored or dirty Styrofoam, fruit packaging foam and kitchen sponges go in the PP bag."
+    },
+    {
+      "id": "paper",
+      "category": "paper",
+      "name": "Paper, cardboard boxes, books, newspaper",
+      "nameKo": "종이류",
+      "aliases": ["cardboard", "box", "delivery box", "newspaper", "magazine", "notebook", "book", "박스", "종이", "신문"],
+      "bin": "paper",
+      "prep": ["Remove tape and stickers", "Keep it dry", "Tie it up or put it in a box"],
+      "schedule": null,
+      "pickupNote": "The district's schedule doesn't list paper by name. Check your building's notice board."
+    },
+    {
+      "id": "pizza_box",
+      "category": "paper",
+      "name": "Pizza box",
+      "nameKo": "피자 박스",
+      "aliases": ["pizza", "greasy box", "chicken box", "피자"],
+      "bin": "paper",
+      "prep": ["Remove leftover food", "Tear off greasy or food-stained parts and put them in the general waste bag", "Recycle only the clean parts as paper"],
+      "schedule": null,
+      "inferred": true,
+      "pickupNote": "The district's schedule doesn't list paper by name. Check your building's notice board.",
+      "note": "Gangnam says paper stained with oil or food can't be recycled."
+    },
+    {
+      "id": "cartons",
+      "category": "paper",
+      "name": "Milk & juice cartons, paper cups",
+      "nameKo": "종이팩 · 종이컵",
+      "aliases": ["milk carton", "juice carton", "paper cup", "cup noodle", "우유팩", "종이컵", "컵라면"],
+      "bin": "cartons",
+      "prep": ["Empty it", "Rinse with water", "Flatten it"],
+      "schedule": null,
+      "pickupNote": "The district's schedule doesn't list cartons by name. Check your building's notice board.",
+      "note": "Paper cup-noodle containers: rinse them first."
+    },
+    {
+      "id": "paper_not",
+      "category": "paper",
+      "name": "Receipts, foil paper, wallpaper, dirty paper",
+      "nameKo": "영수증 · 은박지 · 벽지",
+      "aliases": ["receipt", "foil", "gift wrap", "wallpaper", "tissue", "영수증", "은박지", "벽지"],
+      "bin": "generalBag",
+      "prep": [],
+      "schedule": "general",
+      "inferred": true,
+      "note": "Gangnam lists these as paper that can't be recycled. Small amounts of wallpaper go in the PP bag."
+    },
+    {
+      "id": "cans",
+      "category": "glassMetal",
+      "name": "Drink & food cans",
+      "nameKo": "캔 (철캔 · 알루미늄캔)",
+      "aliases": ["can", "beer can", "soda can", "tin can", "aluminium", "aluminum", "캔", "맥주캔"],
+      "bin": "metal",
+      "prep": ["Empty it", "Remove leftovers", "Sort the lid by its material"],
+      "schedule": "recyclables"
+    },
+    {
+      "id": "spray_cans",
+      "category": "glassMetal",
+      "name": "Spray cans & butane gas",
+      "nameKo": "부탄가스 · 살충제 용기",
+      "aliases": ["spray can", "aerosol", "butane", "gas can", "camping gas", "hairspray", "부탄가스", "스프레이"],
+      "bin": "metal",
+      "prep": ["Fire risk: make a hole to empty it completely", "Keep these apart from other cans"],
+      "schedule": "recyclables"
+    },
+    {
+      "id": "scrap_metal",
+      "category": "glassMetal",
+      "name": "Scrap metal (tools, wire, nails, pots)",
+      "nameKo": "고철 · 비철금속",
+      "aliases": ["metal", "tools", "wire", "nails", "pot", "pan", "stainless", "고철", "냄비", "프라이팬"],
+      "bin": "metal",
+      "prep": ["Keep other materials out", "Put it in a bag or tie it together"],
+      "schedule": "recyclables"
+    },
+    {
+      "id": "glass_bottle",
+      "category": "glassMetal",
+      "name": "Glass bottles",
+      "nameKo": "유리병",
+      "aliases": ["glass", "bottle", "wine bottle", "beer bottle", "soju bottle", "jar", "유리병", "병", "소주병"],
+      "bin": "glass",
+      "prep": ["Empty it", "Remove the cap and sort it by material", "Don't break it"],
+      "schedule": "recyclables",
+      "note": "Bottles with the deposit logo can be returned to stores for money: up to 30 per person per visit, undamaged and clean."
+    },
+    {
+      "id": "glass_not",
+      "category": "glassMetal",
+      "name": "Broken glass, mirrors, ceramics, heat-proof dishes",
+      "nameKo": "깨진 유리 · 거울 · 도자기",
+      "aliases": ["broken glass", "mirror", "ceramic", "plate", "bowl", "mug", "pyrex", "crystal", "깨진유리", "거울", "도자기", "그릇"],
+      "bin": "ppBag",
+      "prep": ["Wrap broken glass in newspaper"],
+      "schedule": "general",
+      "note": "These can't be recycled with glass bottles."
+    },
+    {
+      "id": "food_waste",
+      "category": "food",
+      "name": "Food waste (leftovers, fruit peel, kimchi)",
+      "nameKo": "음식물쓰레기",
+      "aliases": ["food", "leftovers", "fruit peel", "vegetables", "rice", "kimchi", "음식물", "음쓰"],
+      "bin": "foodBag",
+      "prep": ["Drain as much water as possible", "Rinse salty food (kimchi, doenjang, gochujang) with water", "Cut up large vegetables", "Keep out caps, chopsticks, paper, metal, toothpicks, glass, plastic and rubber bands"],
+      "schedule": "general"
+    },
+    {
+      "id": "not_food",
+      "category": "food",
+      "name": "Bones, shells, tea bags, eggshells",
+      "nameKo": "뼈 · 껍데기 · 티백",
+      "aliases": ["chicken bones", "bone", "shell", "clam", "oyster", "crab", "walnut", "pineapple skin", "tea bag", "eggshell", "egg shell", "닭뼈", "조개", "티백", "달걀껍데기"],
+      "bin": "generalBag",
+      "prep": [],
+      "schedule": "general",
+      "note": "These are not food waste in Gangnam. Herbal medicine dregs (한약 찌꺼기) also go in the general bag."
+    },
+    {
+      "id": "general_trash",
+      "category": "other",
+      "name": "General trash (tissues, diapers)",
+      "nameKo": "일반쓰레기",
+      "aliases": ["trash", "garbage", "tissue", "diaper", "toothbrush", "일반쓰레기", "휴지", "기저귀"],
+      "bin": "generalBag",
+      "prep": ["Only dry waste"],
+      "schedule": "general"
+    },
+    {
+      "id": "pp_items",
+      "category": "other",
+      "name": "Shoes, cushions, umbrellas, hangers, rubber gloves, cat litter",
+      "nameKo": "불연성 쓰레기",
+      "aliases": ["shoes", "cushion", "pillow", "umbrella", "hanger", "rubber gloves", "cat litter", "yoga mat", "hose", "racket", "soil", "plant pot", "신발", "우산", "옷걸이", "고양이모래", "화분", "요가매트"],
+      "bin": "ppBag",
+      "prep": [],
+      "schedule": "general",
+      "note": "Clean, reusable shoes can go in a clothing bin instead."
+    },
+    {
+      "id": "batteries",
+      "category": "hazardous",
+      "name": "Batteries & power banks",
+      "nameKo": "폐건전지 · 보조배터리",
+      "aliases": ["battery", "batteries", "power bank", "laptop battery", "aa battery", "lithium", "건전지", "배터리", "보조배터리"],
+      "bin": "batteryBox",
+      "prep": ["Take it out of the device", "Don't damage it"],
+      "schedule": null,
+      "pickupNote": "Boxes are usually emptied on Thursdays.",
+      "note": "Never put batteries in any trash bag. They can start fires."
+    },
+    {
+      "id": "lamps",
+      "category": "hazardous",
+      "name": "Fluorescent lamps & LED bulbs",
+      "nameKo": "폐형광등 · LED 전구",
+      "aliases": ["light bulb", "fluorescent", "lamp", "led", "tube light", "형광등", "전구"],
+      "bin": "lampBox",
+      "prep": ["Keep it unbroken"],
+      "schedule": null,
+      "pickupNote": "Boxes are usually emptied on Thursdays.",
+      "note": "Broken fluorescent lamps: wrap in newspaper and put in the general bag. Flat or panel LED lights (not bulb or tube shaped) go in the PP bag or as bulky waste."
+    },
+    {
+      "id": "medicine",
+      "category": "hazardous",
+      "name": "Old medicine (pills, syrup, ointment)",
+      "nameKo": "폐의약품",
+      "aliases": ["medicine", "pills", "tablets", "syrup", "ointment", "drugs", "약", "알약", "연고"],
+      "bin": "medicineBox",
+      "prep": ["Seal it"],
+      "schedule": null
+    },
+    {
+      "id": "cooking_oil",
+      "category": "hazardous",
+      "name": "Used cooking oil",
+      "nameKo": "폐식용유",
+      "aliases": ["oil", "cooking oil", "frying oil", "식용유", "기름"],
+      "bin": "oilBox",
+      "prep": ["Plant oil only", "Keep food bits out"],
+      "schedule": null,
+      "note": "Don't pour it down the drain. Animal fat isn't accepted. Dispose of it yourself."
+    },
+    {
+      "id": "clothes",
+      "category": "large",
+      "name": "Clothes, bags & shoes (reusable)",
+      "nameKo": "의류",
+      "aliases": ["clothes", "clothing", "shirt", "jacket", "bag", "shoes", "옷", "의류", "가방"],
+      "bin": "clothingBin",
+      "prep": ["Only clean, reusable items"],
+      "schedule": null,
+      "note": "Not accepted: duvets, pillows, wheeled suitcases, or dirty clothes, bags and shoes."
+    },
+    {
+      "id": "furniture",
+      "category": "large",
+      "name": "Furniture, mattresses & large items",
+      "nameKo": "대형폐기물",
+      "aliases": ["furniture", "bed", "mattress", "desk", "chair", "sofa", "wardrobe", "closet", "duvet", "blanket", "fridge", "refrigerator", "가구", "침대", "매트리스", "책상", "의자", "소파", "장롱", "이불", "냉장고"],
+      "bin": "bulky",
+      "prep": ["Book a pickup at least 3 days ahead", "Attach the receipt or write the booking number and your phone number on the item"],
+      "schedule": null,
+      "pickupNote": "Picked up Monday to Saturday (not Sundays or public holidays) after you book.",
+      "link": "https://www.gangnam.go.kr/waste/apply/info.do"
+    },
+    {
+      "id": "small_appliances",
+      "category": "large",
+      "name": "Small electronics",
+      "nameKo": "소형폐가전",
+      "aliases": ["electronics", "appliance", "hair dryer", "kettle", "rice cooker", "fan", "phone", "전자제품", "가전", "드라이기", "밥솥"],
+      "bin": "smallAppliance",
+      "prep": ["Book the free pickup, then put it out in front of your home on the given date"],
+      "schedule": null,
+      "note": "Apartments use their building's designated spot."
+    }
+  ]
+}
