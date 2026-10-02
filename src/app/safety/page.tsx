@@ -14,7 +14,7 @@ export default function SafetyPage() {
         <p className="mt-2 text-sm font-semibold">{t.safety.disclaimer}</p>
       </header>
       <ScamChecker />
-      <HelpLines />
+      <HelpLines ids={["police", "scamReport", "fss", "kisa", "immigration"]} footer={t.safety.disclaimer} />
     </div>
   );
 }

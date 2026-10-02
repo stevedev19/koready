@@ -1,0 +1,144 @@
+{
+  "notes": "Categories map a plain-language problem to the TYPE of clinic only; this is not a diagnosis. 'search' is the Korean term sent to map apps. Romanization follows Revised Romanization of Korean. Everything needs native-speaker review before launch.",
+  "clinicTypes": {
+    "naegwa": {
+      "ko": "내과",
+      "romanization": "naegwa",
+      "en": "Internal medicine",
+      "handles": "Colds, fever, stomach problems and general illness. A good first stop for most adult symptoms.",
+      "search": "내과",
+      "needs_native_review": true
+    },
+    "ibiinhugwa": {
+      "ko": "이비인후과",
+      "romanization": "ibiinhugwa",
+      "en": "Ear, nose & throat (ENT)",
+      "handles": "Sore throat, blocked or runny nose, sinus and ear problems.",
+      "search": "이비인후과",
+      "needs_native_review": true
+    },
+    "pibugwa": {
+      "ko": "피부과",
+      "romanization": "pibugwa",
+      "en": "Dermatology",
+      "handles": "Rashes, itching, acne, allergic skin reactions and other skin problems.",
+      "search": "피부과",
+      "needs_native_review": true
+    },
+    "jeonghyeongoegwa": {
+      "ko": "정형외과",
+      "romanization": "jeonghyeong-oegwa",
+      "en": "Orthopedics",
+      "handles": "Bone, joint, muscle and back pain, sprains and minor injuries.",
+      "search": "정형외과",
+      "needs_native_review": true
+    },
+    "angwa": {
+      "ko": "안과",
+      "romanization": "angwa",
+      "en": "Ophthalmology (eye clinic)",
+      "handles": "Red, itchy or painful eyes, eye infections and vision problems.",
+      "search": "안과",
+      "needs_native_review": true
+    },
+    "sanbuingwa": {
+      "ko": "산부인과",
+      "romanization": "sanbuingwa",
+      "en": "Obstetrics & gynecology (OB-GYN)",
+      "handles": "Periods, pregnancy, contraception and other women's health concerns.",
+      "search": "산부인과",
+      "needs_native_review": true
+    },
+    "gajeonguihakgwa": {
+      "ko": "가정의학과",
+      "romanization": "gajeong-uihakgwa",
+      "en": "Family medicine",
+      "handles": "General checkups and problems that don't fit one specialty. They can refer you on.",
+      "search": "가정의학과",
+      "needs_native_review": true
+    },
+    "chigwa": {
+      "ko": "치과",
+      "romanization": "chigwa",
+      "en": "Dentist",
+      "handles": "Toothache, cleaning (scaling), fillings, broken teeth and gum problems.",
+      "search": "치과",
+      "needs_native_review": true
+    },
+    "jeongsingeongang": {
+      "ko": "정신건강의학과",
+      "romanization": "jeongsin-geongang-uihakgwa",
+      "en": "Psychiatry (mental health clinic)",
+      "handles": "Stress, anxiety, low mood, sleep problems and other mental health concerns.",
+      "search": "정신건강의학과",
+      "needs_native_review": true
+    },
+    "mentalHealthCenter": {
+      "ko": "정신건강복지센터",
+      "romanization": "jeongsin-geongang bokji senteo",
+      "en": "Community mental health center",
+      "handles": "Public centers that offer counseling and can connect you to care.",
+      "search": "정신건강복지센터",
+      "needs_native_review": true
+    },
+    "yakguk": {
+      "ko": "약국",
+      "romanization": "yakguk",
+      "en": "Pharmacy",
+      "handles": "Fills prescriptions and sells over-the-counter medicine. Pharmacists can advise on minor problems.",
+      "search": "약국",
+      "needs_native_review": true
+    },
+    "eungeupsil": {
+      "ko": "응급실",
+      "romanization": "eunggeupsil",
+      "en": "Emergency room",
+      "handles": "Hospital emergency department, open 24 hours.",
+      "search": "응급실",
+      "needs_native_review": true
+    }
+  },
+  "categories": [
+    { "id": "cold", "label": "Cold, fever or sore throat", "icon": "🤒", "clinicType": "naegwa", "alsoClinicType": "ibiinhugwa", "needs_native_review": true },
+    { "id": "stomach", "label": "Stomach", "icon": "🤢", "clinicType": "naegwa", "needs_native_review": true },
+    { "id": "skin", "label": "Skin", "icon": "🩹", "clinicType": "pibugwa", "needs_native_review": true },
+    { "id": "bones", "label": "Bones, joints or injury", "icon": "🦴", "clinicType": "jeonghyeongoegwa", "needs_native_review": true },
+    { "id": "eyes", "label": "Eyes", "icon": "👁️", "clinicType": "angwa", "needs_native_review": true },
+    { "id": "ent", "label": "Ears, nose or throat", "icon": "👂", "clinicType": "ibiinhugwa", "needs_native_review": true },
+    { "id": "womens", "label": "Women's health", "icon": "🌸", "clinicType": "sanbuingwa", "needs_native_review": true },
+    { "id": "other", "label": "Something else", "icon": "❔", "clinicType": "gajeonguihakgwa", "alsoClinicType": "naegwa", "needs_native_review": true }
+  ],
+  "phrases": {
+    "clinic": [
+      { "id": "fever", "ko": "열이 나요.", "romanization": "Yeori nayo.", "en": "I have a fever.", "needs_native_review": true },
+      { "id": "hurts_here", "ko": "여기가 아파요.", "romanization": "Yeogiga apayo.", "en": "It hurts here.", "needs_native_review": true },
+      { "id": "allergy", "ko": "___에 알레르기가 있어요.", "romanization": "___e allereugiga isseoyo.", "en": "I'm allergic to ___.", "needs_native_review": true },
+      { "id": "english_staff", "ko": "영어 하는 직원이 있나요?", "romanization": "Yeongeo haneun jigwoni innayo?", "en": "Do you have English-speaking staff?", "needs_native_review": true },
+      { "id": "first_visit", "ko": "처음 왔어요.", "romanization": "Cheoeum wasseoyo.", "en": "This is my first visit.", "needs_native_review": true },
+      { "id": "since_days", "ko": "___일 전부터 아팠어요.", "romanization": "___il jeonbuteo apasseoyo.", "en": "It started ___ days ago.", "needs_native_review": true },
+      { "id": "taking_medicine", "ko": "지금 먹고 있는 약이 있어요.", "romanization": "Jigeum meokgo inneun yagi isseoyo.", "en": "I'm taking medicine right now.", "needs_native_review": true },
+      { "id": "insurance", "ko": "건강보험이 있어요.", "romanization": "Geongangboheomi isseoyo.", "en": "I have national health insurance.", "needs_native_review": true }
+    ],
+    "pharmacy": [
+      { "id": "something_for", "ko": "___에 먹는 약 있어요?", "romanization": "___e meongneun yak isseoyo?", "en": "Do you have something for ___?", "needs_native_review": true },
+      { "id": "english_instructions", "ko": "영어 설명이 필요해요.", "romanization": "Yeongeo seolmyeongi piryohaeyo.", "en": "I need English instructions.", "needs_native_review": true },
+      { "id": "how_often", "ko": "하루에 몇 번 먹어요?", "romanization": "Harue myeot beon meogeoyo?", "en": "How many times a day do I take it?", "needs_native_review": true },
+      { "id": "prescription", "ko": "처방전 있어요.", "romanization": "Cheobangjeon isseoyo.", "en": "I have a prescription.", "needs_native_review": true },
+      { "id": "drowsy", "ko": "먹으면 졸려요?", "romanization": "Meogeumyeon jollyeoyo?", "en": "Will it make me drowsy?", "needs_native_review": true },
+      { "id": "allergy", "ko": "___에 알레르기가 있어요.", "romanization": "___e allereugiga isseoyo.", "en": "I'm allergic to ___.", "needs_native_review": true }
+    ],
+    "dental": [
+      { "id": "tooth_hurts", "ko": "이가 아파요.", "romanization": "Iga apayo.", "en": "My tooth hurts.", "needs_native_review": true },
+      { "id": "gums_bleeding", "ko": "잇몸에서 피가 나요.", "romanization": "Inmomeseo piga nayo.", "en": "My gums are bleeding.", "needs_native_review": true },
+      { "id": "cleaning", "ko": "스케일링 받고 싶어요.", "romanization": "Seukeilling batgo sipeoyo.", "en": "I'd like a teeth cleaning (scaling).", "needs_native_review": true },
+      { "id": "insurance_covered", "ko": "건강보험 적용되나요?", "romanization": "Geongangboheom jeogyongdoenayo?", "en": "Is this covered by health insurance?", "needs_native_review": true },
+      { "id": "english_staff", "ko": "영어 하는 직원이 있나요?", "romanization": "Yeongeo haneun jigwoni innayo?", "en": "Do you have English-speaking staff?", "needs_native_review": true }
+    ],
+    "mentalHealth": [
+      { "id": "counseling", "ko": "상담을 받고 싶어요.", "romanization": "Sangdameul batgo sipeoyo.", "en": "I'd like to talk to someone (counseling).", "needs_native_review": true },
+      { "id": "cant_sleep", "ko": "잠을 잘 못 자요.", "romanization": "Jameul jal mot jayo.", "en": "I can't sleep well.", "needs_native_review": true },
+      { "id": "anxious", "ko": "요즘 많이 불안해요.", "romanization": "Yojeum mani buranhaeyo.", "en": "I've been feeling very anxious lately.", "needs_native_review": true },
+      { "id": "english_session", "ko": "영어로 상담할 수 있나요?", "romanization": "Yeongeoro sangdamhal su innayo?", "en": "Can we talk in English?", "needs_native_review": true }
+    ]
+  }
+}
