@@ -84,13 +84,13 @@ export default function AlertGuidePage() {
 
       <HelpLines ids={["emergency", "police", "travelHotline", "immigration", "kdca"]} title={s.helpTitle} />
 
-      <footer className="space-y-1 text-sm text-muted">
+      <footer className="space-y-1 text-[0.9375rem] text-muted">
         <p className="font-semibold text-foreground">{s.lastChecked}: {ALERT_RULES.last_checked}</p>
         <p className="font-semibold">{s.sourcesTitle}:</p>
         <ul className="list-disc space-y-1 pl-5">
           {SOURCES.map((src) => (
             <li key={src.url}>
-              <a href={src.url} target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">
+              <a href={src.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center text-accent underline underline-offset-2">
                 {src.label}
               </a>
             </li>

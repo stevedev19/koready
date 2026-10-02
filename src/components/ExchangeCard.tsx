@@ -20,7 +20,7 @@ export function ExchangeCard() {
           <p>{t.exchange.note}</p>
           <p>
             {result.status === "success" && `${t.exchange.asOf} ${result.data.date} · `}
-            <a href="https://frankfurter.dev/" className="underline" target="_blank" rel="noopener noreferrer">{t.exchange.attribution}</a>
+            <a href="https://frankfurter.dev/" className="inline-flex min-h-12 items-center underline" target="_blank" rel="noopener noreferrer">{t.exchange.attribution}</a>
           </p>
         </>
       }

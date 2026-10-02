@@ -28,7 +28,7 @@ export function AirCard({ districtId }: { districtId: string }) {
       footer={
         <>
           <p>{t.air.note}</p>
-          <a href="https://open-meteo.com/" className="underline" target="_blank" rel="noopener noreferrer">{t.air.attribution}</a>
+          <a href="https://open-meteo.com/" className="inline-flex min-h-12 items-center underline" target="_blank" rel="noopener noreferrer">{t.air.attribution}</a>
         </>
       }
     >

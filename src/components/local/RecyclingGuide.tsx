@@ -58,7 +58,7 @@ function ItemDetail({ item, guide }: { item: RecyclingItem; guide: Guide }) {
         {stream ? (
           <div className="mt-1 space-y-1">
             <DayRow days={stream.days} />
-            <p className="text-sm text-muted">{guide.schedule.time}</p>
+            <p className="text-[0.9375rem] text-muted">{guide.schedule.time}</p>
           </div>
         ) : (
           <p className="mt-1">{item.pickupNote ?? s.noDay}</p>
@@ -81,7 +81,7 @@ function ItemDetail({ item, guide }: { item: RecyclingItem; guide: Guide }) {
           {s.bookOnline} ↗
         </a>
       )}
-      {item.inferred && <p className="text-sm text-muted italic">{s.inferred}</p>}
+      {item.inferred && <p className="text-[0.9375rem] text-muted italic">{s.inferred}</p>}
     </div>
   );
 }
@@ -187,7 +187,7 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
 
       {results.length > 0 && <NotSureCard guide={guide} />}
 
-      <footer className="space-y-2 text-sm text-muted">
+      <footer className="space-y-2 text-[0.9375rem] text-muted">
         <p className="font-bold text-foreground">
           {s.lastChecked}: {guide.last_checked}
         </p>
@@ -195,7 +195,7 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
         <ul className="list-disc space-y-1 pl-5">
           {guide.sources.map((src) => (
             <li key={src.url}>
-              <a href={src.url} target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">
+              <a href={src.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center text-accent underline underline-offset-2">
                 {src.title}
               </a>{" "}
               ({src.published ? `${s.published} ${src.published}` : s.noDate})

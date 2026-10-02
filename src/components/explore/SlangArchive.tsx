@@ -86,7 +86,7 @@ export function SlangArchive() {
                     </li>
                   ))}
                 </ul>
-                {entry.needs_native_review && <p className="text-sm text-muted">{t.slang.reviewNote}</p>}
+                {entry.needs_native_review && <p className="text-[0.9375rem] text-muted">{t.slang.reviewNote}</p>}
               </div>
             </details>
           </li>
