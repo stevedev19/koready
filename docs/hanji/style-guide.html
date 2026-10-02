@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hanji Style Guide</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../../src/app/tokens.css">
+<link rel="stylesheet" href="kit.css">
+<style>
+  /* Page chrome only */
+  body { margin: 0; background: #e9e6df; color: #1e2340; font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif; line-height: 1.55; }
+  .page { max-width: 1240px; margin: 0 auto; padding: 32px 16px 80px; }
+  .page > header h1 { font-size: 2rem; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .page > header p { margin: 0; max-width: 820px; color: #474c62; }
+  nav.toc { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 0; }
+  nav.toc a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: 10px; background: #fff; color: #1e2340; text-decoration: none; font-weight: 600; font-size: .9375rem; }
+  section.sg { margin-top: 44px; }
+  section.sg > h2 { font-size: 1.375rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  section.sg > p.why { margin: 0 0 14px; color: #474c62; max-width: 860px; }
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px; }
+  .themed.panel { border-radius: 24px; padding: 20px; }
+  .panel-title { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .stack > * + * { margin-top: 12px; }
+  .wrap { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .swatch { border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: inset 0 0 0 1px var(--border); }
+  .swatch i { display: block; height: 52px; }
+  .swatch div { padding: 8px 10px; font-size: 14px; line-height: 1.35; }
+  .swatch b { display: block; }
+  .swatch code { color: var(--muted); font-size: 13px; }
+  .group-h { font-size: 15px; font-weight: 800; margin: 18px 0 8px; }
+  .group-h:first-child { margin-top: 0; }
+  table.report { width: 100%; border-collapse: collapse; font-size: 15px; background: #fff; border-radius: 16px; overflow: hidden; }
+  table.report th, table.report td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #ece8df; vertical-align: middle; }
+  table.report th { background: #f4f1ea; font-size: 14px; }
+  table.report td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .chip-demo { display: inline-flex; align-items: center; justify-content: center; min-width: 56px; padding: 2px 8px; border-radius: 8px; font-weight: 700; font-size: 14px; }
+  .pass { color: #17693f; font-weight: 800; }
+  .fail { color: #b3261e; font-weight: 800; }
+  .callout { background: #fff; border-radius: 16px; padding: 14px 18px; margin: 0 0 14px; max-width: 860px; box-shadow: inset 4px 0 0 #8a4b00; }
+  .typerow { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .typerow:last-child { border-bottom: 0; }
+  .typerow code { color: var(--muted); font-size: 13px; white-space: nowrap; }
+  .tabwrap { position: relative; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Hanji cream &amp; indigo: style guide</h1>
+    <p>Every color on this page is read live from <code>src/app/tokens.css</code>, so what you review here is exactly what the app will use. Each section shows light mode and dark mode side by side. The contrast report is worked out in the browser from those same tokens.</p>
+    <nav class="toc" aria-label="Sections">
+      <a href="#colors">Colors</a><a href="#contrast">Contrast report</a><a href="#type">Type</a><a href="#buttons">Buttons &amp; focus</a>
+      <a href="#fields">Fields</a><a href="#tags">Tags, tips, banners</a><a href="#cards">Cards</a><a href="#safety">Safety results</a>
+      <a href="#nav">Navigation &amp; emergency</a><a href="#loading">Loading</a>
+    </nav>
+  </header>
+
+  <section class="sg" id="colors">
+    <h2>Colors</h2>
+    <p class="why">Indigo is the primary color: the active tab, key buttons and the slang card. Jade is for icons and highlights. Red appears only for emergencies, "Likely scam" and critical alerts. Amber means "be careful". Neither jade nor green ever means "safe".</p>
+    <div class="pair" data-render="colors"></div>
+  </section>
+
+  <section class="sg" id="contrast">
+    <h2>Contrast report (WCAG 2.2 AA)</h2>
+    <p class="why">Body text needs 4.5:1. Large text (24px+, or 18.7px+ bold), icons and input borders need 3:1. Ratios are calculated from the tokens when the page loads.</p>
+    <div class="callout"><b>One of your values didn't pass:</b> brand jade <code>#3FA796</code> is only <b>2.88:1</b> on cards and <b>2.60:1</b> on the page, so it fails even the 3:1 minimum for icons on cream. On cream I use <b>jade-icon <code>#338A7C</code></b> for icons and large text, and <b>jade-text <code>#24766A</code></b> for small text. <code>#3FA796</code> stays for decoration and on the indigo slang card, where it reaches 4.02:1. Dark mode uses <code>#6FCFBD</code> for all three, which passes 4.5:1 everywhere.</div>
+    <div id="report"></div>
+  </section>
+
+  <section class="sg" id="type">
+    <h2>Type</h2>
+    <p class="why">Pretendard for both Latin and Hangul. Sizes are in rem in the app, so system text size and 200% zoom scale everything. Notes never go below 15px. The 13px tab label is the only exception, and it's bold.</p>
+    <div class="pair" data-render="type"></div>
+  </section>
+
+  <section class="sg" id="buttons">
+    <h2>Buttons &amp; focus</h2>
+    <p class="why">The last button in each row shows the focus ring: 3px in the focus color, offset 2px. Every button is at least 48px tall. The emergency button is 88px.</p>
+    <div class="pair" data-render="buttons"></div>
+  </section>
+
+  <section class="sg" id="fields">
+    <h2>Fields &amp; tool switch</h2>
+    <p class="why">The Safety tab gets neutral, higher-contrast surfaces. Field borders use <code>border-strong</code> at 1.5px, which passes 3:1.</p>
+    <div class="pair" data-render="fields"></div>
+  </section>
+
+  <section class="sg" id="tags">
+    <h2>Tags, tips, banners</h2>
+    <p class="why">Rain tips use info blue. Dust tips use amber when the air is Bad or Very bad, and info blue when it's Moderate. Tips never use red. Bad and Very bad air both use amber. Red tags are only for critical alerts.</p>
+    <div class="pair" data-render="tags"></div>
+  </section>
+
+  <section class="sg" id="cards">
+    <h2>Cards</h2>
+    <p class="why">Card titles have a jade icon and a Korean label in jade-text. The slang card uses indigo, with light jade <code>#8FD6C8</code> for its labels.</p>
+    <div class="pair" data-render="cards"></div>
+  </section>
+
+  <section class="sg" id="safety">
+    <h2>Safety results</h2>
+    <p class="why">Each result has an icon, a written label and a color, so color is never the only signal. "Likely scam" is red, "Unclear" is amber, and "No obvious scam signs…" is deliberately neutral: no jade, no green. The disclaimer always appears next to the results.</p>
+    <div class="pair" data-render="safety"></div>
+  </section>
+
+  <section class="sg" id="nav">
+    <h2>Navigation &amp; emergency shortcut</h2>
+    <p class="why">The active tab is solid indigo. The emergency pill is quiet (only its phone icon is red) and sits in the same top-right spot on every screen. It opens this sheet. Numbers were checked against official sources: 119 at mohw.go.kr (ambulance, fire, 24h medical advice) and 112 at korea.net, 2024-03-19 (police, 24h English and Chinese interpretation).</p>
+    <div class="pair" data-render="nav"></div>
+  </section>
+
+  <section class="sg" id="loading">
+    <h2>Loading</h2>
+    <p class="why">Skeletons follow each card's real layout, so nothing jumps when data arrives. The pulse stops when reduced motion is on.</p>
+    <div class="pair" data-render="loading"></div>
+  </section>
+</div>
+
+<script src="kit.js"></script>
+<script>
+const GROUPS = [
+  ["Surfaces", [["--background", "Page"], ["--surface", "Card"], ["--surface-2", "Inset / stat box"], ["--surface-3", "Track / skeleton"], ["--border", "Divider"], ["--border-strong", "Field border"]]],
+  ["Text", [["--foreground", "Text"], ["--muted", "Muted text"], ["--placeholder", "Placeholder"]]],
+  ["Primary (indigo)", [["--accent", "Primary"], ["--accent-contrast", "On primary"], ["--accent-soft", "Primary tint"], ["--focus", "Focus ring"]]],
+  ["Accent (jade)", [["--jade", "Brand jade (decor)"], ["--jade-icon", "Icons, large text"], ["--jade-text", "Small text"], ["--jade-soft", "Jade tint"]]],
+  ["Slang card", [["--slang-bg", "Card"], ["--on-slang", "Text"], ["--on-slang-muted", "Muted"], ["--on-slang-label", "Labels"], ["--slang-inset", "Inset"]]],
+  ["Status", [["--danger", "Danger"], ["--danger-soft", "Danger tint"], ["--warning", "Warning (amber)"], ["--warning-soft", "Warning tint"], ["--info", "Info"], ["--info-soft", "Info tint"], ["--success", "Action worked"], ["--emergency", "Emergency button"]]],
+];
+
+/* [fg, bg, minimum, what it's used for] */
+const PAIRS = [
+  ["--foreground", "--background", 4.5, "Body text on page"],
+  ["--foreground", "--surface", 4.5, "Body text on card"],
+  ["--foreground", "--surface-2", 4.5, "Text in stat boxes"],
+  ["--muted", "--background", 4.5, "Muted text on page"],
+  ["--muted", "--surface", 4.5, "Muted text on card"],
+  ["--muted", "--surface-2", 4.5, "Muted labels in stat boxes"],
+  ["--placeholder", "--surface", 4.5, "Placeholder in fields"],
+  ["--border-strong", "--surface", 3, "Field border (UI)"],
+  ["--accent", "--background", 4.5, "Indigo text/links on page"],
+  ["--accent", "--surface", 4.5, "Indigo text/links on card"],
+  ["--accent-contrast", "--accent", 4.5, "Primary button text, active tab"],
+  ["--accent", "--accent-soft", 4.5, "Tonal button text"],
+  ["--focus", "--background", 3, "Focus ring on page"],
+  ["--focus", "--surface", 3, "Focus ring on card"],
+  ["--jade", "--surface", 3, "Brand jade on card (decor only)"],
+  ["--jade-icon", "--background", 3, "Jade icons on page"],
+  ["--jade-icon", "--surface", 3, "Jade icons on card"],
+  ["--jade-icon", "--jade-soft", 3, "Jade icon in tile"],
+  ["--jade-text", "--background", 4.5, "Korean labels on page"],
+  ["--jade-text", "--surface", 4.5, "Korean labels on card"],
+  ["--on-slang", "--slang-bg", 4.5, "Slang card text"],
+  ["--on-slang-muted", "--slang-bg", 4.5, "Slang card muted text"],
+  ["--on-slang-label", "--slang-bg", 4.5, "Slang card labels"],
+  ["--jade", "--slang-bg", 3, "Jade icon on slang card"],
+  ["--on-slang", "--slang-inset", 4.5, "Slang example text"],
+  ["--on-slang-muted", "--slang-inset", 4.5, "Slang example translation"],
+  ["--danger", "--surface", 4.5, "Danger text on card"],
+  ["--danger", "--danger-soft", 4.5, "\"Likely scam\" heading"],
+  ["--foreground", "--danger-soft", 4.5, "Body text in danger card"],
+  ["--danger-contrast", "--danger", 4.5, "Danger button text"],
+  ["--emergency-contrast", "--emergency", 4.5, "119 button text"],
+  ["--danger", "--background", 3, "Emergency pill icon"],
+  ["--warning", "--surface", 4.5, "Warning text on card"],
+  ["--warning", "--warning-soft", 4.5, "\"Unclear\" heading, warning tag"],
+  ["--foreground", "--warning-soft", 4.5, "Body text in warning card/tip"],
+  ["--info", "--info-soft", 4.5, "Info tag"],
+  ["--foreground", "--info-soft", 4.5, "Body text in info tip"],
+  ["--success", "--success-soft", 4.5, "\"Copied\" toast"],
+];
+
+const R = {
+  colors: () => GROUPS.map(([g, list]) => `<p class="group-h">${g}</p><div class="swatches">${list.map(([v, l]) => `<div class="swatch"><i style="background:var(${v})"></i><div><b>${l}</b><code data-hex="${v}"></code></div></div>`).join("")}</div>`).join(""),
+  type: () => `
+    <div class="card">
+      <div class="typerow"><span class="t-display">19°C</span><code>Display 44 / 800</code></div>
+      <div class="typerow"><span class="t-title">Safety</span><code>Title 28 / 800</code></div>
+      <div class="typerow"><span class="t-heading">Weather <span class="ko" lang="ko">날씨</span></span><code>Heading 18 / 800 + KO 15 / 600</code></div>
+      <div class="typerow"><span class="t-body">Great day to be outside.</span><code>Body 17 / 400</code></div>
+      <div class="typerow"><span class="t-small muted">Daily reference rates. Banks will differ.</span><code>Small 15 / 400 (min)</code></div>
+      <div class="typerow"><span class="t-label muted">Explore</span><code>Tab label 13 / 700</code></div>
+    </div>`,
+  buttons: () => `
+    <div class="stack">
+      <div class="wrap"><button class="btn btn-primary">Check message</button><button class="btn btn-tonal">Try again</button><button class="btn btn-secondary">Clear</button><button class="btn btn-text">Learn more</button></div>
+      <div class="wrap"><button class="btn btn-primary" disabled>Check message</button><button class="btn btn-danger">Call 112</button><button class="btn btn-primary is-focus">Focused</button></div>
+      <a class="btn btn-emergency" href="tel:119" style="width:100%">${ic("phone", 32, 2.4)} Call 119</a>
+    </div>`,
+  fields: () => `
+    <div class="stack">
+      <div class="seg" role="group" aria-label="Safety tool"><button aria-pressed="true">Scam checker</button><button aria-pressed="false">Alert translator</button></div>
+      <div class="card stack">
+        <label><span class="field-label">Paste a text, KakaoTalk message or email you're not sure about.</span><textarea class="field" placeholder="Paste the message here…"></textarea></label>
+        <p class="t-small muted" style="display:flex;gap:8px">${ic("lock", 18)} Checked on your phone only. Your message is not sent, saved or logged.</p>
+        <input class="field is-focus" value="Focused field">
+      </div>
+    </div>`,
+  tags: () => `
+    <div class="stack">
+      <div class="wrap"><span class="tag tag-neutral">Casual</span><span class="tag tag-indigo">Good</span><span class="tag tag-info">Moderate</span><span class="tag tag-warn">Bad</span><span class="tag tag-warn">Very bad</span><span class="tag tag-danger">Critical alert</span></div>
+      <div class="card">
+        <div class="tip tip-info" style="margin-top:0">${ic("umbrella")}<span><b>Take an umbrella</b>Rain is likely today (80%).</span></div>
+        <div class="tip tip-info">${ic("mask")}<span><b>Sensitive to dust? Consider a KF94 mask</b>Air is Moderate right now.</span></div>
+        <div class="tip tip-warn">${ic("mask")}<span><b>Wear a KF94 mask outside</b>Air is Bad right now.</span></div>
+      </div>
+      <div class="banner banner-info">${ic("info", 20)}<span>Model estimate using Korean grading. Station readings may differ.</span></div>
+      <div class="banner banner-warn">${ic("alert", 20)}<span>Only the first 5,000 characters are checked.</span></div>
+    </div>`,
+  cards: () => `
+    <div class="stack">
+      <section class="card">
+        <div class="card-h"><h2>${ic("wind")}Air quality <span class="ko" lang="ko">미세먼지</span></h2><span class="upd">${ic("clock", 15)}Updated 12:00</span></div>
+        <div style="display:flex;align-items:center;gap:14px"><span class="tile lg tile-indigo">${ic("wind", 28)}</span><div><p style="font-size:24px;font-weight:800">Good</p><p class="muted">Great day to be outside.</p></div></div>
+        <dl class="rows"><div><dt>Fine dust (PM10)</dt><dd>7 µg/m³ <span class="tag tag-indigo">Good</span></dd></div><div><dt>Ultrafine dust (PM2.5)</dt><dd>5 µg/m³ <span class="tag tag-indigo">Good</span></dd></div></dl>
+      </section>
+      ${K.slang()}
+    </div>`,
+  safety: () => `
+    <div class="stack">${K.status("danger")}${K.status("warn")}${K.status("neutral")}${K.disclaimer()}</div>`,
+  nav: () => `
+    <div class="stack">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span class="t-small muted" style="font-weight:600">Fri, Oct 2</span>${K.sos()}</div>
+      ${K.sheet()}
+      ${K.tabbar("Safety")}
+    </div>`,
+  loading: () => {
+    const sk = (w, h, r = 8, x = "") => `<div class="sk" style="width:${w};height:${h}px;border-radius:${r}px;${x}"></div>`;
+    return `<section class="card" role="status" aria-label="Loading weather">
+      <div class="card-h"><h2>${ic("sun")}Weather <span class="ko" lang="ko">날씨</span></h2>${sk("96px", 16)}</div>
+      <div style="display:flex;justify-content:space-between"><div>${sk("120px", 44, 10)}${sk("80px", 18, 8, "margin-top:10px")}</div>${sk("56px", 56, 18)}</div>
+      <div class="stats">${Array(4).fill(sk("100%", 54, 12)).join("")}</div>
+    </section>`;
+  },
+};
+
+document.querySelectorAll("[data-render]").forEach((host) => {
+  const html = R[host.dataset.render]();
+  host.innerHTML = ["light", "dark"].map((m) => `<div class="themed panel" data-theme="${m}"><p class="panel-title">${m === "light" ? "Light" : "Dark"}</p>${html}</div>`).join("");
+});
+document.querySelectorAll("[data-hex]").forEach((el) => (el.textContent = tokenOf(el, el.dataset.hex)));
+document.querySelectorAll(".themed a[href='#'], .themed a[href^='tel']").forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
+
+/* Contrast report from the live tokens */
+const probe = { light: document.querySelector('[data-theme="light"]'), dark: document.querySelector('[data-theme="dark"]') };
+const rows = PAIRS.map(([fg, bg, min, use]) => {
+  const cells = ["light", "dark"].map((m) => {
+    const f = tokenOf(probe[m], fg), b = tokenOf(probe[m], bg), r = ratio(f, b);
+    return `<td><span class="chip-demo" style="color:${f};background:${b};box-shadow:inset 0 0 0 1px rgb(0 0 0 / .08)">Aa</span></td>
+            <td class="num">${r.toFixed(2)}:1 <span class="${r >= min ? "pass" : "fail"}">${r >= min ? "Pass" : "Fail"}</span></td>`;
+  }).join("");
+  return `<tr><td>${use}<br><code style="font-size:12px;color:#5b5f70">${fg} on ${bg}</code></td><td class="num">${min}:1</td>${cells}</tr>`;
+});
+document.getElementById("report").innerHTML = `
+  <div style="overflow-x:auto"><table class="report">
+    <thead><tr><th>Pair</th><th>Needs</th><th colspan="2">Light</th><th colspan="2">Dark</th></tr></thead>
+    <tbody>${rows.join("")}</tbody>
+  </table></div>`;
+</script>
+</body>
+</html>

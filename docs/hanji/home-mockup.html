@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hanji Home Mockup</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="../../src/app/tokens.css">
+<link rel="stylesheet" href="kit.css">
+<style>
+  body { margin: 0; background: #e9e6df; color: #1e2340; font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif; line-height: 1.55; }
+  .page { max-width: 1680px; margin: 0 auto; padding: 32px 16px 80px; }
+  .page > header h1 { font-size: 2rem; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .page > header p { margin: 0; max-width: 860px; color: #474c62; }
+  h2.sec { font-size: 1.375rem; margin: 40px 0 4px; }
+  p.sec-note { margin: 0 0 16px; color: #474c62; max-width: 860px; }
+  .row { display: flex; gap: 24px; overflow-x: auto; padding: 4px 2px 14px; }
+  .frame { display: flex; flex-direction: column; gap: 8px; flex-shrink: 0; }
+  .frame > span { font-size: .9375rem; font-weight: 700; color: #474c62; }
+  .notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 18px; margin-top: 8px; }
+  .note { background: #fff; border-radius: 20px; padding: 18px 22px; }
+  .note h3 { margin: 0 0 8px; font-size: 1.0625rem; }
+  .note ul { margin: 0; padding-left: 20px; } .note li { margin: 6px 0; }
+  .note.flag { box-shadow: inset 4px 0 0 #8a4b00; }
+  code { font-size: .9em; background: #f1eee7; padding: 1px 5px; border-radius: 6px; }
+
+  /* Phone */
+  .phone { width: 375px; height: 812px; position: relative; overflow: hidden; flex-shrink: 0; border-radius: 46px; border: 10px solid #191b2c; isolation: isolate; }
+  .screen { position: absolute; inset: 0; overflow-y: auto; padding: 0 16px 128px; scrollbar-width: none; }
+  .screen::-webkit-scrollbar { display: none; }
+  .statusbar { height: 40px; display: flex; align-items: center; padding: 6px 12px 0; font-size: 15px; font-weight: 700; }
+  .appbar { display: flex; align-items: center; justify-content: space-between; min-height: 52px; }
+  .phone .tabbar { position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 5; }
+  .scrim { position: absolute; inset: 0; z-index: 10; background: rgb(10 12 25 / .5); display: none; }
+  .phone .sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 11; display: none; }
+  .phone.open .scrim, .phone.open .sheet { display: block; }
+
+  .district { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-align: left; min-height: 76px; padding: 10px 14px 10px 16px; margin: 4px 0 16px; border-radius: 20px; cursor: pointer; border: 1px solid var(--card-border); background: var(--surface); box-shadow: var(--shadow-1); }
+  .district small { display: block; font-size: 15px; font-weight: 700; color: var(--muted); }
+  .district b { font-size: 26px; font-weight: 800; letter-spacing: -0.025em; line-height: 1.25; }
+  .chev { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 999px; background: var(--surface-2); color: var(--muted); flex-shrink: 0; }
+
+  .glance-h { font-size: 16px; font-weight: 800; margin: 0 0 8px 2px; }
+  .glance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+  .gl { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; min-height: 104px; padding: 12px; border-radius: 18px; border: 1px solid var(--card-border); background: var(--surface); box-shadow: var(--shadow-1); text-align: left; cursor: pointer; }
+  .gl .ko { display: inline-flex; align-items: center; gap: 4px; }
+  .gl .ko svg { color: var(--jade-icon); }
+  .gl b { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; line-height: 1.25; margin-top: 2px; }
+  .gl small { font-size: 15px; color: var(--muted); line-height: 1.3; }
+  .gl.warn { background: var(--warning-soft); box-shadow: inset 0 0 0 2px var(--warning); }
+  .gl.warn small { color: var(--foreground); }
+  .stack > * + * { margin-top: 12px; }
+
+  .big-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .cond { margin-top: 6px; font-size: 18px; font-weight: 600; }
+  .rates { list-style: none; margin: 0; padding: 0; }
+  .rates li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+  .rates li + li { border-top: 1px solid var(--border); }
+  .rates b { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .conv { margin-top: 14px; background: var(--surface-2); border-radius: 16px; padding: 14px; }
+  .conv .field-label { font-size: 15px; color: var(--muted); }
+  .conv-in { display: flex; gap: 8px; }
+  .conv .field { min-height: 48px; padding: 0 12px; font-size: 18px; font-weight: 700; }
+  .conv input.field { flex: 1; min-width: 0; font-variant-numeric: tabular-nums; }
+  .conv select.field { width: auto; }
+  .conv-out { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-top: 10px; }
+  .conv-out output { font-size: 24px; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .swap { min-height: 48px; min-width: 48px; border-radius: 12px; border: 0; background: var(--surface); cursor: pointer; display: grid; place-items: center; color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--border-strong); }
+  .listrow { display: flex; align-items: center; gap: 12px; min-height: 60px; padding: 0 16px; border-radius: 20px; background: var(--surface); box-shadow: var(--shadow-1); border: 1px solid var(--card-border); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>Home mockup: Hanji cream &amp; indigo</h1>
+    <p>This uses the same <code>tokens.css</code> and components as the style guide, with sample data. Each phone scrolls on its own. Tap the glance tiles, the 119 · 112 pill, and the converter's ⇄ button. Nothing in the app has changed yet.</p>
+  </header>
+
+  <h2 class="sec">Home: light and dark</h2>
+  <p class="sec-note">Order: district header, Today at a glance, slang card (2nd, on indigo), then the full Weather, Air quality and Exchange cards, then Privacy.</p>
+  <div class="row" id="main"></div>
+
+  <h2 class="sec">States</h2>
+  <p class="sec-note">Loading skeletons, a rainy day with Bad air (umbrella and mask tips appear, and the air tile turns amber), the emergency sheet, and the Safety tab showing the same shortcut and a "Likely scam" result.</p>
+  <div class="row" id="states"></div>
+
+  <div class="notes">
+    <div class="note flag">
+      <h3>Needs your decision</h3>
+      <ul>
+        <li><b>Exchange "Updated HH:MM":</b> the exchange API returns only the rate <em>date</em>, not a time. Showing a time means adding a fetch timestamp to <code>/api/exchange</code>, which is a small data change. The other option is to keep "As of Oct 1" on that card. The mockup shows the time version. Weather and Air already return <code>observedAt</code>, so they need no change.</li>
+        <li><b>New text:</b> tips, Korean labels, "Updated", the converter labels and the emergency sheet are new strings. They'd go in <code>strings.ts</code>. Existing text stays as it is.</li>
+        <li><b>Rain tip threshold:</b> it shows at a rain chance of 60% or more. The mask tip shows for Moderate (info blue, "if you're sensitive") and Bad or Very bad (amber).</li>
+        <li><b>Tab labels</b> are already 13px, which meets your "at least 12px", so they stay 13px.</li>
+        <li><b>112 source:</b> <code>helpLines.ts</code> currently cites a voice-phishing article for 112. I'd switch it to the korea.net article (2024-03-19) that confirms 24h English interpretation.</li>
+      </ul>
+    </div>
+    <div class="note">
+      <h3>Color rules applied</h3>
+      <ul>
+        <li>Indigo: active tab (solid), primary buttons, the slang card and the converter result.</li>
+        <li>Jade: card icons, glance icons, and Korean labels (jade-text). There's no jade on any result or status.</li>
+        <li>Red: only the emergency pill icon, the 119/112 sheet and "Likely scam". Air quality never turns red. Very bad is amber.</li>
+        <li>The Safety tab uses neutral cards, a high-contrast tool switch, 1.5px field borders, and keeps red and amber for results only.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script src="kit.js"></script>
+<script>
+const RATES = [{ c: "USD", unit: 1, krw: 1392.5 }, { c: "EUR", unit: 1, krw: 1628.1 }, { c: "JPY", unit: 100, krw: 940.3 }, { c: "CNY", unit: 1, krw: 195.4 }];
+const fmt2 = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const SUNNY = { temp: 19, cond: "Clear", icon: "sun", feels: 18, hi: 20, lo: 10, rain: 0, hum: 41, wind: 11, upd: "12:30",
+  air: { grade: "Good", tone: "good", advice: "Great day to be outside.", pm10: [7, "Good"], pm25: [5, "Good"], upd: "12:00" } };
+const RAINY = { temp: 15, cond: "Rain showers", icon: "rain", feels: 13, hi: 16, lo: 12, rain: 80, hum: 88, wind: 18, upd: "12:30",
+  air: { grade: "Bad", tone: "bad", advice: "Consider a KF94 mask outdoors.", pm10: [98, "Bad"], pm25: [41, "Bad"], upd: "12:00" } };
+const TAG = { Good: "tag-indigo", Moderate: "tag-info", Bad: "tag-warn", "Very bad": "tag-warn" };
+const TILE = { good: "tile-indigo", moderate: "tile-info", bad: "tile-warn" };
+
+const appbar = () => `<div class="statusbar">9:41</div><div class="appbar"><span class="t-small muted" style="font-weight:600">Fri, Oct 2</span>${K.sos()}</div>`;
+const district = () => `
+  <button type="button" class="district" aria-label="Today in Gangnam, Seoul. Change district">
+    <span><small>Today in</small><b>Gangnam, Seoul</b></span><span class="chev">${ic("down", 22, 2.4)}</span>
+  </button>`;
+
+const glance = (d) => `
+  <h2 class="glance-h">Today at a glance</h2>
+  <div class="glance">
+    <button type="button" class="gl" data-jump="weather"><span class="ko" lang="ko">${ic(d.icon, 16)}날씨</span><b>${d.temp}°</b><small>${d.cond}</small></button>
+    <button type="button" class="gl ${d.air.tone === "bad" ? "warn" : ""}" data-jump="air"><span class="ko" lang="ko">${ic("wind", 16)}미세먼지</span><b>${d.air.grade}</b><small>Air quality</small></button>
+    <button type="button" class="gl" data-jump="fx"><span class="ko" lang="ko">${ic("cash", 16)}환율</span><b>₩${Math.round(RATES[0].krw).toLocaleString("en-US")}</b><small>per 1 USD</small></button>
+  </div>`;
+
+const weather = (d) => `
+  <section class="card" id="weather">
+    <div class="card-h"><h2>${ic("sun")}Weather <span class="ko" lang="ko">날씨</span></h2><span class="upd">${ic("clock", 15)}Updated ${d.upd}</span></div>
+    <div class="big-row"><div><p class="t-display">${d.temp}°C</p><p class="cond">${d.cond}</p></div><span class="tile lg tile-jade">${ic(d.icon, 28)}</span></div>
+    <dl class="stats">
+      <div class="stat"><dt>Feels like</dt><dd>${d.feels}°</dd></div>
+      <div class="stat"><dt>High / Low</dt><dd>${d.hi}° / ${d.lo}°</dd></div>
+      <div class="stat"><dt>Rain chance</dt><dd>${d.rain}%</dd></div>
+      <div class="stat"><dt>Humidity</dt><dd>${d.hum}%</dd></div>
+      <div class="stat"><dt>Wind</dt><dd>${d.wind} km/h</dd></div>
+    </dl>
+    ${d.rain >= 60 ? `<div class="tip tip-info">${ic("umbrella")}<span><b>Take an umbrella</b>Rain is likely today (${d.rain}%).</span></div>` : ""}
+    <div class="foot"><a href="#">Weather data by Open-Meteo.com (CC BY 4.0)</a></div>
+  </section>`;
+
+const air = (a) => `
+  <section class="card" id="air">
+    <div class="card-h"><h2>${ic("wind")}Air quality <span class="ko" lang="ko">미세먼지</span></h2><span class="upd">${ic("clock", 15)}Updated ${a.upd}</span></div>
+    <div style="display:flex;align-items:center;gap:14px"><span class="tile lg ${TILE[a.tone]}">${ic("wind", 28)}</span><div><p style="font-size:24px;font-weight:800">${a.grade}</p><p class="muted">${a.advice}</p></div></div>
+    <dl class="rows">
+      <div><dt>Fine dust (PM10)</dt><dd>${a.pm10[0]} µg/m³ <span class="tag ${TAG[a.pm10[1]]}">${a.pm10[1]}</span></dd></div>
+      <div><dt>Ultrafine dust (PM2.5)</dt><dd>${a.pm25[0]} µg/m³ <span class="tag ${TAG[a.pm25[1]]}">${a.pm25[1]}</span></dd></div>
+    </dl>
+    ${a.tone === "bad" ? `<div class="tip tip-warn">${ic("mask")}<span><b>Wear a KF94 mask outside</b>Air is ${a.grade} right now.</span></div>` : ""}
+    <div class="foot"><p>Model estimate using Korean grading. Station readings may differ.</p><a href="#">Air quality data by Open-Meteo.com (CC BY 4.0)</a></div>
+  </section>`;
+
+const exchange = () => `
+  <section class="card" id="fx">
+    <div class="card-h"><h2>${ic("cash")}Exchange rate <span class="ko" lang="ko">환율</span></h2><span class="upd">${ic("clock", 15)}Updated 09:15</span></div>
+    <ul class="rates">${RATES.map((r) => `<li><span style="font-weight:700">${r.unit} ${r.c}</span><b>₩${fmt2.format(r.krw)}</b></li>`).join("")}</ul>
+    <div class="conv" data-conv data-dir="toKrw">
+      <p class="field-label">Quick convert</p>
+      <div class="conv-in">
+        <input class="field" type="number" inputmode="decimal" value="20" min="0" aria-label="Amount">
+        <select class="field" aria-label="Currency">${RATES.map((r) => `<option>${r.c}</option>`).join("")}</select>
+        <button type="button" class="swap" data-swap aria-label="Swap direction">${ic("swap", 20)}</button>
+      </div>
+      <div class="conv-out"><span data-from class="muted"></span><output aria-live="polite"></output></div>
+    </div>
+    <div class="foot"><p>Daily reference rates. Banks and exchange shops will differ.</p><p>As of Oct 1 · <a href="#">Rates by Frankfurter (central bank data)</a></p></div>
+  </section>`;
+
+const home = (d) => `${appbar()}${district()}${glance(d)}
+  <div class="stack">${K.slang()}${weather(d)}${air(d.air)}${exchange()}
+    <div class="listrow"><span class="tile tile-neutral">${ic("lock")}</span>Privacy</div>
+  </div>`;
+
+function skeleton() {
+  const sk = (w, h, r = 8, x = "") => `<div class="sk" style="width:${w};height:${h}px;border-radius:${r}px;${x}"></div>`;
+  const gl = `<div class="gl" style="cursor:default">${sk("60%", 15)}${sk("70%", 24, 8, "margin-top:8px")}${sk("50%", 13, 8, "margin-top:8px")}</div>`;
+  return `${appbar()}${district()}
+    <h2 class="glance-h">Today at a glance</h2>
+    <div class="glance" role="status" aria-label="Loading">${gl}${gl}${gl}</div>
+    <div class="stack">
+      ${K.slang()}
+      <section class="card"><div class="card-h"><h2>${ic("sun")}Weather <span class="ko" lang="ko">날씨</span></h2>${sk("96px", 16)}</div>
+        <div class="big-row"><div>${sk("120px", 44, 10)}${sk("80px", 18, 8, "margin-top:10px")}</div>${sk("56px", 56, 18)}</div>
+        <div class="stats">${Array(4).fill(sk("100%", 54, 12)).join("")}</div></section>
+    </div>`;
+}
+
+const safety = () => `${appbar()}
+  <h1 class="t-title" style="margin-top:4px">Safety</h1>
+  <p class="muted" style="margin-top:4px">Tools to help you spot scams. Nothing you type here leaves your phone.</p>
+  <div class="seg" role="group" aria-label="Safety tool" style="margin:16px 0 12px"><button aria-pressed="true">Scam checker</button><button aria-pressed="false">Alert translator</button></div>
+  <div class="stack">
+    <div class="card stack">
+      <label><span class="field-label">Paste a text, KakaoTalk message or email you're not sure about.</span><textarea class="field" style="min-height:110px">[Web발신] 택배 주소 확인 필요. 아래 링크 클릭 http://…</textarea></label>
+      <button class="btn btn-primary" style="width:100%">Check message</button>
+    </div>
+    ${K.status("danger")}
+    ${K.disclaimer()}
+  </div>`;
+
+function phone(mode, inner, tab = "Home", open = false) {
+  return `<div class="phone themed${open ? " open" : ""}" data-theme="${mode}"><div class="screen">${inner}</div>${K.tabbar(tab)}<div class="scrim" data-close></div>${K.sheet()}</div>`;
+}
+
+document.getElementById("main").innerHTML = [["Light", phone("light", home(SUNNY))], ["Dark", phone("dark", home(SUNNY))]]
+  .map(([l, p]) => `<div class="frame"><span>${l}</span>${p}</div>`).join("");
+document.getElementById("states").innerHTML = [
+  ["Loading (light)", phone("light", skeleton())],
+  ["Rainy + Bad air (light)", phone("light", home(RAINY))],
+  ["Rainy + Bad air (dark)", phone("dark", home(RAINY))],
+  ["Emergency sheet (dark)", phone("dark", home(SUNNY), "Home", true)],
+  ["Safety tab (light)", phone("light", safety(), "Safety")],
+  ["Safety tab (dark)", phone("dark", safety(), "Safety")],
+].map(([l, p]) => `<div class="frame"><span>${l}</span>${p}</div>`).join("");
+
+document.querySelectorAll(".phone").forEach((ph) => {
+  ph.querySelectorAll("[data-sos]").forEach((b) => (b.onclick = () => ph.classList.add("open")));
+  ph.querySelectorAll("[data-close]").forEach((b) => (b.onclick = () => ph.classList.remove("open")));
+  ph.querySelectorAll("a").forEach((a) => a.addEventListener("click", (e) => e.preventDefault()));
+  ph.querySelectorAll("[data-jump]").forEach((b) => (b.onclick = () => {
+    const t = ph.querySelector("#" + b.dataset.jump);
+    if (t) ph.querySelector(".screen").scrollTo({ top: t.offsetTop - 12, behavior: "smooth" });
+  }));
+  ph.querySelectorAll("[data-conv]").forEach((box) => {
+    const input = box.querySelector("input"), sel = box.querySelector("select"), out = box.querySelector("output"), from = box.querySelector("[data-from]");
+    const update = () => {
+      const r = RATES.find((x) => x.c === sel.value), amt = Math.max(0, Number(input.value) || 0), per = r.krw / r.unit;
+      if (box.dataset.dir === "toKrw") { from.textContent = `${amt.toLocaleString("en-US")} ${r.c} ≈`; out.textContent = `₩${Math.round(amt * per).toLocaleString("en-US")}`; }
+      else { from.textContent = `₩${amt.toLocaleString("en-US")} ≈`; out.textContent = `${fmt2.format(amt / per)} ${r.c}`; }
+    };
+    input.oninput = sel.onchange = update;
+    box.querySelector("[data-swap]").onclick = () => { box.dataset.dir = box.dataset.dir === "toKrw" ? "fromKrw" : "toKrw"; input.value = box.dataset.dir === "toKrw" ? 20 : 50000; update(); };
+    update();
+  });
+});
+</script>
+</body>
+</html>

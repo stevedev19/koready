@@ -1,0 +1,168 @@
+/*
+ * Design tokens: "Hanji cream and indigo" (direction B).
+ * Source of truth for colors and shadows. globals.css maps these into Tailwind;
+ * docs/hanji/style-guide.html renders and contrast-checks them.
+ *
+ * Fixed meanings:
+ *   accent (indigo) = primary actions, active tab, focus.
+ *   jade            = icons and highlights; never means "safe".
+ *   danger (red)    = emergencies, "Likely scam", critical alerts only.
+ *   warning (amber) = "Unclear", be careful.
+ *   info (blue)     = neutral facts.  success = an action worked (copied, saved).
+ *
+ * Jade has three steps because brand jade #3FA796 is only 2.9:1 on cream:
+ *   --jade       decoration (tints, dividers) and on the indigo slang card (4.0:1).
+ *   --jade-icon  icons and large text on cream (≥3:1).
+ *   --jade-text  small text on cream (≥4.5:1).
+ * Theme: follows the system, or force one with data-theme="light" | "dark".
+ */
+:root,
+[data-theme="light"] {
+  --background: #f6f1e7;
+  --surface: #fffdf8;
+  --surface-2: #f0eadd;
+  --surface-3: #e6dfcf;
+  --surface-glass: rgb(255 253 248 / 0.86);
+  --border: #e3dccb;
+  --border-strong: #7d7f8f;
+  --card-border: transparent;
+  --foreground: #1e2340;
+  --muted: #565b70;
+  --placeholder: #6a6e80;
+
+  --accent: #26346b;
+  --accent-contrast: #fffdf8;
+  --accent-soft: #e6e8f3;
+  --focus: #26346b;
+
+  --jade: #3fa796;
+  --jade-icon: #338a7c;
+  --jade-text: #24766a;
+  --jade-soft: #e2f2ee;
+
+  --slang-bg: #26346b;
+  --on-slang: #fbf8f1;
+  --on-slang-muted: #c9cee6;
+  --on-slang-label: #8fd6c8;
+  --slang-inset: #33427e;
+
+  --danger: #b3261e;
+  --danger-soft: #fcebe8;
+  --danger-contrast: #fffdf8;
+  --warning: #8a4b00;
+  --warning-soft: #fcf0d9;
+  --info: #2d5786;
+  --info-soft: #e7eef6;
+  --success: #24704a;
+  --success-soft: #e5f3ea;
+  --emergency: #b3261e;
+  --emergency-contrast: #fffdf8;
+
+  --tile-violet: #ece8f6;
+  --ink-violet: #4e3a9e;
+
+  --shadow-1: 0 1px 2px rgb(30 35 64 / 0.05), 0 2px 8px rgb(30 35 64 / 0.05);
+  --shadow-2: 0 12px 32px rgb(30 35 64 / 0.16);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #14172b;
+    --surface: #1d2140;
+    --surface-2: #262b4d;
+    --surface-3: #313760;
+    --surface-glass: rgb(29 33 64 / 0.88);
+    --border: #313760;
+    --border-strong: #7d82a8;
+    --card-border: #313760;
+    --foreground: #f2eee4;
+    --muted: #b6b4c4;
+    --placeholder: #9c9bb2;
+
+    --accent: #aeb8f0;
+    --accent-contrast: #14172b;
+    --accent-soft: #2a3260;
+    --focus: #aeb8f0;
+
+    --jade: #6fcfbd;
+    --jade-icon: #6fcfbd;
+    --jade-text: #6fcfbd;
+    --jade-soft: #183a3d;
+
+    --slang-bg: #2b3778;
+    --on-slang: #f2eee4;
+    --on-slang-muted: #c9cee6;
+    --on-slang-label: #8fd6c8;
+    --slang-inset: #36438a;
+
+    --danger: #ff8a80;
+    --danger-soft: #3f1d25;
+    --danger-contrast: #14172b;
+    --warning: #f2c46b;
+    --warning-soft: #3a2f16;
+    --info: #9dc1ee;
+    --info-soft: #1e2d4a;
+    --success: #8ed6a6;
+    --success-soft: #183a2a;
+    --emergency: #b3261e;
+    --emergency-contrast: #fff8f2;
+
+    --tile-violet: #2c2650;
+    --ink-violet: #c4b8ff;
+
+    --shadow-1: none;
+    --shadow-2: 0 12px 32px rgb(5 6 15 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+/* Same dark values, forced (used by the style guide and any future theme switch). */
+[data-theme="dark"] {
+  --background: #14172b;
+  --surface: #1d2140;
+  --surface-2: #262b4d;
+  --surface-3: #313760;
+  --surface-glass: rgb(29 33 64 / 0.88);
+  --border: #313760;
+  --border-strong: #7d82a8;
+  --card-border: #313760;
+  --foreground: #f2eee4;
+  --muted: #b6b4c4;
+  --placeholder: #9c9bb2;
+
+  --accent: #aeb8f0;
+  --accent-contrast: #14172b;
+  --accent-soft: #2a3260;
+  --focus: #aeb8f0;
+
+  --jade: #6fcfbd;
+  --jade-icon: #6fcfbd;
+  --jade-text: #6fcfbd;
+  --jade-soft: #183a3d;
+
+  --slang-bg: #2b3778;
+  --on-slang: #f2eee4;
+  --on-slang-muted: #c9cee6;
+  --on-slang-label: #8fd6c8;
+  --slang-inset: #36438a;
+
+  --danger: #ff8a80;
+  --danger-soft: #3f1d25;
+  --danger-contrast: #14172b;
+  --warning: #f2c46b;
+  --warning-soft: #3a2f16;
+  --info: #9dc1ee;
+  --info-soft: #1e2d4a;
+  --success: #8ed6a6;
+  --success-soft: #183a2a;
+  --emergency: #b3261e;
+  --emergency-contrast: #fff8f2;
+
+  --tile-violet: #2c2650;
+  --ink-violet: #c4b8ff;
+
+  --shadow-1: none;
+  --shadow-2: 0 12px 32px rgb(5 6 15 / 0.6);
+  color-scheme: dark;
+}

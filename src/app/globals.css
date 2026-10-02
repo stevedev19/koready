@@ -1,85 +1,7 @@
 @import "tailwindcss";
 
-/*
- * Design tokens (see docs/style-guide.html). Every text pair passes WCAG AA
- * (4.5:1) in both themes; input borders and focus rings pass 3:1.
- * Status colors have fixed meanings: danger = real risk / emergency,
- * warning = unclear / be careful, info = neutral facts,
- * success = an action worked (never "safe").
- */
-:root {
-  --background: #faf8f2;
-  --surface: #ffffff;
-  --surface-2: #f2f4f6;
-  --surface-3: #e5e8eb;
-  --surface-glass: rgb(255 255 255 / 0.8);
-  --border: #e5e8eb;
-  --border-strong: #8b95a1;
-  --card-border: transparent;
-  --foreground: #191f28;
-  --muted: #4e5968;
-  --placeholder: #6b7684;
-
-  --accent: #1b64da; /* primary */
-  --accent-contrast: #ffffff;
-  --accent-soft: #e8f1fe;
-
-  --danger: #b42318;
-  --danger-soft: #fef1f0;
-  --danger-contrast: #ffffff;
-  --warning: #8f4a00;
-  --warning-soft: #fff6e5;
-  --info: #0b6582;
-  --info-soft: #e6f4f8;
-  --success: #17693f;
-  --success-soft: #e9f6ee;
-  --emergency: #b42318;
-  --emergency-contrast: #ffffff;
-
-  --tile-violet: #f1edfd;
-  --ink-violet: #5b3cc4;
-
-  --shadow-1: 0 1px 2px rgb(0 23 51 / 0.04), 0 2px 8px rgb(0 23 51 / 0.05);
-  --shadow-2: 0 12px 32px rgb(0 23 51 / 0.16);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #101318;
-    --surface: #1b1f26;
-    --surface-2: #252a33;
-    --surface-3: #2f3540;
-    --surface-glass: rgb(27 31 38 / 0.84);
-    --border: #2f3540;
-    --border-strong: #6b7684;
-    --card-border: #2f3540;
-    --foreground: #f2f4f6;
-    --muted: #a7b0bd;
-    --placeholder: #8d97a5;
-
-    --accent: #7db2ff;
-    --accent-contrast: #101318;
-    --accent-soft: #1a2a45;
-
-    --danger: #ff9b91;
-    --danger-soft: #3b1714;
-    --danger-contrast: #101318;
-    --warning: #f4c46a;
-    --warning-soft: #3a2a0d;
-    --info: #7ccde6;
-    --info-soft: #0e2f3a;
-    --success: #7dd6a3;
-    --success-soft: #10301f;
-    --emergency: #c7322a;
-    --emergency-contrast: #ffffff;
-
-    --tile-violet: #2a2347;
-    --ink-violet: #bba8ff;
-
-    --shadow-1: none;
-    --shadow-2: 0 12px 32px rgb(0 0 0 / 0.55);
-  }
-}
+/* Colors and shadows live in tokens.css (rendered in docs/hanji/style-guide.html). */
+@import "./tokens.css";
 
 @theme inline {
   --color-background: var(--background);
@@ -107,6 +29,16 @@
   --color-success-soft: var(--success-soft);
   --color-emergency: var(--emergency);
   --color-emergency-contrast: var(--emergency-contrast);
+  --color-focus: var(--focus);
+  --color-jade: var(--jade);
+  --color-jade-icon: var(--jade-icon);
+  --color-jade-text: var(--jade-text);
+  --color-jade-soft: var(--jade-soft);
+  --color-slang-bg: var(--slang-bg);
+  --color-on-slang: var(--on-slang);
+  --color-on-slang-muted: var(--on-slang-muted);
+  --color-on-slang-label: var(--on-slang-label);
+  --color-slang-inset: var(--slang-inset);
   --color-tile-violet: var(--tile-violet);
   --color-ink-violet: var(--ink-violet);
 
@@ -142,48 +74,6 @@ body {
   overflow-wrap: anywhere;
 }
 
-/*
- * "Sunset Boulevard" aura. Fixed behind the page; the layers multiply against
- * the body background, so the container itself must stay transparent.
- */
-.aura-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.aura-layer {
-  position: absolute;
-  inset: 0;
-  mix-blend-mode: multiply;
-  filter: blur(90px);
-  transform: translateZ(0);
-  will-change: transform;
-}
-
-.aura-layer-1 {
-  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(255, 107, 107, 0.12) 28%, rgb(255, 255, 255) 18%, rgb(255, 170, 100) 68%, rgb(255, 200, 80) 100%);
-}
-
-.aura-layer-2 {
-  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(255, 107, 107, 0.22) 34%, rgb(255, 255, 255) 66%, rgb(255, 170, 100) 82%, rgb(255, 200, 80) 100%);
-}
-
-@media (min-width: 768px) {
-  .aura-layer {
-    filter: blur(130px);
-  }
-}
-
-/* Multiply over a dark background only darkens, so the aura is light-theme only. */
-@media (prefers-color-scheme: dark) {
-  .aura-bg {
-    display: none;
-  }
-}
-
 h1,
 h2,
 h3 {
@@ -198,7 +88,7 @@ h3 {
 
 /* One visible focus style everywhere (3px, 3:1+ in both themes). */
 :focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
