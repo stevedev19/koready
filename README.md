@@ -42,6 +42,8 @@ npm run build && npm start
 - `data/clinics.json`: problem categories → clinic types, and Korean phrases (`needs_native_review: true` until checked)
 - `src/lib/mapLinks.ts`: plain Naver / Kakao / Google Maps search links (no map API, no keys)
 - `data/recycling-<district>.json`: recycling guide per district, from official district sources. **To add a district, add one file** (same shape as `recycling-gangnam.json`, `district.id` matching the file name); it's picked up at build time with no code changes, and a bad file fails the build with a clear error
+- `data/trails.json`: Explore trails (public places verified on official tourism sites; each stop has `source`, `last_checked`, `needs_review`)
+- `src/lib/config.ts`: `REPORT_EMAIL` for the "Report a problem" link (empty = link hidden)
 
 ## Scam checker tests
 
