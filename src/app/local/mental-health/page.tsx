@@ -1,3 +1,4 @@
+import { Brain, Landmark } from "lucide-react";
 import type { Metadata } from "next";
 import { HelpLines } from "@/components/HelpLines";
 import { ClinicTypeCard } from "@/components/local/ClinicTypeCard";
@@ -12,11 +13,12 @@ export const metadata: Metadata = { title: s.title };
 
 export default function MentalHealthPage() {
   return (
-    <LocalScreen title={s.title} icon="💬">
-      <HelpLines ids={["mentalHealthCrisis", "emergency"]} title={s.crisisTitle} footer={s.crisisBody} />
-      <p>{s.reassurance}</p>
-      <ClinicTypeCard id="jeongsingeongang" icon="🧠" />
-      <ClinicTypeCard id="mentalHealthCenter" title={s.centerTitle} icon="🏛️" />
+    <LocalScreen title={s.title}>
+      <p className="rounded-card bg-surface px-5 py-4 text-lg font-bold shadow-card">{s.crisisBody}</p>
+      <HelpLines ids={["mentalHealthCrisis", "emergency"]} title={s.crisisTitle} />
+      <p className="px-1">{s.reassurance}</p>
+      <ClinicTypeCard id="jeongsingeongang" icon={Brain} />
+      <ClinicTypeCard id="mentalHealthCenter" title={s.centerTitle} icon={Landmark} />
       <PhraseCard title={s.phrasesTitle} phrases={PHRASES.mentalHealth} />
     </LocalScreen>
   );

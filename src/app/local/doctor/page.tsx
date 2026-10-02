@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: s.title };
 
 export default function DoctorPage() {
   return (
-    <LocalScreen title={s.title} icon="🩺">
+    <LocalScreen title={s.title}>
       <DoctorHelper />
       <PhraseCard title={s.phrasesTitle} phrases={PHRASES.clinic} />
       <BringChecklist />

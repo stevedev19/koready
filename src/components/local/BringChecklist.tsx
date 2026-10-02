@@ -1,8 +1,10 @@
 "use client";
 
+import { Backpack } from "lucide-react";
 import { useState } from "react";
 import { t } from "@/lib/strings";
 import { Card } from "../Card";
+import { CheckRow } from "../ui/CheckRow";
 
 /** Ticks live only in memory; nothing is saved. */
 export function BringChecklist() {
@@ -18,19 +20,13 @@ export function BringChecklist() {
   }
 
   return (
-    <Card title={t.local.doctor.bringTitle} icon="🎒" footer={t.local.doctor.bringNote}>
-      <ul className="space-y-1">
+    <Card title={t.local.doctor.bringTitle} icon={Backpack} footer={t.local.doctor.bringNote}>
+      <ul className="-mx-5 divide-y divide-border">
         {t.local.doctor.bringList.map((item, i) => (
           <li key={item}>
-            <label className="flex min-h-11 cursor-pointer items-center gap-3">
-              <input
-                type="checkbox"
-                checked={checked.has(i)}
-                onChange={() => toggle(i)}
-                className="size-6 shrink-0 accent-(--accent)"
-              />
-              <span className={checked.has(i) ? "text-muted line-through" : ""}>{item}</span>
-            </label>
+            <CheckRow checked={checked.has(i)} onChange={() => toggle(i)}>
+              {item}
+            </CheckRow>
           </li>
         ))}
       </ul>

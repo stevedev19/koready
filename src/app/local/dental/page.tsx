@@ -1,3 +1,4 @@
+import { Toothbrush } from "lucide-react";
 import type { Metadata } from "next";
 import { BringChecklist } from "@/components/local/BringChecklist";
 import { ClinicTypeCard } from "@/components/local/ClinicTypeCard";
@@ -12,8 +13,8 @@ export const metadata: Metadata = { title: s.title };
 
 export default function DentalPage() {
   return (
-    <LocalScreen title={s.title} icon="🦷">
-      <ClinicTypeCard id="chigwa" icon="🦷" />
+    <LocalScreen title={s.title}>
+      <ClinicTypeCard id="chigwa" icon={Toothbrush} />
       <PhraseCard title={s.phrasesTitle} phrases={PHRASES.dental} />
       <BringChecklist />
     </LocalScreen>

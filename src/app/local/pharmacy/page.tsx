@@ -1,3 +1,4 @@
+import { Pill } from "lucide-react";
 import type { Metadata } from "next";
 import { ClinicTypeCard } from "@/components/local/ClinicTypeCard";
 import { LocalScreen } from "@/components/local/LocalScreen";
@@ -12,9 +13,9 @@ export const metadata: Metadata = { title: s.title };
 
 export default function PharmacyPage() {
   return (
-    <LocalScreen title={s.title} icon="💊">
-      <ClinicTypeCard id="yakguk" title={s.title} icon="💊" />
-      <p className="text-muted">
+    <LocalScreen title={s.title}>
+      <ClinicTypeCard id="yakguk" title={s.title} icon={Pill} />
+      <p className="px-1 text-muted">
         {s.afterHours}{" "}
         <a
           href={EGEN_URL}

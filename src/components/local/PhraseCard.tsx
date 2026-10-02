@@ -1,94 +1,62 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { Copy, Maximize2, MessageSquareText } from "lucide-react";
+import { useState } from "react";
 import { copyText } from "@/lib/clipboard";
 import type { Phrase } from "@/lib/clinics";
 import { t } from "@/lib/strings";
 import { Card } from "../Card";
-
-const smallButton =
-  "min-h-11 rounded-lg border border-border px-3 text-sm font-semibold text-accent focus-visible:outline-2 focus-visible:outline-accent";
+import { buttonClass } from "../ui/button";
+import { ShowToStaff, type StaffText } from "../ui/ShowToStaff";
+import { Toast, useToast } from "../ui/Toast";
 
 export function PhraseCard({ title, phrases }: { title: string; phrases: Phrase[] }) {
-  const [copiedId, setCopiedId] = useState<string | null>(null);
-  const [shown, setShown] = useState<Phrase | null>(null);
-  const dialogRef = useRef<HTMLDialogElement>(null);
-  const largeTextId = useId();
-
-  useEffect(() => {
-    if (shown) dialogRef.current?.showModal();
-  }, [shown]);
-
-  useEffect(() => {
-    if (!copiedId) return;
-    const timer = setTimeout(() => setCopiedId(null), 2000);
-    return () => clearTimeout(timer);
-  }, [copiedId]);
+  const [shown, setShown] = useState<StaffText | null>(null);
+  const [toast, showToast] = useToast();
 
   async function onCopy(phrase: Phrase) {
-    if (await copyText(phrase.ko)) setCopiedId(phrase.id);
+    if (await copyText(phrase.ko)) showToast(t.local.phrases.copied);
   }
 
   return (
     <Card
       title={title}
-      icon="🗣️"
+      icon={MessageSquareText}
       footer={phrases.some((p) => p.needs_native_review) ? t.local.phrases.reviewNote : undefined}
     >
-      <ul className="divide-y divide-border">
+      <ul className="space-y-2.5">
         {phrases.map((phrase) => (
-          <li key={phrase.id} className="py-3 first:pt-0 last:pb-0">
-            <p lang="ko" className="text-xl font-bold">{phrase.ko}</p>
+          <li key={phrase.id} className="rounded-2xl bg-surface-2 p-4">
+            <p lang="ko" className="text-[1.375rem] leading-snug font-extrabold">{phrase.ko}</p>
             <p className="text-muted italic">{phrase.romanization}</p>
-            <p>{phrase.en}</p>
-            <div className="mt-2 flex gap-2">
-              <button type="button" className={smallButton} onClick={() => onCopy(phrase)}>
-                {copiedId === phrase.id ? `✓ ${t.local.phrases.copied}` : t.local.phrases.copy}
+            <p className="mt-0.5">{phrase.en}</p>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                className={buttonClass("secondary", "md", "bg-surface")}
+                onClick={() => onCopy(phrase)}
+                aria-label={`${t.local.phrases.copy}: ${phrase.en}`}
+              >
+                <Copy aria-hidden="true" className="size-5" />
+                {t.local.phrases.copy}
               </button>
               <button
                 type="button"
-                className={smallButton}
-                onClick={() => setShown(phrase)}
+                className={buttonClass("tonal")}
+                onClick={() =>
+                  setShown({ ko: phrase.ko, en: phrase.en, hint: phrase.ko.includes("___") ? t.local.phrases.blankHint : undefined })
+                }
                 aria-label={`${t.local.phrases.showLarge}: ${phrase.en}`}
               >
-                {t.local.phrases.showLarge} ⛶
+                <Maximize2 aria-hidden="true" className="size-5" />
+                {t.local.phrases.showLarge}
               </button>
             </div>
           </li>
         ))}
       </ul>
-      <p aria-live="polite" className="sr-only">
-        {copiedId ? t.local.phrases.copied : ""}
-      </p>
-
-      <dialog
-        ref={dialogRef}
-        onClose={() => setShown(null)}
-        aria-labelledby={largeTextId}
-        className="m-0 h-dvh max-h-none w-screen max-w-none bg-surface p-0 text-foreground backdrop:bg-black/60"
-      >
-        {shown && (
-          <div className="flex h-full flex-col p-6 pt-[max(1.5rem,env(safe-area-inset-top))]">
-            <p className="text-sm font-semibold tracking-wide text-muted uppercase">{t.local.phrases.showToStaff}</p>
-            <div className="flex flex-1 flex-col justify-center">
-              <p id={largeTextId} lang="ko" className="text-5xl leading-tight font-bold break-keep">
-                {shown.ko}
-              </p>
-              <p className="mt-6 text-xl text-muted">{shown.en}</p>
-              {shown.ko.includes("___") && <p className="mt-2 text-muted">{t.local.phrases.blankHint}</p>}
-            </div>
-            <form method="dialog">
-              <button
-                type="submit"
-                autoFocus
-                className="min-h-14 w-full rounded-xl bg-accent text-lg font-semibold text-accent-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                {t.local.phrases.close}
-              </button>
-            </form>
-          </div>
-        )}
-      </dialog>
+      <ShowToStaff text={shown} onClose={() => setShown(null)} />
+      <Toast message={toast} />
     </Card>
   );
 }

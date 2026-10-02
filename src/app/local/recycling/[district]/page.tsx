@@ -25,7 +25,6 @@ export default async function RecyclingDistrictPage({ params }: PageProps<"/loca
   return (
     <LocalScreen
       title={`${guide.district.name} ${t.local.recycling.title.toLowerCase()}`}
-      icon="♻️"
       notice={<RecyclingBanner />}
       backHref="/local/recycling"
     >
