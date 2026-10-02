@@ -1,39 +1,41 @@
 "use client";
 
+import { Compass, House, MapPin, Shield } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { t } from "@/lib/strings";
 
 const TABS = [
-  { href: "/", label: t.tabs.home, icon: "🏠" },
-  { href: "/safety", label: t.tabs.safety, icon: "🛡️" },
-  { href: "/local", label: t.tabs.local, icon: "📍" },
-  { href: "/explore", label: t.tabs.explore, icon: "🧭" },
+  { href: "/", label: t.tabs.home, icon: House },
+  { href: "/safety", label: t.tabs.safety, icon: Shield },
+  { href: "/local", label: t.tabs.local, icon: MapPin },
+  { href: "/explore", label: t.tabs.explore, icon: Compass },
 ] as const;
 
+/** Floating, frosted tab bar that clears the home indicator. */
 export function TabBar() {
   const pathname = usePathname();
 
   return (
     <nav
       aria-label={t.tabs.label}
-      className="fixed inset-x-0 bottom-0 z-10 border-t border-border bg-surface pb-[env(safe-area-inset-bottom)]"
+      className="fixed inset-x-0 bottom-0 z-30 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
     >
-      <ul className="mx-auto grid max-w-lg grid-cols-4">
-        {TABS.map((tab) => {
+      <ul className="mx-auto grid max-w-lg grid-cols-4 gap-1 rounded-[1.625rem] border border-border bg-surface-glass p-1.5 shadow-float backdrop-blur-xl backdrop-saturate-150">
+        {TABS.map(({ href, label, icon: Icon }) => {
           // Sub-pages (e.g. /local/doctor) keep their tab highlighted.
-          const active = tab.href === "/" ? pathname === "/" : pathname.startsWith(tab.href);
+          const active = href === "/" ? pathname === "/" : pathname.startsWith(href);
           return (
-            <li key={tab.href}>
+            <li key={href}>
               <Link
-                href={tab.href}
-                aria-current={pathname === tab.href ? "page" : active ? "true" : undefined}
-                className={`flex min-h-14 flex-col items-center justify-center gap-0.5 text-sm focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-accent ${
-                  active ? "font-bold text-accent" : "text-muted"
+                href={href}
+                aria-current={pathname === href ? "page" : active ? "true" : undefined}
+                className={`flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-[1.25rem] text-[0.8125rem] font-bold ${
+                  active ? "bg-accent-soft text-accent" : "text-muted"
                 }`}
               >
-                <span aria-hidden="true" className="text-xl">{tab.icon}</span>
-                {tab.label}
+                <Icon aria-hidden="true" className="size-6" strokeWidth={active ? 2.4 : 2} />
+                {label}
               </Link>
             </li>
           );

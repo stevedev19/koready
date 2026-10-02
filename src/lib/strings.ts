@@ -32,6 +32,7 @@ export const en = {
     error: "Couldn't load this right now.",
     retry: "Try again",
     updated: "Updated",
+    close: "Close",
   },
 
   weather: {

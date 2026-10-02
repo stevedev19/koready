@@ -160,6 +160,23 @@ h3 {
   outline-offset: 2px;
 }
 
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Native <dialog> fade for the backdrop. */
+dialog::backdrop {
+  animation: fade-in 200ms ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
