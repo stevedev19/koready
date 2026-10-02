@@ -1,0 +1,13 @@
+{
+  "notes": "Sample alerts written for this app to try the translator. They imitate the usual style but are NOT real or official messages. Names and places are made up or generic.",
+  "samples": [
+    { "id": "heavy-rain", "label": "Heavy rain", "text": "[기상청] [Heavy Rain] 오늘 14:20 서울 강남구 시간당 50mm 이상 강한 비. 하천변, 지하차도 등 위험지역 접근을 자제하고 안전한 곳으로 대피하시기 바랍니다." },
+    { "id": "heat-wave", "label": "Heat wave", "text": "[수원시청] 폭염경보 발효 중. 낮 시간대 야외활동을 자제하고 물을 자주 마시는 등 건강관리에 유의하시기 바랍니다. 무더위쉼터 위치는 시청 누리집에서 확인하세요." },
+    { "id": "earthquake", "label": "Earthquake", "text": "[기상청] 10.14 08:51 경북 경주시 남남서쪽 9km 지역 규모 4.2 지진발생 / 낙하물로부터 몸 보호, 진동 멈춘 후 야외 대피하며 여진 주의 [Earthquake]" },
+    { "id": "missing-person", "label": "Missing person", "text": "[서울경찰청] 실종자를 찾습니다. 마포구에서 배회 중인 김○○씨(남, 78세, 165cm, 회색 점퍼, 검정 바지). 목격 시 112로 신고바랍니다. https://url.kr/ab12cd" },
+    { "id": "fine-dust", "label": "Fine dust", "text": "[인천광역시청] 오늘 16시 인천 서부권역 초미세먼지 주의보 발령. 어린이·노약자 등은 실외활동을 자제하고 외출 시 마스크를 착용하시기 바랍니다." },
+    { "id": "traffic", "label": "Road closure", "text": "[종로구청] 오늘 10:00~17:00 종로구 세종대로 일대 행사로 차량 전면통제. 대중교통을 이용하시고 우회하시기 바랍니다." },
+    { "id": "civil-drill", "label": "Civil defense drill", "text": "[행정안전부] 오늘 14:00 민방위 훈련 공습경보 발령. 실제상황 아님. 안내에 따라 가까운 대피소로 이동하시기 바랍니다." },
+    { "id": "wildfire", "label": "Wildfire evacuation", "text": "[강릉시청] 오늘 11:30 성산면 어흘리 인근 산불 발생. 인근 주민은 성산초등학교로 즉시 대피하시기 바랍니다. 입산을 자제하여 주십시오." }
+  ]
+}

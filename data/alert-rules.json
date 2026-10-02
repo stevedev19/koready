@@ -1,0 +1,350 @@
+{
+  "version": 1,
+  "last_checked": "2026-10-02",
+  "notes": "Korean patterns are case-insensitive regular expressions matched against the alert with ALL spaces removed, so write them without spaces. 'en' patterns match the original text (alerts since 2024 can carry English labels). Actions are short paraphrases of the official guidance at actionsSource; never add steps that are not in the source. Everything needs native-speaker review.",
+  "sources": {
+    "annex": "https://www.law.go.kr/flDownload.do?flSeq=161768965&flNm=%5B%EB%B3%84%ED%91%9C+1%5D+%EC%9E%AC%EB%82%9C%EB%AC%B8%EC%9E%90%EB%B0%A9%EC%86%A1+%EB%B0%9C%EC%86%A1%EA%B8%B0%EC%A4%80%28%EC%A0%9C12%EC%A1%B0+%EA%B4%80%EB%A0%A8%29&bylClsCd=200201",
+    "kmaEarthquake": "https://www.weather.go.kr/wnuri_help/html/eqk-vol/eqk-message.jsp",
+    "civilDefenseAlerts": "https://www.korea.kr/news/reporterView.do?newsId=148916206",
+    "englishLabels": "https://www.mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000008&nttId=107429"
+  },
+  "categories": [
+    {
+      "id": "critical",
+      "ko": "위급재난문자",
+      "romanization": "wigeup jaenan munja",
+      "en": "Emergency Alert (most urgent)",
+      "meaning": "For large-scale disasters where everyone must receive the alert, such as air raid and civil defense warnings, or a magnitude 6.0+ earthquake.",
+      "sound": "Loud alarm at the phone's maximum volume.",
+      "canTurnOff": false,
+      "patterns": ["위급재난"],
+      "source": "https://www.law.go.kr/flDownload.do?flSeq=161768965&bylClsCd=200201",
+      "needs_native_review": true
+    },
+    {
+      "id": "emergency",
+      "ko": "긴급재난문자",
+      "romanization": "gingeup jaenan munja",
+      "en": "Disaster Alert (urgent)",
+      "meaning": "For serious, immediate dangers: terror, evacuation orders, extreme heavy rain sent directly by the weather agency, severe flood or landslide warnings, and strong earthquakes.",
+      "sound": "Loud alarm at the phone's maximum volume.",
+      "canTurnOff": true,
+      "patterns": ["긴급재난"],
+      "source": "https://www.law.go.kr/flDownload.do?flSeq=161768965&bylClsCd=200201",
+      "needs_native_review": true
+    },
+    {
+      "id": "safety",
+      "ko": "안전안내문자",
+      "romanization": "anjeon annae munja",
+      "en": "Safety Notice",
+      "meaning": "Other warnings and advisories, advice to evacuate early, and notices that an evacuation order has been lifted.",
+      "sound": "Your normal text message sound.",
+      "canTurnOff": true,
+      "patterns": ["안전안내"],
+      "source": "https://www.law.go.kr/flDownload.do?flSeq=161768965&bylClsCd=200201",
+      "needs_native_review": true
+    }
+  ],
+  "types": [
+    {
+      "id": "civilDefense",
+      "en": "Civil defense / air raid",
+      "ko": "민방위·공습경보",
+      "patterns": ["공습경보", "경계경보", "화생방", "민방위", "민방공"],
+      "enPatterns": ["air[- ]?raid", "civil defen[cs]e"],
+      "summary": "A civil defense alert. Air raid (공습경보) means take shelter now. Alert warning (경계경보) means get ready to evacuate.",
+      "actions": [
+        "Alert warning (경계경보): get ready to evacuate right away. Move children and older people first.",
+        "Air raid warning (공습경보): go quickly to an underground shelter or a protected spot.",
+        "If you are driving, stop in an empty lot or on the right side of the road and take shelter.",
+        "At night, turn off indoor and outdoor lights.",
+        "At the shelter, keep listening to broadcasts and follow government instructions."
+      ],
+      "actionsSource": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=civlAirDefenseWarning&menuSn=4",
+      "needs_native_review": true
+    },
+    {
+      "id": "earthquake",
+      "en": "Earthquake",
+      "ko": "지진",
+      "patterns": ["지진", "여진", "지진해일"],
+      "enPatterns": ["earthquake", "tsunami"],
+      "summary": "An earthquake alert.",
+      "actions": [
+        "While it is shaking, get under a sturdy table and hold on to its leg.",
+        "When the shaking stops, turn off gas and electricity and open the door to keep an exit.",
+        "Leave by the stairs. Do not use the elevator.",
+        "Outside, protect your head and stay away from buildings. Go to an open space such as a park. Do not evacuate by car.",
+        "Near the coast with a tsunami alert (지진해일), move to high ground."
+      ],
+      "actionsSource": "https://eng.safekorea.go.kr/safekorea-eng/acts/nacts/action-guide.do?category=earthQuake&menuSn=1004",
+      "needs_native_review": true
+    },
+    {
+      "id": "heavyRain",
+      "en": "Heavy rain",
+      "ko": "호우",
+      "patterns": ["호우", "집중호우", "폭우"],
+      "enPatterns": ["heavy rain"],
+      "summary": "A heavy rain alert.",
+      "actions": [
+        "Avoid going outside and keep checking weather news.",
+        "Stay away from rivers, streams, valleys, the coast and low or flood-prone areas.",
+        "Never walk or drive through flooded roads, underpasses or bridges.",
+        "If you are underground, in a low-lying area or in an old building, move to a safe place.",
+        "If water starts coming into your building, move to a higher floor or a nearby evacuation point right away."
+      ],
+      "actionsSource": "https://eng.safekorea.go.kr/safekorea-eng/acts/nacts/action-guide.do?category=heavyRain&menuSn=1004",
+      "needs_native_review": true
+    },
+    {
+      "id": "flood",
+      "en": "Flood",
+      "ko": "홍수",
+      "patterns": ["홍수", "범람", "하천수위"],
+      "enPatterns": ["flood"],
+      "summary": "A flood alert.",
+      "actions": [
+        "If flooding starts, move to high ground quickly.",
+        "If flooding is expected, switch off the electricity breaker and close the gas valve.",
+        "When you reach a designated shelter, tell staff you have arrived and follow their directions."
+      ],
+      "actionsSource": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=flood&menuSn=4",
+      "needs_native_review": true
+    },
+    {
+      "id": "typhoon",
+      "en": "Typhoon",
+      "ko": "태풍",
+      "patterns": ["태풍"],
+      "enPatterns": ["typhoon"],
+      "summary": "A typhoon alert.",
+      "actions": [
+        "Stay inside and keep checking weather news.",
+        "Close doors and windows, and keep away from windows and glass doors.",
+        "If possible, move to a room without windows, such as a bathroom, or the innermost part of your home.",
+        "If water comes into the building, move to a higher place or a nearby evacuation point right away.",
+        "If you are told to evacuate, go with your neighbors to a safe place."
+      ],
+      "actionsSource": "https://eng.safekorea.go.kr/safekorea-eng/acts/nacts/action-guide.do?category=typhoon&menuSn=1004",
+      "needs_native_review": true
+    },
+    {
+      "id": "heatWave",
+      "en": "Heat wave",
+      "ko": "폭염",
+      "patterns": ["폭염", "무더위", "열사병", "온열질환"],
+      "enPatterns": ["heat ?wave"],
+      "summary": "A heat wave alert.",
+      "actions": [
+        "Avoid outdoor activity, especially from 2 to 5 PM, the hottest part of the day.",
+        "If you must go out, wear a wide-brimmed hat and light clothes, and carry water.",
+        "Drink plenty of water. Avoid caffeine and alcohol.",
+        "If you feel dizzy, sick or get a headache, move somewhere cool and rest.",
+        "Use a nearby cooling shelter (무더위쉼터) if you have no air conditioning."
+      ],
+      "actionsSource": "https://eng.safekorea.go.kr/safekorea-eng/acts/nacts/action-guide.do?category=heatWave&menuSn=1004",
+      "needs_native_review": true
+    },
+    {
+      "id": "coldWave",
+      "en": "Cold wave",
+      "ko": "한파",
+      "patterns": ["한파", "동파", "강추위"],
+      "enPatterns": ["cold ?wave"],
+      "summary": "A cold wave alert.",
+      "actions": [
+        "Limit time outside. If you go out, keep warm with a hat, scarf and gloves.",
+        "Use public transport where possible.",
+        "Severe shivering, confusion or slurred speech can mean hypothermia. Go to a hospital right away.",
+        "For frostbite, don't rub the area. Warm it in warm (about 40°C) water and go to a hospital.",
+        "If you'll be away, leave a tap dripping slightly so the pipes don't freeze."
+      ],
+      "actionsSource": "https://eng.safekorea.go.kr/safekorea-eng/acts/nacts/action-guide.do?category=coldWave&menuSn=1004",
+      "needs_native_review": true
+    },
+    {
+      "id": "heavySnow",
+      "en": "Heavy snow",
+      "ko": "대설",
+      "patterns": ["대설", "폭설", "결빙"],
+      "enPatterns": ["heavy snow"],
+      "summary": "A heavy snow alert.",
+      "actions": [
+        "Limit time outside. If you go out, use public transport.",
+        "Keep warm with a coat, gloves and a hat."
+      ],
+      "actionsSource": "https://eng.safekorea.go.kr/safekorea-eng/acts/nacts/action-guide.do?category=heavySnow&menuSn=1004",
+      "needs_native_review": true
+    },
+    {
+      "id": "fineDust",
+      "en": "Fine dust / yellow dust",
+      "ko": "미세먼지·황사",
+      "patterns": ["미세먼지", "초미세먼지", "황사", "비상저감조치"],
+      "enPatterns": ["fine dust", "yellow dust", "particulate"],
+      "summary": "An air quality (fine dust) alert.",
+      "actions": [
+        "Cut down on long or hard outdoor activity, especially if your eyes hurt or you have a cough or sore throat.",
+        "If you must go out, wear a dust-protective (KF) mask.",
+        "Avoid areas with heavy traffic.",
+        "Children, older people and people with lung or heart disease should stay indoors."
+      ],
+      "actionsSource": "https://www.safekorea.go.kr/safekorea-kor/acts/nacts/action-guide.do?category=fineDust&menuSn=4",
+      "needs_native_review": true
+    },
+    {
+      "id": "wildfire",
+      "en": "Wildfire",
+      "ko": "산불",
+      "patterns": ["산불"],
+      "enPatterns": ["wildfire", "forest fire"],
+      "summary": "A wildfire alert.",
+      "actions": [
+        "If you are told to evacuate, go right away to the place given in the alert.",
+        "Use roads away from the mountain and avoid the direction the fire is spreading.",
+        "If you are hiking or camping, stop and leave the mountain.",
+        "If you smell smoke or feel unsafe, evacuate even without an order, to a village hall or school away from the mountain.",
+        "Report smoke or flames to 119."
+      ],
+      "actionsSource": "https://eng.safekorea.go.kr/safekorea-eng/acts/nacts/action-guide.do?category=forestFires&menuSn=1004",
+      "needs_native_review": true
+    },
+    {
+      "id": "traffic",
+      "en": "Road / traffic control",
+      "ko": "교통통제",
+      "patterns": ["교통통제", "도로통제", "통행제한", "통행금지", "차량통제", "전면통제", "우회", "교통사고"],
+      "enPatterns": ["traffic", "road closed", "detour"],
+      "summary": "A road or traffic control notice.",
+      "actions": [
+        "Avoid the road or area named in the alert.",
+        "Use the detour or other route the alert gives, if it gives one."
+      ],
+      "actionsSource": "https://www.law.go.kr/flDownload.do?flSeq=161768965&bylClsCd=200201",
+      "needs_native_review": true
+    },
+    {
+      "id": "missingPerson",
+      "en": "Missing person",
+      "ko": "실종",
+      "patterns": ["실종", "배회", "찾습니다"],
+      "enPatterns": ["missing"],
+      "summary": "A missing-person alert from the police. It asks the public for help finding someone.",
+      "actions": [
+        "If you see someone who matches the description, call 112 or the number in the alert.",
+        "Official missing-person alerts include a web link with the person's photo. This is normal for these alerts."
+      ],
+      "actionsSource": "https://www.korea.kr/special/policyCurationView.do?newsId=148897041",
+      "needs_native_review": true
+    },
+    {
+      "id": "infectiousDisease",
+      "en": "Infectious disease",
+      "ko": "감염병",
+      "patterns": ["감염병", "확진", "방역", "예방접종", "코로나", "전염"],
+      "enPatterns": ["infectious", "covid", "epidemic"],
+      "summary": "An infectious disease notice.",
+      "actions": [
+        "Follow the instructions in the alert.",
+        "Wash your hands often, cover coughs, and air out indoor spaces.",
+        "If you have a fever or breathing symptoms, call the KDCA hotline 1339 (24 hours, many languages) or see a doctor."
+      ],
+      "actionsSource": "https://www.kdca.go.kr/kdca/2777/subview.do",
+      "needs_native_review": true
+    }
+  ],
+  "lifted": {
+    "patterns": ["(경보|주의보|특보|명령|권고|통제|조치)(가|이|를|을)?해제(?!될때까지|될때|시까지|전까지|되기전|되면|여부)", "해제(되었|됨|합니다|했습니다|되었습니다)"],
+    "enPatterns": ["\\blifted\\b", "all clear"]
+  },
+  "drill": {
+    "patterns": ["훈련", "연습상황", "실제상황아님"],
+    "enPatterns": ["\\bdrill\\b", "\\bexercise\\b"]
+  },
+  "glossary": [
+    { "ko": "주의보", "romanization": "juuibo", "en": "advisory (lower level)", "kind": "level" },
+    { "ko": "경보", "romanization": "gyeongbo", "en": "warning (higher level)", "kind": "level" },
+    { "ko": "특보", "romanization": "teukbo", "en": "weather warning or advisory", "kind": "level" },
+    { "ko": "발령", "romanization": "ballyeong", "en": "issued", "kind": "level" },
+    { "ko": "발효", "romanization": "balhyo", "en": "in effect", "kind": "level" },
+    { "ko": "해제", "romanization": "haeje", "en": "lifted / cancelled", "kind": "level" },
+    { "ko": "대피", "romanization": "daepi", "en": "evacuate / take shelter", "kind": "instruction" },
+    { "ko": "대피명령", "romanization": "daepi myeongnyeong", "en": "evacuation order", "kind": "instruction" },
+    { "ko": "대피권고", "romanization": "daepi gwongo", "en": "evacuation advised", "kind": "instruction" },
+    { "ko": "대피소", "romanization": "daepiso", "en": "shelter", "kind": "place" },
+    { "ko": "대피장소", "romanization": "daepi jangso", "en": "evacuation place", "kind": "place" },
+    { "ko": "외출자제", "pattern": "외출(을)?자제|외출삼가", "romanization": "oechul jaje", "en": "avoid going out", "kind": "instruction" },
+    { "ko": "실외활동", "romanization": "siroe hwaldong", "en": "outdoor activity", "kind": "instruction" },
+    { "ko": "자제", "romanization": "jaje", "en": "refrain from / avoid", "kind": "instruction" },
+    { "ko": "금지", "romanization": "geumji", "en": "prohibited", "kind": "instruction" },
+    { "ko": "접근금지", "pattern": "접근(을)?금지|접근(을)?자제|접근하지", "romanization": "jeopgeun geumji", "en": "keep away", "kind": "instruction" },
+    { "ko": "안전에 유의", "pattern": "안전(에)?(유의|주의)", "romanization": "anjeone yuui", "en": "be careful / stay safe", "kind": "instruction" },
+    { "ko": "주의", "romanization": "juui", "en": "caution", "kind": "instruction" },
+    { "ko": "신고", "romanization": "singo", "en": "report (to authorities)", "kind": "instruction" },
+    { "ko": "제보", "romanization": "jebo", "en": "tip-off / report what you saw", "kind": "instruction" },
+    { "ko": "착용", "romanization": "chagyong", "en": "wear (e.g. a mask)", "kind": "instruction" },
+    { "ko": "마스크", "romanization": "maseukeu", "en": "mask", "kind": "instruction" },
+    { "ko": "물 마시기", "pattern": "물(을)?(자주|충분히)?마시|수분섭취", "romanization": "mul masigi", "en": "drink water", "kind": "instruction" },
+    { "ko": "우회", "romanization": "uhoe", "en": "detour", "kind": "instruction" },
+    { "ko": "통제", "romanization": "tongje", "en": "closed / controlled", "kind": "instruction" },
+    { "ko": "훈련", "romanization": "hullyeon", "en": "drill / exercise", "kind": "general" },
+    { "ko": "실제상황 아님", "pattern": "실제상황(이)?아(님|닙니다)", "romanization": "silje sanghwang anim", "en": "not a real situation", "kind": "general" },
+    { "ko": "산사태", "romanization": "sansatae", "en": "landslide", "kind": "hazard" },
+    { "ko": "침수", "romanization": "chimsu", "en": "flooding / underwater", "kind": "hazard" },
+    { "ko": "상습침수", "romanization": "sangseup chimsu", "en": "often floods", "kind": "hazard" },
+    { "ko": "위험지역", "romanization": "wiheom jiyeok", "en": "danger area", "kind": "hazard" },
+    { "ko": "저지대", "romanization": "jeojidae", "en": "low-lying area", "kind": "hazard" },
+    { "ko": "하천", "romanization": "hacheon", "en": "stream / river", "kind": "hazard" },
+    { "ko": "계곡", "romanization": "gyegok", "en": "valley", "kind": "hazard" },
+    { "ko": "지하차도", "romanization": "jiha chado", "en": "underpass", "kind": "hazard" },
+    { "ko": "지하", "romanization": "jiha", "en": "underground / basement", "kind": "hazard" },
+    { "ko": "강풍", "romanization": "gangpung", "en": "strong wind", "kind": "hazard" },
+    { "ko": "낙석", "romanization": "nakseok", "en": "falling rocks", "kind": "hazard" },
+    { "ko": "정전", "romanization": "jeongjeon", "en": "power cut", "kind": "hazard" },
+    { "ko": "화재", "romanization": "hwajae", "en": "fire", "kind": "hazard" },
+    { "ko": "연기", "romanization": "yeongi", "en": "smoke", "kind": "hazard" },
+    { "ko": "규모", "romanization": "gyumo", "en": "magnitude (earthquake)", "kind": "general" },
+    { "ko": "진도", "romanization": "jindo", "en": "shaking intensity", "kind": "general" },
+    { "ko": "발생", "romanization": "balsaeng", "en": "occurred", "kind": "general" },
+    { "ko": "예상", "romanization": "yesang", "en": "expected", "kind": "general" },
+    { "ko": "현재", "romanization": "hyeonjae", "en": "currently / as of", "kind": "time" },
+    { "ko": "오늘", "pattern": "오늘|금일", "romanization": "oneul", "en": "today", "kind": "time" },
+    { "ko": "내일", "pattern": "내일|명일", "romanization": "naeil", "en": "tomorrow", "kind": "time" },
+    { "ko": "오전", "romanization": "ojeon", "en": "AM (morning)", "kind": "time" },
+    { "ko": "오후", "romanization": "ohu", "en": "PM (afternoon/evening)", "kind": "time" },
+    { "ko": "부터", "romanization": "buteo", "en": "from", "kind": "time" },
+    { "ko": "까지", "romanization": "kkaji", "en": "until", "kind": "time" },
+    { "ko": "실종", "romanization": "siljong", "en": "missing", "kind": "general" },
+    { "ko": "배회", "romanization": "baehoe", "en": "wandering", "kind": "general" },
+    { "ko": "치매", "romanization": "chimae", "en": "dementia", "kind": "general" },
+    { "ko": "착의", "pattern": "착의|복장", "romanization": "chagui", "en": "clothes worn", "kind": "general" },
+    { "ko": "목격", "romanization": "mokgyeok", "en": "seen / witnessed", "kind": "general" },
+    { "ko": "경찰서", "pattern": "경찰서|경찰청", "romanization": "gyeongchalseo", "en": "police station / police", "kind": "sender" },
+    { "ko": "행정안전부", "pattern": "행정안전부|행안부", "romanization": "haengjeong anjeonbu", "en": "Ministry of the Interior and Safety", "kind": "sender" },
+    { "ko": "기상청", "romanization": "gisangcheong", "en": "Korea Meteorological Administration", "kind": "sender" },
+    { "ko": "산림청", "romanization": "sallimcheong", "en": "Korea Forest Service", "kind": "sender" },
+    { "ko": "질병관리청", "romanization": "jilbyeong gwallicheong", "en": "Korea Disease Control and Prevention Agency", "kind": "sender" },
+    { "ko": "시청 / 구청 / 군청", "pattern": "[가-힣]{1,4}(시청|구청|군청)", "romanization": "sicheong / gucheong / guncheong", "en": "city / district / county office", "kind": "sender" },
+    { "ko": "주민센터", "pattern": "주민센터|행정복지센터", "romanization": "jumin senteo", "en": "community service center", "kind": "place" },
+    { "ko": "학교", "romanization": "hakgyo", "en": "school", "kind": "place" },
+    { "ko": "무더위쉼터", "romanization": "mudeowi swimteo", "en": "cooling shelter", "kind": "place" },
+    { "ko": "민방위", "romanization": "minbangwi", "en": "civil defense", "kind": "general" },
+    { "ko": "공습경보", "romanization": "gongseup gyeongbo", "en": "air raid warning", "kind": "level" },
+    { "ko": "경계경보", "romanization": "gyeonggye gyeongbo", "en": "alert warning (prepare to evacuate)", "kind": "level" },
+    { "ko": "화생방", "romanization": "hwasaengbang", "en": "chemical, biological or radiological", "kind": "hazard" },
+    { "ko": "도로", "romanization": "doro", "en": "road", "kind": "place" },
+    { "ko": "교량", "pattern": "교량|다리", "romanization": "gyoryang", "en": "bridge", "kind": "place" },
+    { "ko": "사고", "romanization": "sago", "en": "accident", "kind": "hazard" },
+    { "ko": "확진자", "romanization": "hwakjinja", "en": "confirmed case", "kind": "general" },
+    { "ko": "손씻기", "pattern": "손씻기|손을씻", "romanization": "sonssitgi", "en": "hand washing", "kind": "instruction" },
+    { "ko": "증상", "romanization": "jeungsang", "en": "symptoms", "kind": "general" },
+    { "ko": "기온", "pattern": "기온|체감온도|최고기온|최저기온", "romanization": "gion", "en": "temperature", "kind": "general" },
+    { "ko": "강수량", "pattern": "강수량|강우량|시간당", "romanization": "gangsuryang", "en": "rainfall (amount)", "kind": "general" },
+    { "ko": "등산", "pattern": "등산|입산", "romanization": "deungsan", "en": "hiking / entering the mountain", "kind": "general" },
+    { "ko": "주민", "romanization": "jumin", "en": "residents", "kind": "general" },
+    { "ko": "어르신", "pattern": "어르신|노약자", "romanization": "eoreusin", "en": "older people", "kind": "general" },
+    { "ko": "바랍니다", "pattern": "바랍니다|주시기바랍니다|주십시오|하세요", "romanization": "baramnida", "en": "please (polite request)", "kind": "filler" }
+  ]
+}

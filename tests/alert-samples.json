@@ -1,0 +1,17 @@
+{
+  "notes": "Expected readings for data/alert-samples.json (by id) plus extra edge cases with their own text. Only fields listed are checked.",
+  "cases": [
+    { "id": "heavy-rain", "expect": { "type": "heavyRain", "lifted": false, "drill": false, "areaIncludes": "서울 강남구", "timeIncludes": "14:20" } },
+    { "id": "heat-wave", "expect": { "type": "heatWave", "lifted": false, "level": "warning" } },
+    { "id": "earthquake", "expect": { "type": "earthquake", "lifted": false, "areaIncludes": "경북 경주시", "timeIncludes": "08:51" } },
+    { "id": "missing-person", "expect": { "type": "missingPerson", "lifted": false, "fullyUnderstood": false } },
+    { "id": "fine-dust", "expect": { "type": "fineDust", "level": "advisory", "timeIncludes": "16시" } },
+    { "id": "traffic", "expect": { "type": "traffic", "lifted": false, "areaIncludes": "종로구 세종대로", "timeIncludes": "10:00" } },
+    { "id": "civil-drill", "expect": { "type": "civilDefense", "drill": true, "lifted": false } },
+    { "id": "wildfire", "expect": { "type": "wildfire", "lifted": false, "timeIncludes": "11:30", "areaIncludes": "성산면 어흘리" } },
+    { "id": "lifted", "text": "[기상청] 서울 강남구 호우경보 해제. 하천 등 위험지역 접근을 자제하시기 바랍니다.", "expect": { "type": "heavyRain", "lifted": true } },
+    { "id": "until-lifted", "text": "[○○군청] 대피명령이 해제될 때까지 귀가하지 마십시오.", "expect": { "lifted": false } },
+    { "id": "unknown-type", "text": "[○○구청] 관내 상수도관 파열로 단수 예정입니다.", "expect": { "type": null, "fullyUnderstood": false } },
+    { "id": "english-only", "text": "[Emergency Alert] Earthquake", "expect": { "type": "earthquake" } }
+  ]
+}
