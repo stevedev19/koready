@@ -1,41 +1,128 @@
 @import "tailwindcss";
 
-/* Colors chosen for WCAG AA contrast in both themes. */
+/*
+ * Design tokens (see docs/style-guide.html). Every text pair passes WCAG AA
+ * (4.5:1) in both themes; input borders and focus rings pass 3:1.
+ * Status colors have fixed meanings: danger = real risk / emergency,
+ * warning = unclear / be careful, info = neutral facts,
+ * success = an action worked (never "safe").
+ */
 :root {
-  --background: #f4f5f7;
+  --background: #f2f4f6;
   --surface: #ffffff;
-  --foreground: #111827;
-  --muted: #4b5563;
-  --border: #e5e7eb;
-  --accent: #1d4ed8;
+  --surface-2: #f2f4f6;
+  --surface-3: #e5e8eb;
+  --surface-glass: rgb(255 255 255 / 0.8);
+  --border: #e5e8eb;
+  --border-strong: #8b95a1;
+  --card-border: transparent;
+  --foreground: #191f28;
+  --muted: #4e5968;
+  --placeholder: #6b7684;
+
+  --accent: #1b64da; /* primary */
   --accent-contrast: #ffffff;
-  --danger: #b91c1c;
+  --accent-soft: #e8f1fe;
+
+  --danger: #b42318;
+  --danger-soft: #fef1f0;
+  --danger-contrast: #ffffff;
+  --warning: #8f4a00;
+  --warning-soft: #fff6e5;
+  --info: #0b6582;
+  --info-soft: #e6f4f8;
+  --success: #17693f;
+  --success-soft: #e9f6ee;
+  --emergency: #b42318;
+  --emergency-contrast: #ffffff;
+
+  --tile-violet: #f1edfd;
+  --ink-violet: #5b3cc4;
+
+  --shadow-1: 0 1px 2px rgb(0 23 51 / 0.04), 0 2px 8px rgb(0 23 51 / 0.05);
+  --shadow-2: 0 12px 32px rgb(0 23 51 / 0.16);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0b0f17;
-    --surface: #161b26;
-    --foreground: #f3f4f6;
-    --muted: #b6bcc8;
-    --border: #2a3140;
-    --accent: #93b4ff;
-    --accent-contrast: #0b0f17;
-    --danger: #fca5a5;
+    --background: #101318;
+    --surface: #1b1f26;
+    --surface-2: #252a33;
+    --surface-3: #2f3540;
+    --surface-glass: rgb(27 31 38 / 0.84);
+    --border: #2f3540;
+    --border-strong: #6b7684;
+    --card-border: #2f3540;
+    --foreground: #f2f4f6;
+    --muted: #a7b0bd;
+    --placeholder: #8d97a5;
+
+    --accent: #7db2ff;
+    --accent-contrast: #101318;
+    --accent-soft: #1a2a45;
+
+    --danger: #ff9b91;
+    --danger-soft: #3b1714;
+    --danger-contrast: #101318;
+    --warning: #f4c46a;
+    --warning-soft: #3a2a0d;
+    --info: #7ccde6;
+    --info-soft: #0e2f3a;
+    --success: #7dd6a3;
+    --success-soft: #10301f;
+    --emergency: #c7322a;
+    --emergency-contrast: #ffffff;
+
+    --tile-violet: #2a2347;
+    --ink-violet: #bba8ff;
+
+    --shadow-1: none;
+    --shadow-2: 0 12px 32px rgb(0 0 0 / 0.55);
   }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-glass: var(--surface-glass);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-card-border: var(--card-border);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-border: var(--border);
+  --color-placeholder: var(--placeholder);
   --color-accent: var(--accent);
   --color-accent-contrast: var(--accent-contrast);
+  --color-accent-soft: var(--accent-soft);
   --color-danger: var(--danger);
-  /* System fonts: fast, and include Hangul (Apple SD Gothic Neo / Malgun Gothic / Noto Sans KR). */
-  --font-sans: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Segoe UI", Roboto, sans-serif;
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-contrast: var(--danger-contrast);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-emergency: var(--emergency);
+  --color-emergency-contrast: var(--emergency-contrast);
+  --color-tile-violet: var(--tile-violet);
+  --color-ink-violet: var(--ink-violet);
+
+  /* Pretendard: one family drawn for Latin and Hangul, self-hosted (SIL OFL 1.1). */
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo",
+    "Noto Sans KR", "Malgun Gothic", sans-serif;
+
+  --radius-chip: 0.625rem;
+  --radius-btn: 0.875rem;
+  --radius-card: 1.25rem;
+  --radius-sheet: 1.75rem;
+
+  --shadow-card: var(--shadow-1);
+  --shadow-float: var(--shadow-2);
+
+  --ease-out-soft: cubic-bezier(0.2, 0, 0, 1);
 }
 
 html {
@@ -46,8 +133,31 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-size: 17px;
-  line-height: 1.5;
+  /* rem-based so the system font size and browser zoom scale everything. */
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* Korean: don't break words mid-syllable; long URLs can still wrap. */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+::placeholder {
+  color: var(--placeholder);
+  opacity: 1;
+}
+
+/* One visible focus style everywhere (3px, 3:1+ in both themes). */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -56,5 +166,6 @@ body {
   *::after {
     animation: none !important;
     transition: none !important;
+    scroll-behavior: auto !important;
   }
 }

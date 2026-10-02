@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { TabBar } from "@/components/TabBar";
 import { t } from "@/lib/strings";
+// Self-hosted Pretendard; dynamic subsets load only the Korean glyphs a page uses.
+import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,8 +19,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f5f7" },
-    { media: "(prefers-color-scheme: dark)", color: "#0b0f17" },
+    { media: "(prefers-color-scheme: light)", color: "#f2f4f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#101318" },
   ],
 };
 
