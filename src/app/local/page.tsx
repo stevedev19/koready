@@ -60,6 +60,24 @@ export default function LocalPage() {
         </ul>
         <MedicalDisclaimer />
       </section>
+
+      <section aria-labelledby="recycling" className="space-y-3 pt-2">
+        <h2 id="recycling" className="text-lg font-semibold">
+          <span aria-hidden="true">♻️ </span>
+          {t.local.recycling.title}
+        </h2>
+        <Link
+          href="/local/recycling"
+          className="flex min-h-18 items-center gap-4 rounded-2xl border border-border bg-surface px-5 py-3 shadow-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        >
+          <span aria-hidden="true" className="text-3xl">🗑️</span>
+          <span className="flex-1">
+            <span className="block text-xl font-semibold">{t.local.recycling.title}</span>
+            <span className="block text-muted">{t.local.recycling.hint}</span>
+          </span>
+          <span aria-hidden="true" className="text-2xl text-muted">›</span>
+        </Link>
+      </section>
     </div>
   );
 }
