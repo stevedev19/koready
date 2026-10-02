@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Korea Survival Kit
 
-## Getting Started
+A mobile-first PWA for foreigners living in Korea. See `CLAUDE.md` for project rules.
 
-First, run the development server:
+## Run locally
+
+Requires Node 22 (`nvm use` picks it up from `.nvmrc`).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production build (needed to test the service worker / offline mode):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build && npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Data sources (all free, no API keys)
 
-## Learn More
+| Card | Source | Cache | Terms |
+| --- | --- | --- | --- |
+| Weather | [Open-Meteo](https://open-meteo.com/) | 30 min | Free tier is **non-commercial only**, CC BY 4.0 attribution |
+| Air quality | [Open-Meteo Air Quality](https://open-meteo.com/en/docs/air-quality-api) | 30 min | Same as above |
+| Exchange rate | [Frankfurter](https://frankfurter.dev/) | 6 h | Free incl. commercial; rates under each central bank's terms |
 
-To learn more about Next.js, take a look at the following resources:
+> If the app ever shows ads or charges money, Open-Meteo requires a paid plan
+> (or switch to KMA / AirKorea via data.go.kr).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project layout
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/lib/strings.ts`: all UI text (add a `ko` object for Korean later)
+- `src/lib/districts.ts`: district list (append to add more)
+- `data/slang.json`: slang entries (`needs_native_review: true` until checked)
+- `src/app/api/*`: server routes that call external APIs and cache them
+- `public/sw.js`: service worker (offline fallback)
+- `scripts/generate-icons.mjs`: regenerates placeholder icons
