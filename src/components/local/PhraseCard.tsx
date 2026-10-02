@@ -1,31 +1,10 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { copyText } from "@/lib/clipboard";
 import type { Phrase } from "@/lib/clinics";
 import { t } from "@/lib/strings";
 import { Card } from "../Card";
-
-/** Clipboard API needs HTTPS; fall back to execCommand on plain-HTTP dev URLs. */
-async function copyText(text: string): Promise<boolean> {
-  try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-    const area = document.createElement("textarea");
-    area.value = text;
-    area.setAttribute("readonly", "");
-    area.style.position = "fixed";
-    area.style.opacity = "0";
-    document.body.appendChild(area);
-    area.select();
-    const ok = document.execCommand("copy");
-    area.remove();
-    return ok;
-  } catch {
-    return false;
-  }
-}
 
 const smallButton =
   "min-h-11 rounded-lg border border-border px-3 text-sm font-semibold text-accent focus-visible:outline-2 focus-visible:outline-accent";

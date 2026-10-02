@@ -23,17 +23,18 @@ type LocalScreenProps = {
   /** Shown under the title. Defaults to the medical disclaimer. */
   notice?: ReactNode;
   backHref?: string;
+  backLabel?: string;
 };
 
 /** Shared frame for Local sub-screens: back link, title, notice. */
-export function LocalScreen({ title, icon, children, notice = <MedicalDisclaimer />, backHref = "/local" }: LocalScreenProps) {
+export function LocalScreen({ title, icon, children, notice = <MedicalDisclaimer />, backHref = "/local", backLabel = t.local.back }: LocalScreenProps) {
   return (
     <div className="space-y-4">
       <Link
         href={backHref}
         className="-ml-1 inline-flex min-h-11 items-center gap-1 px-1 font-medium text-accent focus-visible:outline-2 focus-visible:outline-accent"
       >
-        <span aria-hidden="true">←</span> {t.local.back}
+        <span aria-hidden="true">←</span> {backLabel}
       </Link>
       <h1 className="flex items-center gap-2 text-2xl font-bold">
         <span aria-hidden="true">{icon}</span>
