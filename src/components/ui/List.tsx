@@ -33,7 +33,7 @@ const rowClass =
 
 function RowBody({ title, subtitle, icon, tone, trailing, href, external, onClick, lang }: RowProps) {
   const chevron = external ? ExternalLink : ChevronRight;
-  const Trail = href || onClick ? chevron : null;
+  const Trail = (href && !/^(tel|mailto):/.test(href)) || onClick ? chevron : null;
   return (
     <>
       {icon && <IconTile icon={icon} tone={tone} />}
@@ -52,7 +52,11 @@ export function ListRow(props: RowProps) {
   const { href, external, onClick, ariaLabel } = props;
   return (
     <li>
-      {href && external ? (
+      {href && /^(tel|mailto):/.test(href) ? (
+        <a href={href} aria-label={ariaLabel} className={rowClass}>
+          <RowBody {...props} />
+        </a>
+      ) : href && external ? (
         <a href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel} className={rowClass}>
           <RowBody {...props} />
         </a>

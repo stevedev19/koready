@@ -1,7 +1,9 @@
+import { BellRing, Info, OctagonAlert, Smartphone, TriangleAlert, type LucideIcon } from "lucide-react";
 import type { Metadata } from "next";
 import { Card } from "@/components/Card";
 import { HelpLines } from "@/components/HelpLines";
 import { LocalScreen } from "@/components/local/LocalScreen";
+import { Disclaimer } from "@/components/ui/Notice";
 import { ALERT_RULES } from "@/lib/alerts/check";
 import { t } from "@/lib/strings";
 
@@ -9,10 +11,11 @@ const s = t.alertGuide;
 
 export const metadata: Metadata = { title: s.title };
 
-const CATEGORY_STYLE: Record<string, string> = {
-  critical: "border-red-600 bg-red-50 text-red-950 dark:border-red-500 dark:bg-red-950 dark:text-red-50",
-  emergency: "border-orange-500 bg-orange-50 text-orange-950 dark:border-orange-500 dark:bg-orange-950 dark:text-orange-50",
-  safety: "border-sky-500 bg-sky-50 text-sky-950 dark:border-sky-500 dark:bg-sky-950 dark:text-sky-50",
+// Semantic tokens: icon + label + color for each category, never color alone.
+const CATEGORY_STYLE: Record<string, { box: string; ink: string; icon: LucideIcon }> = {
+  critical: { box: "bg-danger-soft", ink: "text-danger", icon: OctagonAlert },
+  emergency: { box: "bg-warning-soft", ink: "text-warning", icon: TriangleAlert },
+  safety: { box: "bg-info-soft", ink: "text-info", icon: Info },
 };
 
 const SOURCES = [
@@ -28,30 +31,36 @@ export default function AlertGuidePage() {
   return (
     <LocalScreen
       title={s.title}
-      icon="📘"
-      backHref="/safety"
+            backHref="/safety"
       backLabel={s.back}
-      notice={<p role="note" className="rounded-lg border border-border bg-surface px-3 py-2 font-semibold">⚠️ {t.alerts.disclaimer}</p>}
+      notice={<Disclaimer>{t.alerts.disclaimer}</Disclaimer>}
     >
       <p className="text-lg">{s.intro}</p>
 
       <section aria-labelledby="categories" className="space-y-3">
-        <h2 id="categories" className="text-xl font-bold">{s.categoriesTitle}</h2>
-        {ALERT_RULES.categories.map((c) => (
-          <div key={c.id} className={`rounded-2xl border-l-8 p-4 ${CATEGORY_STYLE[c.id] ?? "border-border bg-surface"}`}>
-            <p lang="ko" className="text-2xl font-bold">{c.ko}</p>
-            <p className="italic opacity-80">{c.romanization}</p>
-            <p className="mt-1 text-lg font-semibold">{c.en}</p>
+        <h2 id="categories" className="px-1 text-xl font-extrabold">{s.categoriesTitle}</h2>
+        {ALERT_RULES.categories.map((c) => {
+          const style = CATEGORY_STYLE[c.id] ?? { box: "bg-surface", ink: "text-foreground", icon: Info };
+          const Icon = style.icon;
+          return (
+          <div key={c.id} className={`rounded-card p-5 ${style.box}`}>
+            <p className={`flex items-center gap-2 text-lg font-extrabold ${style.ink}`}>
+              <Icon aria-hidden="true" className="size-6 shrink-0" />
+              {c.en}
+            </p>
+            <p lang="ko" className="mt-1 text-2xl font-extrabold">{c.ko}</p>
+            <p className="text-muted italic">{c.romanization}</p>
             <p className="mt-2 text-lg">{c.meaning}</p>
             <dl className="mt-2 space-y-1 text-lg">
-              <div><dt className="inline font-semibold">🔊 {s.sound}: </dt><dd className="inline">{c.sound}</dd></div>
+              <div><dt className="inline font-semibold">{s.sound}: </dt><dd className="inline">{c.sound}</dd></div>
               <div><dt className="inline font-semibold">{s.canTurnOff} </dt><dd className="inline">{c.canTurnOff ? s.yes : s.no}</dd></div>
             </dl>
           </div>
-        ))}
+          );
+        })}
       </section>
 
-      <Card title={s.screenTitle} icon="📱">
+      <Card title={s.screenTitle} icon={Smartphone}>
         <p className="text-lg">{s.screenBody}</p>
         <h3 className="mt-3 font-semibold">{s.englishTitle}</h3>
         <p className="text-lg">{s.englishBody}</p>
@@ -59,7 +68,7 @@ export default function AlertGuidePage() {
         <p className="text-lg">{s.earthquakeBody}</p>
       </Card>
 
-      <Card title={s.enableTitle} icon="✅">
+      <Card title={s.enableTitle} icon={BellRing}>
         <h3 className="font-semibold">{s.iphoneTitle}</h3>
         <ol className="mt-1 list-decimal space-y-1 pl-6 text-lg">
           {s.iphoneSteps.map((step) => <li key={step}>{step}</li>)}

@@ -1,27 +1,21 @@
 "use client";
 
+import { Lock, ScanSearch } from "lucide-react";
 import { useId, useRef, useState } from "react";
 import { checkMessage, MAX_INPUT_CHARS, type ScamCheckResult, type ScamVerdict } from "@/lib/scam/check";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
+import { buttonClass, fieldClass } from "./ui/button";
+import { Disclaimer, StatusCard, type StatusTone } from "./ui/Notice";
 
 // Privacy: the message lives only in this component's state. It is never sent,
 // stored (no localStorage) or logged, and it is cleared when you leave the page.
 
-const VERDICT_STYLE: Record<ScamVerdict, { box: string; icon: string }> = {
-  likely_scam: {
-    box: "border-red-300 bg-red-50 text-red-950 dark:border-red-800 dark:bg-red-950 dark:text-red-50",
-    icon: "⚠️",
-  },
-  unclear: {
-    box: "border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-800 dark:bg-amber-950 dark:text-amber-50",
-    icon: "❓",
-  },
-  // Deliberately neutral (not green): this verdict is never "safe".
-  no_obvious_signs: {
-    box: "border-border bg-background text-foreground",
-    icon: "🔎",
-  },
+// Fixed meanings: danger = likely scam, warning = unclear, neutral = no obvious signs (never "safe").
+const VERDICT_TONE: Record<ScamVerdict, StatusTone> = {
+  likely_scam: "danger",
+  unclear: "warning",
+  no_obvious_signs: "neutral",
 };
 
 export function ScamChecker() {
@@ -50,79 +44,76 @@ export function ScamChecker() {
   );
 
   return (
-    <Card title={t.scam.title} icon="🕵️" footer={t.safety.disclaimer}>
-      <form onSubmit={onSubmit} className="space-y-3">
-        <label htmlFor={inputId} className="block">
-          {t.scam.intro}
-        </label>
-        <textarea
-          id={inputId}
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-            setResult(null); // a verdict must always match the text shown
-          }}
-          placeholder={t.scam.placeholder}
-          aria-describedby={privacyId}
-          rows={6}
-          // Keep the text away from cloud spellcheck and autofill.
-          spellCheck={false}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
-          className="w-full resize-y rounded-lg border border-border bg-background p-3 text-base focus-visible:outline-2 focus-visible:outline-accent"
-        />
-        <p id={privacyId} className="text-sm text-muted">
-          🔒 {t.scam.privacy}
-        </p>
-        {text.length > MAX_INPUT_CHARS && <p className="text-sm text-muted">{t.scam.tooLong}</p>}
-        <div className="flex gap-3">
-          <button
-            type="submit"
-            disabled={!text.trim()}
-            className="min-h-11 flex-1 rounded-lg bg-accent px-5 font-semibold text-accent-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:opacity-50"
-          >
-            {t.scam.check}
-          </button>
-          <button
-            type="button"
-            onClick={onClear}
-            disabled={!text && !result}
-            className="min-h-11 rounded-lg border border-border px-5 font-medium text-accent focus-visible:outline-2 focus-visible:outline-accent disabled:opacity-50"
-          >
-            {t.scam.clear}
-          </button>
-        </div>
-      </form>
-
-      <div aria-live="polite">
-        {result && signals && (
-          <div className={`mt-4 rounded-xl border-2 p-4 ${VERDICT_STYLE[result.verdict].box}`}>
-            <h3 ref={resultRef} tabIndex={-1} className="text-xl font-bold focus:outline-none">
-              <span className="sr-only">{t.scam.resultHeading}: </span>
-              <span aria-hidden="true">{VERDICT_STYLE[result.verdict].icon} </span>
-              {t.scam.verdicts[result.verdict]}
-            </h3>
-            {(result.reason === "too_short" || result.reason === "odd_input") && (
-              <p className="mt-1 font-medium">{t.scam.reasons[result.reason]}</p>
-            )}
-            <p className="mt-2">{t.scam.advice[result.verdict]}</p>
-
-            {signals.length > 0 && (
-              <>
-                <h4 className="mt-3 font-semibold">{t.scam.signalsTitle}</h4>
-                <ul className="mt-1 list-disc space-y-1.5 pl-5">
-                  {signals.map((s) => (
-                    <li key={s.ruleId}>{s.explanation.en}</li>
-                  ))}
-                </ul>
-              </>
-            )}
-            <p className="mt-3 text-sm opacity-90">{t.scam.rulesNote}</p>
-            <p className="mt-1 text-sm font-semibold">{t.safety.disclaimer}</p>
+    <div className="space-y-4">
+      <Card title={t.scam.title} icon={ScanSearch}>
+        <form id="scam-form" onSubmit={onSubmit} className="space-y-3">
+          <div className="flex items-end justify-between gap-2">
+            <label htmlFor={inputId} className="block font-bold">
+              {t.scam.intro}
+            </label>
+            <button type="button" onClick={onClear} disabled={!text && !result} className={buttonClass("text", "md", "-mr-2 shrink-0")}>
+              {t.scam.clear}
+            </button>
           </div>
-        )}
-      </div>
-    </Card>
+          <textarea
+            id={inputId}
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value);
+              setResult(null); // a verdict must always match the text shown
+            }}
+            placeholder={t.scam.placeholder}
+            aria-describedby={privacyId}
+            rows={6}
+            // Keep the text away from cloud spellcheck and autofill.
+            spellCheck={false}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
+            className={`${fieldClass} min-h-36 resize-y`}
+          />
+          <p id={privacyId} className="flex items-center gap-1.5 text-[0.9375rem] text-muted">
+            <Lock aria-hidden="true" className="size-[1.125rem] shrink-0" />
+            {t.scam.privacy}
+          </p>
+          {text.length > MAX_INPUT_CHARS && <p className="text-[0.9375rem] text-muted">{t.scam.tooLong}</p>}
+          {/* Main action sticks above the tab bar, within thumb reach. */}
+          <div className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-surface/90 p-1 backdrop-blur">
+            <button type="submit" disabled={!text.trim()} className={buttonClass("primary", "lg", "flex-1")}>
+              <ScanSearch aria-hidden="true" className="size-5" />
+              {t.scam.check}
+            </button>
+          </div>
+        </form>
+        <div className="mt-3">
+          <Disclaimer>{t.safety.disclaimer}</Disclaimer>
+        </div>
+      </Card>
+
+      {result && signals && (
+        <section aria-label={t.scam.resultHeading} className="space-y-3">
+          <StatusCard tone={VERDICT_TONE[result.verdict]} label={t.scam.verdicts[result.verdict]} headingRef={resultRef}>
+            {(result.reason === "too_short" || result.reason === "odd_input") && (
+              <p className="font-semibold">{t.scam.reasons[result.reason]}</p>
+            )}
+            <p className="mt-1">{t.scam.advice[result.verdict]}</p>
+          </StatusCard>
+
+          {signals.length > 0 && (
+            <Card title={t.scam.signalsTitle}>
+              <ul className="space-y-2.5">
+                {signals.map((s) => (
+                  <li key={s.ruleId} className="rounded-xl bg-surface-2 px-3.5 py-3">
+                    {s.explanation.en}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          )}
+          <p className="text-[0.9375rem] text-muted">{t.scam.rulesNote}</p>
+          <Disclaimer>{t.safety.disclaimer}</Disclaimer>
+        </section>
+      )}
+    </div>
   );
 }

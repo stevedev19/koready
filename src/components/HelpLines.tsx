@@ -1,6 +1,7 @@
+import { Phone } from "lucide-react";
 import { HELP_LINES, type HelpLineId } from "@/lib/helpLines";
 import { t } from "@/lib/strings";
-import { Card } from "./Card";
+import { ListGroup, ListRow } from "./ui/List";
 
 type HelpLinesProps = {
   ids: HelpLineId[];
@@ -8,30 +9,38 @@ type HelpLinesProps = {
   footer?: string;
 };
 
+/** Verified help numbers. The whole row is the call link (large target). */
 export function HelpLines({ ids, title = t.helpLines.title, footer }: HelpLinesProps) {
   return (
-    <Card title={title} icon="📞" footer={footer}>
-      <ul className="divide-y divide-border">
+    <section className="space-y-2.5" aria-label={title}>
+      <h2 className="px-1 text-lg font-extrabold">{title}</h2>
+      <ListGroup>
         {ids.map((id) => {
           const line = HELP_LINES[id];
           const s = t.helpLines.lines[id];
           return (
-            <li key={id} className="flex items-center gap-3 py-3 first:pt-0 last:pb-0">
-              <div className="min-w-0 flex-1">
-                <p className="font-semibold">{s.name}</p>
-                <p className="text-sm text-muted">{s.detail}</p>
-              </div>
-              <a
-                href={`tel:${line.number}`}
-                aria-label={`${t.helpLines.call} ${s.name}, ${line.number.split("").join(" ")}`}
-                className="inline-flex min-h-11 min-w-16 shrink-0 items-center justify-center rounded-lg bg-accent px-3 text-lg font-bold text-accent-contrast focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-              >
-                {line.number}
-              </a>
-            </li>
+            <ListRow
+              key={id}
+              href={`tel:${line.number}`}
+              ariaLabel={`${t.helpLines.call} ${s.name}, ${line.number.split("").join(" ")}`}
+              icon={Phone}
+              tone={id === "emergency" ? "red" : "blue"}
+              title={s.name}
+              subtitle={s.detail}
+              trailing={
+                <span
+                  className={`shrink-0 rounded-full px-3.5 py-2 text-lg font-extrabold tabular-nums ${
+                    id === "emergency" ? "bg-emergency text-emergency-contrast" : "bg-accent text-accent-contrast"
+                  }`}
+                >
+                  {line.number}
+                </span>
+              }
+            />
           );
         })}
-      </ul>
-    </Card>
+      </ListGroup>
+      {footer && <p className="px-1 text-[0.9375rem] text-muted">{footer}</p>}
+    </section>
   );
 }
