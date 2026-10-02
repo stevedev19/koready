@@ -1,0 +1,122 @@
+[
+  {
+    "id": "scam-delivery-ko",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "[Web발신] [CJ대한통운] 고객님 택배가 주소지 불명으로 보관중입니다. 주소 확인 부탁드립니다 han.gl/aB3xQ"
+  },
+  {
+    "id": "scam-delivery-en",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "Korea Post: Your package could not be delivered due to an incomplete address. Please update your address within 24 hours: https://epost-kr-delivery.top/track"
+  },
+  {
+    "id": "scam-prosecutor-ko",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "서울중앙지검 수사관입니다. 고객님 명의로 개설된 대포통장이 금융범죄 사건에 연루되어 연락드렸습니다. 조사에 협조하지 않으시면 구속영장이 발부될 수 있습니다."
+  },
+  {
+    "id": "scam-safe-account-en",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "This is the Financial Supervisory Service. Your bank account is linked to a money laundering case. To protect your funds, transfer your balance to the safe account below today. Do not tell bank staff."
+  },
+  {
+    "id": "scam-immigration-en",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "[HiKorea] Immigration Office notice: Your ARC has been suspended due to an unpaid penalty. Pay the fine immediately or you will be deported. Details: bit.ly/3hkVisa"
+  },
+  {
+    "id": "scam-family-ko",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "엄마 나 폰 액정이 깨져서 수리 맡겼어. 이거 임시번호야. 지금 폰이 없어서 통화 안돼. 급한데 문화상품권 좀 사줄 수 있어?"
+  },
+  {
+    "id": "scam-family-en",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "Hi mum, this is my new number, my phone broke and I can't call right now. Can you help me pay a bill urgently? I'll pay you back tomorrow x"
+  },
+  {
+    "id": "scam-otp-mixed",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "[국민은행] 고객님 계좌 보안 점검 중입니다. Please send the verification code you received to confirm your identity. 미확인 시 계좌가 정지됩니다."
+  },
+  {
+    "id": "scam-loan-ko",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "[Web발신] 정부지원 저금리 대환대출 대상자로 선정되셨습니다. 최대 5천만원, 신용조회 없이 가능. 상담: 010-1234-5678"
+  },
+  {
+    "id": "scam-job-en",
+    "kind": "scam",
+    "expected": "likely_scam",
+    "text": "Hello! We are hiring part-time staff to like YouTube videos. Earn 150,000 won per day, no experience needed. Add us on Telegram @jobkr88. A 50,000 won registration fee is required to start."
+  },
+  {
+    "id": "normal-delivery-ko",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "[CJ대한통운] 고객님의 상품이 배송완료 되었습니다. 운송장번호 6543-2109-8765 / 배송기사 010-****-1234. 이용해 주셔서 감사합니다."
+  },
+  {
+    "id": "normal-delivery-en",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "Coupang: Your order has been delivered to your front door at 2:14 PM. Thank you for shopping with us."
+  },
+  {
+    "id": "normal-card-ko",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "[신한카드] 승인 12,500원 일시불 10/02 13:45 스타벅스강남점 누적 452,300원"
+  },
+  {
+    "id": "normal-verification-code-ko",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "[Web발신] [네이버] 인증번호 [482913]를 입력해 주세요. 타인에게 절대 알려주지 마세요."
+  },
+  {
+    "id": "normal-bank-en",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "Hana Bank: Your monthly statement for September is now available in the Hana 1Q app. Thank you for banking with us."
+  },
+  {
+    "id": "normal-friend-en",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "hey are we still on for dinner tonight? I booked the place near Hongdae station for 7, let me know if you're running late"
+  },
+  {
+    "id": "normal-friend-ko",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "오늘 저녁에 시간 돼? 회사 끝나고 삼겹살 먹으러 가자 ㅎㅎ 7시쯤 강남역 2번 출구에서 보자"
+  },
+  {
+    "id": "normal-immigration-ko",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "[법무부] 외국인등록증 체류기간이 2026.11.15 만료 예정입니다. 하이코리아 또는 관할 출입국에서 연장 신청하시기 바랍니다."
+  },
+  {
+    "id": "normal-landlord-en",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "Hi, this is your landlord. Just a reminder that the maintenance fee for October is 85,000 won, same account as usual. Thanks!"
+  },
+  {
+    "id": "normal-friend-mixed",
+    "kind": "normal",
+    "expected": "no_obvious_signs",
+    "text": "ㅋㅋ 나 오늘 class 끝나고 바로 갈게. Wait for me at the cafe near the station, 금방 갈게!"
+  }
+]
