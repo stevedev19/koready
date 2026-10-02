@@ -36,3 +36,12 @@ npm run build && npm start
 - `src/app/api/*`: server routes that call external APIs and cache them
 - `public/sw.js`: service worker (offline fallback)
 - `scripts/generate-icons.mjs`: regenerates placeholder icons
+- `data/scam-rules.json`: scam checker rules (patterns, weights, explanations). Edit to add rules, then run `npm run test:scam`
+- `src/lib/scam/`: scam checker (`check.ts` is the entry point; runs on the device, never sends or stores text)
+- `src/lib/helpLines.ts`: help phone numbers, each with the official source it was verified against
+
+## Scam checker tests
+
+```bash
+npm run test:scam   # runs tests/scam-samples.json, prints expected vs actual and FN/FP counts
+```
