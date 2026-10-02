@@ -45,6 +45,18 @@ export const HELP_LINES: Record<HelpLineId, HelpLine> = {
     source: "https://spam.kisa.or.kr",
     verifiedOn: "2026-10-02",
   },
+  travelHotline: {
+    number: "1330",
+    // Run by the Korea Tourism Organization; interpreting by phone or text in 8 languages.
+    source: "https://www.korea.net/NewsFocus/Society/view?articleId=257293",
+    verifiedOn: "2026-10-02",
+  },
+  kdca: {
+    number: "1339",
+    // 24 hours, free; Korean, English, Japanese, Chinese, Russian, Thai, Vietnamese, Indonesian/Malay.
+    source: "https://www.kdca.go.kr/kdca/2777/subview.do",
+    verifiedOn: "2026-10-02",
+  },
   immigration: {
     number: "1345",
     source: "https://mojhome.moj.go.kr/bbs/moj/184/595420/artclView.do",
