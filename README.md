@@ -39,6 +39,8 @@ npm run build && npm start
 - `data/scam-rules.json`: scam checker rules (patterns, weights, explanations). Edit to add rules, then run `npm run test:scam`
 - `src/lib/scam/`: scam checker (`check.ts` is the entry point; runs on the device, never sends or stores text)
 - `src/lib/helpLines.ts`: help phone numbers, each with the official source it was verified against
+- `data/clinics.json`: problem categories → clinic types, and Korean phrases (`needs_native_review: true` until checked)
+- `src/lib/mapLinks.ts`: plain Naver / Kakao / Google Maps search links (no map API, no keys)
 
 ## Scam checker tests
 
