@@ -112,6 +112,68 @@ export const en = {
     reviewNote: "Not yet reviewed by a native speaker.",
   },
 
+  safety: {
+    intro: "Tools to help you spot scams. Nothing you type here leaves your phone.",
+    disclaimer: "Not official advice. If unsure, contact the company or police.",
+  },
+
+  scam: {
+    title: "Scam checker",
+    intro: "Paste a text, KakaoTalk message or email you're not sure about.",
+    placeholder: "Paste the message here…",
+    privacy: "Checked on your phone only. Your message is not sent, saved or logged.",
+    check: "Check message",
+    clear: "Clear",
+    tooLong: "Only the first 5,000 characters are checked.",
+    resultHeading: "Result",
+    verdicts: {
+      likely_scam: "Likely scam",
+      unclear: "Unclear",
+      no_obvious_signs: "No obvious scam signs, but verify with the official source.",
+    },
+    advice: {
+      likely_scam:
+        "Don't tap any links, call back, install apps, or send money or codes. Delete the message, or report it to 1394.",
+      unclear:
+        "We can't tell. Treat it with care: contact the sender through an official app, website or phone number you find yourself.",
+      no_obvious_signs:
+        "Our rules can't catch every scam. If it asks for money, codes or personal details, check with the company through its official app or number.",
+    },
+    reasons: {
+      too_short: "The message is too short to judge.",
+      odd_input: "This doesn't look like a normal message, so we can't judge it.",
+    },
+    signalsTitle: "Warning signs found",
+    rulesNote: "These checks are simple rules, still being reviewed by native speakers. New scam styles can slip past them.",
+  },
+
+  helpLines: {
+    title: "Get help",
+    call: "Call",
+    lines: {
+      police: {
+        name: "Police",
+        detail: "Emergencies, or if you sent money or are in danger. English interpretation available.",
+      },
+      scamReport: {
+        name: "Voice phishing & smishing report",
+        detail: "Police-run 24/7 center: report scam calls and texts, get help stopping payments.",
+      },
+      fss: {
+        name: "Financial Supervisory Service",
+        detail: "Advice and reports on financial fraud and illegal loans. Call charges apply.",
+      },
+      kisa: {
+        name: "KISA (spam & hacking)",
+        detail: "Report spam texts, smishing links and hacking.",
+      },
+      immigration: {
+        name: "Immigration Contact Center",
+        detail: "Check if a visa or immigration message is real. Many languages available.",
+      },
+    },
+  },
+
   offline: {
     title: "You're offline",
     body: "Check your connection and try again. Pages you opened before may still work.",
