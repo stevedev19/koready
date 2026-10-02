@@ -10,7 +10,7 @@ import { SlangCard } from "./SlangCard";
 import { WeatherCard } from "./WeatherCard";
 
 const fallback = (
-  <div className="rounded-2xl border border-border bg-surface p-4">
+  <div className="rounded-card border border-card-border bg-surface p-5 shadow-card">
     <CardError />
   </div>
 );
@@ -19,7 +19,7 @@ export function HomeScreen() {
   const [district, setDistrict] = useDistrict();
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <DistrictPicker district={district} onChange={setDistrict} />
       {/* key resets a card's boundary when the district changes */}
       <ErrorBoundary key={`w-${district.id}`} fallback={fallback}>

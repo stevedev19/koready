@@ -1,11 +1,11 @@
 "use client";
 
+import { Banknote } from "lucide-react";
 import { useApi } from "@/hooks/useApi";
 import { t } from "@/lib/strings";
 import type { ExchangeData } from "@/lib/types";
 import { Card, CardError, CardLoading } from "./Card";
 
-const FLAGS: Record<string, string> = { USD: "🇺🇸", EUR: "🇪🇺", JPY: "🇯🇵", CNY: "🇨🇳" };
 const krw = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 export function ExchangeCard() {
@@ -14,7 +14,7 @@ export function ExchangeCard() {
   return (
     <Card
       title={t.exchange.title}
-      icon="💱"
+      icon={Banknote}
       footer={
         <>
           <p>{t.exchange.note}</p>
@@ -30,14 +30,11 @@ export function ExchangeCard() {
       {result.status === "success" && (
         <ul className="divide-y divide-border">
           {result.data.rates.map((r) => (
-            <li key={r.currency} className="flex items-center justify-between py-2">
-              <span className="flex items-center gap-2">
-                <span aria-hidden="true">{FLAGS[r.currency]}</span>
-                <span className="font-medium">
-                  {r.unit} {r.currency}
-                </span>
+            <li key={r.currency} className="flex items-center justify-between gap-3 py-2.5">
+              <span className="font-bold">
+                {r.unit} {r.currency}
               </span>
-              <span className="text-lg font-semibold tabular-nums">₩{krw.format(r.krw)}</span>
+              <span className="text-lg font-extrabold tabular-nums">₩{krw.format(r.krw)}</span>
             </li>
           ))}
         </ul>

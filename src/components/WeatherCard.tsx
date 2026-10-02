@@ -1,27 +1,40 @@
 "use client";
 
+import {
+  Cloud,
+  CloudDrizzle,
+  CloudFog,
+  CloudLightning,
+  CloudRain,
+  CloudSnow,
+  CloudSun,
+  Sun,
+  Thermometer,
+  type LucideIcon,
+} from "lucide-react";
 import { useApi } from "@/hooks/useApi";
 import { t } from "@/lib/strings";
 import type { WeatherCodeKey, WeatherData } from "@/lib/types";
 import { Card, CardError, CardLoading } from "./Card";
+import { IconTile } from "./ui/IconTile";
 
-const ICONS: Record<WeatherCodeKey, string> = {
-  clear: "☀️",
-  mostlyClear: "🌤️",
-  partlyCloudy: "⛅",
-  overcast: "☁️",
-  fog: "🌫️",
-  drizzle: "🌦️",
-  freezingDrizzle: "🌧️",
-  rain: "🌧️",
-  freezingRain: "🌧️",
-  snow: "🌨️",
-  snowGrains: "🌨️",
-  showers: "🌦️",
-  snowShowers: "🌨️",
-  thunderstorm: "⛈️",
-  thunderstormHail: "⛈️",
-  unknown: "🌡️",
+const ICONS: Record<WeatherCodeKey, LucideIcon> = {
+  clear: Sun,
+  mostlyClear: CloudSun,
+  partlyCloudy: CloudSun,
+  overcast: Cloud,
+  fog: CloudFog,
+  drizzle: CloudDrizzle,
+  freezingDrizzle: CloudDrizzle,
+  rain: CloudRain,
+  freezingRain: CloudRain,
+  snow: CloudSnow,
+  snowGrains: CloudSnow,
+  showers: CloudRain,
+  snowShowers: CloudSnow,
+  thunderstorm: CloudLightning,
+  thunderstormHail: CloudLightning,
+  unknown: Thermometer,
 };
 
 const deg = (n: number) => `${Math.round(n)}°`;
@@ -32,21 +45,23 @@ export function WeatherCard({ districtId }: { districtId: string }) {
   return (
     <Card
       title={t.weather.title}
-      icon="🌤️"
+      icon={CloudSun}
       footer={<a href="https://open-meteo.com/" className="underline" target="_blank" rel="noopener noreferrer">{t.weather.attribution}</a>}
     >
       {result.status === "loading" && <CardLoading />}
       {result.status === "error" && <CardError onRetry={result.retry} />}
       {result.status === "success" && (
         <div>
-          <div className="flex items-center gap-3">
-            <span className="text-5xl" aria-hidden="true">{ICONS[result.data.condition]}</span>
+          <div className="flex items-start justify-between gap-3">
             <div>
-              <p className="text-4xl font-bold">{deg(result.data.temperature)}C</p>
-              <p className="text-muted">{t.weather.codes[result.data.condition]}</p>
+              <p className="text-[2.75rem] leading-none font-extrabold tracking-[-0.035em] tabular-nums">
+                {deg(result.data.temperature)}C
+              </p>
+              <p className="mt-1.5 text-lg font-semibold">{t.weather.codes[result.data.condition]}</p>
             </div>
+            <IconTile icon={ICONS[result.data.condition]} tone="blue" size="lg" />
           </div>
-          <dl className="mt-3 grid grid-cols-3 gap-2">
+          <dl className="mt-4 grid grid-cols-2 gap-2 min-[380px]:grid-cols-3">
             <Stat label={t.weather.feelsLike} value={deg(result.data.feelsLike)} />
             <Stat label={`${t.weather.high} / ${t.weather.low}`} value={`${deg(result.data.high)} / ${deg(result.data.low)}`} />
             {result.data.rainChance !== null && <Stat label={t.weather.rainChance} value={`${result.data.rainChance}%`} />}
@@ -61,9 +76,9 @@ export function WeatherCard({ districtId }: { districtId: string }) {
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg bg-background px-2 py-1.5">
+    <div className="rounded-xl bg-surface-2 px-3 py-2">
       <dt className="text-sm text-muted">{label}</dt>
-      <dd className="text-base font-semibold">{value}</dd>
+      <dd className="font-bold tabular-nums">{value}</dd>
     </div>
   );
 }
