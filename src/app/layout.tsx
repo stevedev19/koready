@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { AuraBackground } from "@/components/AuraBackground";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { TabBar } from "@/components/TabBar";
 import { t } from "@/lib/strings";
@@ -19,7 +20,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f2f4f6" },
+    { media: "(prefers-color-scheme: light)", color: "#faf8f2" },
     { media: "(prefers-color-scheme: dark)", color: "#101318" },
   ],
 };
@@ -28,7 +29,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
-        <main className="mx-auto flex w-full max-w-lg flex-1 flex-col px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
+        <AuraBackground />
+        <main className="relative z-[1] mx-auto flex w-full max-w-lg flex-1 flex-col px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
           {children}
         </main>
         <TabBar />
