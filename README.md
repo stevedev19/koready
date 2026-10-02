@@ -41,6 +41,7 @@ npm run build && npm start
 - `src/lib/helpLines.ts`: help phone numbers, each with the official source it was verified against
 - `data/clinics.json`: problem categories → clinic types, and Korean phrases (`needs_native_review: true` until checked)
 - `src/lib/mapLinks.ts`: plain Naver / Kakao / Google Maps search links (no map API, no keys)
+- `data/recycling-<district>.json`: recycling guide per district, from official district sources. **To add a district, add one file** (same shape as `recycling-gangnam.json`, `district.id` matching the file name); it's picked up at build time with no code changes, and a bad file fails the build with a clear error
 
 ## Scam checker tests
 
