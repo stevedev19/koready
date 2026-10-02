@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: t.explore.slang.title };
 
 export default function SlangArchivePage() {
   return (
-    <LocalScreen title={t.explore.slang.title} icon="📚" backHref="/explore" backLabel={t.explore.back} notice={null}>
+    <LocalScreen title={t.explore.slang.title} backHref="/explore" backLabel={t.explore.back} notice={null}>
       <SlangArchive />
     </LocalScreen>
   );

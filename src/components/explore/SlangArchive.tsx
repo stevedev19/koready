@@ -1,8 +1,12 @@
 "use client";
 
+import { ChevronRight, Search, SearchX } from "lucide-react";
 import { useId, useState } from "react";
 import { SLANG, type SlangTone } from "@/lib/slang";
 import { t } from "@/lib/strings";
+import { fieldClass } from "../ui/button";
+import { ChipGroup, Tag } from "../ui/Chips";
+import { EmptyState } from "../ui/States";
 
 const s = t.explore.slang;
 const TONES = Object.keys(t.slang.tone) as SlangTone[];
@@ -24,56 +28,59 @@ export function SlangArchive() {
   return (
     <div className="space-y-4">
       <div role="search" className="space-y-3">
-        <label htmlFor={searchId} className="block font-semibold">{s.searchLabel}</label>
-        <input
-          id={searchId}
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder={s.searchPlaceholder}
-          autoComplete="off"
-          className="min-h-12 w-full rounded-lg border border-border bg-surface px-3 text-base focus-visible:outline-2 focus-visible:outline-accent"
-        />
-        <div className="flex flex-wrap gap-2" role="group" aria-label={s.toneLabel}>
-          {[null, ...TONES].map((value) => (
-            <button
-              key={value ?? "all"}
-              type="button"
-              aria-pressed={tone === value}
-              onClick={() => setTone(value)}
-              className={`min-h-11 rounded-full border-2 px-4 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-                tone === value ? "border-accent bg-accent text-accent-contrast" : "border-border bg-surface"
-              }`}
-            >
-              {value ? t.slang.tone[value] : s.allTones}
-            </button>
-          ))}
+        <label htmlFor={searchId} className="block px-1 font-bold">{s.searchLabel}</label>
+        <div className="relative">
+          <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-placeholder" />
+          <input
+            id={searchId}
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={s.searchPlaceholder}
+            autoComplete="off"
+            className={`${fieldClass} pl-12`}
+          />
         </div>
+        <ChipGroup<SlangTone | null>
+          label={s.toneLabel}
+          value={tone}
+          onChange={setTone}
+          options={[{ value: null, label: s.allTones }, ...TONES.map((v) => ({ value: v, label: t.slang.tone[v] }))]}
+        />
       </div>
 
-      <p aria-live="polite" className="text-muted">
+      <p aria-live="polite" className={results.length === 0 ? "sr-only" : "px-1 font-bold text-muted"}>
         {results.length === 0 ? s.noResults : `${results.length} ${s.count}`}
       </p>
+      {results.length === 0 && (
+        <div className="rounded-card border border-card-border bg-surface shadow-card">
+          <EmptyState icon={SearchX} title={s.noResults} />
+        </div>
+      )}
 
       <ul className="space-y-2">
         {results.map((entry) => (
           <li key={entry.id}>
-            <details className="group rounded-2xl border border-border bg-surface px-4 py-3 shadow-sm">
-              <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 focus-visible:outline-2 focus-visible:outline-accent [&::-webkit-details-marker]:hidden">
+            <details className="group rounded-card border border-card-border bg-surface px-4 py-2.5 shadow-card">
+              <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
                 <span className="flex-1">
-                  <span lang="ko" className="text-xl font-bold">{entry.term}</span>{" "}
+                  <span lang="ko" className="text-[1.375rem] font-extrabold">{entry.term}</span>{" "}
                   <span className="text-muted italic">{entry.romanization}</span>
                   <span className="block">{entry.meaning}</span>
                 </span>
-                <span aria-hidden="true" className="text-2xl text-muted transition-transform group-open:rotate-90">›</span>
+                <ChevronRight
+                  aria-hidden="true"
+                  className="size-5 shrink-0 text-placeholder transition-transform group-open:rotate-90"
+                />
               </summary>
               <div className="space-y-2 pt-3">
-                <p className="text-sm font-semibold">
-                  {t.slang.tone[entry.tone]} · {t.slang.usage[entry.usage_level]}
+                <p className="flex flex-wrap gap-2">
+                  <Tag className="bg-surface-2 text-foreground">{t.slang.tone[entry.tone]}</Tag>
+                  <Tag className="bg-surface-2 text-foreground">{t.slang.usage[entry.usage_level]}</Tag>
                 </p>
                 <ul className="space-y-2">
                   {entry.examples.map((ex) => (
-                    <li key={ex.ko} className="border-l-4 border-accent pl-3">
+                    <li key={ex.ko} className="rounded-xl bg-surface-2 px-3.5 py-2.5">
                       <p lang="ko">{ex.ko}</p>
                       <p className="text-muted">{ex.en}</p>
                     </li>

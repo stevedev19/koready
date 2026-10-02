@@ -4,8 +4,7 @@ import { ErrorState, LoadingState } from "./ui/States";
 
 type CardProps = {
   title: string;
-  /** Lucide icon. (A string is accepted while screens move off emoji.) */
-  icon?: LucideIcon | string;
+  icon?: LucideIcon;
   children: ReactNode;
   footer?: ReactNode;
   /** Keep the heading for screen readers but hide it visually. */
@@ -23,12 +22,7 @@ export function Card({ title, icon: Icon, children, footer, hideTitle }: CardPro
         id={headingId}
         className={hideTitle ? "sr-only" : "mb-3 flex items-center gap-2 text-lg font-extrabold"}
       >
-        {Icon &&
-          (typeof Icon === "string" ? (
-            <span aria-hidden="true">{Icon}</span>
-          ) : (
-            <Icon aria-hidden="true" className="size-[1.375rem] text-accent" />
-          ))}
+        {Icon && <Icon aria-hidden="true" className="size-[1.375rem] text-accent" />}
         {title}
       </h2>
       {children}

@@ -19,8 +19,6 @@ export function MedicalDisclaimer() {
 
 type LocalScreenProps = {
   title: string;
-  /** Kept for call sites; the large title carries the page now. */
-  icon?: string;
   children: ReactNode;
   /** Shown under the title. Defaults to the medical disclaimer. */
   notice?: ReactNode;
