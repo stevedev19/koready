@@ -25,6 +25,15 @@ export const en = {
   home: {
     todayIn: "Today in",
     pickDistrict: "Choose district",
+    glance: {
+      title: "Today at a glance",
+      weatherKo: "날씨",
+      airKo: "미세먼지",
+      exchangeKo: "환율",
+      air: "Air quality",
+      perUsd: "per 1 USD",
+      unavailable: "Not available",
+    },
   },
 
   common: {
@@ -47,6 +56,11 @@ export const en = {
 
   weather: {
     title: "Weather",
+    titleKo: "날씨",
+    umbrellaTip: {
+      title: "Take an umbrella",
+      body: "Rain chance today:",
+    },
     feelsLike: "Feels like",
     high: "High",
     low: "Low",
@@ -77,6 +91,22 @@ export const en = {
 
   air: {
     title: "Air quality",
+    titleKo: "미세먼지",
+    // Shown when the overall grade is not Good.
+    maskTip: {
+      moderate: {
+        title: "Sensitive to dust? Consider a KF94 mask",
+        body: "Children, older adults and people with asthma feel it first.",
+      },
+      bad: {
+        title: "Wear a KF94 mask outside",
+        body: "Keep windows closed and cut down on hard exercise outdoors.",
+      },
+      veryBad: {
+        title: "Wear a KF94 mask and stay inside if you can",
+        body: "Keep windows closed and avoid exercise outdoors.",
+      },
+    },
     pm10: "Fine dust (PM10)",
     pm25: "Ultrafine dust (PM2.5)",
     overall: "Overall",
@@ -99,6 +129,14 @@ export const en = {
 
   exchange: {
     title: "Exchange rate",
+    titleKo: "환율",
+    convert: {
+      title: "Quick convert",
+      amount: "Amount",
+      currency: "Currency",
+      swap: "Swap direction",
+      approx: "≈",
+    },
     per: "per",
     note: "Daily reference rates. Banks and exchange shops will differ.",
     attribution: "Rates by Frankfurter (central bank data)",
@@ -107,6 +145,7 @@ export const en = {
 
   slang: {
     title: "Slang of the day",
+    titleKo: "오늘의 신조어",
     meaning: "Meaning",
     examples: "Examples",
     tone: {

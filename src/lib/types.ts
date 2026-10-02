@@ -47,6 +47,8 @@ export type ExchangeCurrency = "USD" | "EUR" | "JPY" | "CNY";
 
 export type ExchangeData = {
   date: string;
+  /** When our server fetched the rates (ISO, from the upstream Date header). */
+  fetchedAt: string;
   rates: { currency: ExchangeCurrency; unit: number; krw: number }[];
 };
 
