@@ -1,9 +1,11 @@
 import clinicData from "../../data/clinics.json";
+import type { Audience } from "./audience";
 
 export type ClinicType = {
   ko: string;
   romanization: string;
   en: string;
+  audience: Audience;
   handles: string;
   search: string;
   needs_native_review: boolean;
@@ -25,6 +27,7 @@ export type Phrase = {
   ko: string;
   romanization: string;
   en: string;
+  audience: Audience;
   needs_native_review: boolean;
 };
 

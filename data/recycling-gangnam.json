@@ -1,4 +1,5 @@
 {
+  "audience": "resident",
   "district": { "id": "gangnam", "name": "Gangnam-gu", "nameKo": "강남구", "city": "Seoul" },
   "last_checked": "2026-10-02",
   "needs_native_review": true,

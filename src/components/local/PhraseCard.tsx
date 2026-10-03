@@ -2,6 +2,8 @@
 
 import { Copy, Maximize2, MessageSquareText } from "lucide-react";
 import { useState } from "react";
+import { useAudience } from "@/hooks/useAudience";
+import { byAudience } from "@/lib/audience";
 import { copyText } from "@/lib/clipboard";
 import type { Phrase } from "@/lib/clinics";
 import { t } from "@/lib/strings";
@@ -13,6 +15,9 @@ import { Toast, useToast } from "../ui/Toast";
 export function PhraseCard({ title, phrases }: { title: string; phrases: Phrase[] }) {
   const [shown, setShown] = useState<StaffText | null>(null);
   const [toast, showToast] = useToast();
+  // Phrases tagged for the visitor / resident choice come first; none are removed.
+  const [audience] = useAudience();
+  const ordered = byAudience(phrases, audience === "visitor" || audience === "resident" ? audience : "all");
 
   async function onCopy(phrase: Phrase) {
     if (await copyText(phrase.ko)) showToast(t.local.phrases.copied);
@@ -25,7 +30,7 @@ export function PhraseCard({ title, phrases }: { title: string; phrases: Phrase[
       footer={phrases.some((p) => p.needs_native_review) ? t.local.phrases.reviewNote : undefined}
     >
       <ul className="space-y-2.5">
-        {phrases.map((phrase) => (
+        {ordered.map((phrase) => (
           <li key={phrase.id} className="rounded-2xl bg-surface-2 p-4">
             <p lang="ko" className="text-[1.375rem] leading-snug font-extrabold">{phrase.ko}</p>
             <p className="text-muted-foreground italic">{phrase.romanization}</p>

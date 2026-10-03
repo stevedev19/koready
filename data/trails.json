@@ -6,6 +6,7 @@
       "title": "Gangneung coast: BTS, Goblin & the fish market",
       "city": "Gangneung",
       "cityKo": "강릉",
+      "audience": "all",
       "region": "Gangneung, Gangwon",
       "regionKo": "강원 강릉",
       "tags": [
@@ -140,6 +141,7 @@
       "title": "Busan on screen: Nampo markets to Huinnyeoul",
       "city": "Busan",
       "cityKo": "부산",
+      "audience": "all",
       "region": "Busan",
       "regionKo": "부산",
       "tags": [
@@ -252,6 +254,7 @@
       "title": "Old Seoul: palace, hanok alleys & Gwangjang Market",
       "city": "Seoul",
       "cityKo": "서울",
+      "audience": "visitor",
       "region": "Jongno, Seoul",
       "regionKo": "서울 종로구",
       "tags": [
@@ -367,6 +370,7 @@
       "title": "Jeonju: hanok village, royal shrine & night market",
       "city": "Jeonju",
       "cityKo": "전주",
+      "audience": "all",
       "region": "Jeonju, Jeonbuk",
       "regionKo": "전북 전주",
       "tags": [
@@ -472,6 +476,7 @@
       "title": "Jeju east coast: Sunrise Peak & When Life Gives You Tangerines",
       "city": "Jeju",
       "cityKo": "제주",
+      "audience": "all",
       "region": "Seongsan, Jeju",
       "regionKo": "제주 서귀포시 성산읍",
       "tags": [

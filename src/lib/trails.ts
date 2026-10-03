@@ -1,4 +1,5 @@
 import trailData from "../../data/trails.json";
+import type { Audience } from "./audience";
 
 export type TrailTag = "kpop" | "kdrama" | "film" | "food" | "nature" | "culture";
 
@@ -25,6 +26,7 @@ export type Trail = {
   /** City used to sort and group trails on Home. */
   city: string;
   cityKo: string;
+  audience: Audience;
   region: string;
   regionKo: string;
   tags: TrailTag[];

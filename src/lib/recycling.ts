@@ -1,5 +1,6 @@
 // Types and search for district recycling guides (data/recycling-<district>.json).
 // Shared by the server loader and the client guide.
+import type { Audience } from "./audience";
 
 export type Weekday = "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun";
 export const WEEKDAYS: Weekday[] = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
@@ -22,6 +23,8 @@ export type RecyclingItem = {
 };
 
 export type RecyclingGuide = {
+  /** Who the guide is mainly for; "all" if missing. */
+  audience?: Audience;
   district: { id: string; name: string; nameKo: string; city: string };
   last_checked: string;
   needs_native_review: boolean;
