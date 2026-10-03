@@ -14,6 +14,7 @@ export const en = {
     safety: "Safety",
     local: "Local",
     explore: "Explore",
+    slang: "Slang",
   },
 
   comingSoon: {
@@ -178,6 +179,21 @@ export const en = {
       risky: "Risky — avoid with strangers",
     },
     reviewNote: "Not yet reviewed by a native speaker.",
+  },
+
+  // Slang tab: slang of the day, then the searchable archive.
+  slangPage: {
+    titleKo: "신조어",
+    intro: "Korean slang you'll hear from friends, online and on TV, with how safe it is to use.",
+    archive: {
+      title: "All slang",
+      searchLabel: "Search slang",
+      searchPlaceholder: "Word, romanization or meaning",
+      toneLabel: "Tone",
+      allTones: "All",
+      count: "words",
+      noResults: "No slang matches that.",
+    },
   },
 
   safety: {
@@ -518,12 +534,6 @@ export const en = {
     slang: {
       title: "Daily slang archive",
       hint: "Browse all the slang words",
-      searchLabel: "Search slang",
-      searchPlaceholder: "Word, romanization or meaning",
-      toneLabel: "Tone",
-      allTones: "All",
-      count: "words",
-      noResults: "No slang matches that.",
     },
   },
 

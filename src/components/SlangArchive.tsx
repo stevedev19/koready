@@ -4,13 +4,13 @@ import { ChevronRight, Search, SearchX } from "lucide-react";
 import { useId, useState } from "react";
 import { SLANG, type SlangTone } from "@/lib/slang";
 import { t } from "@/lib/strings";
-import { Input } from "../ui/input";
-import { ChipGroup } from "../ui/Chips";
-import { EmptyState } from "../ui/States";
-import { Card as CardSurface } from "../ui/card";
-import { Badge } from "../ui/badge";
+import { Input } from "./ui/input";
+import { ChipGroup } from "./ui/Chips";
+import { EmptyState } from "./ui/States";
+import { Card as CardSurface } from "./ui/card";
+import { Badge } from "./ui/badge";
 
-const s = t.explore.slang;
+const s = t.slangPage.archive;
 const TONES = Object.keys(t.slang.tone) as SlangTone[];
 
 const normalize = (text: string) => text.normalize("NFKC").toLowerCase().replace(/\s+/g, "");

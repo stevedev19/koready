@@ -9,7 +9,10 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.*.*", "10.*.*.*", "172.*.*.*"],
   // Old URLs from before the navigation change, so saved links and bookmarks keep working.
   async redirects() {
-    return [{ source: "/explore/trails/:id", destination: "/trails/:id", permanent: true }];
+    return [
+      { source: "/explore/trails/:id", destination: "/trails/:id", permanent: true },
+      { source: "/explore/slang", destination: "/slang", permanent: true },
+    ];
   },
   async headers() {
     return [

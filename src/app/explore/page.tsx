@@ -42,7 +42,7 @@ export default function ExplorePage() {
       <section aria-labelledby="slang-archive" className="space-y-3">
         <h2 id="slang-archive" className="px-1 text-xl font-extrabold">{t.explore.slang.title}</h2>
         <ListGroup>
-          <ListRow href="/explore/slang" icon={BookOpen} tone="violet" title={t.explore.slang.title} subtitle={t.explore.slang.hint} />
+          <ListRow href="/slang" icon={BookOpen} tone="violet" title={t.explore.slang.title} subtitle={t.explore.slang.hint} />
         </ListGroup>
       </section>
     </div>
