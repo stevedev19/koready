@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import { CheckRow } from "../ui/CheckRow";
 import type { Tone } from "../ui/IconTile";
 import { ListGroup, ListRow } from "../ui/List";
-import { Sheet } from "../ui/Sheet";
+import { BottomSheet } from "../ui/BottomSheet";
 import { ShowToStaff, type StaffText } from "../ui/ShowToStaff";
 import { Toast, useToast } from "../ui/Toast";
 
@@ -129,7 +129,7 @@ export function TrailStops({ trail }: { trail: Trail }) {
       </ol>
       <p className="px-1 text-[0.9375rem] text-muted-foreground">{s.progressNote}</p>
 
-      <Sheet open={mapStop !== null} onClose={() => setMapStop(null)} title={mapStop ? <span lang="ko">{mapStop.nameKo}</span> : ""}>
+      <BottomSheet open={mapStop !== null} onClose={() => setMapStop(null)} title={mapStop ? <span lang="ko">{mapStop.nameKo}</span> : ""}>
         {mapStop && (
           <>
             <p className="mb-2 text-sm font-bold text-muted-foreground">{t.local.clinic.openIn}</p>
@@ -164,7 +164,7 @@ export function TrailStops({ trail }: { trail: Trail }) {
             </div>
           </>
         )}
-      </Sheet>
+      </BottomSheet>
       <ShowToStaff text={shown} onClose={() => setShown(null)} />
       <Toast message={toast} />
     </section>

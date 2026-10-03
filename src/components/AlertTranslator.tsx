@@ -10,7 +10,7 @@ import { Button, buttonVariants, fieldClass } from "./ui/button";
 import { Card as CardSurface } from "./ui/card";
 import { ListGroup, ListRow } from "./ui/List";
 import { Disclaimer } from "./ui/Notice";
-import { Sheet } from "./ui/Sheet";
+import { BottomSheet } from "./ui/BottomSheet";
 
 // Privacy: the alert text lives only in this component's state. It is never sent,
 // stored or logged, and it is gone when you leave the page.
@@ -282,7 +282,7 @@ export function AlertTranslator() {
         <ListRow href="/safety/alerts" icon={BookOpen} tone="teal" title={s.learnLink} />
       </ListGroup>
 
-      <Sheet open={showSamples} onClose={() => setShowSamples(false)} title={s.samples}>
+      <BottomSheet open={showSamples} onClose={() => setShowSamples(false)} title={s.samples}>
         <p className="mb-3 text-muted-foreground">{s.samplesHint}</p>
         <ListGroup>
           {ALERT_SAMPLES.map((sample) => (
@@ -297,7 +297,7 @@ export function AlertTranslator() {
             />
           ))}
         </ListGroup>
-      </Sheet>
+      </BottomSheet>
 
       <div ref={resultRef} tabIndex={-1} className="focus:outline-none">
         {reading && <Result r={reading} />}

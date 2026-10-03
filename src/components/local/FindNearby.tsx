@@ -7,7 +7,7 @@ import { mapSearchLinks, type Coords } from "@/lib/mapLinks";
 import { t } from "@/lib/strings";
 import { Button } from "../ui/button";
 import { ListGroup, ListRow } from "../ui/List";
-import { Sheet } from "../ui/Sheet";
+import { BottomSheet } from "../ui/BottomSheet";
 import type { Tone } from "../ui/IconTile";
 
 type Status = "idle" | "locating" | "located" | "denied";
@@ -57,7 +57,7 @@ export function FindNearby({ query, label }: { query: string; label: string }) {
         {status === "locating" ? t.local.clinic.locating : `${t.local.clinic.findNearby} ${label}`}
       </Button>
 
-      <Sheet open={open} onClose={() => setOpen(false)} title={`${t.local.clinic.findNearby} ${label}`}>
+      <BottomSheet open={open} onClose={() => setOpen(false)} title={`${t.local.clinic.findNearby} ${label}`}>
         <p className="mb-2 text-sm font-bold text-muted-foreground">{t.local.clinic.openIn}</p>
         <ListGroup>
           {mapSearchLinks(query, coords).map(({ app, href }) => (
@@ -77,7 +77,7 @@ export function FindNearby({ query, label }: { query: string; label: string }) {
         <p className="mt-3 text-[0.9375rem] text-muted-foreground">
           {status === "located" ? t.local.clinic.locationNote : t.local.clinic.locationDenied}
         </p>
-      </Sheet>
+      </BottomSheet>
     </>
   );
 }

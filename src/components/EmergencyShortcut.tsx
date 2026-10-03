@@ -6,7 +6,7 @@ import { useState } from "react";
 import { HELP_LINES } from "@/lib/helpLines";
 import { t } from "@/lib/strings";
 import { Disclaimer } from "./ui/Notice";
-import { Sheet } from "./ui/Sheet";
+import { BottomSheet } from "./ui/BottomSheet";
 
 const s = t.emergencyShortcut;
 const spaced = (n: string) => n.split("").join(" ");
@@ -29,7 +29,7 @@ export function EmergencyShortcut() {
         <Phone aria-hidden="true" className="size-[1.125rem] text-destructive" strokeWidth={2.4} />
         {ambulance} · {police}
       </button>
-      <Sheet
+      <BottomSheet
         open={open}
         onClose={() => setOpen(false)}
         title={
@@ -76,7 +76,7 @@ export function EmergencyShortcut() {
           </Link>
           <Disclaimer>{t.safety.disclaimer}</Disclaimer>
         </div>
-      </Sheet>
+      </BottomSheet>
     </>
   );
 }
