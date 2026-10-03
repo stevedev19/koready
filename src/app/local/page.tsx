@@ -1,11 +1,7 @@
 import { HeartHandshake, Pill, Recycle, Siren, Stethoscope, Toothbrush, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CardError } from "@/components/Card";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
-import { ExchangeCard } from "@/components/ExchangeCard";
 import { MedicalDisclaimer } from "@/components/local/LocalScreen";
-import { Card } from "@/components/ui/card";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { t } from "@/lib/strings";
@@ -60,18 +56,6 @@ export default function LocalPage() {
         </ListGroup>
       </section>
 
-      <section aria-labelledby="money" className="space-y-3">
-        <h2 id="money" className="px-1 text-sm font-bold text-muted-foreground">{t.local.money}</h2>
-        <ErrorBoundary
-          fallback={
-            <Card>
-              <CardError />
-            </Card>
-          }
-        >
-          <ExchangeCard />
-        </ErrorBoundary>
-      </section>
     </div>
   );
 }

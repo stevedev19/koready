@@ -385,7 +385,6 @@ export const en = {
 
   local: {
     intro: "Find help close to you.",
-    money: "Money",
     hospital: {
       title: "Hospital & pharmacy helper",
       question: "What do you need?",

@@ -10,7 +10,7 @@ const s = t.quickActions;
 
 const ACTIONS = [
   { href: "/weather", ...s.weather, Icon: CloudSun },
-  { href: "/local#money", ...s.exchange, Icon: Banknote },
+  { href: "/local/money", ...s.exchange, Icon: Banknote },
   { href: "/local/recycling", ...s.recycling, Icon: Recycle },
 ] as const;
 
