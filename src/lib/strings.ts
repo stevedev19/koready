@@ -479,7 +479,7 @@ export const en = {
   },
 
   explore: {
-    intro: "Short self-guided trips outside Seoul, mixing K-culture spots with local markets and food.",
+    intro: "Short self-guided trips around Korea, mixing K-culture spots with local markets and food.",
     trailsTitle: "Trails",
     stopsCount: "stops",
     tags: {
