@@ -9,14 +9,15 @@ import { DistrictPicker } from "./DistrictPicker";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { ExchangeCard } from "./ExchangeCard";
 import { InstallHint } from "./InstallHint";
+import { Card } from "./ui/card";
 import { ListGroup, ListRow } from "./ui/List";
 import { SlangCard } from "./SlangCard";
 import { WeatherCard } from "./WeatherCard";
 
 const fallback = (
-  <div className="rounded-card border border-card-border bg-card p-5 shadow-card">
+  <Card>
     <CardError />
-  </div>
+  </Card>
 );
 
 export function HomeScreen() {

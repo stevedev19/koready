@@ -5,7 +5,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { useWakeLock } from "@/hooks/useWakeLock";
 import { copyText } from "@/lib/clipboard";
 import { t } from "@/lib/strings";
-import { buttonClass } from "./button";
+import { Button } from "./button";
 
 export type StaffText = { ko: string; en?: string; hint?: string };
 
@@ -59,18 +59,20 @@ export function ShowToStaff({ text, onClose }: { text: StaffText | null; onClose
           </div>
           <p aria-live="polite" className="sr-only">{copied ? t.local.phrases.copied : ""}</p>
           <div className="flex gap-2.5">
-            <button
+            <Button
               type="button"
               onClick={async () => setCopied(await copyText(text.ko))}
-              className={buttonClass("secondary", "lg", "flex-1 bg-black/10 text-inherit dark:bg-white/15")}
+              variant="outline"
+              size="lg"
+              className="flex-1 text-inherit dark:bg-white/15"
             >
               <Copy aria-hidden="true" className="size-5" />
               {copied ? t.local.phrases.copied : t.local.phrases.copy}
-            </button>
+            </Button>
             <form method="dialog" className="flex-[1.4]">
-              <button type="submit" autoFocus className={buttonClass("primary", "lg", "w-full")}>
+              <Button type="submit" autoFocus size="lg" className="w-full">
                 {t.local.phrases.close}
-              </button>
+              </Button>
             </form>
           </div>
         </div>

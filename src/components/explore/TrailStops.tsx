@@ -6,7 +6,7 @@ import { useVisited } from "@/hooks/useVisited";
 import { copyText } from "@/lib/clipboard";
 import { t } from "@/lib/strings";
 import type { Trail, TrailStop } from "@/lib/trails";
-import { buttonClass } from "../ui/button";
+import { Button } from "../ui/button";
 import { CheckRow } from "../ui/CheckRow";
 import type { Tone } from "../ui/IconTile";
 import { ListGroup, ListRow } from "../ui/List";
@@ -78,10 +78,10 @@ function StopCard({
           )}
         </dl>
 
-        <button type="button" onClick={onOpenMap} className={buttonClass("primary", "md", "mt-4 w-full")}>
+        <Button type="button" onClick={onOpenMap} className="mt-4 w-full">
           <MapIcon aria-hidden="true" className="size-5" />
           {s.map}
-        </button>
+        </Button>
 
         <p className="mt-3 text-[0.9375rem] text-muted-foreground">
           {s.lastChecked}: {stop.last_checked} ·{" "}
@@ -139,28 +139,28 @@ export function TrailStops({ trail }: { trail: Trail }) {
               ))}
             </ListGroup>
             <div className="mt-3 grid gap-2">
-              <button
+              <Button
                 type="button"
                 onClick={async () => {
                   if (await copyText(mapStop.nameKo)) showToast(s.copied);
                 }}
-                className={buttonClass("secondary")}
+                variant="outline"
               >
                 <Copy aria-hidden="true" className="size-5" />
                 {s.copyKorean}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 onClick={() => {
                   const stop = mapStop;
                   setMapStop(null);
                   setShown({ ko: stop.nameKo, en: stop.name });
                 }}
-                className={buttonClass("tonal")}
+                variant="tonal"
               >
                 <Maximize2 aria-hidden="true" className="size-5" />
                 {t.local.phrases.showLarge}
-              </button>
+              </Button>
             </div>
           </>
         )}

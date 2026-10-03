@@ -5,9 +5,10 @@ import { useId, useState } from "react";
 import { searchItems, WEEKDAYS, type RecyclingGuide as Guide, type RecyclingItem, type Weekday } from "@/lib/recycling";
 import { t } from "@/lib/strings";
 import { Card } from "../Card";
-import { buttonClass, fieldClass } from "../ui/button";
+import { buttonVariants, fieldClass } from "../ui/button";
 import { ChipGroup } from "../ui/Chips";
 import { EmptyState } from "../ui/States";
+import { Card as CardSurface } from "../ui/card";
 
 const s = t.local.recycling;
 
@@ -94,7 +95,7 @@ function NotSureCard({ guide, highlight }: { guide: Guide; highlight?: boolean }
     >
       <h2 id="not-sure" className="text-lg font-extrabold">{s.notSureTitle}</h2>
       <p className="mt-1">{s.notSureBody}</p>
-      <a href={`tel:${guide.contact.phone.replace(/-/g, "")}`} className={buttonClass("primary", "md", "mt-3 w-full")}>
+      <a href={`tel:${guide.contact.phone.replace(/-/g, "")}`} className={buttonVariants({ className: "mt-3 w-full" })}>
         <Phone aria-hidden="true" className="size-5" />
         {s.call} {guide.contact.phone}
       </a>
@@ -142,28 +143,30 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
 
       {results.length === 0 ? (
         <>
-          <div className="rounded-card border border-card-border bg-card shadow-card">
+          <CardSurface className="p-0">
             <EmptyState icon={SearchX} title={s.noResults} />
-          </div>
+          </CardSurface>
           <NotSureCard guide={guide} highlight />
         </>
       ) : (
         <ul className="space-y-2">
           {results.map((item) => (
             <li key={item.id}>
-              <details className="group rounded-card border border-card-border bg-card px-4 py-2 shadow-card">
-                <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
-                  <span className="flex-1">
-                    <span className="block text-lg leading-snug font-bold">{item.name}</span>
-                    <span lang="ko" className="block text-muted-foreground">{item.nameKo}</span>
-                  </span>
-                  <ChevronRight
-                    aria-hidden="true"
-                    className="size-5 shrink-0 text-placeholder transition-transform group-open:rotate-90"
-                  />
-                </summary>
-                <ItemDetail item={item} guide={guide} />
-              </details>
+              <CardSurface asChild className="group px-4 py-2">
+                <details>
+                  <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
+                    <span className="flex-1">
+                      <span className="block text-lg leading-snug font-bold">{item.name}</span>
+                      <span lang="ko" className="block text-muted-foreground">{item.nameKo}</span>
+                    </span>
+                    <ChevronRight
+                      aria-hidden="true"
+                      className="size-5 shrink-0 text-placeholder transition-transform group-open:rotate-90"
+                    />
+                  </summary>
+                  <ItemDetail item={item} guide={guide} />
+                </details>
+              </CardSurface>
             </li>
           ))}
         </ul>

@@ -6,7 +6,7 @@ import { copyText } from "@/lib/clipboard";
 import type { Phrase } from "@/lib/clinics";
 import { t } from "@/lib/strings";
 import { Card } from "../Card";
-import { buttonClass } from "../ui/button";
+import { Button } from "../ui/button";
 import { ShowToStaff, type StaffText } from "../ui/ShowToStaff";
 import { Toast, useToast } from "../ui/Toast";
 
@@ -31,18 +31,18 @@ export function PhraseCard({ title, phrases }: { title: string; phrases: Phrase[
             <p className="text-muted-foreground italic">{phrase.romanization}</p>
             <p className="mt-0.5">{phrase.en}</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
-              <button
+              <Button
                 type="button"
-                className={buttonClass("secondary", "md", "bg-card")}
+                variant="outline"
                 onClick={() => onCopy(phrase)}
                 aria-label={`${t.local.phrases.copy}: ${phrase.en}`}
               >
                 <Copy aria-hidden="true" className="size-5" />
                 {t.local.phrases.copy}
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
-                className={buttonClass("tonal")}
+                variant="tonal"
                 onClick={() =>
                   setShown({ ko: phrase.ko, en: phrase.en, hint: phrase.ko.includes("___") ? t.local.phrases.blankHint : undefined })
                 }
@@ -50,7 +50,7 @@ export function PhraseCard({ title, phrases }: { title: string; phrases: Phrase[
               >
                 <Maximize2 aria-hidden="true" className="size-5" />
                 {t.local.phrases.showLarge}
-              </button>
+              </Button>
             </div>
           </li>
         ))}

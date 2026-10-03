@@ -5,7 +5,7 @@ import { useState, useSyncExternalStore, type ReactNode } from "react";
 import { copyText } from "@/lib/clipboard";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
-import { buttonClass } from "./ui/button";
+import { Button } from "./ui/button";
 
 const s = t.installHint;
 const STORAGE_KEY = "ksk.installHint.dismissed";
@@ -97,14 +97,15 @@ export function InstallHint() {
           <p aria-live="polite" className="sr-only">
             {copied ? s.otherBrowser.copied : ""}
           </p>
-          <button
+          <Button
             type="button"
             onClick={async () => setCopied(await copyText(window.location.origin + "/"))}
-            className={buttonClass("tonal", "md", "w-full")}
+            variant="tonal"
+            className="w-full"
           >
             <Copy aria-hidden="true" className="size-5" />
             {copied ? s.otherBrowser.copied : s.otherBrowser.copy}
-          </button>
+          </Button>
         </>
       )}
     </Card>

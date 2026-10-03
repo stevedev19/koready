@@ -5,7 +5,7 @@ import { useState } from "react";
 import { copyText } from "@/lib/clipboard";
 import { mapSearchLinks, type Coords } from "@/lib/mapLinks";
 import { t } from "@/lib/strings";
-import { buttonClass } from "../ui/button";
+import { Button } from "../ui/button";
 import { ListGroup, ListRow } from "../ui/List";
 import { Sheet } from "../ui/Sheet";
 import type { Tone } from "../ui/IconTile";
@@ -52,10 +52,10 @@ export function FindNearby({ query, label }: { query: string; label: string }) {
 
   return (
     <>
-      <button type="button" onClick={onFind} disabled={status === "locating"} className={buttonClass("primary", "lg", "w-full")}>
+      <Button type="button" onClick={onFind} disabled={status === "locating"} size="lg" className="w-full">
         <LocateFixed aria-hidden="true" className="size-5" />
         {status === "locating" ? t.local.clinic.locating : `${t.local.clinic.findNearby} ${label}`}
-      </button>
+      </Button>
 
       <Sheet open={open} onClose={() => setOpen(false)} title={`${t.local.clinic.findNearby} ${label}`}>
         <p className="mb-2 text-sm font-bold text-muted-foreground">{t.local.clinic.openIn}</p>
@@ -64,14 +64,15 @@ export function FindNearby({ query, label }: { query: string; label: string }) {
             <ListRow key={app} href={href} external icon={MapIcon} tone={APP_TONE[app]} title={t.local.clinic.apps[app]} />
           ))}
         </ListGroup>
-        <button
+        <Button
           type="button"
           onClick={async () => setCopied(await copyText(query))}
-          className={buttonClass("secondary", "md", "mt-3 w-full")}
+          variant="outline"
+          className="mt-3 w-full"
         >
           <Copy aria-hidden="true" className="size-5" />
           {copied ? t.local.phrases.copied : t.explore.trail.copyKorean}
-        </button>
+        </Button>
         <p aria-live="polite" className="sr-only">{copied ? t.local.phrases.copied : ""}</p>
         <p className="mt-3 text-[0.9375rem] text-muted-foreground">
           {status === "located" ? t.local.clinic.locationNote : t.local.clinic.locationDenied}

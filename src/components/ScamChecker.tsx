@@ -5,7 +5,7 @@ import { useId, useRef, useState } from "react";
 import { checkMessage, MAX_INPUT_CHARS, type ScamCheckResult, type ScamVerdict } from "@/lib/scam/check";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
-import { buttonClass, fieldClass } from "./ui/button";
+import { Button, fieldClass } from "./ui/button";
 import { Disclaimer, StatusCard, type StatusTone } from "./ui/Notice";
 
 // Privacy: the message lives only in this component's state. It is never sent,
@@ -51,9 +51,9 @@ export function ScamChecker() {
             <label htmlFor={inputId} className="block font-bold">
               {t.scam.intro}
             </label>
-            <button type="button" onClick={onClear} disabled={!text && !result} className={buttonClass("text", "md", "-mr-2 shrink-0")}>
+            <Button type="button" onClick={onClear} disabled={!text && !result} variant="link" className="-mr-2 shrink-0">
               {t.scam.clear}
-            </button>
+            </Button>
           </div>
           <textarea
             id={inputId}
@@ -79,10 +79,10 @@ export function ScamChecker() {
           {text.length > MAX_INPUT_CHARS && <p className="text-[0.9375rem] text-muted-foreground">{t.scam.tooLong}</p>}
           {/* Main action sticks above the tab bar, within thumb reach (unstuck while typing, see globals.css). */}
           <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-card/90 p-1 backdrop-blur">
-            <button type="submit" disabled={!text.trim()} className={buttonClass("primary", "lg", "flex-1")}>
+            <Button type="submit" disabled={!text.trim()} size="lg" className="flex-1">
               <ScanSearch aria-hidden="true" className="size-5" />
               {t.scam.check}
-            </button>
+            </Button>
           </div>
         </form>
         <div className="mt-3">

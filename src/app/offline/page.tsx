@@ -1,6 +1,6 @@
 import { WifiOff } from "lucide-react";
 import type { Metadata } from "next";
-import { buttonClass } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/States";
 import { t } from "@/lib/strings";
 
@@ -15,7 +15,7 @@ export default function OfflinePage() {
       </EmptyState>
       {/* Plain link = full reload, which retries the network. */}
       {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-      <a href="/" className={buttonClass("primary", "lg", "mt-2")}>
+      <a href="/" className={buttonVariants({ size: "lg", className: "mt-2" })}>
         {t.offline.retry}
       </a>
     </div>

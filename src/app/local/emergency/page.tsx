@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Card } from "@/components/Card";
 import { ClinicTypeCard } from "@/components/local/ClinicTypeCard";
 import { LocalScreen } from "@/components/local/LocalScreen";
-import { buttonClass } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { EGEN_URL } from "@/lib/helpLines";
 import { t } from "@/lib/strings";
 
@@ -24,7 +24,7 @@ export default function EmergencyPage() {
             <li key={item}>{item}</li>
           ))}
         </ol>
-        <a href="tel:119" className={buttonClass("emergency", "xl", "mt-6 w-full")}>
+        <a href="tel:119" className={buttonVariants({ variant: "emergency", size: "xl", className: "mt-6 w-full" })}>
           <Phone aria-hidden="true" className="size-8" />
           {s.callButton}
         </a>

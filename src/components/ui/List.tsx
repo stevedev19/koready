@@ -1,17 +1,15 @@
 import { ChevronRight, ExternalLink, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Card } from "./card";
 import { IconTile, type Tone } from "./IconTile";
 
 /** Grouped list: rows share one rounded card with dividers. */
 export function ListGroup({ children, label }: { children: ReactNode; label?: string }) {
   return (
-    <ul
-      aria-label={label}
-      className="divide-y divide-border overflow-hidden rounded-card border border-card-border bg-card shadow-card"
-    >
-      {children}
-    </ul>
+    <Card asChild className="divide-y divide-border overflow-hidden p-0">
+      <ul aria-label={label}>{children}</ul>
+    </Card>
   );
 }
 

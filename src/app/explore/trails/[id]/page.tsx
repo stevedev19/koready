@@ -5,6 +5,7 @@ import { ExploreBanner } from "@/components/explore/ExploreBanner";
 import { TrailStops } from "@/components/explore/TrailStops";
 import { TrailTags } from "@/components/explore/TrailTags";
 import { Card } from "@/components/Card";
+import { Card as CardSurface } from "@/components/ui/card";
 import { LocalScreen } from "@/components/local/LocalScreen";
 import { t } from "@/lib/strings";
 import { getTrail, TRAILS } from "@/lib/trails";
@@ -33,7 +34,7 @@ export default async function TrailPage({ params }: PageProps<"/explore/trails/[
       backLabel={t.explore.back}
       notice={<ExploreBanner trailTitle={trail.title} />}
     >
-      <div className="space-y-3 rounded-card border border-card-border bg-card p-5 shadow-card">
+      <CardSurface className="space-y-3">
         <TrailTags tags={trail.tags} />
         <p className="font-bold">
           {trail.region} <span lang="ko" className="font-normal text-muted-foreground">({trail.regionKo})</span>
@@ -52,7 +53,7 @@ export default async function TrailPage({ params }: PageProps<"/explore/trails/[
             </div>
           ))}
         </dl>
-      </div>
+      </CardSurface>
 
       <Card title={s.gettingThere} icon={Train}>
         <ol className="list-decimal space-y-1.5 pl-5">

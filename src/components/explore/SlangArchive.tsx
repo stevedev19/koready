@@ -7,6 +7,7 @@ import { t } from "@/lib/strings";
 import { fieldClass } from "../ui/button";
 import { ChipGroup, Tag } from "../ui/Chips";
 import { EmptyState } from "../ui/States";
+import { Card as CardSurface } from "../ui/card";
 
 const s = t.explore.slang;
 const TONES = Object.keys(t.slang.tone) as SlangTone[];
@@ -53,42 +54,44 @@ export function SlangArchive() {
         {results.length === 0 ? s.noResults : `${results.length} ${s.count}`}
       </p>
       {results.length === 0 && (
-        <div className="rounded-card border border-card-border bg-card shadow-card">
+        <CardSurface className="p-0">
           <EmptyState icon={SearchX} title={s.noResults} />
-        </div>
+        </CardSurface>
       )}
 
       <ul className="space-y-2">
         {results.map((entry) => (
           <li key={entry.id}>
-            <details className="group rounded-card border border-card-border bg-card px-4 py-2.5 shadow-card">
-              <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
-                <span className="flex-1">
-                  <span lang="ko" className="text-[1.375rem] font-extrabold">{entry.term}</span>{" "}
-                  <span className="text-muted-foreground italic">{entry.romanization}</span>
-                  <span className="block">{entry.meaning}</span>
-                </span>
-                <ChevronRight
-                  aria-hidden="true"
-                  className="size-5 shrink-0 text-placeholder transition-transform group-open:rotate-90"
-                />
-              </summary>
-              <div className="space-y-2 pt-3">
-                <p className="flex flex-wrap gap-2">
-                  <Tag className="bg-surface-2 text-foreground">{t.slang.tone[entry.tone]}</Tag>
-                  <Tag className="bg-surface-2 text-foreground">{t.slang.usage[entry.usage_level]}</Tag>
-                </p>
-                <ul className="space-y-2">
-                  {entry.examples.map((ex) => (
-                    <li key={ex.ko} className="rounded-xl bg-surface-2 px-3.5 py-2.5">
-                      <p lang="ko">{ex.ko}</p>
-                      <p className="text-muted-foreground">{ex.en}</p>
-                    </li>
-                  ))}
-                </ul>
-                {entry.needs_native_review && <p className="text-[0.9375rem] text-muted-foreground">{t.slang.reviewNote}</p>}
-              </div>
-            </details>
+            <CardSurface asChild className="group px-4 py-2.5">
+              <details>
+                <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
+                  <span className="flex-1">
+                    <span lang="ko" className="text-[1.375rem] font-extrabold">{entry.term}</span>{" "}
+                    <span className="text-muted-foreground italic">{entry.romanization}</span>
+                    <span className="block">{entry.meaning}</span>
+                  </span>
+                  <ChevronRight
+                    aria-hidden="true"
+                    className="size-5 shrink-0 text-placeholder transition-transform group-open:rotate-90"
+                  />
+                </summary>
+                <div className="space-y-2 pt-3">
+                  <p className="flex flex-wrap gap-2">
+                    <Tag className="bg-surface-2 text-foreground">{t.slang.tone[entry.tone]}</Tag>
+                    <Tag className="bg-surface-2 text-foreground">{t.slang.usage[entry.usage_level]}</Tag>
+                  </p>
+                  <ul className="space-y-2">
+                    {entry.examples.map((ex) => (
+                      <li key={ex.ko} className="rounded-xl bg-surface-2 px-3.5 py-2.5">
+                        <p lang="ko">{ex.ko}</p>
+                        <p className="text-muted-foreground">{ex.en}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  {entry.needs_native_review && <p className="text-[0.9375rem] text-muted-foreground">{t.slang.reviewNote}</p>}
+                </div>
+              </details>
+            </CardSurface>
           </li>
         ))}
       </ul>

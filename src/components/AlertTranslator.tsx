@@ -6,7 +6,8 @@ import { ALERT_SAMPLES, MAX_ALERT_CHARS, translateAlert, type AlertReading } fro
 import { HELP_LINES } from "@/lib/helpLines";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
-import { buttonClass, fieldClass } from "./ui/button";
+import { Button, buttonVariants, fieldClass } from "./ui/button";
+import { Card as CardSurface } from "./ui/card";
 import { ListGroup, ListRow } from "./ui/List";
 import { Disclaimer } from "./ui/Notice";
 import { Sheet } from "./ui/Sheet";
@@ -18,10 +19,12 @@ const s = t.alerts;
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="rounded-card border border-card-border bg-card p-5 shadow-card">
-      <h4 className="mb-2.5 text-lg font-extrabold">{title}</h4>
-      {children}
-    </section>
+    <CardSurface asChild>
+      <section>
+        <h4 className="mb-2.5 text-lg font-extrabold">{title}</h4>
+        {children}
+      </section>
+    </CardSurface>
   );
 }
 
@@ -35,13 +38,13 @@ function NotUnderstoodCard() {
       </p>
       <p className="mt-2 text-lg">{s.notUnderstoodBody}</p>
       <div className="mt-4 grid grid-cols-2 gap-2.5">
-        <a href="tel:119" className={buttonClass("emergency", "lg")}>
+        <a href="tel:119" className={buttonVariants({ variant: "emergency", size: "lg" })}>
           <Phone aria-hidden="true" className="size-5" />
           {s.call119}
         </a>
         <a
           href={`tel:${HELP_LINES.travelHotline.number}`}
-          className={buttonClass("primary", "lg")}
+          className={buttonVariants({ size: "lg" })}
           aria-label={`${t.helpLines.call} ${t.helpLines.lines.travelHotline.name}, ${HELP_LINES.travelHotline.number}`}
         >
           <Phone aria-hidden="true" className="size-5" />
@@ -66,15 +69,17 @@ function Result({ r }: { r: AlertReading }) {
   return (
     <div className="space-y-3">
       {/* 0. The original alert, always first and never modified. */}
-      <section className="rounded-card border border-card-border bg-card p-5 shadow-card">
-        <h3 className="text-sm font-bold text-muted-foreground">{s.originalTitle}</h3>
-        <p lang="ko" className="mt-2 rounded-xl bg-surface-2 p-3.5 text-lg leading-relaxed whitespace-pre-wrap break-words">
-          {r.original}
-        </p>
-        <div className="mt-3">
-          <Disclaimer>{s.disclaimer}</Disclaimer>
-        </div>
-      </section>
+      <CardSurface asChild>
+        <section>
+          <h3 className="text-sm font-bold text-muted-foreground">{s.originalTitle}</h3>
+          <p lang="ko" className="mt-2 rounded-xl bg-surface-2 p-3.5 text-lg leading-relaxed whitespace-pre-wrap break-words">
+            {r.original}
+          </p>
+          <div className="mt-3">
+            <Disclaimer>{s.disclaimer}</Disclaimer>
+          </div>
+        </section>
+      </CardSurface>
 
       {!r.fullyUnderstood && <NotUnderstoodCard />}
 
@@ -221,17 +226,18 @@ export function AlertTranslator() {
             <label htmlFor={inputId} className="block font-bold">
               {s.label}
             </label>
-            <button
+            <Button
               type="button"
               onClick={() => {
                 setText("");
                 setReading(null);
               }}
               disabled={!text && !reading}
-              className={buttonClass("text", "md", "-mr-2 shrink-0")}
+              variant="link"
+              className="-mr-2 shrink-0"
             >
               {s.clear}
-            </button>
+            </Button>
           </div>
           <textarea
             id={inputId}
@@ -255,16 +261,16 @@ export function AlertTranslator() {
             {s.privacy}
           </p>
           {text.length > MAX_ALERT_CHARS && <p className="text-[0.9375rem] text-muted-foreground">{s.tooLong}</p>}
-          <button type="button" onClick={() => setShowSamples(true)} className={buttonClass("tonal", "md", "w-full")}>
+          <Button type="button" onClick={() => setShowSamples(true)} variant="tonal" className="w-full">
             <FlaskConical aria-hidden="true" className="size-5" />
             {s.samples}
-          </button>
+          </Button>
           {/* Main action sticks above the tab bar, within thumb reach (unstuck while typing, see globals.css). */}
           <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-card/90 p-1 backdrop-blur">
-            <button type="submit" disabled={!text.trim()} className={buttonClass("primary", "lg", "flex-1")}>
+            <Button type="submit" disabled={!text.trim()} size="lg" className="flex-1">
               <Languages aria-hidden="true" className="size-5" />
               {s.translate}
-            </button>
+            </Button>
           </div>
         </form>
         <div className="mt-3">

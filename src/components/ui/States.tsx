@@ -1,7 +1,7 @@
 import { CloudOff, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import { t } from "@/lib/strings";
-import { buttonClass } from "./button";
+import { Button } from "./button";
 import { IconTile, type Tone } from "./IconTile";
 
 export function EmptyState({
@@ -30,9 +30,9 @@ export function ErrorState({ onRetry }: { onRetry?: () => void }) {
       <IconTile icon={CloudOff} tone="amber" size="lg" />
       <p className="mt-3 font-extrabold">{t.common.error}</p>
       {onRetry && (
-        <button type="button" onClick={onRetry} className={buttonClass("tonal", "md", "mt-3")}>
+        <Button type="button" onClick={onRetry} variant="tonal" className="mt-3">
           {t.common.retry}
-        </button>
+        </Button>
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
+import { CardAction, CardContent, CardFooter, CardHeader, CardTitle, Card as UICard } from "./ui/card";
 import { ErrorState, LoadingState } from "./ui/States";
 
 type CardProps = {
@@ -15,31 +16,30 @@ type CardProps = {
   hideTitle?: boolean;
 };
 
+/** App card: shadcn Card parts with our title row (icon, English title, Korean label, meta). */
 export function Card({ title, titleKo, icon: Icon, meta, children, footer, hideTitle }: CardProps) {
   const headingId = `card-${title.toLowerCase().replace(/\W+/g, "-")}`;
   return (
-    <section
-      aria-labelledby={headingId}
-      className="rounded-card border border-card-border bg-card p-5 shadow-card"
-    >
-      <div className={hideTitle ? "contents" : "mb-3 flex items-center justify-between gap-2"}>
-        <h2
-          id={headingId}
-          className={hideTitle ? "sr-only" : "flex flex-wrap items-center gap-x-2 text-lg font-extrabold"}
-        >
-          {Icon && <Icon aria-hidden="true" className="size-[1.375rem] shrink-0 text-jade-icon" />}
-          {title}
-          {titleKo && (
-            <span lang="ko" className="text-[0.9375rem] font-semibold tracking-normal text-jade-text">
-              {titleKo}
-            </span>
-          )}
-        </h2>
-        {meta && !hideTitle && <div className="shrink-0 text-[0.9375rem] text-muted-foreground">{meta}</div>}
-      </div>
-      {children}
-      {footer && <div className="mt-4 space-y-1 text-[0.9375rem] text-muted-foreground">{footer}</div>}
-    </section>
+    <UICard asChild>
+      <section aria-labelledby={headingId}>
+        <CardHeader className={hideTitle ? "contents" : undefined}>
+          <CardTitle asChild className={hideTitle ? "sr-only" : undefined}>
+            <h2 id={headingId}>
+              {Icon && <Icon aria-hidden="true" className="size-[1.375rem] shrink-0 text-jade-icon" />}
+              {title}
+              {titleKo && (
+                <span lang="ko" className="text-[0.9375rem] font-semibold tracking-normal text-jade-text">
+                  {titleKo}
+                </span>
+              )}
+            </h2>
+          </CardTitle>
+          {meta && !hideTitle && <CardAction>{meta}</CardAction>}
+        </CardHeader>
+        <CardContent>{children}</CardContent>
+        {footer && <CardFooter>{footer}</CardFooter>}
+      </section>
+    </UICard>
   );
 }
 

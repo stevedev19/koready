@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ExploreBanner } from "@/components/explore/ExploreBanner";
 import { TrailTags } from "@/components/explore/TrailTags";
+import { Card } from "@/components/ui/card";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { t } from "@/lib/strings";
@@ -21,19 +22,18 @@ export default function ExplorePage() {
         <ul className="grid gap-3">
           {TRAILS.map((trail) => (
             <li key={trail.id}>
-              <Link
-                href={`/explore/trails/${trail.id}`}
-                className="flex items-center gap-3 rounded-card border border-card-border bg-card p-5 shadow-card"
-              >
-                <span className="min-w-0 flex-1">
-                  <TrailTags tags={trail.tags} />
-                  <span className="mt-2.5 block text-xl leading-snug font-extrabold">{trail.title}</span>
-                  <span className="mt-1 block text-[0.9375rem] text-muted-foreground">
-                    {trail.region} · {trail.estimatedTime} · {trail.stops.length} {t.explore.stopsCount}
+              <Card asChild className="flex items-center gap-3">
+                <Link href={`/explore/trails/${trail.id}`}>
+                  <span className="min-w-0 flex-1">
+                    <TrailTags tags={trail.tags} />
+                    <span className="mt-2.5 block text-xl leading-snug font-extrabold">{trail.title}</span>
+                    <span className="mt-1 block text-[0.9375rem] text-muted-foreground">
+                      {trail.region} · {trail.estimatedTime} · {trail.stops.length} {t.explore.stopsCount}
+                    </span>
                   </span>
-                </span>
-                <ChevronRight aria-hidden="true" className="size-5 shrink-0 text-placeholder" />
-              </Link>
+                  <ChevronRight aria-hidden="true" className="size-5 shrink-0 text-placeholder" />
+                </Link>
+              </Card>
             </li>
           ))}
         </ul>
