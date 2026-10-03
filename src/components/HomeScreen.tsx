@@ -8,6 +8,7 @@ import { CardError } from "./Card";
 import { DistrictPicker } from "./DistrictPicker";
 import { ErrorBoundary } from "./ErrorBoundary";
 import { ExchangeCard } from "./ExchangeCard";
+import { InstallHint } from "./InstallHint";
 import { ListGroup, ListRow } from "./ui/List";
 import { SlangCard } from "./SlangCard";
 import { WeatherCard } from "./WeatherCard";
@@ -24,6 +25,7 @@ export function HomeScreen() {
   return (
     <div className="space-y-3">
       <DistrictPicker district={district} onChange={setDistrict} />
+      <InstallHint />
       {/* key resets a card's boundary when the district changes */}
       <ErrorBoundary key={`w-${district.id}`} fallback={fallback}>
         <WeatherCard districtId={district.id} />

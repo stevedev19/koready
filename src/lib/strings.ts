@@ -36,6 +36,24 @@ export const en = {
     },
   },
 
+  // iPhone/iPad only: iOS has no install prompt, so Home explains how to add the app.
+  installHint: {
+    title: "Add to Home Screen",
+    dismiss: "Hide these instructions",
+    why: "Open it like an app, full screen, with one tap.",
+    safari: {
+      share: "Tap the Share button (a square with an arrow). If you don't see it, tap ••• first.",
+      add: "Scroll down and tap \"Add to Home Screen\".",
+      confirm: "Keep \"Open as Web App\" on if you see it, then tap \"Add\".",
+    },
+    otherBrowser: {
+      title: "Open this page in Safari",
+      body: "To add the app to your Home Screen, use Safari. Copy the link and paste it into Safari, or use your app's menu to open it in Safari.",
+      copy: "Copy link",
+      copied: "Link copied",
+    },
+  },
+
   common: {
     loading: "Loading…",
     error: "Couldn't load this right now.",
