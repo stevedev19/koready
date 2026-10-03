@@ -150,6 +150,18 @@ h3 {
   }
 }
 
+/*
+ * Quick-actions button (components/quick-actions.tsx).
+ * Pages that show it get extra bottom space so the last item scrolls clear of it.
+ * It hides whenever a dialog or bottom sheet is open (e.g. "show to staff").
+ */
+body:has([data-quick-actions]) main {
+  padding-bottom: calc(11rem + env(safe-area-inset-bottom));
+}
+body:has([role="dialog"]) [data-quick-actions] {
+  display: none;
+}
+
 @keyframes sheet-in {
   from {
     transform: translateY(100%);
