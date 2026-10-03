@@ -5,6 +5,7 @@ import { useId, useRef, useState } from "react";
 import { checkMessage, MAX_INPUT_CHARS, type ScamCheckResult, type ScamVerdict } from "@/lib/scam/check";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
+import { ImageTextButton, useImageText } from "./ImageText";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Disclaimer, ResultCard, type ResultTone } from "./ui/Notice";
@@ -25,6 +26,11 @@ export function ScamChecker() {
   const resultRef = useRef<HTMLHeadingElement>(null);
   const inputId = useId();
   const privacyId = useId();
+  // Screenshots are read in Korean and English: scam texts often mix both.
+  const ocr = useImageText(["kor", "eng"], (value) => {
+    setText(value);
+    setResult(null);
+  });
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
@@ -37,6 +43,7 @@ export function ScamChecker() {
   function onClear() {
     setText("");
     setResult(null);
+    ocr.reset();
   }
 
   // A generic "has a link" sign adds nothing when a more specific link sign matched.
@@ -63,6 +70,8 @@ export function ScamChecker() {
               setText(e.target.value);
               setResult(null); // a verdict must always match the text shown
             }}
+            onPaste={ocr.onPaste}
+            readOnly={ocr.busy}
             placeholder={t.scam.placeholder}
             aria-describedby={privacyId}
             rows={6}
@@ -78,9 +87,10 @@ export function ScamChecker() {
             {t.scam.privacy}
           </p>
           {text.length > MAX_INPUT_CHARS && <p className="text-[0.9375rem] text-muted-foreground">{t.scam.tooLong}</p>}
+          <ImageTextButton ocr={ocr} />
           {/* Main action sticks above the tab bar, within thumb reach (unstuck while typing, see globals.css). */}
           <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-card/90 p-1 backdrop-blur">
-            <Button type="submit" disabled={!text.trim()} size="lg" className="flex-1">
+            <Button type="submit" disabled={!text.trim() || ocr.busy} size="lg" className="flex-1">
               <ScanSearch aria-hidden="true" className="size-5" />
               {t.scam.check}
             </Button>

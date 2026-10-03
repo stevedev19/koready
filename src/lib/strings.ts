@@ -185,9 +185,24 @@ export const en = {
     disclaimer: "Not official advice. If unsure, contact the company or police.",
   },
 
+  imageText: {
+    upload: "Upload a screenshot",
+    hint: "Or paste a screenshot into the box. The image is read on your phone and is not sent or saved.",
+    loading: "Getting the text reader ready…",
+    loadingFirstTime: "First time only: downloading about 8 MB.",
+    reading: "Reading text from your image…",
+    done: "Text from your image is in the box. It may have mistakes. Check it and fix anything wrong before you continue.",
+    errors: {
+      not_image: "That file isn't an image. Choose a screenshot or photo.",
+      too_big: "That image is too large. Try a screenshot instead.",
+      no_text: "No text found in that image. Try a clearer screenshot, or type the message.",
+      failed: "Couldn't read that image. Check your connection (needed the first time), or type the message.",
+    },
+  },
+
   alerts: {
     title: "Alert translator",
-    intro: "Got an emergency or safety text in Korean (재난문자)? Paste it here to see what it says and what to do.",
+    intro: "Got an emergency or safety text in Korean (재난문자)? Paste it or upload a screenshot to see what it says and what to do.",
     label: "Paste the Korean alert text",
     placeholder: "Paste the alert here…",
     privacy: "Read on your phone only. The text is not sent, saved or logged.",
@@ -271,7 +286,7 @@ export const en = {
 
   scam: {
     title: "Scam checker",
-    intro: "Paste a text, KakaoTalk message or email you're not sure about.",
+    intro: "Paste a text, KakaoTalk message or email you're not sure about, or upload a screenshot.",
     placeholder: "Paste the message here…",
     privacy: "Checked on your phone only. Your message is not sent, saved or logged.",
     check: "Check message",
@@ -515,14 +530,16 @@ export const en = {
   privacy: {
     title: "Privacy",
     link: "Privacy: what stays on your phone",
-    updated: "Last updated: 2026-10-02",
+    updated: "Last updated: 2026-10-03",
     intro: "KReady has no accounts, no ads and no tracking or analytics. Here is exactly what happens to your information.",
     sections: [
       {
-        title: "Messages you paste",
+        title: "Messages and screenshots you check",
         body: [
           "The scam checker and alert translator run entirely in your browser.",
           "What you paste is never sent to our server, never saved, and never logged. It is gone when you leave the page.",
+          "Screenshots you upload or paste are read on your phone. The image is never uploaded, saved or logged.",
+          "The first time you read a screenshot, the app downloads its text reader (about 8 MB) from our site. Your browser keeps a copy of the language files so it is faster next time. They contain none of your data.",
           "Spellcheck and autofill are turned off in those text boxes so the text isn't shared with keyboard or spellcheck services.",
         ],
       },

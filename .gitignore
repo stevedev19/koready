@@ -43,3 +43,6 @@ next-env.d.ts
 # secrets (explicit, per CLAUDE.md)
 .env.local
 !.env.example
+
+# on-device OCR files, copied from node_modules (scripts/copy-ocr-assets.mjs)
+/public/ocr

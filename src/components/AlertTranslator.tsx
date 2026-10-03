@@ -6,6 +6,7 @@ import { ALERT_SAMPLES, MAX_ALERT_CHARS, translateAlert, type AlertReading } fro
 import { HELP_LINES } from "@/lib/helpLines";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
+import { ImageTextButton, useImageText } from "./ImageText";
 import { Button, buttonVariants } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { Card as CardSurface } from "./ui/card";
@@ -205,6 +206,11 @@ export function AlertTranslator() {
   const resultRef = useRef<HTMLDivElement>(null);
   const inputId = useId();
   const privacyId = useId();
+  // Alerts are Korean, but English is loaded too for the numbers, links and Latin words in them.
+  const ocr = useImageText(["kor", "eng"], (value) => {
+    setText(value);
+    setReading(null);
+  });
 
   function explain(value: string) {
     if (!value.trim()) return;
@@ -232,6 +238,7 @@ export function AlertTranslator() {
               onClick={() => {
                 setText("");
                 setReading(null);
+                ocr.reset();
               }}
               disabled={!text && !reading}
               variant="link"
@@ -248,6 +255,8 @@ export function AlertTranslator() {
               setText(e.target.value);
               setReading(null); // a result must always match the text shown
             }}
+            onPaste={ocr.onPaste}
+            readOnly={ocr.busy}
             placeholder={s.placeholder}
             aria-describedby={privacyId}
             rows={5}
@@ -262,13 +271,14 @@ export function AlertTranslator() {
             {s.privacy}
           </p>
           {text.length > MAX_ALERT_CHARS && <p className="text-[0.9375rem] text-muted-foreground">{s.tooLong}</p>}
+          <ImageTextButton ocr={ocr} />
           <Button type="button" onClick={() => setShowSamples(true)} variant="tonal" className="w-full">
             <FlaskConical aria-hidden="true" className="size-5" />
             {s.samples}
           </Button>
           {/* Main action sticks above the tab bar, within thumb reach (unstuck while typing, see globals.css). */}
           <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-card/90 p-1 backdrop-blur">
-            <Button type="submit" disabled={!text.trim()} size="lg" className="flex-1">
+            <Button type="submit" disabled={!text.trim() || ocr.busy} size="lg" className="flex-1">
               <Languages aria-hidden="true" className="size-5" />
               {s.translate}
             </Button>
