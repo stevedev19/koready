@@ -13,6 +13,8 @@ import { trailsByCity } from "@/lib/trails";
 export default function HomePage() {
   return (
     <div className="space-y-5">
+      {/* Page heading for screen readers; "For you" (when shown) and "Trails" are its sections. */}
+      <h1 className="sr-only">{t.tabs.home}</h1>
       <AudienceWelcome />
       <InstallHint />
       <ForYou />

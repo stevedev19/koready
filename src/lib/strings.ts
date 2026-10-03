@@ -69,7 +69,7 @@ export const en = {
       title: "Settings",
       link: "Settings",
       imLabel: "I'm…",
-      hint: "Changes the \"For you\" cards on Home. Nothing is hidden.",
+      hint: "Visiting or Living here adds matching \"For you\" cards to Home. Mix of both shows none. Nothing else is hidden.",
       options: { visitor: "Visiting", resident: "Living here", all: "Mix of both" },
     },
     forYou: {

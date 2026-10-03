@@ -13,9 +13,11 @@ export const FOR_YOU_HREF: Record<ForYouCard, string> = {
   doctor: "/local/doctor",
 };
 
-/** Featured cards per audience. Only order and selection change; nothing is hidden elsewhere. */
-export const FOR_YOU: Record<Audience, ForYouCard[]> = {
+/**
+ * Featured cards for a visitor or resident. Skip / "Mix of both" shows no For-you
+ * section at all. Nothing is hidden elsewhere: every card's page is still in the tabs.
+ */
+export const FOR_YOU: Record<Exclude<Audience, "all">, ForYouCard[]> = {
   visitor: ["exchange", "pharmacy", "alerts", "trail"],
   resident: ["weather", "recycling", "slang", "doctor"],
-  all: ["weather", "exchange", "pharmacy", "slang"],
 };

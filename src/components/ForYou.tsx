@@ -22,15 +22,16 @@ const LOOK: Record<ForYouCard, { icon: LucideIcon; tone: Tone }> = {
   doctor: { icon: Stethoscope, tone: "blue" },
 };
 
-/** "For you": 4 featured cards picked by the visitor / resident choice. It is Home's page heading. */
+/** "For you": 4 featured cards for Visiting or Living here. Not shown for Skip / Mix of both. */
 export function ForYou() {
   const [audience] = useAudience();
-  const cards = FOR_YOU[audience === "visitor" || audience === "resident" ? audience : "all"];
+  if (audience !== "visitor" && audience !== "resident") return null;
+  const cards = FOR_YOU[audience];
 
   return (
     <section aria-labelledby="for-you" className="space-y-3">
       <div className="flex items-center justify-between px-1">
-        <h1 id="for-you" className="text-[1.75rem] leading-tight font-extrabold tracking-[-0.025em]">{s.title}</h1>
+        <h2 id="for-you" className="text-[1.75rem] leading-tight font-extrabold tracking-[-0.025em]">{s.title}</h2>
         <Link href="/settings" aria-label={s.changeLabel} className="inline-flex min-h-12 items-center px-2 font-bold text-primary">
           {s.change}
         </Link>
