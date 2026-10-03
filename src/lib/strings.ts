@@ -75,6 +75,7 @@ export const en = {
     forYou: {
       title: "For you",
       change: "Change",
+      changeLabel: "Change whether you're visiting or living here",
       cards: {
         exchange: { title: "Exchange rate", hint: "Won to your money" },
         pharmacy: { title: "Pharmacy phrases", hint: "Ask for what you need" },

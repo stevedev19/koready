@@ -1,6 +1,7 @@
 import { ChevronRight, Lock, Settings } from "lucide-react";
 import { TrailBanner } from "@/components/trails/TrailBanner";
 import { TrailTags } from "@/components/trails/TrailTags";
+import { AudienceWelcome } from "@/components/AudienceWelcome";
 import { ForYou } from "@/components/ForYou";
 import { InstallHint } from "@/components/InstallHint";
 import { Pressable } from "@/components/pressable";
@@ -12,6 +13,7 @@ import { trailsByCity } from "@/lib/trails";
 export default function HomePage() {
   return (
     <div className="space-y-5">
+      <AudienceWelcome />
       <InstallHint />
       <ForYou />
       <header className="space-y-1">

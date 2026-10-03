@@ -31,7 +31,7 @@ export function ForYou() {
     <section aria-labelledby="for-you" className="space-y-3">
       <div className="flex items-center justify-between px-1">
         <h1 id="for-you" className="text-[1.75rem] leading-tight font-extrabold tracking-[-0.025em]">{s.title}</h1>
-        <Link href="/settings" className="inline-flex min-h-12 items-center px-2 font-bold text-primary">
+        <Link href="/settings" aria-label={s.changeLabel} className="inline-flex min-h-12 items-center px-2 font-bold text-primary">
           {s.change}
         </Link>
       </div>
