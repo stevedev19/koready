@@ -4,13 +4,16 @@ import { LocalScreen } from "@/components/local/LocalScreen";
 import { RecyclingBanner } from "@/components/local/RecyclingBanner";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { listRecyclingGuides } from "@/lib/server/recycling";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.local.recycling;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.local.recycling.title };
+}
 
-export const metadata: Metadata = { title: s.title };
-
-export default function RecyclingIndexPage() {
+export default async function RecyclingIndexPage() {
+  const t = await getT();
+  const s = t.local.recycling;
   const districts = listRecyclingGuides();
   return (
     <LocalScreen title={s.title} notice={<RecyclingBanner />}>

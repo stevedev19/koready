@@ -1,6 +1,6 @@
 import { Briefcase, CircleCheck, MessageCircle, Smile, TriangleAlert, Users, Zap, type LucideIcon } from "lucide-react";
 import type { SlangEntry, SlangTone, SlangUsage } from "@/lib/slang";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Badge, type BadgeVariant } from "./ui/badge";
 
 // Icon + text on every badge, so meaning never depends on color alone.
@@ -13,6 +13,7 @@ const USAGE: Record<SlangUsage, { icon: LucideIcon; variant: BadgeVariant }> = {
 
 /** Tone and usage-level badges for a slang entry. */
 export function SlangBadges({ entry }: { entry: Pick<SlangEntry, "tone" | "usage_level"> }) {
+  const t = useT();
   const ToneIcon = TONE_ICON[entry.tone];
   const { icon: UsageIcon, variant } = USAGE[entry.usage_level];
   return (

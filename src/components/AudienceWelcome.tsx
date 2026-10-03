@@ -3,19 +3,19 @@
 import { House, Lock, Luggage } from "lucide-react";
 import { useAudience } from "@/hooks/useAudience";
 import type { Audience } from "@/lib/audience";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Pressable } from "./pressable";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 import { IconTile } from "./ui/IconTile";
-
-const s = t.audience.welcome;
 
 /**
  * First launch, on Home only: one skippable question. Never shown on Safety or Health
  * pages, so an emergency link opened on day one isn't blocked. Closing it counts as Skip.
  */
 export function AudienceWelcome() {
+  const t = useT();
+  const s = t.audience.welcome;
   const [audience, setAudience] = useAudience();
   const choose = (a: Audience) => setAudience(a);
 

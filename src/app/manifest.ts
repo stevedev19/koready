@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
-import { t } from "@/lib/strings";
+import { en as t } from "@/lib/strings";
 
+// English only: the manifest is fetched once at install, not per page language.
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: t.app.name,

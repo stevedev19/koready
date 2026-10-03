@@ -6,7 +6,7 @@ import { useId, useState } from "react";
 import { useSavedSlang } from "@/hooks/useSavedSlang";
 import { useSpeakKorean } from "@/hooks/useSpeakKorean";
 import { SLANG, type SlangEntry, type SlangTone } from "@/lib/slang";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { cn } from "@/lib/utils";
 import { SlangBadges } from "./SlangBadges";
 import { Input } from "./ui/input";
@@ -14,15 +14,16 @@ import { EmptyState } from "./ui/States";
 import { Card as CardSurface } from "./ui/card";
 import { Toast, useToast } from "./ui/Toast";
 
-const s = t.slangPage.archive;
-const TONES = Object.keys(t.slang.tone) as SlangTone[];
+const TONES: SlangTone[] = ["casual", "playful", "rude", "formal"];
 type Filter = "all" | SlangTone | "saved" | "risky";
 const FILTERS: Filter[] = ["all", ...TONES, "saved", "risky"];
 
 const normalize = (text: string) => text.normalize("NFKC").toLowerCase().replace(/\s+/g, "");
-const filterLabel = (f: Filter) => (f === "all" || f === "saved" || f === "risky" ? s.filters[f] : t.slang.tone[f]);
 
 export function SlangArchive() {
+  const t = useT();
+  const s = t.slangPage.archive;
+  const filterLabel = (f: Filter) => (f === "all" || f === "saved" || f === "risky" ? s.filters[f] : t.slang.tone[f]);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
   const [saved, toggleSaved] = useSavedSlang();
@@ -121,6 +122,8 @@ function SlangRow({
   onToggleSaved: () => void;
   onSpeak: (() => void) | null;
 }) {
+  const t = useT();
+  const s = t.slangPage.archive;
   const [open, setOpen] = useState(false);
   const panelId = useId();
 

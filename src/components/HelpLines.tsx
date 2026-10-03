@@ -1,6 +1,6 @@
 import { Phone } from "lucide-react";
 import { HELP_LINES, type HelpLineId } from "@/lib/helpLines";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 import { ListGroup, ListRow } from "./ui/List";
 
 type HelpLinesProps = {
@@ -10,7 +10,9 @@ type HelpLinesProps = {
 };
 
 /** Verified help numbers. The whole row is the call link (large target). */
-export function HelpLines({ ids, title = t.helpLines.title, footer }: HelpLinesProps) {
+export async function HelpLines({ ids, title, footer }: HelpLinesProps) {
+  const t = await getT();
+  title ??= t.helpLines.title;
   return (
     <section className="space-y-2.5" aria-label={title}>
       <h2 className="px-1 text-lg font-extrabold">{title}</h2>

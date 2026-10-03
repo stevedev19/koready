@@ -7,10 +7,12 @@ import { InstallHint } from "@/components/InstallHint";
 import { Pressable } from "@/components/pressable";
 import { Card } from "@/components/ui/card";
 import { ListGroup, ListRow } from "@/components/ui/List";
-import { t } from "@/lib/strings";
+import { HTML_LANG, LANGUAGE_WORD, LOCALES } from "@/lib/i18n/locales";
+import { getT } from "@/lib/i18n/server";
 import { trailsByCity } from "@/lib/trails";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const t = await getT();
   return (
     <div className="space-y-5">
       {/* Page heading for screen readers; "For you" (when shown) and "Trails" are its sections. */}
@@ -54,7 +56,18 @@ export default function HomePage() {
       ))}
 
       <ListGroup>
-        <ListRow href="/settings" icon={Settings} tone="neutral" title={t.audience.settings.link} />
+        <ListRow
+          href="/settings"
+          icon={Settings}
+          tone="neutral"
+          title={t.audience.settings.link}
+          subtitle={LOCALES.map((l) => (
+            <span key={l} lang={HTML_LANG[l]}>
+              {l !== LOCALES[0] && " · "}
+              {LANGUAGE_WORD[l]}
+            </span>
+          ))}
+        />
         <ListRow href="/privacy" icon={Lock} tone="neutral" title={t.privacy.link} />
       </ListGroup>
     </div>

@@ -2,13 +2,14 @@
 
 import { Banknote } from "lucide-react";
 import { useApi } from "@/hooks/useApi";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import type { ExchangeData } from "@/lib/types";
 import { Card, CardError, CardLoading } from "./Card";
 
 const krw = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 export function ExchangeCard() {
+  const t = useT();
   const result = useApi<ExchangeData>("/api/exchange");
 
   return (

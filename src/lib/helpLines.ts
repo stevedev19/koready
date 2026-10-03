@@ -1,8 +1,8 @@
-import { t } from "@/lib/strings";
+import type { Strings } from "@/lib/strings";
 
 // Only numbers confirmed on an official Korean government source are listed.
 // Re-check each source before changing a number.
-export type HelpLineId = keyof typeof t.helpLines.lines;
+export type HelpLineId = keyof Strings["helpLines"]["lines"];
 
 export type HelpLine = {
   number: string;

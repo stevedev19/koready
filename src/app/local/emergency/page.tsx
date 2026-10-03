@@ -5,13 +5,16 @@ import { ClinicTypeCard } from "@/components/local/ClinicTypeCard";
 import { LocalScreen } from "@/components/local/LocalScreen";
 import { buttonVariants } from "@/components/ui/button";
 import { EGEN_URL } from "@/lib/helpLines";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.local.emergency;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.local.emergency.title };
+}
 
-export const metadata: Metadata = { title: s.title };
-
-export default function EmergencyPage() {
+export default async function EmergencyPage() {
+  const t = await getT();
+  const s = t.local.emergency;
   return (
     <LocalScreen title={s.title}>
       {/* Emergency mode: plain surface, large text, one big action. No animation. */}

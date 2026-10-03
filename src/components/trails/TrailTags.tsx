@@ -1,5 +1,5 @@
 import { Clapperboard, Landmark, Leaf, Music, Tv, Utensils, type LucideIcon } from "lucide-react";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 import type { TrailTag } from "@/lib/trails";
 import { Badge, type BadgeVariant } from "../ui/badge";
 
@@ -13,7 +13,8 @@ const TAG: Record<TrailTag, { icon: LucideIcon; variant: BadgeVariant }> = {
   culture: { icon: Landmark, variant: "neutral" },
 };
 
-export function TrailTags({ tags }: { tags: TrailTag[] }) {
+export async function TrailTags({ tags }: { tags: TrailTag[] }) {
+  const t = await getT();
   return (
     <span className="flex flex-wrap gap-1.5">
       {tags.map((tag) => {

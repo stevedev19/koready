@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore, useState } from "react";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { AlertTranslator } from "./AlertTranslator";
 import { ScamChecker } from "./ScamChecker";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
@@ -16,6 +16,7 @@ const readHash = () => window.location.hash;
 
 /** One tool at a time. #alert-translator / #scam-checker links open the matching tool. */
 export function SafetyTabs() {
+  const t = useT();
   const hash = useSyncExternalStore(subscribe, readHash, () => "");
   const [picked, setPicked] = useState<Tool | null>(null);
   const tool: Tool = picked ?? (hash === "#alert-translator" ? "alerts" : "scam");

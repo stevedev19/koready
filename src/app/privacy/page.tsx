@@ -4,13 +4,16 @@ import { Card } from "@/components/Card";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { REPORT_EMAIL } from "@/lib/config";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.privacy;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.privacy.title };
+}
 
-export const metadata: Metadata = { title: s.title };
-
-export default function PrivacyPage() {
+export default async function PrivacyPage() {
+  const t = await getT();
+  const s = t.privacy;
   return (
     <div className="space-y-4">
       <PageHeader title={s.title} subtitle={s.updated} back={{ href: "/", label: t.tabs.home }} />

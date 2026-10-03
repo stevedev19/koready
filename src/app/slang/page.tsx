@@ -6,11 +6,15 @@ import { SlangBeta } from "@/components/SlangBeta";
 import { SlangCard } from "@/components/SlangCard";
 import { Card } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: t.tabs.slang };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.tabs.slang };
+}
 
-export default function SlangPage() {
+export default async function SlangPage() {
+  const t = await getT();
   return (
     <div className="space-y-5">
       <PageHeader

@@ -2,7 +2,7 @@
 
 import { FlaskConical, X } from "lucide-react";
 import { useSyncExternalStore } from "react";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 
 // Hidden for this browser session only (sessionStorage); it returns on the next visit.
 const KEY = "ksk.slang.betaHidden";
@@ -22,6 +22,7 @@ const subscribe = (cb: () => void) => {
 
 /** One notice for the whole Slang page instead of a review line on every entry. */
 export function SlangBeta() {
+  const t = useT();
   const hidden = useSyncExternalStore(subscribe, read, () => false);
   if (hidden) return null;
   return (

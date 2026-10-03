@@ -4,7 +4,7 @@ import { Copy, LocateFixed, Map as MapIcon } from "lucide-react";
 import { useState } from "react";
 import { copyText } from "@/lib/clipboard";
 import { mapSearchLinks, type Coords } from "@/lib/mapLinks";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Button } from "../ui/button";
 import { ListGroup, ListRow } from "../ui/List";
 import { BottomSheet } from "../ui/BottomSheet";
@@ -19,6 +19,7 @@ const APP_TONE: Record<string, Tone> = { naver: "green", kakao: "amber", google:
  * the map link the user taps. It is never sent to our server or stored.
  */
 export function FindNearby({ query, label }: { query: string; label: string }) {
+  const t = useT();
   const [status, setStatus] = useState<Status>("idle");
   const [coords, setCoords] = useState<Coords | undefined>();
   const [open, setOpen] = useState(false);

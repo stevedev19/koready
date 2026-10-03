@@ -4,14 +4,12 @@ import { Banknote, CloudSun, Plus, Recycle, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { t } from "@/lib/strings";
-
-const s = t.quickActions;
+import { useT } from "@/lib/i18n/client";
 
 const ACTIONS = [
-  { href: "/weather", ...s.weather, Icon: CloudSun },
-  { href: "/local/money", ...s.exchange, Icon: Banknote },
-  { href: "/local/recycling", ...s.recycling, Icon: Recycle },
+  { href: "/weather", key: "weather", Icon: CloudSun },
+  { href: "/local/money", key: "exchange", Icon: Banknote },
+  { href: "/local/recycling", key: "recycling", Icon: Recycle },
 ] as const;
 
 // Screens where a floating button would cover something important: the Safety
@@ -20,6 +18,8 @@ const ACTIONS = [
 const HIDDEN_ON = ["/safety", "/local/emergency", "/slang", "/local/recycling"];
 
 export function QuickActions() {
+  const t = useT();
+  const s = t.quickActions;
   const pathname = usePathname();
   // Open state belongs to one page, so it's closed again after any navigation.
   const [openOn, setOpenOn] = useState<string | null>(null);
@@ -57,7 +57,7 @@ export function QuickActions() {
     >
       <div ref={ref} className="pointer-events-auto flex flex-col items-end gap-3">
         <ul id={listId} aria-label={s.listLabel} hidden={!open} className="flex flex-col items-end gap-2.5">
-          {ACTIONS.map(({ href, label, ko, Icon }) => (
+          {ACTIONS.map(({ href, key, Icon }) => (
             <li key={href}>
               <Link
                 href={href}
@@ -65,8 +65,8 @@ export function QuickActions() {
                 className="group flex min-h-12 items-center gap-2.5 rounded-full [-webkit-tap-highlight-color:transparent] motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2"
               >
                 <span className="rounded-full border border-border bg-card px-4 py-2.5 font-bold text-card-foreground shadow-float transition-colors group-hover:bg-surface-2 group-active:bg-surface-3">
-                  {label}{" "}
-                  <span lang="ko" className="text-[0.9375rem] font-semibold text-muted-foreground">{ko}</span>
+                  {s[key].label}{" "}
+                  <span lang="ko" className="text-[0.9375rem] font-semibold text-muted-foreground">{s[key].ko}</span>
                 </span>
                 <span className="grid size-12 place-items-center rounded-full border border-border bg-card text-primary shadow-float transition-colors group-hover:bg-surface-2 group-active:bg-surface-3">
                   <Icon aria-hidden="true" className="size-6" />

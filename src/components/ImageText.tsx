@@ -3,14 +3,12 @@
 import { ImageUp, LoaderCircle } from "lucide-react";
 import { useId, useRef, useState, type ClipboardEvent } from "react";
 import { OcrError, readImageText, type OcrLang, type OcrProgress } from "@/lib/ocr";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Button } from "./ui/button";
 
 // Privacy: the image goes straight from the file picker or clipboard to the on-device
 // reader. It is never kept in state, stored or logged; only the recognized text is
 // handed back, into the same text box the user would paste into.
-
-const s = t.imageText;
 
 type State =
   | { kind: "idle" }
@@ -61,6 +59,8 @@ export function useImageText(langs: OcrLang[], onText: (text: string) => void) {
 
 /** "Upload a screenshot" button plus the reader's progress and result messages. */
 export function ImageTextButton({ ocr }: { ocr: ImageText }) {
+  const t = useT();
+  const s = t.imageText;
   const inputRef = useRef<HTMLInputElement>(null);
   const hintId = useId();
   const { state } = ocr;
@@ -105,6 +105,8 @@ export function ImageTextButton({ ocr }: { ocr: ImageText }) {
 }
 
 function BusyMessage({ progress }: { progress: OcrProgress }) {
+  const t = useT();
+  const s = t.imageText;
   const reading = progress.stage === "reading";
   const pct = Math.round(progress.progress * 100);
   return (

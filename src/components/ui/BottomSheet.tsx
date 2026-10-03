@@ -2,7 +2,7 @@
 
 import { X } from "lucide-react";
 import type { ReactNode } from "react";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Sheet, SheetClose, SheetContent, SheetTitle } from "./sheet";
 
 /**
@@ -20,6 +20,7 @@ export function BottomSheet({
   title: ReactNode;
   children: ReactNode;
 }) {
+  const t = useT();
   return (
     <Sheet open={open} onOpenChange={(next) => !next && onClose()}>
       <SheetContent aria-describedby={undefined}>

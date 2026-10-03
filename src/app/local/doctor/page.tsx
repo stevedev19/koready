@@ -4,13 +4,16 @@ import { DoctorHelper } from "@/components/local/DoctorHelper";
 import { LocalScreen } from "@/components/local/LocalScreen";
 import { PhraseCard } from "@/components/local/PhraseCard";
 import { PHRASES } from "@/lib/clinics";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.local.doctor;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.local.doctor.title };
+}
 
-export const metadata: Metadata = { title: s.title };
-
-export default function DoctorPage() {
+export default async function DoctorPage() {
+  const t = await getT();
+  const s = t.local.doctor;
   return (
     <LocalScreen title={s.title}>
       <DoctorHelper />

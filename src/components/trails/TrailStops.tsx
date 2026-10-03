@@ -4,7 +4,8 @@ import { Copy, Map as MapIcon, Maximize2 } from "lucide-react";
 import { useState } from "react";
 import { useVisited } from "@/hooks/useVisited";
 import { copyText } from "@/lib/clipboard";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
+import type { Strings } from "@/lib/strings";
 import type { Trail, TrailStop } from "@/lib/trails";
 import { Button } from "../ui/button";
 import { CheckRow } from "../ui/CheckRow";
@@ -14,13 +15,11 @@ import { BottomSheet } from "../ui/BottomSheet";
 import { ShowToStaff, type StaffText } from "../ui/ShowToStaff";
 import { Toast, useToast } from "../ui/Toast";
 
-const s = t.trails.trail;
-
 const MAP_APPS = [
-  { key: "naver", label: t.local.clinic.apps.naver, tone: "green" },
-  { key: "kakao", label: t.local.clinic.apps.kakao, tone: "amber" },
-  { key: "google", label: t.local.clinic.apps.google, tone: "blue" },
-] as const satisfies readonly { key: string; label: string; tone: Tone }[];
+  { key: "naver", tone: "green" },
+  { key: "kakao", tone: "amber" },
+  { key: "google", tone: "blue" },
+] as const satisfies readonly { key: keyof Strings["local"]["clinic"]["apps"]; tone: Tone }[];
 
 function StopCard({
   stop,
@@ -35,6 +34,8 @@ function StopCard({
   onToggle: () => void;
   onOpenMap: () => void;
 }) {
+  const t = useT();
+  const s = t.trails.trail;
   return (
     <li
       className={`overflow-hidden rounded-card border bg-card shadow-card ${visited ? "border-primary" : "border-card-border"}`}
@@ -101,6 +102,8 @@ function StopCard({
 }
 
 export function TrailStops({ trail }: { trail: Trail }) {
+  const t = useT();
+  const s = t.trails.trail;
   const [visited, toggle] = useVisited(trail.id);
   const [mapStop, setMapStop] = useState<TrailStop | null>(null);
   const [shown, setShown] = useState<StaffText | null>(null);
@@ -134,8 +137,8 @@ export function TrailStops({ trail }: { trail: Trail }) {
           <>
             <p className="mb-2 text-sm font-bold text-muted-foreground">{t.local.clinic.openIn}</p>
             <ListGroup>
-              {MAP_APPS.map(({ key, label, tone }) => (
-                <ListRow key={key} href={mapStop.mapLinks[key]} external icon={MapIcon} tone={tone} title={label} />
+              {MAP_APPS.map(({ key, tone }) => (
+                <ListRow key={key} href={mapStop.mapLinks[key]} external icon={MapIcon} tone={tone} title={t.local.clinic.apps[key]} />
               ))}
             </ListGroup>
             <div className="mt-3 grid gap-2">

@@ -3,11 +3,10 @@
 import { Copy, Share, SquarePlus, Smartphone, X, type LucideIcon } from "lucide-react";
 import { useState, useSyncExternalStore, type ReactNode } from "react";
 import { copyText } from "@/lib/clipboard";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Card } from "./Card";
 import { Button } from "./ui/button";
 
-const s = t.installHint;
 const STORAGE_KEY = "ksk.installHint.dismissed";
 const CHANGE_EVENT = "ksk:install-hint-change";
 
@@ -48,6 +47,8 @@ function subscribe(onChange: () => void) {
  * Shown only on iOS, only outside the installed app, until dismissed (remembered on this device).
  */
 export function InstallHint() {
+  const t = useT();
+  const s = t.installHint;
   const mode = useSyncExternalStore(subscribe, readMode, (): Mode => "hidden");
   const [copied, setCopied] = useState(false);
 

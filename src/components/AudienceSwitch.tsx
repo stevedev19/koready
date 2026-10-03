@@ -2,13 +2,14 @@
 
 import { useAudience } from "@/hooks/useAudience";
 import type { Audience } from "@/lib/audience";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
 
-const s = t.audience.settings;
 const OPTIONS: Audience[] = ["visitor", "resident", "all"];
 
 export function AudienceSwitch() {
+  const t = useT();
+  const s = t.audience.settings;
   const [audience, setAudience] = useAudience();
   const value = audience === "visitor" || audience === "resident" ? audience : "all";
   return (

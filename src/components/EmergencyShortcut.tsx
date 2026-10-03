@@ -4,15 +4,16 @@ import { ChevronRight, Phone } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { HELP_LINES } from "@/lib/helpLines";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Disclaimer } from "./ui/Notice";
 import { BottomSheet } from "./ui/BottomSheet";
 
-const s = t.emergencyShortcut;
 const spaced = (n: string) => n.split("").join(" ");
 
 /** Quiet 119 / 112 pill at the top of the Safety tab. Opens a sheet with call links. */
 export function EmergencyShortcut() {
+  const t = useT();
+  const s = t.emergencyShortcut;
   const [open, setOpen] = useState(false);
   const ambulance = HELP_LINES.emergency.number;
   const police = HELP_LINES.police.number;

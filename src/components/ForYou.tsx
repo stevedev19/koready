@@ -4,12 +4,10 @@ import { Banknote, CloudSun, Map, Megaphone, MessagesSquare, Pill, Recycle, Stet
 import Link from "next/link";
 import { useAudience } from "@/hooks/useAudience";
 import { FOR_YOU, FOR_YOU_HREF, type ForYouCard } from "@/lib/forYou";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Pressable } from "./pressable";
 import { IconTile, type Tone } from "./ui/IconTile";
 import { Card } from "./ui/card";
-
-const s = t.audience.forYou;
 
 const LOOK: Record<ForYouCard, { icon: LucideIcon; tone: Tone }> = {
   exchange: { icon: Banknote, tone: "green" },
@@ -24,6 +22,8 @@ const LOOK: Record<ForYouCard, { icon: LucideIcon; tone: Tone }> = {
 
 /** "For you": 4 featured cards for Visiting or Living here. Not shown for Skip / Mix of both. */
 export function ForYou() {
+  const t = useT();
+  const s = t.audience.forYou;
   const [audience] = useAudience();
   if (audience !== "visitor" && audience !== "resident") return null;
   const cards = FOR_YOU[audience];

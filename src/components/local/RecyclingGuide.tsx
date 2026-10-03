@@ -3,7 +3,7 @@
 import { CalendarDays, ChevronRight, Lightbulb, Phone, Search, SearchX } from "lucide-react";
 import { useId, useState } from "react";
 import { searchItems, WEEKDAYS, type RecyclingGuide as Guide, type RecyclingItem, type Weekday } from "@/lib/recycling";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Card } from "../Card";
 import { buttonVariants } from "../ui/button";
 import { Input } from "../ui/input";
@@ -11,9 +11,9 @@ import { ChipGroup } from "../ui/Chips";
 import { EmptyState } from "../ui/States";
 import { Card as CardSurface } from "../ui/card";
 
-const s = t.local.recycling;
-
 function DayRow({ days }: { days: Weekday[] }) {
+  const t = useT();
+  const s = t.local.recycling;
   return (
     <ul className="flex gap-1" aria-label={days.map((d) => s.days[d]).join(", ")}>
       {WEEKDAYS.map((day) => {
@@ -35,6 +35,8 @@ function DayRow({ days }: { days: Weekday[] }) {
 }
 
 function ItemDetail({ item, guide }: { item: RecyclingItem; guide: Guide }) {
+  const t = useT();
+  const s = t.local.recycling;
   const bin = guide.bins[item.bin];
   const stream = item.schedule ? guide.schedule.streams[item.schedule] : undefined;
   return (
@@ -89,6 +91,8 @@ function ItemDetail({ item, guide }: { item: RecyclingItem; guide: Guide }) {
 }
 
 function NotSureCard({ guide, highlight }: { guide: Guide; highlight?: boolean }) {
+  const t = useT();
+  const s = t.local.recycling;
   return (
     <section
       aria-labelledby="not-sure"
@@ -106,6 +110,8 @@ function NotSureCard({ guide, highlight }: { guide: Guide; highlight?: boolean }
 }
 
 export function RecyclingGuide({ guide }: { guide: Guide }) {
+  const t = useT();
+  const s = t.local.recycling;
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string | null>(null);
   const searchId = useId();

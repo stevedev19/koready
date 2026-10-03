@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-export function ComingSoon({ title, icon }: { title: string; icon: string }) {
+export async function ComingSoon({ title, icon }: { title: string; icon: string }) {
+  const t = await getT();
   return (
     <div className="flex flex-1 flex-col items-center justify-center py-16 text-center">
       <span className="text-6xl" aria-hidden="true">{icon}</span>

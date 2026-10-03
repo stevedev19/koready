@@ -3,14 +3,17 @@ import type { Metadata } from "next";
 import { Card } from "@/components/Card";
 import { PageHeader } from "@/components/ui/PageHeader";
 import notices from "@/lib/licenses.generated.json";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.licenses;
-
-export const metadata: Metadata = { title: s.title };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.licenses.title };
+}
 
 // Static page built from src/lib/licenses.generated.json (npm run notices).
-export default function LicensesPage() {
+export default async function LicensesPage() {
+  const t = await getT();
+  const s = t.licenses;
   return (
     <div className="space-y-4">
       <PageHeader title={s.title} back={{ href: "/privacy", label: t.privacy.title }} />

@@ -3,7 +3,7 @@
 import { Lock, ScanSearch } from "lucide-react";
 import { useId, useRef, useState } from "react";
 import { checkMessage, MAX_INPUT_CHARS, type ScamCheckResult, type ScamVerdict } from "@/lib/scam/check";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Card } from "./Card";
 import { ImageTextButton, useImageText } from "./ImageText";
 import { Button } from "./ui/button";
@@ -21,6 +21,7 @@ const VERDICT_TONE: Record<ScamVerdict, ResultTone> = {
 };
 
 export function ScamChecker() {
+  const t = useT();
   const [text, setText] = useState("");
   const [result, setResult] = useState<ScamCheckResult | null>(null);
   const resultRef = useRef<HTMLHeadingElement>(null);

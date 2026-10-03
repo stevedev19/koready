@@ -2,12 +2,13 @@
 
 import { useKstDay } from "@/hooks/useKstDay";
 import { slangForDay } from "@/lib/slang";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { MessageCircle } from "lucide-react";
 import { Card, CardLoading } from "./Card";
 import { SlangBadges } from "./SlangBadges";
 
 export function SlangCard() {
+  const t = useT();
   // Day is computed in Korea time on the client so the card changes at KST midnight.
   const day = useKstDay();
   const entry = day === null ? null : slangForDay(day);

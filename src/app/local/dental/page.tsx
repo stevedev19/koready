@@ -5,16 +5,19 @@ import { ClinicTypeCard } from "@/components/local/ClinicTypeCard";
 import { LocalScreen } from "@/components/local/LocalScreen";
 import { PhraseCard } from "@/components/local/PhraseCard";
 import { PHRASES } from "@/lib/clinics";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.local.dental;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.local.dental.title };
+}
 
-export const metadata: Metadata = { title: s.title };
-
-export default function DentalPage() {
+export default async function DentalPage() {
+  const t = await getT();
+  const s = t.local.dental;
   return (
     <LocalScreen title={s.title}>
-      <ClinicTypeCard id="chigwa" icon={Toothbrush} />
+      <ClinicTypeCard id="chigwa" title={t.local.doctor.clinicTitle} icon={Toothbrush} />
       <PhraseCard title={s.phrasesTitle} phrases={PHRASES.dental} />
       <BringChecklist />
     </LocalScreen>

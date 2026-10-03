@@ -4,7 +4,7 @@ import { BookOpen, FlaskConical, Languages, Lock, Megaphone, Phone, TriangleAler
 import { useId, useRef, useState, type ReactNode } from "react";
 import { ALERT_SAMPLES, MAX_ALERT_CHARS, translateAlert, type AlertReading } from "@/lib/alerts/check";
 import { HELP_LINES } from "@/lib/helpLines";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Card } from "./Card";
 import { ImageTextButton, useImageText } from "./ImageText";
 import { Button, buttonVariants } from "./ui/button";
@@ -16,8 +16,6 @@ import { BottomSheet } from "./ui/BottomSheet";
 
 // Privacy: the alert text lives only in this component's state. It is never sent,
 // stored or logged, and it is gone when you leave the page.
-
-const s = t.alerts;
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -32,6 +30,8 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 
 /** Emergency-mode styling: plain surface, big text, the two calls within thumb reach. */
 function NotUnderstoodCard() {
+  const t = useT();
+  const s = t.alerts;
   return (
     <div role="alert" className="rounded-card bg-warning-soft p-5">
       <p className="flex items-start gap-2.5 text-xl font-extrabold text-warning">
@@ -59,6 +59,8 @@ function NotUnderstoodCard() {
 }
 
 function Result({ r }: { r: AlertReading }) {
+  const t = useT();
+  const s = t.alerts;
   const primary = r.types[0];
   const others = r.types.slice(1);
   const fact = (label: string, value: string | null) => (
@@ -200,6 +202,8 @@ function Result({ r }: { r: AlertReading }) {
 }
 
 export function AlertTranslator() {
+  const t = useT();
+  const s = t.alerts;
   const [text, setText] = useState("");
   const [reading, setReading] = useState<AlertReading | null>(null);
   const [showSamples, setShowSamples] = useState(false);

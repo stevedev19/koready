@@ -3,7 +3,7 @@
 import { Bone, CircleQuestionMark, Ear, Eye, Hand, Soup, Stethoscope, Thermometer, Venus, type LucideIcon } from "lucide-react";
 import { useState } from "react";
 import { CATEGORIES } from "@/lib/clinics";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Card } from "../Card";
 import { ClinicTypeCard } from "./ClinicTypeCard";
 
@@ -21,6 +21,7 @@ const CATEGORY_ICON: Record<string, LucideIcon> = {
 
 /** Problem picker → clinic type. The choice stays in memory only (no health data is stored). */
 export function DoctorHelper() {
+  const t = useT();
   const [categoryId, setCategoryId] = useState<string | null>(null);
   const category = CATEGORIES.find((c) => c.id === categoryId);
 
@@ -50,7 +51,14 @@ export function DoctorHelper() {
         </div>
       </Card>
 
-      {category && <ClinicTypeCard id={category.clinicType} alsoId={category.alsoClinicType} />}
+      {category && (
+        <ClinicTypeCard
+          id={category.clinicType}
+          alsoId={category.alsoClinicType}
+          title={t.local.doctor.clinicTitle}
+          alsoLabel={t.local.doctor.also}
+        />
+      )}
     </>
   );
 }

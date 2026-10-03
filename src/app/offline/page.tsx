@@ -2,12 +2,16 @@ import { WifiOff } from "lucide-react";
 import type { Metadata } from "next";
 import { buttonVariants } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/States";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: t.offline.title };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.offline.title };
+}
 
 // Precached by public/sw.js and shown when a page can't be loaded offline.
-export default function OfflinePage() {
+export default async function OfflinePage() {
+  const t = await getT();
   return (
     <div className="flex flex-1 flex-col items-center justify-center py-12">
       <EmptyState icon={WifiOff} tone="amber" title={<span className="text-2xl">{t.offline.title}</span>}>

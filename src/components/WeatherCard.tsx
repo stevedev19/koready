@@ -14,7 +14,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useApi } from "@/hooks/useApi";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import type { WeatherCodeKey, WeatherData } from "@/lib/types";
 import { weatherTip } from "@/lib/weatherTip";
 import { Card, CardError, CardLoading } from "./Card";
@@ -42,6 +42,7 @@ export const WEATHER_ICONS: Record<WeatherCodeKey, LucideIcon> = {
 export const deg = (n: number) => `${Math.round(n)}°`;
 
 export function WeatherCard({ districtId }: { districtId: string }) {
+  const t = useT();
   const result = useApi<WeatherData>(`/api/weather?district=${districtId}`);
 
   return (

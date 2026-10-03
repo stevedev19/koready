@@ -2,7 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 import { DISTRICTS, type District } from "@/lib/districts";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { pressFeedbackClass } from "./pressable-classes";
 
 type Props = { district: District; onChange: (id: string) => void };
@@ -25,6 +25,7 @@ function Select({ district, onChange, className }: Props & { className: string }
 
 /** Page-title picker: "Today in <district>". */
 export function DistrictPicker(props: Props) {
+  const t = useT();
   return (
     <header>
       <p className="text-sm font-bold text-muted-foreground">{t.home.todayIn}</p>

@@ -1,17 +1,25 @@
 import { Lock } from "lucide-react";
 import type { Metadata } from "next";
 import { AudienceSwitch } from "@/components/AudienceSwitch";
+import { LanguageSwitch } from "@/components/LanguageSwitch";
 import { Card } from "@/components/ui/card";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: t.audience.settings.title };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.audience.settings.title };
+}
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  const t = await getT();
   return (
     <div className="space-y-4">
       <PageHeader title={t.audience.settings.title} back={{ href: "/", label: t.tabs.home }} />
+      <Card>
+        <LanguageSwitch />
+      </Card>
       <Card>
         <AudienceSwitch />
       </Card>

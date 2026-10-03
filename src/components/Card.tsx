@@ -1,7 +1,7 @@
 import type { LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 import { CardAction, CardContent, CardFooter, CardHeader, CardTitle, Card as UICard } from "./ui/card";
-import { ErrorState, LoadingState } from "./ui/States";
+import { ErrorState, LoadingState } from "./ui/LoadStates";
 
 type CardProps = {
   title: string;
@@ -18,7 +18,8 @@ type CardProps = {
 
 /** App card: shadcn Card parts with our title row (icon, English title, Korean label, meta). */
 export function Card({ title, titleKo, icon: Icon, meta, children, footer, hideTitle }: CardProps) {
-  const headingId = `card-${title.toLowerCase().replace(/\W+/g, "-")}`;
+  // useId, not the title: translated titles (e.g. Bangla, Chinese) have no Latin letters to build an id from.
+  const headingId = useId();
   return (
     <UICard asChild>
       <section aria-labelledby={headingId}>

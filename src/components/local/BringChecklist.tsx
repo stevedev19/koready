@@ -2,12 +2,13 @@
 
 import { Backpack } from "lucide-react";
 import { useState } from "react";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Card } from "../Card";
 import { CheckRow } from "../ui/CheckRow";
 
 /** Ticks live only in memory; nothing is saved. */
 export function BringChecklist() {
+  const t = useT();
   const [checked, setChecked] = useState<Set<number>>(new Set());
 
   function toggle(i: number) {

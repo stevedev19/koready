@@ -1,9 +1,10 @@
 import { REPORT_EMAIL } from "@/lib/config";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 import { Banner } from "../ui/Notice";
 
 /** "Places can close or change" banner, plus a mailto report link when an address is configured. */
-export function TrailBanner({ trailTitle }: { trailTitle?: string }) {
+export async function TrailBanner({ trailTitle }: { trailTitle?: string }) {
+  const t = await getT();
   const subject = trailTitle ? `${t.trails.reportSubject}: ${trailTitle}` : t.trails.reportSubject;
   return (
     <Banner tone="warning">

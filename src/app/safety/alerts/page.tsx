@@ -5,11 +5,12 @@ import { HelpLines } from "@/components/HelpLines";
 import { LocalScreen } from "@/components/local/LocalScreen";
 import { Disclaimer } from "@/components/ui/Notice";
 import { ALERT_RULES } from "@/lib/alerts/check";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.alertGuide;
-
-export const metadata: Metadata = { title: s.title };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.alertGuide.title };
+}
 
 // Semantic tokens: icon + label + color for each category, never color alone.
 const CATEGORY_STYLE: Record<string, { box: string; ink: string; icon: LucideIcon }> = {
@@ -27,7 +28,9 @@ const SOURCES = [
   { label: "Samsung: Wireless emergency alerts", url: "https://www.samsung.com/us/support/answer/ANS10001579/" },
 ];
 
-export default function AlertGuidePage() {
+export default async function AlertGuidePage() {
+  const t = await getT();
+  const s = t.alertGuide;
   return (
     <LocalScreen
       title={s.title}

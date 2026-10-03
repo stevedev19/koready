@@ -2,7 +2,7 @@
 
 import { Wind } from "lucide-react";
 import { useApi } from "@/hooks/useApi";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import type { AirData, AirGrade } from "@/lib/types";
 import { Card, CardError, CardLoading } from "./Card";
 import { IconTile, type Tone } from "./ui/IconTile";
@@ -20,6 +20,7 @@ const GRADE_BADGE: Record<AirGrade, BadgeVariant> = {
 };
 
 export function AirCard({ districtId }: { districtId: string }) {
+  const t = useT();
   const result = useApi<AirData>(`/api/air?district=${districtId}`);
 
   return (

@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import { Disclaimer } from "@/components/ui/Notice";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
 /** "Not medical advice. In an emergency call 119." with 119 as a call link. */
-export function MedicalDisclaimer() {
+export async function MedicalDisclaimer() {
+  const t = await getT();
   const [before, after] = t.local.disclaimer.split("119");
   return (
     <Disclaimer>
@@ -27,16 +28,17 @@ type LocalScreenProps = {
 };
 
 /** Shared frame for sub-screens: back link, large title, notice. */
-export function LocalScreen({
+export async function LocalScreen({
   title,
   children,
   notice = <MedicalDisclaimer />,
   backHref = "/local",
-  backLabel = t.local.back,
+  backLabel,
 }: LocalScreenProps) {
+  const t = await getT();
   return (
     <div className="space-y-4">
-      <PageHeader title={title} back={{ href: backHref, label: backLabel }} />
+      <PageHeader title={title} back={{ href: backHref, label: backLabel ?? t.local.back }} />
       {notice}
       {children}
     </div>

@@ -1,5 +1,6 @@
-// All user-facing UI text lives here so Korean can be added later.
-// To add Korean: create a `ko` object with the same shape and pick it by locale.
+// All user-facing UI text lives here. English is the source; translations live in
+// src/lib/i18n/<locale>.ts with the same shape (TypeScript checks every key).
+// Server components: `const t = await getT()` (lib/i18n/server). Client: `const t = useT()` (lib/i18n/client).
 
 export const en = {
   app: {
@@ -87,6 +88,12 @@ export const en = {
         doctor: { title: "See a doctor", hint: "Which clinic to choose" },
       },
     },
+  },
+
+  // Settings: UI language. Language names are shown in their own script (see lib/i18n/locales.ts).
+  language: {
+    label: "Language",
+    hint: "Changes buttons, menus and tips. Slang meanings, alert explanations and guides are still in English for now.",
   },
 
   common: {
@@ -604,6 +611,7 @@ export const en = {
           "Your chosen district and the trail stops you mark as visited are saved in your browser's storage on this device.",
           "Whether you chose Visiting or Living here, so Home can show the right cards first. Change it any time in Settings.",
           "Slang words you save with the heart.",
+          "Your language choice, in a small cookie. Your browser sends it with each page request so pages load in your language.",
           "Nothing else is saved. Health choices, checklist ticks and search words are kept in memory only and cleared when you leave the page.",
           "To delete saved data, clear this site's data in your browser settings.",
         ],
@@ -663,7 +671,11 @@ export const en = {
   },
 } as const;
 
-export type Strings = typeof en;
+// Same keys as `en`, but any text (translations don't have to match English word for word).
+type Widen<T> = T extends string
+  ? string
+  : T extends readonly (infer U)[]
+    ? readonly Widen<U>[]
+    : { readonly [K in keyof T]: Widen<T[K]> };
 
-// Single entry point so components don't care which locale is active.
-export const t: Strings = en;
+export type Strings = Widen<typeof en>;

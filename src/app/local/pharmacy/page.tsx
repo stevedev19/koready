@@ -5,13 +5,16 @@ import { LocalScreen } from "@/components/local/LocalScreen";
 import { PhraseCard } from "@/components/local/PhraseCard";
 import { PHRASES } from "@/lib/clinics";
 import { EGEN_URL } from "@/lib/helpLines";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-const s = t.local.pharmacy;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.local.pharmacy.title };
+}
 
-export const metadata: Metadata = { title: s.title };
-
-export default function PharmacyPage() {
+export default async function PharmacyPage() {
+  const t = await getT();
+  const s = t.local.pharmacy;
   return (
     <LocalScreen title={s.title}>
       <ClinicTypeCard id="yakguk" title={s.title} icon={Pill} />

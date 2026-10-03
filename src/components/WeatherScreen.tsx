@@ -1,7 +1,7 @@
 "use client";
 
 import { useDistrict } from "@/hooks/useDistrict";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { AirCard } from "./AirCard";
 import { CardError } from "./Card";
 import { DistrictPicker } from "./DistrictPicker";
@@ -18,6 +18,7 @@ const fallback = (
 
 /** Full weather for the chosen district, then air quality as "Going outside?". */
 export function WeatherScreen() {
+  const t = useT();
   const [district, setDistrict] = useDistrict();
 
   return (

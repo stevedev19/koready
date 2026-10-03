@@ -7,10 +7,8 @@ import { TrailTags } from "@/components/trails/TrailTags";
 import { Card } from "@/components/Card";
 import { Card as CardSurface } from "@/components/ui/card";
 import { LocalScreen } from "@/components/local/LocalScreen";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 import { getTrail, TRAILS } from "@/lib/trails";
-
-const s = t.trails.trail;
 
 export function generateStaticParams() {
   return TRAILS.map((trail) => ({ id: trail.id }));
@@ -19,11 +17,14 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps<"/trails/[id]">): Promise<Metadata> {
+  const t = await getT();
   const trail = getTrail((await params).id);
   return { title: trail?.title ?? t.trails.title };
 }
 
 export default async function TrailPage({ params }: PageProps<"/trails/[id]">) {
+  const t = await getT();
+  const s = t.trails.trail;
   const trail = getTrail((await params).id);
   if (!trail) notFound();
 

@@ -4,11 +4,15 @@ import { HelpLines } from "@/components/HelpLines";
 import { SafetyTabs } from "@/components/SafetyTabs";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: t.tabs.safety };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.tabs.safety };
+}
 
-export default function SafetyPage() {
+export default async function SafetyPage() {
+  const t = await getT();
   return (
     <div className="space-y-5">
       <PageHeader title={t.tabs.safety} subtitle={t.safety.intro} />

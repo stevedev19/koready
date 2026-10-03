@@ -4,7 +4,7 @@ import { Copy, Sun } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useWakeLock } from "@/hooks/useWakeLock";
 import { copyText } from "@/lib/clipboard";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Button } from "./button";
 import { Dialog, DialogClose, DialogContent, DialogTitle } from "./dialog";
 
@@ -16,6 +16,7 @@ export type StaffText = { ko: string; en?: string; hint?: string };
  * Keeps the screen awake while shown, or tells the user it may dim.
  */
 export function ShowToStaff({ text, onClose }: { text: StaffText | null; onClose: () => void }) {
+  const t = useT();
   const closeRef = useRef<HTMLButtonElement>(null);
   // Remember which phrase was copied, so another phrase starts with the plain "Copy" label.
   const [copiedKo, setCopiedKo] = useState<string | null>(null);

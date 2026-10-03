@@ -6,13 +6,14 @@ import { useAudience } from "@/hooks/useAudience";
 import { byAudience } from "@/lib/audience";
 import { copyText } from "@/lib/clipboard";
 import type { Phrase } from "@/lib/clinics";
-import { t } from "@/lib/strings";
+import { useT } from "@/lib/i18n/client";
 import { Card } from "../Card";
 import { Button } from "../ui/button";
 import { ShowToStaff, type StaffText } from "../ui/ShowToStaff";
 import { Toast, useToast } from "../ui/Toast";
 
 export function PhraseCard({ title, phrases }: { title: string; phrases: Phrase[] }) {
+  const t = useT();
   const [shown, setShown] = useState<StaffText | null>(null);
   const [toast, showToast] = useToast();
   // Phrases tagged for the visitor / resident choice come first; none are removed.

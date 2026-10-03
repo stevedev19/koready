@@ -4,13 +4,16 @@ import Link from "next/link";
 import { MedicalDisclaimer } from "@/components/local/LocalScreen";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { t } from "@/lib/strings";
+import { getT } from "@/lib/i18n/server";
 
-export const metadata: Metadata = { title: t.tabs.local };
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getT();
+  return { title: t.tabs.local };
+}
 
-const s = t.local.hospital;
-
-export default function LocalPage() {
+export default async function LocalPage() {
+  const t = await getT();
+  const s = t.local.hospital;
   return (
     <div className="space-y-5">
       <PageHeader title={t.tabs.local} subtitle={t.local.intro} />
