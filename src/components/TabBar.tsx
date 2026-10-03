@@ -1,6 +1,6 @@
 "use client";
 
-import { House, MapPin, MessagesSquare, Shield } from "lucide-react";
+import { House, LifeBuoy, MessagesSquare, Shield } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { t } from "@/lib/strings";
@@ -10,7 +10,7 @@ const TABS = [
   { href: "/", label: t.tabs.home, icon: House, also: ["/trails/", "/weather"] },
   { href: "/safety", label: t.tabs.safety, icon: Shield, also: [] },
   { href: "/slang", label: t.tabs.slang, icon: MessagesSquare, also: [] },
-  { href: "/local", label: t.tabs.local, icon: MapPin, also: [] },
+  { href: "/local", label: t.tabs.local, icon: LifeBuoy, also: [] },
 ] as const;
 
 function isActive(pathname: string, href: string, also: readonly string[]) {
