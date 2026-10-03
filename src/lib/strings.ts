@@ -219,7 +219,7 @@ export const en = {
     usage: {
       safe: "Safe to use",
       casual: "Friends only",
-      risky: "Risky — avoid with strangers",
+      risky: "Risky: avoid with strangers",
     },
     reviewNote: "Not yet reviewed by a native speaker.",
   },

@@ -15,7 +15,19 @@ export type SlangEntry = {
   needs_native_review: boolean;
 };
 
-export const SLANG = slangData as SlangEntry[];
+/**
+ * One house style for meanings, applied at load (data/slang.json is unchanged):
+ * " — " becomes ": ", " / " between quotes becomes " or ", and a period or comma
+ * sits outside the closing quote. Words and meaning stay the same.
+ */
+export function tidyMeaning(text: string): string {
+  return text
+    .replace(/ — /g, ": ")
+    .replace(/" \/ "/g, '" or "')
+    .replace(/([^"]+?)([.,])"/g, (_, inner: string, mark: string) => `${inner}"${mark}`);
+}
+
+export const SLANG = (slangData as SlangEntry[]).map((e) => ({ ...e, meaning: tidyMeaning(e.meaning) }));
 
 const KST_OFFSET_MS = 9 * 60 * 60 * 1000; // Korea has no DST
 const DAY_MS = 24 * 60 * 60 * 1000;
