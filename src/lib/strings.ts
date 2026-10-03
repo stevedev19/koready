@@ -595,6 +595,7 @@ export const en = {
           "Screenshots you upload or paste are read on your phone. The image is never uploaded, saved or logged.",
           "The first time you read a screenshot, the app downloads its text reader (about 8 MB) from our site. Your browser keeps a copy of the language files so it is faster next time. They contain none of your data.",
           "Spellcheck and autofill are turned off in those text boxes so the text isn't shared with keyboard or spellcheck services.",
+          "The Slang page's speaker button uses your browser's built-in speech. It prefers a voice on your phone, but on some devices the browser may use an online voice. Only the slang word is read aloud, never anything you type.",
         ],
       },
       {
@@ -602,6 +603,7 @@ export const en = {
         body: [
           "Your chosen district and the trail stops you mark as visited are saved in your browser's storage on this device.",
           "Whether you chose Visiting or Living here, so Home can show the right cards first. Change it any time in Settings.",
+          "Slang words you save with the heart.",
           "Nothing else is saved. Health choices, checklist ticks and search words are kept in memory only and cleared when you leave the page.",
           "To delete saved data, clear this site's data in your browser settings.",
         ],
