@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { QuickActions } from "@/components/quick-actions";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { TabBar } from "@/components/TabBar";
 import { t } from "@/lib/strings";
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="mx-auto flex w-full max-w-lg flex-1 flex-col pt-[calc(env(safe-area-inset-top)+1.25rem)] pr-[max(1rem,env(safe-area-inset-right))] pl-[max(1rem,env(safe-area-inset-left))] pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
           {children}
         </main>
+        <QuickActions />
         <TabBar />
         <ServiceWorkerRegister />
       </body>

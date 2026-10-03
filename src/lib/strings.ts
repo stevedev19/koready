@@ -45,6 +45,16 @@ export const en = {
     },
   },
 
+  // Floating speed-dial (components/quick-actions.tsx).
+  quickActions: {
+    open: "Open quick actions",
+    close: "Close quick actions",
+    listLabel: "Quick actions",
+    weather: { label: "Weather", ko: "날씨" },
+    exchange: { label: "Exchange rate", ko: "환율" },
+    recycling: { label: "Recycling guide", ko: "분리배출" },
+  },
+
   common: {
     loading: "Loading…",
     error: "Couldn't load this right now.",
