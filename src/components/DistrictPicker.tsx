@@ -3,6 +3,7 @@
 import { ChevronDown } from "lucide-react";
 import { DISTRICTS, type District } from "@/lib/districts";
 import { t } from "@/lib/strings";
+import { pressFeedbackClass } from "./pressable-classes";
 
 type Props = { district: District; onChange: (id: string) => void };
 
@@ -31,7 +32,7 @@ export function DistrictPicker(props: Props) {
         <span className="sr-only">{t.home.pickDistrict}</span>
         <Select
           {...props}
-          className="min-h-12 max-w-full appearance-none truncate rounded-xl bg-transparent py-1 pr-9 pl-1 text-[1.75rem] font-extrabold tracking-[-0.025em] text-foreground"
+          className={`min-h-12 max-w-full appearance-none truncate rounded-xl bg-transparent py-1 pr-9 pl-1 text-[1.75rem] font-extrabold tracking-[-0.025em] text-foreground ${pressFeedbackClass}`}
         />
       </label>
     </header>
@@ -45,7 +46,7 @@ export function DistrictSelect(props: Props) {
       <span className="sr-only">{t.home.pickDistrict}</span>
       <Select
         {...props}
-        className="min-h-12 max-w-full appearance-none truncate rounded-xl bg-surface-2 py-1 pr-9 pl-3 text-[1.0625rem] font-bold text-foreground"
+        className="min-h-12 max-w-full appearance-none truncate rounded-xl bg-surface-2 py-1 pr-9 pl-3 text-[1.0625rem] font-bold text-foreground transition-colors duration-100 [-webkit-tap-highlight-color:transparent] hover:bg-surface-3 active:bg-surface-3"
       />
     </label>
   );

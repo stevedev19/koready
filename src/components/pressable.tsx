@@ -11,18 +11,7 @@ import {
   type ReactNode,
 } from "react";
 import { cn } from "@/lib/utils";
-
-/**
- * Shared tap feedback. Exported for elements that can't become a Pressable
- * (a <summary>, or the label around a native <select>).
- * hover: only applies on devices with a real pointer (Tailwind v4 wraps it in
- * @media (hover: hover)), so it never sticks after a tap on a phone.
- * Focus ring: the global 3px :focus-visible outline in globals.css.
- */
-export const pressableClass =
-  "relative flex min-h-12 w-full items-center text-left transition-colors duration-100 " +
-  "[-webkit-tap-highlight-color:transparent] hover:bg-surface-2 active:bg-surface-3 " +
-  "disabled:pointer-events-none disabled:opacity-45";
+import { pressableClass } from "./pressable-classes";
 
 type Common = { children: ReactNode; className?: string; ripple?: boolean };
 type AsLink = Common & { href: string; external?: boolean } & Omit<ComponentProps<"a">, "href" | "className" | "children">;

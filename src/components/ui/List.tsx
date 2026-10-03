@@ -1,6 +1,6 @@
 import { ChevronRight, ExternalLink, type LucideIcon } from "lucide-react";
-import Link from "next/link";
 import type { ReactNode } from "react";
+import { Pressable } from "../pressable";
 import { Card } from "./card";
 import { IconTile, type Tone } from "./IconTile";
 
@@ -50,22 +50,14 @@ export function ListRow(props: RowProps) {
   const { href, external, onClick, ariaLabel } = props;
   return (
     <li>
-      {href && /^(tel|mailto):/.test(href) ? (
-        <a href={href} aria-label={ariaLabel} className={rowClass}>
+      {href ? (
+        <Pressable href={href} external={external} aria-label={ariaLabel} className={rowClass}>
           <RowBody {...props} />
-        </a>
-      ) : href && external ? (
-        <a href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel} className={rowClass}>
-          <RowBody {...props} />
-        </a>
-      ) : href ? (
-        <Link href={href} aria-label={ariaLabel} className={rowClass}>
-          <RowBody {...props} />
-        </Link>
+        </Pressable>
       ) : onClick ? (
-        <button type="button" onClick={onClick} aria-label={ariaLabel} className={rowClass}>
+        <Pressable onClick={onClick} aria-label={ariaLabel} className={rowClass}>
           <RowBody {...props} />
-        </button>
+        </Pressable>
       ) : (
         <div className={rowClass}>
           <RowBody {...props} />

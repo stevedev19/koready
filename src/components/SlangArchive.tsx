@@ -4,6 +4,7 @@ import { ChevronRight, Search, SearchX } from "lucide-react";
 import { useId, useState } from "react";
 import { SLANG, type SlangTone } from "@/lib/slang";
 import { t } from "@/lib/strings";
+import { pressFeedbackClass } from "./pressable-classes";
 import { Input } from "./ui/input";
 import { ChipGroup } from "./ui/Chips";
 import { EmptyState } from "./ui/States";
@@ -65,7 +66,7 @@ export function SlangArchive() {
           <li key={entry.id}>
             <CardSurface asChild className="group px-4 py-2.5">
               <details>
-                <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
+                <summary className={`-mx-2 flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl px-2 [&::-webkit-details-marker]:hidden ${pressFeedbackClass}`}>
                   <span className="flex-1">
                     <span lang="ko" className="text-[1.375rem] font-extrabold">{entry.term}</span>{" "}
                     <span className="text-muted-foreground italic">{entry.romanization}</span>
