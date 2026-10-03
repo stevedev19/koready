@@ -1,4 +1,4 @@
-# Korea Survival Kit
+# KReady
 
 A mobile-first PWA for foreigners living in Korea. See `CLAUDE.md` for project rules.
 

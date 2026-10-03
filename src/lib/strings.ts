@@ -3,7 +3,7 @@
 
 export const en = {
   app: {
-    name: "Korea Survival Kit",
+    name: "KReady",
     shortName: "KReady",
     description: "Daily essentials for foreigners living in Korea.",
   },
@@ -516,7 +516,7 @@ export const en = {
     title: "Privacy",
     link: "Privacy: what stays on your phone",
     updated: "Last updated: 2026-10-02",
-    intro: "Korea Survival Kit has no accounts, no ads and no tracking or analytics. Here is exactly what happens to your information.",
+    intro: "KReady has no accounts, no ads and no tracking or analytics. Here is exactly what happens to your information.",
     sections: [
       {
         title: "Messages you paste",
@@ -577,7 +577,7 @@ export const en = {
     title: "Open-source licenses",
     link: "Open-source licenses",
     intro:
-      "Korea Survival Kit is built with free and open-source software and the Pretendard font. These are the packages it uses, with their copyright notices and licenses.",
+      "KReady is built with free and open-source software and the Pretendard font. These are the packages it uses, with their copyright notices and licenses.",
     showText: "Show license text",
     packages: "packages",
   },

@@ -1,4 +1,4 @@
-# Korea Survival Kit
+# KReady
 A mobile-first PWA that helps foreigners living in Korea.
 
 ## Stack

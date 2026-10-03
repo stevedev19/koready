@@ -1,4 +1,4 @@
-// Korea Survival Kit service worker: basic offline fallback.
+// KReady service worker: basic offline fallback.
 // Bump VERSION when this file's caching logic changes.
 const VERSION = "v3";
 const STATIC_CACHE = `ksk-static-${VERSION}`;
