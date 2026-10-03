@@ -10,7 +10,7 @@ import { Tag } from "./ui/Chips";
 const USAGE_STYLE: Record<SlangUsage, string> = {
   safe: "bg-success-soft text-success",
   casual: "bg-warning-soft text-warning",
-  risky: "bg-danger-soft text-danger",
+  risky: "bg-destructive-soft text-destructive",
 };
 
 export function SlangCard() {
@@ -25,18 +25,18 @@ export function SlangCard() {
       ) : (
         <div>
           <p lang="ko" className="text-[2rem] leading-tight font-extrabold tracking-tight">{entry.term}</p>
-          <p className="text-muted italic">{entry.romanization}</p>
+          <p className="text-muted-foreground italic">{entry.romanization}</p>
           <p className="mt-2">{entry.meaning}</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Tag className="bg-surface-2 text-foreground">{t.slang.tone[entry.tone]}</Tag>
             <Tag className={USAGE_STYLE[entry.usage_level]}>{t.slang.usage[entry.usage_level]}</Tag>
           </div>
-          <h3 className="mt-4 text-sm font-bold text-muted">{t.slang.examples}</h3>
+          <h3 className="mt-4 text-sm font-bold text-muted-foreground">{t.slang.examples}</h3>
           <ul className="mt-1 space-y-2">
             {entry.examples.map((ex) => (
               <li key={ex.ko} className="rounded-xl bg-surface-2 px-3.5 py-2.5">
                 <p lang="ko">{ex.ko}</p>
-                <p className="text-muted">{ex.en}</p>
+                <p className="text-muted-foreground">{ex.en}</p>
               </li>
             ))}
           </ul>

@@ -24,9 +24,9 @@ export function EmergencyShortcut() {
         onClick={() => setOpen(true)}
         aria-label={s.open}
         aria-haspopup="dialog"
-        className="inline-flex min-h-12 items-center gap-1.5 rounded-full border border-border bg-surface pr-4 pl-3 text-[0.9375rem] font-bold tabular-nums shadow-card"
+        className="inline-flex min-h-12 items-center gap-1.5 rounded-full border border-border bg-card pr-4 pl-3 text-[0.9375rem] font-bold tabular-nums shadow-card"
       >
-        <Phone aria-hidden="true" className="size-[1.125rem] text-danger" strokeWidth={2.4} />
+        <Phone aria-hidden="true" className="size-[1.125rem] text-destructive" strokeWidth={2.4} />
         {ambulance} · {police}
       </button>
       <Sheet
@@ -57,9 +57,9 @@ export function EmergencyShortcut() {
           <a
             href={`tel:${police}`}
             aria-label={`${t.helpLines.call} ${t.helpLines.lines.police.name}, ${spaced(police)}`}
-            className="flex min-h-[4.75rem] items-center gap-3.5 rounded-[1.125rem] border-2 border-danger bg-surface px-[1.125rem] py-3 text-foreground"
+            className="flex min-h-[4.75rem] items-center gap-3.5 rounded-[1.125rem] border-2 border-destructive bg-card px-[1.125rem] py-3 text-foreground"
           >
-            <Phone aria-hidden="true" className="size-7 shrink-0 text-danger" strokeWidth={2.4} />
+            <Phone aria-hidden="true" className="size-7 shrink-0 text-destructive" strokeWidth={2.4} />
             <span className="shrink-0 text-[2rem] font-extrabold tracking-[-0.02em] tabular-nums">{police}</span>
             <span className="leading-snug font-bold">
               {t.helpLines.lines.police.name}
@@ -69,7 +69,7 @@ export function EmergencyShortcut() {
           <Link
             href="/local/emergency"
             onClick={() => setOpen(false)}
-            className="flex min-h-[3.25rem] items-center justify-between font-bold text-accent"
+            className="flex min-h-[3.25rem] items-center justify-between font-bold text-primary"
           >
             {s.more}
             <ChevronRight aria-hidden="true" className="size-5" />

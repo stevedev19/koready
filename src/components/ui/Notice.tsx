@@ -16,7 +16,7 @@ export function Banner({ tone = "warning", children }: { tone?: "warning" | "inf
 /** Disclaimer: visible but quiet. Placed right after the thing it relates to; never hidden. */
 export function Disclaimer({ children }: { children: ReactNode }) {
   return (
-    <p role="note" className="flex items-start gap-2 text-[0.9375rem] text-muted">
+    <p role="note" className="flex items-start gap-2 text-[0.9375rem] text-muted-foreground">
       <Info aria-hidden="true" className="mt-[0.2rem] size-[1.125rem] shrink-0" />
       <span>{children}</span>
     </p>
@@ -26,10 +26,10 @@ export function Disclaimer({ children }: { children: ReactNode }) {
 export type StatusTone = "danger" | "warning" | "neutral";
 
 const STATUS: Record<StatusTone, { icon: LucideIcon; box: string; head: string }> = {
-  danger: { icon: OctagonAlert, box: "bg-danger-soft ring-2 ring-inset ring-danger", head: "text-danger" },
+  danger: { icon: OctagonAlert, box: "bg-destructive-soft ring-2 ring-inset ring-destructive", head: "text-destructive" },
   warning: { icon: TriangleAlert, box: "bg-warning-soft ring-2 ring-inset ring-warning", head: "text-warning" },
   // Deliberately neutral (not green): used for "no obvious signs", never "safe".
-  neutral: { icon: SearchCheck, box: "bg-surface ring-2 ring-inset ring-border-strong", head: "text-foreground" },
+  neutral: { icon: SearchCheck, box: "bg-card ring-2 ring-inset ring-input", head: "text-foreground" },
 };
 
 /** Result status: always icon + text label + color, never color alone. */

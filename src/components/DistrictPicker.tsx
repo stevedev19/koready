@@ -9,7 +9,7 @@ type Props = { district: District; onChange: (id: string) => void };
 export function DistrictPicker({ district, onChange }: Props) {
   return (
     <header>
-      <p className="text-sm font-bold text-muted">{t.home.todayIn}</p>
+      <p className="text-sm font-bold text-muted-foreground">{t.home.todayIn}</p>
       <label className="relative -ml-1 inline-flex max-w-full items-center">
         <span className="sr-only">{t.home.pickDistrict}</span>
         {/* Native select: best on mobile and accessible by default. Styled as the page title. */}
@@ -24,7 +24,7 @@ export function DistrictPicker({ district, onChange }: Props) {
             </option>
           ))}
         </select>
-        <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-1 size-6 text-muted" />
+        <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-1 size-6 text-muted-foreground" />
       </label>
     </header>
   );

@@ -72,13 +72,13 @@ export function ScamChecker() {
             autoCapitalize="off"
             className={`${fieldClass} min-h-36 resize-y`}
           />
-          <p id={privacyId} className="flex items-center gap-1.5 text-[0.9375rem] text-muted">
+          <p id={privacyId} className="flex items-center gap-1.5 text-[0.9375rem] text-muted-foreground">
             <Lock aria-hidden="true" className="size-[1.125rem] shrink-0" />
             {t.scam.privacy}
           </p>
-          {text.length > MAX_INPUT_CHARS && <p className="text-[0.9375rem] text-muted">{t.scam.tooLong}</p>}
+          {text.length > MAX_INPUT_CHARS && <p className="text-[0.9375rem] text-muted-foreground">{t.scam.tooLong}</p>}
           {/* Main action sticks above the tab bar, within thumb reach (unstuck while typing, see globals.css). */}
-          <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-surface/90 p-1 backdrop-blur">
+          <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-card/90 p-1 backdrop-blur">
             <button type="submit" disabled={!text.trim()} className={buttonClass("primary", "lg", "flex-1")}>
               <ScanSearch aria-hidden="true" className="size-5" />
               {t.scam.check}
@@ -110,7 +110,7 @@ export function ScamChecker() {
               </ul>
             </Card>
           )}
-          <p className="text-[0.9375rem] text-muted">{t.scam.rulesNote}</p>
+          <p className="text-[0.9375rem] text-muted-foreground">{t.scam.rulesNote}</p>
           <Disclaimer>{t.safety.disclaimer}</Disclaimer>
         </section>
       )}

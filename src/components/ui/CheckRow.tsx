@@ -12,15 +12,15 @@ export function CheckRow({ checked, onChange, children }: { checked: boolean; on
           type="checkbox"
           checked={checked}
           onChange={onChange}
-          className="peer size-full appearance-none rounded-lg border-2 border-border-strong checked:border-accent checked:bg-accent"
+          className="peer size-full appearance-none rounded-lg border-2 border-input checked:border-primary checked:bg-primary"
         />
         <Check
           aria-hidden="true"
           strokeWidth={3}
-          className="pointer-events-none absolute size-4 text-accent-contrast opacity-0 peer-checked:opacity-100"
+          className="pointer-events-none absolute size-4 text-primary-foreground opacity-0 peer-checked:opacity-100"
         />
       </span>
-      <span className={checked ? "text-muted line-through" : ""}>{children}</span>
+      <span className={checked ? "text-muted-foreground line-through" : ""}>{children}</span>
     </label>
   );
 }

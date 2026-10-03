@@ -18,7 +18,7 @@ const s = t.alerts;
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <section className="rounded-card border border-card-border bg-surface p-5 shadow-card">
+    <section className="rounded-card border border-card-border bg-card p-5 shadow-card">
       <h4 className="mb-2.5 text-lg font-extrabold">{title}</h4>
       {children}
     </section>
@@ -58,7 +58,7 @@ function Result({ r }: { r: AlertReading }) {
   const others = r.types.slice(1);
   const fact = (label: string, value: string | null) => (
     <div className="rounded-xl bg-surface-2 px-3.5 py-2.5">
-      <dt className="text-sm font-bold text-muted">{label}</dt>
+      <dt className="text-sm font-bold text-muted-foreground">{label}</dt>
       <dd lang={value ? "ko" : undefined} className="text-lg font-semibold">{value ?? s.notFound}</dd>
     </div>
   );
@@ -66,8 +66,8 @@ function Result({ r }: { r: AlertReading }) {
   return (
     <div className="space-y-3">
       {/* 0. The original alert, always first and never modified. */}
-      <section className="rounded-card border border-card-border bg-surface p-5 shadow-card">
-        <h3 className="text-sm font-bold text-muted">{s.originalTitle}</h3>
+      <section className="rounded-card border border-card-border bg-card p-5 shadow-card">
+        <h3 className="text-sm font-bold text-muted-foreground">{s.originalTitle}</h3>
         <p lang="ko" className="mt-2 rounded-xl bg-surface-2 p-3.5 text-lg leading-relaxed whitespace-pre-wrap break-words">
           {r.original}
         </p>
@@ -93,7 +93,7 @@ function Result({ r }: { r: AlertReading }) {
           {fact(s.time, r.times.join(", ") || null)}
           {fact(s.sender, r.sender)}
           <div className="rounded-xl bg-surface-2 px-3.5 py-2.5">
-            <dt className="text-sm font-bold text-muted">{s.category}</dt>
+            <dt className="text-sm font-bold text-muted-foreground">{s.category}</dt>
             <dd className="text-lg font-semibold">{r.category ? `${r.category.en} (${r.category.ko})` : s.categoryNotShown}</dd>
           </div>
         </dl>
@@ -119,7 +119,7 @@ function Result({ r }: { r: AlertReading }) {
       {/* 3. What to do */}
       {r.types.length > 0 && (
         <Section title={s.actionsTitle}>
-          <p className="mb-3 text-muted">{s.actionsIntro}</p>
+          <p className="mb-3 text-muted-foreground">{s.actionsIntro}</p>
           {r.types.slice(0, 2).map((type) => (
             <div key={type.id} className="mb-3 last:mb-0">
               {r.types.length > 1 && <p className="mb-1 font-bold">{type.en}</p>}
@@ -128,7 +128,7 @@ function Result({ r }: { r: AlertReading }) {
                   <li key={a} className="flex gap-3 text-lg">
                     <span
                       aria-hidden="true"
-                      className="grid size-7 shrink-0 place-items-center rounded-full bg-accent-soft text-[0.9375rem] font-extrabold text-accent"
+                      className="grid size-7 shrink-0 place-items-center rounded-full bg-accent text-[0.9375rem] font-extrabold text-primary"
                     >
                       {i + 1}
                     </span>
@@ -140,7 +140,7 @@ function Result({ r }: { r: AlertReading }) {
                 href={type.actionsSource}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 inline-flex min-h-12 items-center text-[0.9375rem] text-accent underline underline-offset-2"
+                className="mt-1 inline-flex min-h-12 items-center text-[0.9375rem] text-primary underline underline-offset-2"
               >
                 {s.actionsSource} ↗
               </a>
@@ -156,7 +156,7 @@ function Result({ r }: { r: AlertReading }) {
             {r.glossary.map((g) => (
               <li key={g.ko} className="flex flex-wrap items-baseline gap-x-3 py-2.5">
                 <span lang="ko" className="text-lg font-extrabold">{g.ko}</span>
-                <span className="text-muted italic">{g.romanization}</span>
+                <span className="text-muted-foreground italic">{g.romanization}</span>
                 <span className="w-full">{g.en}</span>
               </li>
             ))}
@@ -172,7 +172,7 @@ function Result({ r }: { r: AlertReading }) {
               <p lang="ko" className="text-lg">{seg.text}</p>
               {seg.recognized ? (
                 seg.terms.length > 0 && (
-                  <p className="mt-1 text-muted">
+                  <p className="mt-1 text-muted-foreground">
                     {s.keyWords} {seg.terms.filter((g) => g.kind !== "filler").map((g) => g.en).join(", ") || "—"}
                   </p>
                 )
@@ -250,17 +250,17 @@ export function AlertTranslator() {
             autoCapitalize="off"
             className={`${fieldClass} min-h-32 resize-y text-lg`}
           />
-          <p id={privacyId} className="flex items-center gap-1.5 text-[0.9375rem] text-muted">
+          <p id={privacyId} className="flex items-center gap-1.5 text-[0.9375rem] text-muted-foreground">
             <Lock aria-hidden="true" className="size-[1.125rem] shrink-0" />
             {s.privacy}
           </p>
-          {text.length > MAX_ALERT_CHARS && <p className="text-[0.9375rem] text-muted">{s.tooLong}</p>}
+          {text.length > MAX_ALERT_CHARS && <p className="text-[0.9375rem] text-muted-foreground">{s.tooLong}</p>}
           <button type="button" onClick={() => setShowSamples(true)} className={buttonClass("tonal", "md", "w-full")}>
             <FlaskConical aria-hidden="true" className="size-5" />
             {s.samples}
           </button>
           {/* Main action sticks above the tab bar, within thumb reach (unstuck while typing, see globals.css). */}
-          <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-surface/90 p-1 backdrop-blur">
+          <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-card/90 p-1 backdrop-blur">
             <button type="submit" disabled={!text.trim()} className={buttonClass("primary", "lg", "flex-1")}>
               <Languages aria-hidden="true" className="size-5" />
               {s.translate}
@@ -277,7 +277,7 @@ export function AlertTranslator() {
       </ListGroup>
 
       <Sheet open={showSamples} onClose={() => setShowSamples(false)} title={s.samples}>
-        <p className="mb-3 text-muted">{s.samplesHint}</p>
+        <p className="mb-3 text-muted-foreground">{s.samplesHint}</p>
         <ListGroup>
           {ALERT_SAMPLES.map((sample) => (
             <ListRow

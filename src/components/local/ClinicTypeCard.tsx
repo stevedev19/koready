@@ -11,7 +11,7 @@ function ClinicTypeInfo({ id, small = false }: { id: ClinicTypeId; small?: boole
       <p lang="ko" className={`${small ? "text-xl" : "text-[2rem] leading-tight"} font-extrabold tracking-tight`}>
         {clinic.ko}
       </p>
-      <p className="text-muted">
+      <p className="text-muted-foreground">
         <span className="italic">{clinic.romanization}</span> · {clinic.en}
       </p>
       <p className="mt-1.5">{clinic.handles}</p>
@@ -34,7 +34,7 @@ export function ClinicTypeCard({ id, alsoId, title = t.local.doctor.clinicTitle,
       <ClinicTypeInfo id={id} />
       {alsoId && (
         <div className="mt-3 rounded-xl bg-surface-2 px-3.5 py-3">
-          <p className="text-sm font-bold text-muted">{t.local.doctor.also}</p>
+          <p className="text-sm font-bold text-muted-foreground">{t.local.doctor.also}</p>
           <ClinicTypeInfo id={alsoId} small />
         </div>
       )}

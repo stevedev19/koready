@@ -19,7 +19,7 @@ export function EmptyState({
     <div className="flex flex-col items-center px-5 py-7 text-center">
       <IconTile icon={icon} tone={tone} size="lg" />
       <p className="mt-3 font-extrabold">{title}</p>
-      {children && <div className="mt-1 text-muted">{children}</div>}
+      {children && <div className="mt-1 text-muted-foreground">{children}</div>}
     </div>
   );
 }

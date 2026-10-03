@@ -32,7 +32,7 @@ export function TabBar() {
                 href={href}
                 aria-current={pathname === href ? "page" : active ? "true" : undefined}
                 className={`flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-[1.25rem] text-[0.8125rem] font-bold ${
-                  active ? "bg-accent text-accent-contrast" : "text-muted"
+                  active ? "bg-primary text-primary-foreground" : "text-muted-foreground"
                 }`}
               >
                 <Icon aria-hidden="true" className="size-6" strokeWidth={active ? 2.4 : 2} />

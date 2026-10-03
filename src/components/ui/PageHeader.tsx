@@ -17,14 +17,14 @@ export function PageHeader({
       {back && (
         <Link
           href={back.href}
-          className="-ml-2 inline-flex min-h-12 items-center gap-0.5 rounded-lg px-1 font-bold text-accent"
+          className="-ml-2 inline-flex min-h-12 items-center gap-0.5 rounded-lg px-1 font-bold text-primary"
         >
           <ChevronLeft aria-hidden="true" className="size-6" />
           {back.label}
         </Link>
       )}
       <h1 className="text-[1.75rem] leading-tight font-extrabold tracking-[-0.025em]">{title}</h1>
-      {subtitle && <p className="text-muted">{subtitle}</p>}
+      {subtitle && <p className="text-muted-foreground">{subtitle}</p>}
     </header>
   );
 }

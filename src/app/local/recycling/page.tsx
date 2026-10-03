@@ -27,7 +27,7 @@ export default function RecyclingIndexPage() {
           />
         ))}
       </ListGroup>
-      <p className="px-1 text-muted">{s.onlyThese}</p>
+      <p className="px-1 text-muted-foreground">{s.onlyThese}</p>
     </LocalScreen>
   );
 }

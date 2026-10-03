@@ -23,12 +23,12 @@ export default function ExplorePage() {
             <li key={trail.id}>
               <Link
                 href={`/explore/trails/${trail.id}`}
-                className="flex items-center gap-3 rounded-card border border-card-border bg-surface p-5 shadow-card"
+                className="flex items-center gap-3 rounded-card border border-card-border bg-card p-5 shadow-card"
               >
                 <span className="min-w-0 flex-1">
                   <TrailTags tags={trail.tags} />
                   <span className="mt-2.5 block text-xl leading-snug font-extrabold">{trail.title}</span>
-                  <span className="mt-1 block text-[0.9375rem] text-muted">
+                  <span className="mt-1 block text-[0.9375rem] text-muted-foreground">
                     {trail.region} · {trail.estimatedTime} · {trail.stops.length} {t.explore.stopsCount}
                   </span>
                 </span>

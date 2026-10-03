@@ -16,7 +16,7 @@ export default function LocalPage() {
       <PageHeader title={t.tabs.local} subtitle={t.local.intro} />
 
       <section aria-labelledby="hospital-helper" className="space-y-3">
-        <p className="px-1 text-sm font-bold text-muted">{s.title}</p>
+        <p className="px-1 text-sm font-bold text-muted-foreground">{s.title}</p>
         <h2 id="hospital-helper" className="px-1 text-[1.375rem] font-extrabold">{s.question}</h2>
 
         {/* Emergency first and largest: one tap from the Local tab. */}
@@ -50,7 +50,7 @@ export default function LocalPage() {
       </section>
 
       <section aria-labelledby="recycling" className="space-y-3">
-        <h2 id="recycling" className="px-1 text-sm font-bold text-muted">{t.local.recycling.title}</h2>
+        <h2 id="recycling" className="px-1 text-sm font-bold text-muted-foreground">{t.local.recycling.title}</h2>
         <ListGroup>
           <ListRow href="/local/recycling" icon={Recycle} tone="amber" title={t.local.recycling.title} subtitle={t.local.recycling.hint} />
         </ListGroup>

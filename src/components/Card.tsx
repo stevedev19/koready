@@ -20,7 +20,7 @@ export function Card({ title, titleKo, icon: Icon, meta, children, footer, hideT
   return (
     <section
       aria-labelledby={headingId}
-      className="rounded-card border border-card-border bg-surface p-5 shadow-card"
+      className="rounded-card border border-card-border bg-card p-5 shadow-card"
     >
       <div className={hideTitle ? "contents" : "mb-3 flex items-center justify-between gap-2"}>
         <h2
@@ -35,10 +35,10 @@ export function Card({ title, titleKo, icon: Icon, meta, children, footer, hideT
             </span>
           )}
         </h2>
-        {meta && !hideTitle && <div className="shrink-0 text-[0.9375rem] text-muted">{meta}</div>}
+        {meta && !hideTitle && <div className="shrink-0 text-[0.9375rem] text-muted-foreground">{meta}</div>}
       </div>
       {children}
-      {footer && <div className="mt-4 space-y-1 text-[0.9375rem] text-muted">{footer}</div>}
+      {footer && <div className="mt-4 space-y-1 text-[0.9375rem] text-muted-foreground">{footer}</div>}
     </section>
   );
 }

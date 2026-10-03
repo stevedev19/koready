@@ -25,7 +25,7 @@ export default function PrivacyPage() {
       {REPORT_EMAIL && (
         <p className="px-1">
           {s.contact}{" "}
-          <a href={`mailto:${REPORT_EMAIL}`} className="inline-flex min-h-12 items-center font-bold text-accent underline underline-offset-2">
+          <a href={`mailto:${REPORT_EMAIL}`} className="inline-flex min-h-12 items-center font-bold text-primary underline underline-offset-2">
             {REPORT_EMAIL}
           </a>
         </p>

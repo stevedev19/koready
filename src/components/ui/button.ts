@@ -6,12 +6,12 @@ const base =
   "inline-flex items-center justify-center gap-2 rounded-btn font-bold text-center transition-transform duration-100 ease-out-soft active:scale-[0.97] disabled:pointer-events-none disabled:opacity-45 [&_svg]:shrink-0";
 
 const variants: Record<ButtonVariant, string> = {
-  primary: "bg-accent text-accent-contrast",
-  tonal: "bg-accent-soft text-accent",
-  secondary: "bg-surface text-foreground ring-[1.5px] ring-inset ring-border-strong",
-  danger: "bg-danger text-danger-contrast",
+  primary: "bg-primary text-primary-foreground",
+  tonal: "bg-accent text-primary",
+  secondary: "bg-card text-foreground ring-[1.5px] ring-inset ring-input",
+  danger: "bg-destructive text-destructive-foreground",
   emergency: "bg-emergency text-emergency-contrast",
-  text: "bg-transparent text-accent",
+  text: "bg-transparent text-primary",
 };
 
 const sizes: Record<ButtonSize, string> = {
@@ -27,4 +27,4 @@ export function buttonClass(variant: ButtonVariant = "primary", size: ButtonSize
 
 /** Shared field style: 1.5px border passes 3:1 against the card in both themes. */
 export const fieldClass =
-  "w-full rounded-btn border-[1.5px] border-border-strong bg-surface px-4 py-3.5 text-[1.0625rem] text-foreground";
+  "w-full rounded-btn border-[1.5px] border-input bg-card px-4 py-3.5 text-[1.0625rem] text-foreground";

@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
+@import "tw-animate-css";
+
 /* Colors and shadows live in tokens.css (rendered in docs/hanji/style-guide.html). */
 @import "./tokens.css";
 
+/*
+ * dark: follows the system unless data-theme="light", or is forced by data-theme="dark"
+ * (same rules as tokens.css). shadcn components use dark: without a .dark class.
+ */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+}
+
 @theme inline {
+  /* shadcn/ui names. Values live in tokens.css. */
   --color-background: var(--background);
-  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* App extras. */
   --color-surface-2: var(--surface-2);
   --color-surface-3: var(--surface-3);
   --color-surface-glass: var(--surface-glass);
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
   --color-card-border: var(--card-border);
-  --color-foreground: var(--foreground);
-  --color-muted: var(--muted);
   --color-placeholder: var(--placeholder);
-  --color-accent: var(--accent);
-  --color-accent-contrast: var(--accent-contrast);
-  --color-accent-soft: var(--accent-soft);
-  --color-danger: var(--danger);
-  --color-danger-soft: var(--danger-soft);
-  --color-danger-contrast: var(--danger-contrast);
+  --color-destructive-soft: var(--destructive-soft);
   --color-warning: var(--warning);
   --color-warning-soft: var(--warning-soft);
   --color-info: var(--info);
@@ -29,7 +57,6 @@
   --color-success-soft: var(--success-soft);
   --color-emergency: var(--emergency);
   --color-emergency-contrast: var(--emergency-contrast);
-  --color-focus: var(--focus);
   --color-jade: var(--jade);
   --color-jade-icon: var(--jade-icon);
   --color-jade-text: var(--jade-text);
@@ -90,7 +117,7 @@ h3 {
 
 /* One visible focus style everywhere (3px, 3:1+ in both themes). */
 :focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 3px solid var(--ring);
   outline-offset: 2px;
 }
 

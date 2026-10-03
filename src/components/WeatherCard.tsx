@@ -77,7 +77,7 @@ export function WeatherCard({ districtId }: { districtId: string }) {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl bg-surface-2 px-3 py-2">
-      <dt className="text-[0.9375rem] text-muted">{label}</dt>
+      <dt className="text-[0.9375rem] text-muted-foreground">{label}</dt>
       <dd className="font-bold tabular-nums">{value}</dd>
     </div>
   );

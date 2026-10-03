@@ -9,7 +9,7 @@ export function MedicalDisclaimer() {
   return (
     <Disclaimer>
       {before}
-      <a href="tel:119" className="font-bold text-danger underline underline-offset-2">
+      <a href="tel:119" className="font-bold text-destructive underline underline-offset-2">
         119
       </a>
       {after}

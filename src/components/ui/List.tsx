@@ -8,7 +8,7 @@ export function ListGroup({ children, label }: { children: ReactNode; label?: st
   return (
     <ul
       aria-label={label}
-      className="divide-y divide-border overflow-hidden rounded-card border border-card-border bg-surface shadow-card"
+      className="divide-y divide-border overflow-hidden rounded-card border border-card-border bg-card shadow-card"
     >
       {children}
     </ul>
@@ -39,7 +39,7 @@ function RowBody({ title, subtitle, icon, tone, trailing, href, external, onClic
       {icon && <IconTile icon={icon} tone={tone} />}
       <span className="min-w-0 flex-1">
         <span lang={lang} className="block leading-snug font-bold">{title}</span>
-        {subtitle && <span className="block text-[0.9375rem] leading-snug text-muted">{subtitle}</span>}
+        {subtitle && <span className="block text-[0.9375rem] leading-snug text-muted-foreground">{subtitle}</span>}
       </span>
       {trailing}
       {Trail && <Trail aria-hidden="true" className="size-5 shrink-0 text-placeholder" />}

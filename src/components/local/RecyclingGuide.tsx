@@ -21,7 +21,7 @@ function DayRow({ days }: { days: Weekday[] }) {
             key={day}
             aria-hidden="true"
             className={`flex h-10 flex-1 items-center justify-center rounded-lg text-sm font-bold ${
-              on ? "bg-accent text-accent-contrast" : "bg-surface-2 text-muted line-through"
+              on ? "bg-primary text-primary-foreground" : "bg-surface-2 text-muted-foreground line-through"
             }`}
           >
             {s.days[day]}
@@ -38,14 +38,14 @@ function ItemDetail({ item, guide }: { item: RecyclingItem; guide: Guide }) {
   return (
     <div className="space-y-3 pt-3">
       <div>
-        <p className="text-sm font-bold text-muted">{s.binLabel}</p>
+        <p className="text-sm font-bold text-muted-foreground">{s.binLabel}</p>
         <p className="text-lg font-extrabold">{bin.name}</p>
-        <p lang="ko" className="text-muted">{bin.nameKo}</p>
+        <p lang="ko" className="text-muted-foreground">{bin.nameKo}</p>
         <p className="mt-1">{bin.how}</p>
       </div>
       {item.prep.length > 0 && (
         <div>
-          <p className="text-sm font-bold text-muted">{s.prepLabel}</p>
+          <p className="text-sm font-bold text-muted-foreground">{s.prepLabel}</p>
           <ol className="mt-1 list-decimal space-y-1 pl-5">
             {item.prep.map((step) => (
               <li key={step}>{step}</li>
@@ -54,11 +54,11 @@ function ItemDetail({ item, guide }: { item: RecyclingItem; guide: Guide }) {
         </div>
       )}
       <div>
-        <p className="text-sm font-bold text-muted">{s.dayLabel}</p>
+        <p className="text-sm font-bold text-muted-foreground">{s.dayLabel}</p>
         {stream ? (
           <div className="mt-1 space-y-1">
             <DayRow days={stream.days} />
-            <p className="text-[0.9375rem] text-muted">{guide.schedule.time}</p>
+            <p className="text-[0.9375rem] text-muted-foreground">{guide.schedule.time}</p>
           </div>
         ) : (
           <p className="mt-1">{item.pickupNote ?? s.noDay}</p>
@@ -76,12 +76,12 @@ function ItemDetail({ item, guide }: { item: RecyclingItem; guide: Guide }) {
           href={item.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-12 items-center font-bold text-accent underline underline-offset-2"
+          className="inline-flex min-h-12 items-center font-bold text-primary underline underline-offset-2"
         >
           {s.bookOnline} ↗
         </a>
       )}
-      {item.inferred && <p className="text-[0.9375rem] text-muted italic">{s.inferred}</p>}
+      {item.inferred && <p className="text-[0.9375rem] text-muted-foreground italic">{s.inferred}</p>}
     </div>
   );
 }
@@ -90,7 +90,7 @@ function NotSureCard({ guide, highlight }: { guide: Guide; highlight?: boolean }
   return (
     <section
       aria-labelledby="not-sure"
-      className={`rounded-card p-5 ${highlight ? "bg-warning-soft" : "border border-card-border bg-surface shadow-card"}`}
+      className={`rounded-card p-5 ${highlight ? "bg-warning-soft" : "border border-card-border bg-card shadow-card"}`}
     >
       <h2 id="not-sure" className="text-lg font-extrabold">{s.notSureTitle}</h2>
       <p className="mt-1">{s.notSureBody}</p>
@@ -98,7 +98,7 @@ function NotSureCard({ guide, highlight }: { guide: Guide; highlight?: boolean }
         <Phone aria-hidden="true" className="size-5" />
         {s.call} {guide.contact.phone}
       </a>
-      <p className="mt-2 text-[0.9375rem] text-muted">{guide.contact.name}</p>
+      <p className="mt-2 text-[0.9375rem] text-muted-foreground">{guide.contact.name}</p>
     </section>
   );
 }
@@ -142,7 +142,7 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
 
       {results.length === 0 ? (
         <>
-          <div className="rounded-card border border-card-border bg-surface shadow-card">
+          <div className="rounded-card border border-card-border bg-card shadow-card">
             <EmptyState icon={SearchX} title={s.noResults} />
           </div>
           <NotSureCard guide={guide} highlight />
@@ -151,11 +151,11 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
         <ul className="space-y-2">
           {results.map((item) => (
             <li key={item.id}>
-              <details className="group rounded-card border border-card-border bg-surface px-4 py-2 shadow-card">
+              <details className="group rounded-card border border-card-border bg-card px-4 py-2 shadow-card">
                 <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
                   <span className="flex-1">
                     <span className="block text-lg leading-snug font-bold">{item.name}</span>
-                    <span lang="ko" className="block text-muted">{item.nameKo}</span>
+                    <span lang="ko" className="block text-muted-foreground">{item.nameKo}</span>
                   </span>
                   <ChevronRight
                     aria-hidden="true"
@@ -187,7 +187,7 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
 
       {results.length > 0 && <NotSureCard guide={guide} />}
 
-      <footer className="space-y-2 text-[0.9375rem] text-muted">
+      <footer className="space-y-2 text-[0.9375rem] text-muted-foreground">
         <p className="font-bold text-foreground">
           {s.lastChecked}: {guide.last_checked}
         </p>
@@ -195,7 +195,7 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
         <ul className="list-disc space-y-1 pl-5">
           {guide.sources.map((src) => (
             <li key={src.url}>
-              <a href={src.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center text-accent underline underline-offset-2">
+              <a href={src.url} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center text-primary underline underline-offset-2">
                 {src.title}
               </a>{" "}
               ({src.published ? `${s.published} ${src.published}` : s.noDate})

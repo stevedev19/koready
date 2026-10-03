@@ -14,7 +14,7 @@ export const metadata: Metadata = { title: s.title };
 export default function MentalHealthPage() {
   return (
     <LocalScreen title={s.title}>
-      <p className="rounded-card bg-surface px-5 py-4 text-lg font-bold shadow-card">{s.crisisBody}</p>
+      <p className="rounded-card bg-card px-5 py-4 text-lg font-bold shadow-card">{s.crisisBody}</p>
       <HelpLines ids={["mentalHealthCrisis", "emergency"]} title={s.crisisTitle} />
       <p className="px-1">{s.reassurance}</p>
       <ClinicTypeCard id="jeongsingeongang" icon={Brain} />

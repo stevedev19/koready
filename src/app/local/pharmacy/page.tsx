@@ -15,13 +15,13 @@ export default function PharmacyPage() {
   return (
     <LocalScreen title={s.title}>
       <ClinicTypeCard id="yakguk" title={s.title} icon={Pill} />
-      <p className="px-1 text-muted">
+      <p className="px-1 text-muted-foreground">
         {s.afterHours}{" "}
         <a
           href={EGEN_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-accent underline underline-offset-2"
+          className="font-semibold text-primary underline underline-offset-2"
         >
           {s.egenLink} ↗
         </a>

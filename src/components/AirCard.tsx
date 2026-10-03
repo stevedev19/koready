@@ -12,10 +12,10 @@ import { Tag } from "./ui/Chips";
 // Success green is reserved for completed actions, so "moderate" uses teal.
 const GRADE_TONE: Record<AirGrade, Tone> = { good: "blue", moderate: "teal", bad: "amber", veryBad: "red" };
 const TAG_STYLE: Record<AirGrade, string> = {
-  good: "bg-accent-soft text-accent",
+  good: "bg-accent text-primary",
   moderate: "bg-info-soft text-info",
   bad: "bg-warning-soft text-warning",
-  veryBad: "bg-danger-soft text-danger",
+  veryBad: "bg-destructive-soft text-destructive",
 };
 
 export function AirCard({ districtId }: { districtId: string }) {
@@ -43,7 +43,7 @@ export function AirCard({ districtId }: { districtId: string }) {
                 <span className="sr-only">{t.air.overall}: </span>
                 {t.air.grades[result.data.overall]}
               </p>
-              <p className="text-muted">{t.air.advice[result.data.overall]}</p>
+              <p className="text-muted-foreground">{t.air.advice[result.data.overall]}</p>
             </div>
           </div>
           <dl className="mt-4 divide-y divide-border rounded-xl bg-surface-2 px-3">
@@ -54,7 +54,7 @@ export function AirCard({ districtId }: { districtId: string }) {
               ] as const
             ).map(([label, value, grade]) => (
               <div key={label} className="flex flex-wrap items-center justify-between gap-2 py-2.5">
-                <dt className="text-muted">{label}</dt>
+                <dt className="text-muted-foreground">{label}</dt>
                 <dd className="flex items-center gap-2 font-bold tabular-nums">
                   {value} {t.air.unit} <Tag className={TAG_STYLE[grade]}>{t.air.grades[grade]}</Tag>
                 </dd>

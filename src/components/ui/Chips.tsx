@@ -23,7 +23,7 @@ export function ChipGroup<T extends string | null>({
             aria-pressed={selected}
             onClick={() => onChange(o.value)}
             className={`min-h-12 rounded-full px-4 text-[0.9375rem] font-bold whitespace-nowrap transition-colors ${
-              selected ? "bg-foreground text-surface" : "bg-surface text-foreground ring-[1.5px] ring-inset ring-border-strong"
+              selected ? "bg-foreground text-card" : "bg-card text-foreground ring-[1.5px] ring-inset ring-input"
             }`}
           >
             {o.label}
@@ -57,7 +57,7 @@ export function Segmented<T extends string>({
             aria-pressed={selected}
             onClick={() => onChange(o.value)}
             className={`min-h-12 flex-1 rounded-[0.6875rem] px-2 text-[0.9375rem] font-bold transition-colors ${
-              selected ? "bg-surface text-foreground shadow-card ring-1 ring-inset ring-border" : "text-muted"
+              selected ? "bg-card text-foreground shadow-card ring-1 ring-inset ring-border" : "text-muted-foreground"
             }`}
           >
             {o.label}

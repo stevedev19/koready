@@ -30,7 +30,7 @@ export function HelpLines({ ids, title = t.helpLines.title, footer }: HelpLinesP
               trailing={
                 <span
                   className={`shrink-0 rounded-full px-3.5 py-2 text-lg font-extrabold tabular-nums ${
-                    id === "emergency" ? "bg-emergency text-emergency-contrast" : "bg-accent text-accent-contrast"
+                    id === "emergency" ? "bg-emergency text-emergency-contrast" : "bg-primary text-primary-foreground"
                   }`}
                 >
                   {line.number}
@@ -40,7 +40,7 @@ export function HelpLines({ ids, title = t.helpLines.title, footer }: HelpLinesP
           );
         })}
       </ListGroup>
-      {footer && <p className="px-1 text-[0.9375rem] text-muted">{footer}</p>}
+      {footer && <p className="px-1 text-[0.9375rem] text-muted-foreground">{footer}</p>}
     </section>
   );
 }

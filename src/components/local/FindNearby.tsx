@@ -58,7 +58,7 @@ export function FindNearby({ query, label }: { query: string; label: string }) {
       </button>
 
       <Sheet open={open} onClose={() => setOpen(false)} title={`${t.local.clinic.findNearby} ${label}`}>
-        <p className="mb-2 text-sm font-bold text-muted">{t.local.clinic.openIn}</p>
+        <p className="mb-2 text-sm font-bold text-muted-foreground">{t.local.clinic.openIn}</p>
         <ListGroup>
           {mapSearchLinks(query, coords).map(({ app, href }) => (
             <ListRow key={app} href={href} external icon={MapIcon} tone={APP_TONE[app]} title={t.local.clinic.apps[app]} />
@@ -73,7 +73,7 @@ export function FindNearby({ query, label }: { query: string; label: string }) {
           {copied ? t.local.phrases.copied : t.explore.trail.copyKorean}
         </button>
         <p aria-live="polite" className="sr-only">{copied ? t.local.phrases.copied : ""}</p>
-        <p className="mt-3 text-[0.9375rem] text-muted">
+        <p className="mt-3 text-[0.9375rem] text-muted-foreground">
           {status === "located" ? t.local.clinic.locationNote : t.local.clinic.locationDenied}
         </p>
       </Sheet>

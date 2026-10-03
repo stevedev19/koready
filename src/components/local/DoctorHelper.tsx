@@ -27,7 +27,7 @@ export function DoctorHelper() {
   return (
     <>
       <Card title={t.local.doctor.pickerTitle} icon={Stethoscope}>
-        <p className="mb-3 text-muted">{t.local.doctor.pickerHint}</p>
+        <p className="mb-3 text-muted-foreground">{t.local.doctor.pickerHint}</p>
         <div className="grid grid-cols-2 gap-2">
           {CATEGORIES.map((c) => {
             const selected = c.id === categoryId;
@@ -39,7 +39,7 @@ export function DoctorHelper() {
                 aria-pressed={selected}
                 onClick={() => setCategoryId(selected ? null : c.id)}
                 className={`flex min-h-[4.5rem] flex-col items-start justify-center gap-1.5 rounded-2xl px-3.5 py-3 text-left leading-snug font-bold transition-colors ${
-                  selected ? "bg-accent text-accent-contrast" : "bg-surface-2 text-foreground"
+                  selected ? "bg-primary text-primary-foreground" : "bg-surface-2 text-foreground"
                 }`}
               >
                 <Icon aria-hidden="true" className="size-6" />

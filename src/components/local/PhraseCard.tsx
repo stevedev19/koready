@@ -28,12 +28,12 @@ export function PhraseCard({ title, phrases }: { title: string; phrases: Phrase[
         {phrases.map((phrase) => (
           <li key={phrase.id} className="rounded-2xl bg-surface-2 p-4">
             <p lang="ko" className="text-[1.375rem] leading-snug font-extrabold">{phrase.ko}</p>
-            <p className="text-muted italic">{phrase.romanization}</p>
+            <p className="text-muted-foreground italic">{phrase.romanization}</p>
             <p className="mt-0.5">{phrase.en}</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <button
                 type="button"
-                className={buttonClass("secondary", "md", "bg-surface")}
+                className={buttonClass("secondary", "md", "bg-card")}
                 onClick={() => onCopy(phrase)}
                 aria-label={`${t.local.phrases.copy}: ${phrase.en}`}
               >

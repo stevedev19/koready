@@ -20,15 +20,15 @@
   section.sg > p.why { margin: 0 0 14px; color: #474c62; max-width: 860px; }
   .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px; }
   .themed.panel { border-radius: 24px; padding: 20px; }
-  .panel-title { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .panel-title { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-foreground); margin-bottom: 14px; }
   .stack > * + * { margin-top: 12px; }
   .wrap { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-  .swatch { border-radius: 14px; overflow: hidden; background: var(--surface); box-shadow: inset 0 0 0 1px var(--border); }
+  .swatch { border-radius: 14px; overflow: hidden; background: var(--card); box-shadow: inset 0 0 0 1px var(--border); }
   .swatch i { display: block; height: 52px; }
   .swatch div { padding: 8px 10px; font-size: 14px; line-height: 1.35; }
   .swatch b { display: block; }
-  .swatch code { color: var(--muted); font-size: 13px; }
+  .swatch code { color: var(--muted-foreground); font-size: 13px; }
   .group-h { font-size: 15px; font-weight: 800; margin: 18px 0 8px; }
   .group-h:first-child { margin-top: 0; }
   table.report { width: 100%; border-collapse: collapse; font-size: 15px; background: #fff; border-radius: 16px; overflow: hidden; }
@@ -41,7 +41,7 @@
   .callout { background: #fff; border-radius: 16px; padding: 14px 18px; margin: 0 0 14px; max-width: 860px; box-shadow: inset 4px 0 0 #8a4b00; }
   .typerow { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
   .typerow:last-child { border-bottom: 0; }
-  .typerow code { color: var(--muted); font-size: 13px; white-space: nowrap; }
+  .typerow code { color: var(--muted-foreground); font-size: 13px; white-space: nowrap; }
   .tabwrap { position: relative; }
 </style>
 </head>
@@ -122,49 +122,49 @@
 <script src="kit.js"></script>
 <script>
 const GROUPS = [
-  ["Surfaces", [["--background", "Page"], ["--surface", "Card"], ["--surface-2", "Inset / stat box"], ["--surface-3", "Track / skeleton"], ["--border", "Divider"], ["--border-strong", "Field border"]]],
-  ["Text", [["--foreground", "Text"], ["--muted", "Muted text"], ["--placeholder", "Placeholder"]]],
-  ["Primary (indigo)", [["--accent", "Primary"], ["--accent-contrast", "On primary"], ["--accent-soft", "Primary tint"], ["--focus", "Focus ring"]]],
+  ["Surfaces", [["--background", "Page"], ["--card", "Card"], ["--surface-2", "Inset / stat box"], ["--surface-3", "Track / skeleton"], ["--border", "Divider"], ["--input", "Field border"]]],
+  ["Text", [["--foreground", "Text"], ["--muted-foreground", "Muted text"], ["--placeholder", "Placeholder"]]],
+  ["Primary (indigo)", [["--primary", "Primary"], ["--primary-foreground", "On primary"], ["--accent", "Primary tint"], ["--ring", "Focus ring"]]],
   ["Accent (jade)", [["--jade", "Brand jade (decor)"], ["--jade-icon", "Icons, large text"], ["--jade-text", "Small text"], ["--jade-soft", "Jade tint"]]],
   ["Slang card", [["--slang-bg", "Card"], ["--on-slang", "Text"], ["--on-slang-muted", "Muted"], ["--on-slang-label", "Labels"], ["--slang-inset", "Inset"]]],
-  ["Status", [["--danger", "Danger"], ["--danger-soft", "Danger tint"], ["--warning", "Warning (amber)"], ["--warning-soft", "Warning tint"], ["--info", "Info"], ["--info-soft", "Info tint"], ["--success", "Action worked"], ["--emergency", "Emergency button"]]],
+  ["Status", [["--destructive", "Danger"], ["--destructive-soft", "Danger tint"], ["--warning", "Warning (amber)"], ["--warning-soft", "Warning tint"], ["--info", "Info"], ["--info-soft", "Info tint"], ["--success", "Action worked"], ["--emergency", "Emergency button"]]],
 ];
 
 /* [fg, bg, minimum, what it's used for] */
 const PAIRS = [
   ["--foreground", "--background", 4.5, "Body text on page"],
-  ["--foreground", "--surface", 4.5, "Body text on card"],
+  ["--foreground", "--card", 4.5, "Body text on card"],
   ["--foreground", "--surface-2", 4.5, "Text in stat boxes"],
-  ["--muted", "--background", 4.5, "Muted text on page"],
-  ["--muted", "--surface", 4.5, "Muted text on card"],
-  ["--muted", "--surface-2", 4.5, "Muted labels in stat boxes"],
-  ["--placeholder", "--surface", 4.5, "Placeholder in fields"],
-  ["--border-strong", "--surface", 3, "Field border (UI)"],
-  ["--accent", "--background", 4.5, "Indigo text/links on page"],
-  ["--accent", "--surface", 4.5, "Indigo text/links on card"],
-  ["--accent-contrast", "--accent", 4.5, "Primary button text, active tab"],
-  ["--accent", "--accent-soft", 4.5, "Tonal button text"],
-  ["--focus", "--background", 3, "Focus ring on page"],
-  ["--focus", "--surface", 3, "Focus ring on card"],
-  ["--jade", "--surface", 3, "Brand jade on card (decor only)"],
+  ["--muted-foreground", "--background", 4.5, "Muted text on page"],
+  ["--muted-foreground", "--card", 4.5, "Muted text on card"],
+  ["--muted-foreground", "--surface-2", 4.5, "Muted labels in stat boxes"],
+  ["--placeholder", "--card", 4.5, "Placeholder in fields"],
+  ["--input", "--card", 3, "Field border (UI)"],
+  ["--primary", "--background", 4.5, "Indigo text/links on page"],
+  ["--primary", "--card", 4.5, "Indigo text/links on card"],
+  ["--primary-foreground", "--primary", 4.5, "Primary button text, active tab"],
+  ["--primary", "--accent", 4.5, "Tonal button text"],
+  ["--ring", "--background", 3, "Focus ring on page"],
+  ["--ring", "--card", 3, "Focus ring on card"],
+  ["--jade", "--card", 3, "Brand jade on card (decor only)"],
   ["--jade-icon", "--background", 3, "Jade icons on page"],
-  ["--jade-icon", "--surface", 3, "Jade icons on card"],
+  ["--jade-icon", "--card", 3, "Jade icons on card"],
   ["--jade-icon", "--jade-soft", 3, "Jade icon in tile"],
   ["--jade-text", "--background", 4.5, "Korean labels on page"],
-  ["--jade-text", "--surface", 4.5, "Korean labels on card"],
+  ["--jade-text", "--card", 4.5, "Korean labels on card"],
   ["--on-slang", "--slang-bg", 4.5, "Slang card text"],
   ["--on-slang-muted", "--slang-bg", 4.5, "Slang card muted text"],
   ["--on-slang-label", "--slang-bg", 4.5, "Slang card labels"],
   ["--jade", "--slang-bg", 3, "Jade icon on slang card"],
   ["--on-slang", "--slang-inset", 4.5, "Slang example text"],
   ["--on-slang-muted", "--slang-inset", 4.5, "Slang example translation"],
-  ["--danger", "--surface", 4.5, "Danger text on card"],
-  ["--danger", "--danger-soft", 4.5, "\"Likely scam\" heading"],
-  ["--foreground", "--danger-soft", 4.5, "Body text in danger card"],
-  ["--danger-contrast", "--danger", 4.5, "Danger button text"],
+  ["--destructive", "--card", 4.5, "Danger text on card"],
+  ["--destructive", "--destructive-soft", 4.5, "\"Likely scam\" heading"],
+  ["--foreground", "--destructive-soft", 4.5, "Body text in danger card"],
+  ["--destructive-foreground", "--destructive", 4.5, "Danger button text"],
   ["--emergency-contrast", "--emergency", 4.5, "119 button text"],
-  ["--danger", "--background", 3, "Emergency pill icon"],
-  ["--warning", "--surface", 4.5, "Warning text on card"],
+  ["--destructive", "--background", 3, "Emergency pill icon"],
+  ["--warning", "--card", 4.5, "Warning text on card"],
   ["--warning", "--warning-soft", 4.5, "\"Unclear\" heading, warning tag"],
   ["--foreground", "--warning-soft", 4.5, "Body text in warning card/tip"],
   ["--info", "--info-soft", 4.5, "Info tag"],

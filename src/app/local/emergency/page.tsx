@@ -15,7 +15,7 @@ export default function EmergencyPage() {
   return (
     <LocalScreen title={s.title}>
       {/* Emergency mode: plain surface, large text, one big action. No animation. */}
-      <section aria-labelledby="call-119" className="rounded-card border-2 border-emergency bg-surface p-5">
+      <section aria-labelledby="call-119" className="rounded-card border-2 border-emergency bg-card p-5">
         <h2 id="call-119" className="text-[2rem] leading-tight font-extrabold">{s.callTitle}</h2>
         <p className="mt-1 text-xl">{s.callBody}</p>
         <p className="mt-5 text-lg font-extrabold">{s.tellThem}</p>
@@ -36,7 +36,7 @@ export default function EmergencyPage() {
           href={EGEN_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex min-h-12 items-center font-bold text-accent underline underline-offset-2"
+          className="mt-2 inline-flex min-h-12 items-center font-bold text-primary underline underline-offset-2"
         >
           {s.egenLink} ↗
         </a>

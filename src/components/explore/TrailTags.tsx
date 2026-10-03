@@ -6,7 +6,7 @@ import { Tag } from "../ui/Chips";
 // Decorative colors; the tag text carries the meaning.
 const TAG: Record<TrailTag, { icon: LucideIcon; style: string }> = {
   kpop: { icon: Music, style: "bg-tile-violet text-ink-violet" },
-  kdrama: { icon: Tv, style: "bg-accent-soft text-accent" },
+  kdrama: { icon: Tv, style: "bg-accent text-primary" },
   film: { icon: Clapperboard, style: "bg-info-soft text-info" },
   food: { icon: Utensils, style: "bg-warning-soft text-warning" },
   nature: { icon: Leaf, style: "bg-success-soft text-success" },

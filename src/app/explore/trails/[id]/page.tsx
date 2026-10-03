@@ -33,10 +33,10 @@ export default async function TrailPage({ params }: PageProps<"/explore/trails/[
       backLabel={t.explore.back}
       notice={<ExploreBanner trailTitle={trail.title} />}
     >
-      <div className="space-y-3 rounded-card border border-card-border bg-surface p-5 shadow-card">
+      <div className="space-y-3 rounded-card border border-card-border bg-card p-5 shadow-card">
         <TrailTags tags={trail.tags} />
         <p className="font-bold">
-          {trail.region} <span lang="ko" className="font-normal text-muted">({trail.regionKo})</span>
+          {trail.region} <span lang="ko" className="font-normal text-muted-foreground">({trail.regionKo})</span>
         </p>
         <dl className="grid gap-2">
           {(
@@ -47,7 +47,7 @@ export default async function TrailPage({ params }: PageProps<"/explore/trails/[
             ] as const
           ).map(([label, value]) => (
             <div key={label} className="rounded-xl bg-surface-2 px-3.5 py-2.5">
-              <dt className="text-sm font-bold text-muted">{label}</dt>
+              <dt className="text-sm font-bold text-muted-foreground">{label}</dt>
               <dd>{value}</dd>
             </div>
           ))}

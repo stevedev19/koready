@@ -49,11 +49,11 @@ export function SlangArchive() {
         />
       </div>
 
-      <p aria-live="polite" className={results.length === 0 ? "sr-only" : "px-1 font-bold text-muted"}>
+      <p aria-live="polite" className={results.length === 0 ? "sr-only" : "px-1 font-bold text-muted-foreground"}>
         {results.length === 0 ? s.noResults : `${results.length} ${s.count}`}
       </p>
       {results.length === 0 && (
-        <div className="rounded-card border border-card-border bg-surface shadow-card">
+        <div className="rounded-card border border-card-border bg-card shadow-card">
           <EmptyState icon={SearchX} title={s.noResults} />
         </div>
       )}
@@ -61,11 +61,11 @@ export function SlangArchive() {
       <ul className="space-y-2">
         {results.map((entry) => (
           <li key={entry.id}>
-            <details className="group rounded-card border border-card-border bg-surface px-4 py-2.5 shadow-card">
+            <details className="group rounded-card border border-card-border bg-card px-4 py-2.5 shadow-card">
               <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 rounded-xl [&::-webkit-details-marker]:hidden">
                 <span className="flex-1">
                   <span lang="ko" className="text-[1.375rem] font-extrabold">{entry.term}</span>{" "}
-                  <span className="text-muted italic">{entry.romanization}</span>
+                  <span className="text-muted-foreground italic">{entry.romanization}</span>
                   <span className="block">{entry.meaning}</span>
                 </span>
                 <ChevronRight
@@ -82,11 +82,11 @@ export function SlangArchive() {
                   {entry.examples.map((ex) => (
                     <li key={ex.ko} className="rounded-xl bg-surface-2 px-3.5 py-2.5">
                       <p lang="ko">{ex.ko}</p>
-                      <p className="text-muted">{ex.en}</p>
+                      <p className="text-muted-foreground">{ex.en}</p>
                     </li>
                   ))}
                 </ul>
-                {entry.needs_native_review && <p className="text-[0.9375rem] text-muted">{t.slang.reviewNote}</p>}
+                {entry.needs_native_review && <p className="text-[0.9375rem] text-muted-foreground">{t.slang.reviewNote}</p>}
               </div>
             </details>
           </li>

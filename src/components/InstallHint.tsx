@@ -71,7 +71,7 @@ export function InstallHint() {
           type="button"
           onClick={dismiss}
           aria-label={s.dismiss}
-          className="-my-2 -mr-3 grid size-12 place-items-center rounded-full text-muted"
+          className="-my-2 -mr-3 grid size-12 place-items-center rounded-full text-muted-foreground"
         >
           <X aria-hidden="true" className="size-6" />
         </button>
@@ -79,7 +79,7 @@ export function InstallHint() {
     >
       {mode === "safari" ? (
         <>
-          <p className="mb-3 text-muted">{s.why}</p>
+          <p className="mb-3 text-muted-foreground">{s.why}</p>
           <ol className="space-y-2.5">
             <Step n={1} icon={Share}>
               {s.safari.share}
@@ -93,7 +93,7 @@ export function InstallHint() {
       ) : (
         <>
           <p className="font-bold">{s.otherBrowser.title}</p>
-          <p className="mt-1 mb-3 text-muted">{s.otherBrowser.body}</p>
+          <p className="mt-1 mb-3 text-muted-foreground">{s.otherBrowser.body}</p>
           <p aria-live="polite" className="sr-only">
             {copied ? s.otherBrowser.copied : ""}
           </p>
@@ -116,12 +116,12 @@ function Step({ n, icon: Icon, children }: { n: number; icon?: LucideIcon; child
     <li className="flex items-start gap-3">
       <span
         aria-hidden="true"
-        className="grid size-7 shrink-0 place-items-center rounded-full bg-accent-soft text-[0.9375rem] font-extrabold text-accent"
+        className="grid size-7 shrink-0 place-items-center rounded-full bg-accent text-[0.9375rem] font-extrabold text-primary"
       >
         {n}
       </span>
       <span className="min-w-0 flex-1 pt-0.5">{children}</span>
-      {Icon && <Icon aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-accent" />}
+      {Icon && <Icon aria-hidden="true" className="mt-0.5 size-6 shrink-0 text-primary" />}
     </li>
   );
 }

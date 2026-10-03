@@ -37,7 +37,7 @@ function StopCard({
 }) {
   return (
     <li
-      className={`overflow-hidden rounded-card border bg-surface shadow-card ${visited ? "border-accent" : "border-card-border"}`}
+      className={`overflow-hidden rounded-card border bg-card shadow-card ${visited ? "border-primary" : "border-card-border"}`}
       aria-labelledby={`stop-${stop.id}`}
     >
       <div className="p-5">
@@ -45,7 +45,7 @@ function StopCard({
           <span
             aria-hidden="true"
             className={`grid size-9 shrink-0 place-items-center rounded-full text-lg font-extrabold ${
-              visited ? "bg-accent text-accent-contrast" : "bg-surface-2 text-foreground"
+              visited ? "bg-primary text-primary-foreground" : "bg-surface-2 text-foreground"
             }`}
           >
             {visited ? "✓" : index + 1}
@@ -53,7 +53,7 @@ function StopCard({
           <div className="min-w-0 flex-1">
             <h3 id={`stop-${stop.id}`} className="text-lg leading-snug font-extrabold">{stop.name}</h3>
             <p lang="ko" className="text-xl font-bold">{stop.nameKo}</p>
-            <p className="text-[0.9375rem] text-muted">{stop.kind}</p>
+            <p className="text-[0.9375rem] text-muted-foreground">{stop.kind}</p>
           </div>
         </div>
 
@@ -61,18 +61,18 @@ function StopCard({
         {stop.relatedWork && (
           <p className="mt-2">
             <span className="font-bold">{s.relatedTo}:</span> {stop.relatedWork.title}{" "}
-            <span className="text-muted">({stop.relatedWork.type})</span>
+            <span className="text-muted-foreground">({stop.relatedWork.type})</span>
           </p>
         )}
 
         <dl className="mt-3 grid gap-2">
           <div className="rounded-xl bg-surface-2 px-3.5 py-2.5">
-            <dt className="text-sm font-bold text-muted">{s.hours}</dt>
+            <dt className="text-sm font-bold text-muted-foreground">{s.hours}</dt>
             <dd>{stop.hours ?? s.notPublished}</dd>
           </div>
           {stop.cost && (
             <div className="rounded-xl bg-surface-2 px-3.5 py-2.5">
-              <dt className="text-sm font-bold text-muted">{s.cost}</dt>
+              <dt className="text-sm font-bold text-muted-foreground">{s.cost}</dt>
               <dd>{stop.cost}</dd>
             </div>
           )}
@@ -83,9 +83,9 @@ function StopCard({
           {s.map}
         </button>
 
-        <p className="mt-3 text-[0.9375rem] text-muted">
+        <p className="mt-3 text-[0.9375rem] text-muted-foreground">
           {s.lastChecked}: {stop.last_checked} ·{" "}
-          <a href={stop.source} target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">
+          <a href={stop.source} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2">
             {s.source} ↗
           </a>
           {stop.needs_review && <> · {s.needsReview}</>}
@@ -111,7 +111,7 @@ export function TrailStops({ trail }: { trail: Trail }) {
     <section aria-labelledby="stops-title" className="space-y-3">
       <div className="flex items-baseline justify-between px-1">
         <h2 id="stops-title" className="text-xl font-extrabold">{s.stopsTitle}</h2>
-        <p className="font-bold text-muted">
+        <p className="font-bold text-muted-foreground">
           {done}/{trail.stops.length} {s.progress}
         </p>
       </div>
@@ -127,12 +127,12 @@ export function TrailStops({ trail }: { trail: Trail }) {
           />
         ))}
       </ol>
-      <p className="px-1 text-[0.9375rem] text-muted">{s.progressNote}</p>
+      <p className="px-1 text-[0.9375rem] text-muted-foreground">{s.progressNote}</p>
 
       <Sheet open={mapStop !== null} onClose={() => setMapStop(null)} title={mapStop ? <span lang="ko">{mapStop.nameKo}</span> : ""}>
         {mapStop && (
           <>
-            <p className="mb-2 text-sm font-bold text-muted">{t.local.clinic.openIn}</p>
+            <p className="mb-2 text-sm font-bold text-muted-foreground">{t.local.clinic.openIn}</p>
             <ListGroup>
               {MAP_APPS.map(({ key, label, tone }) => (
                 <ListRow key={key} href={mapStop.mapLinks[key]} external icon={MapIcon} tone={tone} title={label} />
