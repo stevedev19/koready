@@ -1,15 +1,16 @@
 import { Info, OctagonAlert, SearchCheck, TriangleAlert, type LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
+import { cn } from "@/lib/utils";
+import { Alert, AlertDescription, AlertTitle } from "./alert";
 
 /** Banner: a short message with an icon. Warning = be careful, info = neutral fact. */
 export function Banner({ tone = "warning", children }: { tone?: "warning" | "info"; children: ReactNode }) {
   const Icon = tone === "warning" ? TriangleAlert : Info;
-  const style = tone === "warning" ? "bg-warning-soft [&>svg]:text-warning" : "bg-info-soft [&>svg]:text-info";
   return (
-    <div role="note" className={`flex items-start gap-2.5 rounded-2xl px-4 py-3.5 ${style}`}>
+    <Alert role="note" kind="banner" tone={tone}>
       <Icon aria-hidden="true" className="mt-0.5 size-[1.375rem] shrink-0" />
-      <div className="min-w-0">{children}</div>
-    </div>
+      <AlertDescription>{children}</AlertDescription>
+    </Alert>
   );
 }
 
@@ -23,39 +24,37 @@ export function Disclaimer({ children }: { children: ReactNode }) {
   );
 }
 
-export type StatusTone = "danger" | "warning" | "neutral";
+export type ResultTone = "danger" | "warning" | "neutral";
 
-const STATUS: Record<StatusTone, { icon: LucideIcon; box: string; head: string }> = {
-  danger: { icon: OctagonAlert, box: "bg-destructive-soft ring-2 ring-inset ring-destructive", head: "text-destructive" },
-  warning: { icon: TriangleAlert, box: "bg-warning-soft ring-2 ring-inset ring-warning", head: "text-warning" },
+const RESULT: Record<ResultTone, { icon: LucideIcon; head: string }> = {
+  danger: { icon: OctagonAlert, head: "text-destructive" },
+  warning: { icon: TriangleAlert, head: "text-warning" },
   // Deliberately neutral (not green): used for "no obvious signs", never "safe".
-  neutral: { icon: SearchCheck, box: "bg-card ring-2 ring-inset ring-input", head: "text-foreground" },
+  neutral: { icon: SearchCheck, head: "text-foreground" },
 };
 
-/** Result status: always icon + text label + color, never color alone. */
-export function StatusCard({
+/** Checker result: always icon + text label + color, never color alone. */
+export function ResultCard({
   tone,
   label,
   children,
   headingRef,
 }: {
-  tone: StatusTone;
+  tone: ResultTone;
   label: ReactNode;
   children?: ReactNode;
-  headingRef?: React.Ref<HTMLHeadingElement>;
+  headingRef?: Ref<HTMLHeadingElement>;
 }) {
-  const { icon: Icon, box, head } = STATUS[tone];
+  const { icon: Icon, head } = RESULT[tone];
   return (
-    <div className={`rounded-card p-[1.125rem] ${box}`}>
-      <h3
-        ref={headingRef}
-        tabIndex={-1}
-        className={`flex items-center gap-2.5 text-[1.375rem] leading-tight font-extrabold focus:outline-none ${head}`}
-      >
-        <Icon aria-hidden="true" className="size-7 shrink-0" />
-        <span>{label}</span>
-      </h3>
-      {children && <div className="mt-2 text-foreground">{children}</div>}
-    </div>
+    <Alert tone={tone} kind="result">
+      <AlertTitle asChild className={cn("focus:outline-none", head)}>
+        <h3 ref={headingRef} tabIndex={-1}>
+          <Icon aria-hidden="true" className="size-7 shrink-0" />
+          <span>{label}</span>
+        </h3>
+      </AlertTitle>
+      {children && <AlertDescription className="mt-2 text-foreground">{children}</AlertDescription>}
+    </Alert>
   );
 }

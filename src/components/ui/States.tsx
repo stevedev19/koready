@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { t } from "@/lib/strings";
 import { Button } from "./button";
 import { IconTile, type Tone } from "./IconTile";
+import { Skeleton } from "./skeleton";
 
 export function EmptyState({
   icon,
@@ -36,10 +37,6 @@ export function ErrorState({ onRetry }: { onRetry?: () => void }) {
       )}
     </div>
   );
-}
-
-export function Skeleton({ className = "" }: { className?: string }) {
-  return <div className={`animate-pulse rounded-lg bg-surface-3 ${className}`} />;
 }
 
 export function LoadingState() {

@@ -5,9 +5,10 @@ import { useId, useState } from "react";
 import { SLANG, type SlangTone } from "@/lib/slang";
 import { t } from "@/lib/strings";
 import { fieldClass } from "../ui/button";
-import { ChipGroup, Tag } from "../ui/Chips";
+import { ChipGroup } from "../ui/Chips";
 import { EmptyState } from "../ui/States";
 import { Card as CardSurface } from "../ui/card";
+import { Badge } from "../ui/badge";
 
 const s = t.explore.slang;
 const TONES = Object.keys(t.slang.tone) as SlangTone[];
@@ -77,8 +78,8 @@ export function SlangArchive() {
                 </summary>
                 <div className="space-y-2 pt-3">
                   <p className="flex flex-wrap gap-2">
-                    <Tag className="bg-surface-2 text-foreground">{t.slang.tone[entry.tone]}</Tag>
-                    <Tag className="bg-surface-2 text-foreground">{t.slang.usage[entry.usage_level]}</Tag>
+                    <Badge>{t.slang.tone[entry.tone]}</Badge>
+                    <Badge>{t.slang.usage[entry.usage_level]}</Badge>
                   </p>
                   <ul className="space-y-2">
                     {entry.examples.map((ex) => (

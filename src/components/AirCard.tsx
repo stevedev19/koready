@@ -6,16 +6,16 @@ import { t } from "@/lib/strings";
 import type { AirData, AirGrade } from "@/lib/types";
 import { Card, CardError, CardLoading } from "./Card";
 import { IconTile, type Tone } from "./ui/IconTile";
-import { Tag } from "./ui/Chips";
+import { Badge, type BadgeVariant } from "./ui/badge";
 
 // Color is never the only signal: every grade is also written out.
 // Success green is reserved for completed actions, so "moderate" uses teal.
 const GRADE_TONE: Record<AirGrade, Tone> = { good: "blue", moderate: "teal", bad: "amber", veryBad: "red" };
-const TAG_STYLE: Record<AirGrade, string> = {
-  good: "bg-accent text-primary",
-  moderate: "bg-info-soft text-info",
-  bad: "bg-warning-soft text-warning",
-  veryBad: "bg-destructive-soft text-destructive",
+const GRADE_BADGE: Record<AirGrade, BadgeVariant> = {
+  good: "primary",
+  moderate: "info",
+  bad: "warning",
+  veryBad: "destructive",
 };
 
 export function AirCard({ districtId }: { districtId: string }) {
@@ -56,7 +56,7 @@ export function AirCard({ districtId }: { districtId: string }) {
               <div key={label} className="flex flex-wrap items-center justify-between gap-2 py-2.5">
                 <dt className="text-muted-foreground">{label}</dt>
                 <dd className="flex items-center gap-2 font-bold tabular-nums">
-                  {value} {t.air.unit} <Tag className={TAG_STYLE[grade]}>{t.air.grades[grade]}</Tag>
+                  {value} {t.air.unit} <Badge variant={GRADE_BADGE[grade]}>{t.air.grades[grade]}</Badge>
                 </dd>
               </div>
             ))}

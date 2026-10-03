@@ -67,12 +67,3 @@ export function Segmented<T extends string>({
     </div>
   );
 }
-
-/** A tag (not interactive). */
-export function Tag({ className = "", children }: { className?: string; children: React.ReactNode }) {
-  return (
-    <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-bold ${className}`}>
-      {children}
-    </span>
-  );
-}

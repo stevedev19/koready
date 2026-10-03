@@ -6,13 +6,13 @@ import { checkMessage, MAX_INPUT_CHARS, type ScamCheckResult, type ScamVerdict }
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
 import { Button, fieldClass } from "./ui/button";
-import { Disclaimer, StatusCard, type StatusTone } from "./ui/Notice";
+import { Disclaimer, ResultCard, type ResultTone } from "./ui/Notice";
 
 // Privacy: the message lives only in this component's state. It is never sent,
 // stored (no localStorage) or logged, and it is cleared when you leave the page.
 
 // Fixed meanings: danger = likely scam, warning = unclear, neutral = no obvious signs (never "safe").
-const VERDICT_TONE: Record<ScamVerdict, StatusTone> = {
+const VERDICT_TONE: Record<ScamVerdict, ResultTone> = {
   likely_scam: "danger",
   unclear: "warning",
   no_obvious_signs: "neutral",
@@ -92,12 +92,12 @@ export function ScamChecker() {
 
       {result && signals && (
         <section aria-label={t.scam.resultHeading} className="space-y-3">
-          <StatusCard tone={VERDICT_TONE[result.verdict]} label={t.scam.verdicts[result.verdict]} headingRef={resultRef}>
+          <ResultCard tone={VERDICT_TONE[result.verdict]} label={t.scam.verdicts[result.verdict]} headingRef={resultRef}>
             {(result.reason === "too_short" || result.reason === "odd_input") && (
               <p className="font-semibold">{t.scam.reasons[result.reason]}</p>
             )}
             <p className="mt-1">{t.scam.advice[result.verdict]}</p>
-          </StatusCard>
+          </ResultCard>
 
           {signals.length > 0 && (
             <Card title={t.scam.signalsTitle}>
