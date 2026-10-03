@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/explore/trails/:id", destination: "/trails/:id", permanent: true },
       { source: "/explore/slang", destination: "/slang", permanent: true },
+      { source: "/explore", destination: "/", permanent: true },
     ];
   },
   async headers() {

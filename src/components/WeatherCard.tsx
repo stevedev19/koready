@@ -8,6 +8,7 @@ import {
   CloudRain,
   CloudSnow,
   CloudSun,
+  Lightbulb,
   Sun,
   Thermometer,
   type LucideIcon,
@@ -15,10 +16,11 @@ import {
 import { useApi } from "@/hooks/useApi";
 import { t } from "@/lib/strings";
 import type { WeatherCodeKey, WeatherData } from "@/lib/types";
+import { weatherTip } from "@/lib/weatherTip";
 import { Card, CardError, CardLoading } from "./Card";
 import { IconTile } from "./ui/IconTile";
 
-const ICONS: Record<WeatherCodeKey, LucideIcon> = {
+export const WEATHER_ICONS: Record<WeatherCodeKey, LucideIcon> = {
   clear: Sun,
   mostlyClear: CloudSun,
   partlyCloudy: CloudSun,
@@ -37,7 +39,7 @@ const ICONS: Record<WeatherCodeKey, LucideIcon> = {
   unknown: Thermometer,
 };
 
-const deg = (n: number) => `${Math.round(n)}°`;
+export const deg = (n: number) => `${Math.round(n)}°`;
 
 export function WeatherCard({ districtId }: { districtId: string }) {
   const result = useApi<WeatherData>(`/api/weather?district=${districtId}`);
@@ -59,7 +61,7 @@ export function WeatherCard({ districtId }: { districtId: string }) {
               </p>
               <p className="mt-1.5 text-lg font-semibold">{t.weather.codes[result.data.condition]}</p>
             </div>
-            <IconTile icon={ICONS[result.data.condition]} tone="blue" size="lg" />
+            <IconTile icon={WEATHER_ICONS[result.data.condition]} tone="blue" size="lg" />
           </div>
           <dl className="mt-4 grid grid-cols-2 gap-2 min-[380px]:grid-cols-3">
             <Stat label={t.weather.feelsLike} value={deg(result.data.feelsLike)} />
@@ -68,6 +70,13 @@ export function WeatherCard({ districtId }: { districtId: string }) {
             <Stat label={t.weather.humidity} value={`${result.data.humidity}%`} />
             <Stat label={t.weather.wind} value={`${Math.round(result.data.windKmh)} km/h`} />
           </dl>
+          <p className="mt-3 flex items-start gap-2 rounded-xl bg-surface-2 px-3.5 py-2.5 font-semibold">
+            <Lightbulb aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-jade-icon" />
+            <span>
+              <span className="sr-only">{t.weather.tipLabel}: </span>
+              {t.weather.tips[weatherTip(result.data)]}
+            </span>
+          </p>
         </div>
       )}
     </Card>

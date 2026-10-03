@@ -7,7 +7,7 @@ import { t } from "@/lib/strings";
 
 const TABS = [
   // Home also owns the trail pages and the weather page.
-  { href: "/", label: t.tabs.home, icon: House, also: ["/explore", "/trails/"] },
+  { href: "/", label: t.tabs.home, icon: House, also: ["/trails/", "/weather"] },
   { href: "/safety", label: t.tabs.safety, icon: Shield, also: [] },
   { href: "/local", label: t.tabs.local, icon: MapPin, also: [] },
   { href: "/slang", label: t.tabs.slang, icon: MessagesSquare, also: [] },

@@ -7,6 +7,7 @@ import type { AirData, AirGrade } from "@/lib/types";
 import { Card, CardError, CardLoading } from "./Card";
 import { IconTile, type Tone } from "./ui/IconTile";
 import { Badge, type BadgeVariant } from "./ui/badge";
+import { Banner } from "./ui/Notice";
 
 // Color is never the only signal: every grade is also written out.
 // Success green is reserved for completed actions, so "moderate" uses teal.
@@ -23,7 +24,8 @@ export function AirCard({ districtId }: { districtId: string }) {
 
   return (
     <Card
-      title={t.air.title}
+      title={t.air.goingOutside}
+      titleKo={t.air.titleKo}
       icon={Wind}
       footer={
         <>
@@ -46,6 +48,14 @@ export function AirCard({ districtId }: { districtId: string }) {
               <p className="text-muted-foreground">{t.air.advice[result.data.overall]}</p>
             </div>
           </div>
+          {result.data.overall !== "good" && (
+            <div className="mt-4">
+              <Banner tone={result.data.overall === "moderate" ? "info" : "warning"}>
+                <p className="font-bold">{t.air.maskTip[result.data.overall].title}</p>
+                <p>{t.air.maskTip[result.data.overall].body}</p>
+              </Banner>
+            </div>
+          )}
           <dl className="mt-4 divide-y divide-border rounded-xl bg-surface-2 px-3">
             {(
               [

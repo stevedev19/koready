@@ -20,7 +20,7 @@ export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps<"/trails/[id]">): Promise<Metadata> {
   const trail = getTrail((await params).id);
-  return { title: trail?.title ?? t.explore.trailsTitle };
+  return { title: trail?.title ?? t.explore.title };
 }
 
 export default async function TrailPage({ params }: PageProps<"/trails/[id]">) {
@@ -30,8 +30,8 @@ export default async function TrailPage({ params }: PageProps<"/trails/[id]">) {
   return (
     <LocalScreen
       title={trail.title}
-      backHref="/explore"
-      backLabel={t.explore.back}
+      backHref="/"
+      backLabel={t.tabs.home}
       notice={<ExploreBanner trailTitle={trail.title} />}
     >
       <CardSurface className="space-y-3">

@@ -76,10 +76,20 @@ export const en = {
   weather: {
     title: "Weather",
     titleKo: "날씨",
-    umbrellaTip: {
-      title: "Take an umbrella",
-      body: "Rain chance today:",
+    // One plain tip on the Home card and Weather page (see lib/weatherTip.ts).
+    tips: {
+      storm: "Thunderstorms today. Go indoors when you hear thunder.",
+      snow: "Snow or ice today. Wear shoes with grip and allow extra travel time.",
+      umbrella: "Take an umbrella.",
+      cold: "Very cold. Wear a warm coat, hat and gloves.",
+      heat: "Very hot. Drink water and rest in the shade.",
+      layers: "Big temperature swing today. Wear layers.",
+      none: "No special prep needed today.",
     },
+    tipLabel: "Tip",
+    district: "District",
+    seeDetails: "See full weather",
+    pageTitle: "Weather",
     feelsLike: "Feels like",
     high: "High",
     low: "Low",
@@ -144,6 +154,7 @@ export const en = {
     },
     note: "Model estimate using Korean grading. Station readings may differ.",
     attribution: "Air quality data by Open-Meteo.com (CC BY 4.0)",
+    goingOutside: "Going outside?",
   },
 
   exchange: {
@@ -495,6 +506,7 @@ export const en = {
   },
 
   explore: {
+    title: "Trails",
     intro: "Short self-guided trips around Korea, mixing K-culture spots with local markets and food.",
     trailsTitle: "Trails",
     stopsCount: "stops",
