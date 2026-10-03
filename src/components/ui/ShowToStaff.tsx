@@ -1,7 +1,8 @@
 "use client";
 
-import { Copy } from "lucide-react";
+import { Copy, Sun } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
+import { useWakeLock } from "@/hooks/useWakeLock";
 import { copyText } from "@/lib/clipboard";
 import { t } from "@/lib/strings";
 import { buttonClass } from "./button";
@@ -11,11 +12,13 @@ export type StaffText = { ko: string; en?: string; hint?: string };
 /**
  * Full-screen "show this to staff" mode for clinics, pharmacies and taxis:
  * plain white (black in dark mode), very large Korean, Copy and Close.
+ * Keeps the screen awake while shown, or tells the user it may dim.
  */
 export function ShowToStaff({ text, onClose }: { text: StaffText | null; onClose: () => void }) {
   const ref = useRef<HTMLDialogElement>(null);
   const koId = useId();
   const [copied, setCopied] = useState(false);
+  const wakeLock = useWakeLock(text !== null);
 
   useEffect(() => {
     const dialog = ref.current;
@@ -41,6 +44,12 @@ export function ShowToStaff({ text, onClose }: { text: StaffText | null; onClose
       {text && (
         <div className="mx-auto flex h-full max-w-2xl flex-col pr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.75rem,env(safe-area-inset-bottom))]">
           <p className="text-sm font-extrabold tracking-wide uppercase opacity-75">{t.local.phrases.showToStaff}</p>
+          {wakeLock !== "pending" && (
+            <p className="mt-1 flex items-center gap-1.5 text-[0.9375rem] opacity-75">
+              <Sun aria-hidden="true" className="size-4 shrink-0" />
+              {wakeLock === "on" ? t.local.phrases.screenOn : t.local.phrases.screenMayDim}
+            </p>
+          )}
           <div className="flex flex-1 flex-col justify-center">
             <p id={koId} lang="ko" className="text-[2.875rem] leading-tight font-extrabold tracking-tight">
               {text.ko}

@@ -438,6 +438,8 @@ export const en = {
       showLarge: "Show",
       close: "Close",
       showToStaff: "Show this to staff",
+      screenOn: "Screen stays on while this is open.",
+      screenMayDim: "Your screen may dim. Tap it now and then to keep it on.",
       blankHint: "Point to the ___ or say the word.",
       reviewNote: "Phrases not yet reviewed by a native speaker.",
     },
