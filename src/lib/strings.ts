@@ -24,7 +24,7 @@ export const en = {
 
   home: {
     todayIn: "Today in",
-    pickDistrict: "Choose district",
+    pickDistrict: "Choose city",
     glance: {
       title: "Today at a glance",
       weatherKo: "날씨",
