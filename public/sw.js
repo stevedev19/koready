@@ -1,6 +1,6 @@
 // Korea Survival Kit service worker: basic offline fallback.
 // Bump VERSION when this file's caching logic changes.
-const VERSION = "v2";
+const VERSION = "v3";
 const STATIC_CACHE = `ksk-static-${VERSION}`;
 const PAGES_CACHE = `ksk-pages-${VERSION}`;
 const OFFLINE_URL = "/offline";
