@@ -60,3 +60,11 @@ npm run build && npm start
 npm run test:scam     # runs tests/scam-samples.json, prints expected vs actual and FN/FP counts
 npm run test:alerts   # runs tests/alert-samples.json against the alert translator
 ```
+
+## Licenses
+
+```bash
+npm run notices       # regenerates THIRD_PARTY_NOTICES.md and the /licenses page data
+```
+
+Run it after adding or updating a dependency. UI components in `src/components/ui/` are adapted from shadcn/ui (MIT); the Pretendard font is under SIL OFL 1.1 (`licenses/`).

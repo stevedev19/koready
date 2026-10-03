@@ -1,5 +1,7 @@
+import { Scale } from "lucide-react";
 import type { Metadata } from "next";
 import { Card } from "@/components/Card";
+import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { REPORT_EMAIL } from "@/lib/config";
 import { t } from "@/lib/strings";
@@ -22,6 +24,9 @@ export default function PrivacyPage() {
           </ul>
         </Card>
       ))}
+      <ListGroup>
+        <ListRow href="/licenses" icon={Scale} tone="neutral" title={t.licenses.link} />
+      </ListGroup>
       {REPORT_EMAIL && (
         <p className="px-1">
           {s.contact}{" "}

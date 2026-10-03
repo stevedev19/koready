@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "eslint",
     "test:scam": "node --experimental-strip-types --no-warnings scripts/check-scam-samples.ts",
-    "test:alerts": "node --experimental-strip-types --no-warnings scripts/check-alert-samples.ts"
+    "test:alerts": "node --experimental-strip-types --no-warnings scripts/check-alert-samples.ts",
+    "notices": "node scripts/generate-notices.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

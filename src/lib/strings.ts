@@ -572,6 +572,16 @@ export const en = {
     contact: "Questions about privacy?",
   },
 
+  // Credits for the open-source code and fonts the app ships (generated list, see npm run notices).
+  licenses: {
+    title: "Open-source licenses",
+    link: "Open-source licenses",
+    intro:
+      "Korea Survival Kit is built with free and open-source software and the Pretendard font. These are the packages it uses, with their copyright notices and licenses.",
+    showText: "Show license text",
+    packages: "packages",
+  },
+
   offline: {
     title: "You're offline",
     body: "Check your connection and try again. Pages you opened before may still work.",
