@@ -55,6 +55,39 @@ export const en = {
     recycling: { label: "Recycling guide", ko: "분리배출" },
   },
 
+  // Light personalization: "Visiting" or "Living here". Stored on this device only.
+  audience: {
+    welcome: {
+      title: "Are you visiting or living in Korea?",
+      body: "We'll put the most useful things first. Nothing is hidden, and you can change this any time in Settings.",
+      visitor: { label: "Visiting", hint: "Here for a trip" },
+      resident: { label: "Living here", hint: "Working, studying or settled" },
+      skip: "Skip",
+      stored: "Saved on this phone only.",
+    },
+    settings: {
+      title: "Settings",
+      link: "Settings",
+      imLabel: "I'm…",
+      hint: "Changes the \"For you\" cards on Home. Nothing is hidden.",
+      options: { visitor: "Visiting", resident: "Living here", all: "Mix of both" },
+    },
+    forYou: {
+      title: "For you",
+      change: "Change",
+      cards: {
+        exchange: { title: "Exchange rate", hint: "Won to your money" },
+        pharmacy: { title: "Pharmacy phrases", hint: "Ask for what you need" },
+        alerts: { title: "Emergency alerts", hint: "Understand 재난문자" },
+        trail: { title: "Old Seoul trail", hint: "Palace, hanok & market" },
+        weather: { title: "Weather", hint: "Today and air quality" },
+        recycling: { title: "Recycling guide", hint: "Which bin, which day" },
+        slang: { title: "Slang of the day", hint: "Talk like a local" },
+        doctor: { title: "See a doctor", hint: "Which clinic to choose" },
+      },
+    },
+  },
+
   common: {
     loading: "Loading…",
     error: "Couldn't load this right now.",
@@ -562,6 +595,7 @@ export const en = {
         title: "Saved on your phone only",
         body: [
           "Your chosen district and the trail stops you mark as visited are saved in your browser's storage on this device.",
+          "Whether you chose Visiting or Living here, so Home can show the right cards first. Change it any time in Settings.",
           "Nothing else is saved. Health choices, checklist ticks and search words are kept in memory only and cleared when you leave the page.",
           "To delete saved data, clear this site's data in your browser settings.",
         ],
