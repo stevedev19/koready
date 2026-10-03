@@ -15,8 +15,9 @@ const ACTIONS = [
 ] as const;
 
 // Screens where a floating button would cover something important: the Safety
-// tools' sticky action buttons and the Emergency page.
-const HIDDEN_ON = ["/safety", "/local/emergency"];
+// tools' sticky action buttons, the Emergency page, and long lists whose rows and
+// arrows it would sit on (Slang, Recycling guide).
+const HIDDEN_ON = ["/safety", "/local/emergency", "/slang", "/local/recycling"];
 
 export function QuickActions() {
   const pathname = usePathname();
