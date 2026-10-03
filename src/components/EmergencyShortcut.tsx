@@ -24,7 +24,7 @@ export function EmergencyShortcut() {
         onClick={() => setOpen(true)}
         aria-label={s.open}
         aria-haspopup="dialog"
-        className="inline-flex min-h-12 items-center gap-1.5 rounded-full border border-border bg-card pr-4 pl-3 text-[0.9375rem] font-bold tabular-nums shadow-card"
+        className="inline-flex min-h-12 items-center gap-1.5 rounded-full border border-border bg-card pr-4 pl-3 text-[0.9375rem] font-bold tabular-nums shadow-card transition-colors duration-100 [-webkit-tap-highlight-color:transparent] hover:bg-surface-2 active:bg-surface-3"
       >
         <Phone aria-hidden="true" className="size-[1.125rem] text-destructive" strokeWidth={2.4} />
         {ambulance} · {police}

@@ -37,8 +37,10 @@ export function TabBar() {
               <Link
                 href={href}
                 aria-current={pathname === href ? "page" : active ? "true" : undefined}
-                className={`flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-[1.25rem] text-[0.8125rem] font-bold ${
-                  active ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+                // Pressed: inactive tabs darken to surface-3, the active tab dims slightly.
+                // Focus: the global outset ring (an inset ring would vanish on the active tab).
+                className={`flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-[1.25rem] text-[0.8125rem] font-bold transition-colors duration-100 [-webkit-tap-highlight-color:transparent] ${
+                  active ? "bg-primary text-primary-foreground active:opacity-85" : "text-muted-foreground active:bg-surface-3"
                 }`}
               >
                 <Icon aria-hidden="true" className="size-6" strokeWidth={active ? 2.4 : 2} />
