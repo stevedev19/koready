@@ -12,7 +12,7 @@ export const en = {
     label: "Main navigation",
     home: "Home",
     safety: "Safety",
-    local: "Help",
+    local: "Health",
     slang: "Slang",
   },
 
