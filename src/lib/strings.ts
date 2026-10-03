@@ -4,7 +4,7 @@
 export const en = {
   app: {
     name: "Korea Survival Kit",
-    shortName: "KSurvival",
+    shortName: "KReady",
     description: "Daily essentials for foreigners living in Korea.",
   },
 
