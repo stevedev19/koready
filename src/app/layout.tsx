@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Ripple } from "@/components/Ripple";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { TabBar } from "@/components/TabBar";
 import { t } from "@/lib/strings";
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <TabBar />
         <ServiceWorkerRegister />
-        <Ripple />
       </body>
     </html>
   );
