@@ -138,6 +138,40 @@ h3 {
   }
 }
 
+/* Touch ripple (components/Ripple.tsx). Uses currentColor so it suits every surface. */
+.ripple-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.ripple-wave {
+  position: absolute;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.16;
+  transform: scale(0);
+  animation: ripple-in 225ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.ripple-wave.ripple-out {
+  animation: ripple-fade 300ms ease-out forwards;
+  transform: scale(1);
+}
+@keyframes ripple-in {
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes ripple-fade {
+  from {
+    opacity: 0.16;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes sheet-in {
   from {
     transform: translateY(100%);
