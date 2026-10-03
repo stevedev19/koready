@@ -1,4 +1,4 @@
-import { ChevronRight, Lock, Settings } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { TrailBanner } from "@/components/trails/TrailBanner";
 import { TrailTags } from "@/components/trails/TrailTags";
 import { AudienceWelcome } from "@/components/AudienceWelcome";
@@ -6,8 +6,6 @@ import { ForYou } from "@/components/ForYou";
 import { InstallHint } from "@/components/InstallHint";
 import { Pressable } from "@/components/pressable";
 import { Card } from "@/components/ui/card";
-import { ListGroup, ListRow } from "@/components/ui/List";
-import { HTML_LANG, LANGUAGE_WORD, LOCALES } from "@/lib/i18n/locales";
 import { getT } from "@/lib/i18n/server";
 import { trailsByCity } from "@/lib/trails";
 
@@ -54,22 +52,6 @@ export default async function HomePage() {
           </ul>
         </section>
       ))}
-
-      <ListGroup>
-        <ListRow
-          href="/settings"
-          icon={Settings}
-          tone="neutral"
-          title={t.audience.settings.link}
-          subtitle={LOCALES.map((l) => (
-            <span key={l} lang={HTML_LANG[l]}>
-              {l !== LOCALES[0] && " · "}
-              {LANGUAGE_WORD[l]}
-            </span>
-          ))}
-        />
-        <ListRow href="/privacy" icon={Lock} tone="neutral" title={t.privacy.link} />
-      </ListGroup>
     </div>
   );
 }

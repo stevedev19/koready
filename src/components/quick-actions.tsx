@@ -1,16 +1,27 @@
 "use client";
 
-import { Banknote, CloudSun, Plus, Recycle, X } from "lucide-react";
+import { Banknote, CloudSun, Lock, Plus, Recycle, Settings, X, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { useT } from "@/lib/i18n/client";
+import { HTML_LANG, LANGUAGE_WORD, LOCALES } from "@/lib/i18n/locales";
 
-const ACTIONS = [
+const TOOLS = [
   { href: "/weather", key: "weather", Icon: CloudSun },
   { href: "/local/money", key: "exchange", Icon: Banknote },
   { href: "/local/recycling", key: "recycling", Icon: Recycle },
 ] as const;
+
+// "Language" in every language, so Settings is findable whatever the UI language is.
+const languageWords = LOCALES.map((l) => (
+  <span key={l} lang={HTML_LANG[l]}>
+    {l !== LOCALES[0] && " · "}
+    {LANGUAGE_WORD[l]}
+  </span>
+));
+
+type Action = { href: string; label: ReactNode; sub?: ReactNode; subLang?: string; Icon: LucideIcon };
 
 // Screens where a floating button would cover something important: the Safety
 // tools' sticky action buttons, the Emergency page, and long lists whose rows and
@@ -21,6 +32,20 @@ export function QuickActions() {
   const t = useT();
   const s = t.quickActions;
   const pathname = usePathname();
+  const actions: Action[] = [
+    { href: "/settings", label: t.audience.settings.link, sub: languageWords, Icon: Settings },
+    { href: "/privacy", label: t.privacy.link, Icon: Lock },
+    ...TOOLS.map(({ href, key, Icon }) => ({
+      href,
+      label: (
+        <>
+          {s[key].label}{" "}
+          <span lang="ko" className="text-[0.9375rem] font-semibold text-muted-foreground">{s[key].ko}</span>
+        </>
+      ),
+      Icon,
+    })),
+  ];
   // Open state belongs to one page, so it's closed again after any navigation.
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
@@ -57,16 +82,20 @@ export function QuickActions() {
     >
       <div ref={ref} className="pointer-events-auto flex flex-col items-end gap-3">
         <ul id={listId} aria-label={s.listLabel} hidden={!open} className="flex flex-col items-end gap-2.5">
-          {ACTIONS.map(({ href, key, Icon }) => (
+          {actions.map(({ href, label, sub, subLang, Icon }) => (
             <li key={href}>
               <Link
                 href={href}
                 onClick={() => setOpen(false)}
                 className="group flex min-h-12 items-center gap-2.5 rounded-full [-webkit-tap-highlight-color:transparent] motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2"
               >
-                <span className="rounded-full border border-border bg-card px-4 py-2.5 font-bold text-card-foreground shadow-float transition-colors group-hover:bg-surface-2 group-active:bg-surface-3">
-                  {s[key].label}{" "}
-                  <span lang="ko" className="text-[0.9375rem] font-semibold text-muted-foreground">{s[key].ko}</span>
+                <span className="max-w-[calc(100vw-7rem)] rounded-[1.5rem] border border-border bg-card px-4 py-2.5 text-right font-bold text-card-foreground shadow-float transition-colors group-hover:bg-surface-2 group-active:bg-surface-3">
+                  {label}
+                  {sub && (
+                    <span lang={subLang} className="block text-[0.9375rem] font-semibold text-muted-foreground">
+                      {sub}
+                    </span>
+                  )}
                 </span>
                 <span className="grid size-12 place-items-center rounded-full border border-border bg-card text-primary shadow-float transition-colors group-hover:bg-surface-2 group-active:bg-surface-3">
                   <Icon aria-hidden="true" className="size-6" />
