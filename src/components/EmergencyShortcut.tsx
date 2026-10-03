@@ -11,7 +11,7 @@ import { BottomSheet } from "./ui/BottomSheet";
 const s = t.emergencyShortcut;
 const spaced = (n: string) => n.split("").join(" ");
 
-/** Quiet 119 / 112 pill in the top bar of every screen. Opens a sheet with call links. */
+/** Quiet 119 / 112 pill at the top of the Safety tab. Opens a sheet with call links. */
 export function EmergencyShortcut() {
   const [open, setOpen] = useState(false);
   const ambulance = HELP_LINES.emergency.number;

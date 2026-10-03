@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { EmergencyShortcut } from "@/components/EmergencyShortcut";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 import { TabBar } from "@/components/TabBar";
 import { t } from "@/lib/strings";
@@ -35,10 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
-        <main className="mx-auto flex w-full max-w-lg flex-1 flex-col pt-[max(0.5rem,env(safe-area-inset-top))] pr-[max(1rem,env(safe-area-inset-right))] pl-[max(1rem,env(safe-area-inset-left))] pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
-          <div className="mb-2 flex justify-end">
-            <EmergencyShortcut />
-          </div>
+        <main className="mx-auto flex w-full max-w-lg flex-1 flex-col pt-[calc(env(safe-area-inset-top)+1.25rem)] pr-[max(1rem,env(safe-area-inset-right))] pl-[max(1rem,env(safe-area-inset-left))] pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
           {children}
         </main>
         <TabBar />

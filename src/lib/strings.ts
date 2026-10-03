@@ -53,7 +53,7 @@ export const en = {
     close: "Close",
   },
 
-  // Quiet shortcut in the top bar of every screen. Numbers come from helpLines.ts.
+  // Quiet shortcut at the top of the Safety tab. Numbers come from helpLines.ts.
   emergencyShortcut: {
     open: "Emergency calls: 119 or 112",
     title: "Emergency",
