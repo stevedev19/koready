@@ -221,13 +221,14 @@ export const en = {
       casual: "Friends only",
       risky: "Risky: avoid with strangers",
     },
-    reviewNote: "Not yet reviewed by a native speaker.",
   },
 
   // Slang tab: slang of the day, then the searchable archive.
   slangPage: {
     titleKo: "신조어",
     intro: "Korean slang you'll hear from friends, online and on TV, with how safe it is to use.",
+    beta: "Beta: entries are being checked by native speakers.",
+    hideBeta: "Hide this notice",
     archive: {
       title: "All slang",
       searchLabel: "Search slang",

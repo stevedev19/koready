@@ -90,7 +90,6 @@ export function SlangArchive() {
                       </li>
                     ))}
                   </ul>
-                  {entry.needs_native_review && <p className="text-[0.9375rem] text-muted-foreground">{t.slang.reviewNote}</p>}
                 </div>
               </details>
             </CardSurface>

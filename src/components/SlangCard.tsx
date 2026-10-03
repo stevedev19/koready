@@ -19,7 +19,7 @@ export function SlangCard() {
   const entry = day === null ? null : slangForDay(day);
 
   return (
-    <Card title={t.slang.title} icon={MessageCircle} footer={entry?.needs_native_review ? t.slang.reviewNote : undefined}>
+    <Card title={t.slang.title} icon={MessageCircle}>
       {!entry ? (
         <CardLoading />
       ) : (

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CardError } from "@/components/Card";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { SlangArchive } from "@/components/SlangArchive";
+import { SlangBeta } from "@/components/SlangBeta";
 import { SlangCard } from "@/components/SlangCard";
 import { Card } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/PageHeader";
@@ -23,6 +24,7 @@ export default function SlangPage() {
         }
         subtitle={t.slangPage.intro}
       />
+      <SlangBeta />
       <ErrorBoundary
         fallback={
           <Card>
