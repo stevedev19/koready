@@ -34,10 +34,7 @@ export default function SlangPage() {
       >
         <SlangCard />
       </ErrorBoundary>
-      <section aria-labelledby="slang-archive" className="space-y-3">
-        <h2 id="slang-archive" className="px-1 text-xl font-extrabold">{t.slangPage.archive.title}</h2>
-        <SlangArchive />
-      </section>
+      <SlangArchive />
     </div>
   );
 }

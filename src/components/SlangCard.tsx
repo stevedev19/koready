@@ -1,17 +1,11 @@
 "use client";
 
 import { useKstDay } from "@/hooks/useKstDay";
-import { slangForDay, type SlangUsage } from "@/lib/slang";
+import { slangForDay } from "@/lib/slang";
 import { t } from "@/lib/strings";
 import { MessageCircle } from "lucide-react";
 import { Card, CardLoading } from "./Card";
-import { Badge, type BadgeVariant } from "./ui/badge";
-
-const USAGE_VARIANT: Record<SlangUsage, BadgeVariant> = {
-  safe: "success",
-  casual: "warning",
-  risky: "destructive",
-};
+import { SlangBadges } from "./SlangBadges";
 
 export function SlangCard() {
   // Day is computed in Korea time on the client so the card changes at KST midnight.
@@ -27,9 +21,8 @@ export function SlangCard() {
           <p lang="ko" className="text-[2rem] leading-tight font-extrabold tracking-tight">{entry.term}</p>
           <p className="text-muted-foreground italic">{entry.romanization}</p>
           <p className="mt-2">{entry.meaning}</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Badge>{t.slang.tone[entry.tone]}</Badge>
-            <Badge variant={USAGE_VARIANT[entry.usage_level]}>{t.slang.usage[entry.usage_level]}</Badge>
+          <div className="mt-3">
+            <SlangBadges entry={entry} />
           </div>
           <h3 className="mt-4 text-sm font-bold text-muted-foreground">{t.slang.examples}</h3>
           <ul className="mt-1 space-y-2">
