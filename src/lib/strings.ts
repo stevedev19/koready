@@ -551,9 +551,10 @@ export const en = {
 
   // Trails: the Home tab and trail pages.
   trails: {
-    title: "Trails",
-    intro: "Short self-guided trips around Korea, mixing K-culture spots with local markets and food.",
-    trailsTitle: "Trails",
+    title: "Places to visit",
+    searchLabel: "Search places",
+    searchPlaceholder: "Place, city or K-drama",
+    noResults: "No places match that.",
     stopsCount: "stops",
     tags: {
       kpop: "K-pop",

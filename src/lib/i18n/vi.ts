@@ -541,9 +541,10 @@ export const vi: Strings = {
   },
 
   trails: {
-    title: "Hành trình",
-    intro: "Những chuyến tự khám phá ngắn quanh Hàn Quốc, kết hợp địa điểm văn hóa Hàn với chợ và ẩm thực địa phương.",
-    trailsTitle: "Hành trình",
+    title: "Địa điểm nên đến",
+    searchLabel: "Tìm địa điểm",
+    searchPlaceholder: "Địa điểm, thành phố hoặc phim Hàn",
+    noResults: "Không có địa điểm nào phù hợp.",
     stopsCount: "điểm dừng",
     tags: {
       kpop: "K-pop",

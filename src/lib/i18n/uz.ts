@@ -541,9 +541,10 @@ export const uz: Strings = {
   },
 
   trails: {
-    title: "Yoʻnalishlar",
-    intro: "Koreya boʻylab qisqa mustaqil sayohatlar: K-madaniyat joylari, mahalliy bozorlar va taomlar.",
-    trailsTitle: "Yoʻnalishlar",
+    title: "Borish kerak boʻlgan joylar",
+    searchLabel: "Joylarni qidirish",
+    searchPlaceholder: "Joy, shahar yoki K-drama",
+    noResults: "Mos joy topilmadi.",
     stopsCount: "bekat",
     tags: {
       kpop: "K-pop",

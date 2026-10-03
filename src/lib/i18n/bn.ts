@@ -541,9 +541,10 @@ export const bn: Strings = {
   },
 
   trails: {
-    title: "ভ্রমণপথ",
-    intro: "কোরিয়া জুড়ে নিজে নিজে ঘোরার ছোট ভ্রমণ, কে-কালচারের জায়গার সাথে স্থানীয় বাজার ও খাবার।",
-    trailsTitle: "ভ্রমণপথ",
+    title: "ঘোরার জায়গা",
+    searchLabel: "জায়গা খুঁজুন",
+    searchPlaceholder: "জায়গা, শহর বা কে-ড্রামা",
+    noResults: "মিলে যায় এমন কোনো জায়গা নেই।",
     stopsCount: "টি স্টপ",
     tags: {
       kpop: "K-pop",

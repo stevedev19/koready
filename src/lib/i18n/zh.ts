@@ -541,9 +541,10 @@ export const zh: Strings = {
   },
 
   trails: {
-    title: "路线",
-    intro: "韩国各地的自助短途游，结合韩流景点与当地市场和美食。",
-    trailsTitle: "路线",
+    title: "值得一去的地方",
+    searchLabel: "搜索地点",
+    searchPlaceholder: "地点、城市或韩剧",
+    noResults: "没有符合的地点。",
     stopsCount: "个站点",
     tags: {
       kpop: "K-pop",
