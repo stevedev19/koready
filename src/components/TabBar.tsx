@@ -12,14 +12,15 @@ const TABS = [
   { href: "/explore", label: t.tabs.explore, icon: Compass },
 ] as const;
 
-/** Floating, frosted tab bar that clears the home indicator. */
+/** Floating, frosted tab bar that clears the home indicator (and the notch in landscape). */
 export function TabBar() {
   const pathname = usePathname();
 
   return (
     <nav
       aria-label={t.tabs.label}
-      className="fixed inset-x-0 bottom-0 z-30 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
+      data-hide-on-keyboard
+      className="fixed inset-x-0 bottom-0 z-30 pr-[max(0.75rem,env(safe-area-inset-right))] pb-[max(0.75rem,env(safe-area-inset-bottom))] pl-[max(0.75rem,env(safe-area-inset-left))]"
     >
       <ul className="mx-auto grid max-w-lg grid-cols-4 gap-1 rounded-[1.625rem] border border-border bg-surface-glass p-1.5 shadow-float backdrop-blur-xl backdrop-saturate-150">
         {TABS.map(({ href, label, icon: Icon }) => {

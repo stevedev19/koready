@@ -77,8 +77,8 @@ export function ScamChecker() {
             {t.scam.privacy}
           </p>
           {text.length > MAX_INPUT_CHARS && <p className="text-[0.9375rem] text-muted">{t.scam.tooLong}</p>}
-          {/* Main action sticks above the tab bar, within thumb reach. */}
-          <div className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-surface/90 p-1 backdrop-blur">
+          {/* Main action sticks above the tab bar, within thumb reach (unstuck while typing, see globals.css). */}
+          <div data-sticky-action className="sticky bottom-[calc(6.5rem+env(safe-area-inset-bottom))] z-10 -mx-1 flex gap-2 rounded-[1.125rem] bg-surface/90 p-1 backdrop-blur">
             <button type="submit" disabled={!text.trim()} className={buttonClass("primary", "lg", "flex-1")}>
               <ScanSearch aria-hidden="true" className="size-5" />
               {t.scam.check}

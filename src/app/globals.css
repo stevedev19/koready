@@ -59,6 +59,8 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* iOS grey tap flash; buttons have their own press feedback. */
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -90,6 +92,23 @@ h3 {
 :focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
+}
+
+/*
+ * iOS on-screen keyboard: it covers the bottom of the page without resizing it, so
+ * fixed/sticky bars pinned to the bottom end up behind it (or float mid-screen).
+ * While a text field has focus on a touch device: hide the tab bar and let the
+ * sticky action buttons sit in normal flow, right under the field.
+ */
+@media (pointer: coarse) {
+  body:has(:is(textarea, input:not([type="checkbox"], [type="radio"], [type="range"], [type="button"], [type="submit"])):focus)
+    [data-hide-on-keyboard] {
+    display: none;
+  }
+  body:has(:is(textarea, input:not([type="checkbox"], [type="radio"], [type="range"], [type="button"], [type="submit"])):focus)
+    [data-sticky-action] {
+    position: static;
+  }
 }
 
 @keyframes sheet-in {
