@@ -11,8 +11,14 @@ export const metadata: Metadata = {
   title: { default: t.app.name, template: `%s · ${t.app.name}` },
   description: t.app.description,
   applicationName: t.app.name,
+  // iOS Home Screen. "default" status bar = dark text on light, light text on dark, never
+  // over the content. ("black-translucent" forces white text, unreadable on cream.)
   appleWebApp: { capable: true, title: t.app.shortName, statusBarStyle: "default" },
-  icons: { apple: "/icons/apple-touch-icon.png" },
+  icons: { apple: [{ url: "/icons/apple-touch-icon.png", sizes: "180x180", type: "image/png" }] },
+  // Stop iOS from turning numbers (rates, temperatures) into stray tel: links.
+  formatDetection: { telephone: false, email: false, address: false },
+  // Next only emits the unprefixed tag; older iOS needs the apple- one for standalone.
+  other: { "apple-mobile-web-app-capable": "yes" },
 };
 
 export const viewport: Viewport = {
@@ -29,7 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
-        <main className="mx-auto flex w-full max-w-lg flex-1 flex-col px-4 pt-[max(0.5rem,env(safe-area-inset-top))] pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
+        <main className="mx-auto flex w-full max-w-lg flex-1 flex-col pt-[max(0.5rem,env(safe-area-inset-top))] pr-[max(1rem,env(safe-area-inset-right))] pl-[max(1rem,env(safe-area-inset-left))] pb-[calc(7.5rem+env(safe-area-inset-bottom))]">
           <div className="mb-2 flex justify-end">
             <EmergencyShortcut />
           </div>

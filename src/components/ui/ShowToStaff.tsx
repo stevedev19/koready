@@ -39,7 +39,7 @@ export function ShowToStaff({ text, onClose }: { text: StaffText | null; onClose
       className="m-0 h-dvh max-h-none w-screen max-w-none bg-white p-0 text-black dark:bg-black dark:text-white"
     >
       {text && (
-        <div className="mx-auto flex h-full max-w-2xl flex-col px-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.75rem,env(safe-area-inset-bottom))]">
+        <div className="mx-auto flex h-full max-w-2xl flex-col pr-[max(1.5rem,env(safe-area-inset-right))] pl-[max(1.5rem,env(safe-area-inset-left))] pt-[max(2rem,env(safe-area-inset-top))] pb-[max(1.75rem,env(safe-area-inset-bottom))]">
           <p className="text-sm font-extrabold tracking-wide uppercase opacity-75">{t.local.phrases.showToStaff}</p>
           <div className="flex flex-1 flex-col justify-center">
             <p id={koId} lang="ko" className="text-[2.875rem] leading-tight font-extrabold tracking-tight">
