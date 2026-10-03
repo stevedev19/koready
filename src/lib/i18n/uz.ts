@@ -52,6 +52,7 @@ export const uz: Strings = {
     weather: { label: "Ob-havo", ko: "날씨" },
     exchange: { label: "Valyuta kursi", ko: "환율" },
     recycling: { label: "Chiqindi saralash", ko: "분리배출" },
+    settingsKo: "설정",
   },
 
   audience: {

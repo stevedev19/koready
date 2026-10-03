@@ -54,6 +54,7 @@ export const en = {
     weather: { label: "Weather", ko: "날씨" },
     exchange: { label: "Exchange rate", ko: "환율" },
     recycling: { label: "Recycling guide", ko: "분리배출" },
+    settingsKo: "설정",
   },
 
   // Light personalization: "Visiting" or "Living here". Stored on this device only.

@@ -52,6 +52,7 @@ export const zh: Strings = {
     weather: { label: "天气", ko: "날씨" },
     exchange: { label: "汇率", ko: "환율" },
     recycling: { label: "垃圾分类指南", ko: "분리배출" },
+    settingsKo: "설정",
   },
 
   audience: {

@@ -52,6 +52,7 @@ export const bn: Strings = {
     weather: { label: "আবহাওয়া", ko: "날씨" },
     exchange: { label: "বিনিময় হার", ko: "환율" },
     recycling: { label: "রিসাইক্লিং গাইড", ko: "분리배출" },
+    settingsKo: "설정",
   },
 
   audience: {

@@ -52,6 +52,7 @@ export const vi: Strings = {
     weather: { label: "Thời tiết", ko: "날씨" },
     exchange: { label: "Tỷ giá", ko: "환율" },
     recycling: { label: "Hướng dẫn phân loại rác", ko: "분리배출" },
+    settingsKo: "설정",
   },
 
   audience: {
