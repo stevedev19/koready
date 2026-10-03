@@ -1,6 +1,4 @@
 import { ChevronRight, Lock } from "lucide-react";
-import { CardError } from "@/components/Card";
-import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { TrailBanner } from "@/components/trails/TrailBanner";
 import { TrailTags } from "@/components/trails/TrailTags";
 import { InstallHint } from "@/components/InstallHint";
@@ -8,7 +6,6 @@ import { Pressable } from "@/components/pressable";
 import { Card } from "@/components/ui/card";
 import { ListGroup, ListRow } from "@/components/ui/List";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { WeatherSummaryCard } from "@/components/WeatherSummaryCard";
 import { t } from "@/lib/strings";
 import { trailsByCity } from "@/lib/trails";
 
@@ -47,16 +44,6 @@ export default function HomePage() {
           </ul>
         </section>
       ))}
-
-      <ErrorBoundary
-        fallback={
-          <Card>
-            <CardError />
-          </Card>
-        }
-      >
-        <WeatherSummaryCard />
-      </ErrorBoundary>
 
       <ListGroup>
         <ListRow href="/privacy" icon={Lock} tone="neutral" title={t.privacy.link} />

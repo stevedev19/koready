@@ -87,7 +87,6 @@ export const en = {
       none: "No special prep needed today.",
     },
     tipLabel: "Tip",
-    seeDetails: "See full weather",
     pageTitle: "Weather",
     feelsLike: "Feels like",
     high: "High",
@@ -460,7 +459,6 @@ export const en = {
     },
     recycling: {
       title: "Recycling & trash guide",
-      hint: "Which bag or bin, and which day",
       banner: "Rules differ by district. Check your building's notice board or your district office.",
       chooseDistrict: "Choose your district",
       onlyThese: "Only these districts have a guide so far.",

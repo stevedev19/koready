@@ -1,4 +1,4 @@
-import { HeartHandshake, Pill, Recycle, Siren, Stethoscope, Toothbrush, ChevronRight } from "lucide-react";
+import { HeartHandshake, Pill, Siren, Stethoscope, Toothbrush, ChevronRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MedicalDisclaimer } from "@/components/local/LocalScreen";
@@ -48,14 +48,6 @@ export default function LocalPage() {
         </ListGroup>
         <MedicalDisclaimer />
       </section>
-
-      <section aria-labelledby="recycling" className="space-y-3">
-        <h2 id="recycling" className="px-1 text-sm font-bold text-muted-foreground">{t.local.recycling.title}</h2>
-        <ListGroup>
-          <ListRow href="/local/recycling" icon={Recycle} tone="amber" title={t.local.recycling.title} subtitle={t.local.recycling.hint} />
-        </ListGroup>
-      </section>
-
     </div>
   );
 }

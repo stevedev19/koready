@@ -39,15 +39,3 @@ export function DistrictPicker(props: Props) {
   );
 }
 
-/** Small picker for a card header. */
-export function DistrictSelect(props: Props) {
-  return (
-    <label className="relative inline-flex max-w-full items-center">
-      <span className="sr-only">{t.home.pickDistrict}</span>
-      <Select
-        {...props}
-        className="min-h-12 max-w-full appearance-none truncate rounded-xl bg-surface-2 py-1 pr-9 pl-3 text-[1.0625rem] font-bold text-foreground transition-colors duration-100 [-webkit-tap-highlight-color:transparent] hover:bg-surface-3 active:bg-surface-3"
-      />
-    </label>
-  );
-}
