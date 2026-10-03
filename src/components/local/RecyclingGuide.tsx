@@ -5,7 +5,8 @@ import { useId, useState } from "react";
 import { searchItems, WEEKDAYS, type RecyclingGuide as Guide, type RecyclingItem, type Weekday } from "@/lib/recycling";
 import { t } from "@/lib/strings";
 import { Card } from "../Card";
-import { buttonVariants, fieldClass } from "../ui/button";
+import { buttonVariants } from "../ui/button";
+import { Input } from "../ui/input";
 import { ChipGroup } from "../ui/Chips";
 import { EmptyState } from "../ui/States";
 import { Card as CardSurface } from "../ui/card";
@@ -119,14 +120,14 @@ export function RecyclingGuide({ guide }: { guide: Guide }) {
         </label>
         <div className="relative">
           <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-placeholder" />
-          <input
+          <Input
             id={searchId}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={s.searchPlaceholder}
             autoComplete="off"
-            className={`${fieldClass} pl-12`}
+            className="pl-12"
           />
         </div>
         <ChipGroup<string | null>

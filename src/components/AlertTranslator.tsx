@@ -6,7 +6,8 @@ import { ALERT_SAMPLES, MAX_ALERT_CHARS, translateAlert, type AlertReading } fro
 import { HELP_LINES } from "@/lib/helpLines";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
-import { Button, buttonVariants, fieldClass } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
+import { Textarea } from "./ui/textarea";
 import { Card as CardSurface } from "./ui/card";
 import { ListGroup, ListRow } from "./ui/List";
 import { Disclaimer } from "./ui/Notice";
@@ -239,7 +240,7 @@ export function AlertTranslator() {
               {s.clear}
             </Button>
           </div>
-          <textarea
+          <Textarea
             id={inputId}
             lang="ko"
             value={text}
@@ -254,7 +255,7 @@ export function AlertTranslator() {
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
-            className={`${fieldClass} min-h-32 resize-y text-lg`}
+            className="min-h-32 resize-y leading-[calc(1.75/1.125)]"
           />
           <p id={privacyId} className="flex items-center gap-1.5 text-[0.9375rem] text-muted-foreground">
             <Lock aria-hidden="true" className="size-[1.125rem] shrink-0" />

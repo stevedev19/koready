@@ -5,7 +5,8 @@ import { useId, useRef, useState } from "react";
 import { checkMessage, MAX_INPUT_CHARS, type ScamCheckResult, type ScamVerdict } from "@/lib/scam/check";
 import { t } from "@/lib/strings";
 import { Card } from "./Card";
-import { Button, fieldClass } from "./ui/button";
+import { Button } from "./ui/button";
+import { Textarea } from "./ui/textarea";
 import { Disclaimer, ResultCard, type ResultTone } from "./ui/Notice";
 
 // Privacy: the message lives only in this component's state. It is never sent,
@@ -55,7 +56,7 @@ export function ScamChecker() {
               {t.scam.clear}
             </Button>
           </div>
-          <textarea
+          <Textarea
             id={inputId}
             value={text}
             onChange={(e) => {
@@ -70,7 +71,7 @@ export function ScamChecker() {
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
-            className={`${fieldClass} min-h-36 resize-y`}
+            className="min-h-36 resize-y"
           />
           <p id={privacyId} className="flex items-center gap-1.5 text-[0.9375rem] text-muted-foreground">
             <Lock aria-hidden="true" className="size-[1.125rem] shrink-0" />

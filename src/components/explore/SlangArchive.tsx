@@ -4,7 +4,7 @@ import { ChevronRight, Search, SearchX } from "lucide-react";
 import { useId, useState } from "react";
 import { SLANG, type SlangTone } from "@/lib/slang";
 import { t } from "@/lib/strings";
-import { fieldClass } from "../ui/button";
+import { Input } from "../ui/input";
 import { ChipGroup } from "../ui/Chips";
 import { EmptyState } from "../ui/States";
 import { Card as CardSurface } from "../ui/card";
@@ -33,14 +33,14 @@ export function SlangArchive() {
         <label htmlFor={searchId} className="block px-1 font-bold">{s.searchLabel}</label>
         <div className="relative">
           <Search aria-hidden="true" className="pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2 text-placeholder" />
-          <input
+          <Input
             id={searchId}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={s.searchPlaceholder}
             autoComplete="off"
-            className={`${fieldClass} pl-12`}
+            className="pl-12"
           />
         </div>
         <ChipGroup<SlangTone | null>

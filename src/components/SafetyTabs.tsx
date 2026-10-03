@@ -4,7 +4,7 @@ import { useSyncExternalStore, useState } from "react";
 import { t } from "@/lib/strings";
 import { AlertTranslator } from "./AlertTranslator";
 import { ScamChecker } from "./ScamChecker";
-import { Segmented } from "./ui/Chips";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
 type Tool = "scam" | "alerts";
 
@@ -21,23 +21,22 @@ export function SafetyTabs() {
   const tool: Tool = picked ?? (hash === "#alert-translator" ? "alerts" : "scam");
 
   return (
-    <div className="space-y-4">
-      <Segmented<Tool>
-        label={t.tabs.safety}
-        value={tool}
-        onChange={setPicked}
-        options={[
-          { value: "scam", label: t.scam.title },
-          { value: "alerts", label: t.alerts.title },
-        ]}
-      />
+    <Tabs value={tool} onValueChange={(value) => setPicked(value as Tool)} className="space-y-4">
+      <TabsList aria-label={t.tabs.safety}>
+        <TabsTrigger value="scam">{t.scam.title}</TabsTrigger>
+        <TabsTrigger value="alerts">{t.alerts.title}</TabsTrigger>
+      </TabsList>
       {/* Both stay mounted so switching keeps what you typed; only one is visible. */}
-      <div id="scam-checker" hidden={tool !== "scam"}>
-        <ScamChecker />
-      </div>
-      <div id="alert-translator" hidden={tool !== "alerts"}>
-        <AlertTranslator />
-      </div>
-    </div>
+      <TabsContent value="scam" forceMount>
+        <div id="scam-checker">
+          <ScamChecker />
+        </div>
+      </TabsContent>
+      <TabsContent value="alerts" forceMount>
+        <div id="alert-translator">
+          <AlertTranslator />
+        </div>
+      </TabsContent>
+    </Tabs>
   );
 }

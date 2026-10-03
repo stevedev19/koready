@@ -48,8 +48,4 @@ function Button({
   );
 }
 
-/** Shared field style: 1.5px border passes 3:1 against the card in both themes. 17px so iOS doesn't zoom. */
-const fieldClass =
-  "w-full rounded-btn border-[1.5px] border-input bg-card px-4 py-3.5 text-[1.0625rem] text-foreground";
-
-export { Button, buttonVariants, fieldClass };
+export { Button, buttonVariants };
