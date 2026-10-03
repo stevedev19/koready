@@ -1,4 +1,4 @@
-import { ChevronRight, Lock } from "lucide-react";
+import { ChevronRight, Lock, Settings } from "lucide-react";
 import { TrailBanner } from "@/components/trails/TrailBanner";
 import { TrailTags } from "@/components/trails/TrailTags";
 import { InstallHint } from "@/components/InstallHint";
@@ -46,6 +46,7 @@ export default function HomePage() {
       ))}
 
       <ListGroup>
+        <ListRow href="/settings" icon={Settings} tone="neutral" title={t.audience.settings.link} />
         <ListRow href="/privacy" icon={Lock} tone="neutral" title={t.privacy.link} />
       </ListGroup>
     </div>

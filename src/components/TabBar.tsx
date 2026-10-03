@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import { t } from "@/lib/strings";
 
 const TABS = [
-  // Home also owns the trail pages and the weather page.
-  { href: "/", label: t.tabs.home, icon: House, also: ["/trails/", "/weather"] },
+  // Home also owns the trail pages, the weather page and Settings.
+  { href: "/", label: t.tabs.home, icon: House, also: ["/trails/", "/weather", "/settings"] },
   { href: "/safety", label: t.tabs.safety, icon: Shield, also: [] },
   { href: "/slang", label: t.tabs.slang, icon: MessagesSquare, also: [] },
   { href: "/local", label: t.tabs.local, icon: LifeBuoy, also: [] },
