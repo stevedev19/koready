@@ -138,6 +138,18 @@ h3 {
   }
 }
 
+/* Optional tap ripple on <Pressable ripple> (components/pressable.tsx). */
+@keyframes pressable-ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.18;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
 @keyframes sheet-in {
   from {
     transform: translateY(100%);
