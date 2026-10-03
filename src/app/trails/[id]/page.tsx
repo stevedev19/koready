@@ -18,12 +18,12 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export async function generateMetadata({ params }: PageProps<"/explore/trails/[id]">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/trails/[id]">): Promise<Metadata> {
   const trail = getTrail((await params).id);
   return { title: trail?.title ?? t.explore.trailsTitle };
 }
 
-export default async function TrailPage({ params }: PageProps<"/explore/trails/[id]">) {
+export default async function TrailPage({ params }: PageProps<"/trails/[id]">) {
   const trail = getTrail((await params).id);
   if (!trail) notFound();
 

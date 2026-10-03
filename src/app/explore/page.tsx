@@ -23,7 +23,7 @@ export default function ExplorePage() {
           {TRAILS.map((trail) => (
             <li key={trail.id}>
               <Card asChild className="flex items-center gap-3">
-                <Link href={`/explore/trails/${trail.id}`}>
+                <Link href={`/trails/${trail.id}`}>
                   <span className="min-w-0 flex-1">
                     <TrailTags tags={trail.tags} />
                     <span className="mt-2.5 block text-xl leading-snug font-extrabold">{trail.title}</span>
