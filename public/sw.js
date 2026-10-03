@@ -1,16 +1,28 @@
 // Korea Survival Kit service worker: basic offline fallback.
 // Bump VERSION when this file's caching logic changes.
-const VERSION = "v1";
+const VERSION = "v2";
 const STATIC_CACHE = `ksk-static-${VERSION}`;
 const PAGES_CACHE = `ksk-pages-${VERSION}`;
 const OFFLINE_URL = "/offline";
 const PRECACHE = [OFFLINE_URL, "/manifest.webmanifest", "/icons/icon-192.png"];
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(STATIC_CACHE).then((cache) => cache.addAll(PRECACHE)).then(() => self.skipWaiting()),
-  );
+  event.waitUntil(precache().then(() => self.skipWaiting()));
 });
+
+async function precache() {
+  const cache = await caches.open(STATIC_CACHE);
+  await cache.addAll(PRECACHE);
+  // The offline page also needs its CSS and JS, or a cold offline launch from the
+  // Home Screen shows it unstyled. Best effort: one missing file must not fail install.
+  try {
+    const html = await (await cache.match(OFFLINE_URL)).text();
+    const assets = new Set(html.match(/\/_next\/static\/[^"'\s)\\]+/g) || []);
+    await Promise.allSettled([...assets].map((url) => cache.add(url)));
+  } catch {
+    // ignore
+  }
+}
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
