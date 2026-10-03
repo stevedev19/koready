@@ -1,16 +1,16 @@
 import { HandHeart, Train } from "lucide-react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ExploreBanner } from "@/components/explore/ExploreBanner";
-import { TrailStops } from "@/components/explore/TrailStops";
-import { TrailTags } from "@/components/explore/TrailTags";
+import { TrailBanner } from "@/components/trails/TrailBanner";
+import { TrailStops } from "@/components/trails/TrailStops";
+import { TrailTags } from "@/components/trails/TrailTags";
 import { Card } from "@/components/Card";
 import { Card as CardSurface } from "@/components/ui/card";
 import { LocalScreen } from "@/components/local/LocalScreen";
 import { t } from "@/lib/strings";
 import { getTrail, TRAILS } from "@/lib/trails";
 
-const s = t.explore.trail;
+const s = t.trails.trail;
 
 export function generateStaticParams() {
   return TRAILS.map((trail) => ({ id: trail.id }));
@@ -20,7 +20,7 @@ export const dynamicParams = false;
 
 export async function generateMetadata({ params }: PageProps<"/trails/[id]">): Promise<Metadata> {
   const trail = getTrail((await params).id);
-  return { title: trail?.title ?? t.explore.title };
+  return { title: trail?.title ?? t.trails.title };
 }
 
 export default async function TrailPage({ params }: PageProps<"/trails/[id]">) {
@@ -32,7 +32,7 @@ export default async function TrailPage({ params }: PageProps<"/trails/[id]">) {
       title={trail.title}
       backHref="/"
       backLabel={t.tabs.home}
-      notice={<ExploreBanner trailTitle={trail.title} />}
+      notice={<TrailBanner trailTitle={trail.title} />}
     >
       <CardSurface className="space-y-3">
         <TrailTags tags={trail.tags} />

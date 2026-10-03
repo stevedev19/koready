@@ -6,6 +6,8 @@ export default function manifest(): MetadataRoute.Manifest {
     name: t.app.name,
     short_name: t.app.shortName,
     description: t.app.description,
+    // Stable app identity, so installs survive start_url or navigation changes.
+    id: "/",
     start_url: "/",
     scope: "/",
     display: "standalone",

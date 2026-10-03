@@ -14,7 +14,7 @@ import { BottomSheet } from "../ui/BottomSheet";
 import { ShowToStaff, type StaffText } from "../ui/ShowToStaff";
 import { Toast, useToast } from "../ui/Toast";
 
-const s = t.explore.trail;
+const s = t.trails.trail;
 
 const MAP_APPS = [
   { key: "naver", label: t.local.clinic.apps.naver, tone: "green" },

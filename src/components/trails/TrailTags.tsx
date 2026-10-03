@@ -21,7 +21,7 @@ export function TrailTags({ tags }: { tags: TrailTag[] }) {
         return (
           <Badge key={tag} variant={variant}>
             <Icon aria-hidden="true" className="size-[0.9375rem]" />
-            {t.explore.tags[tag]}
+            {t.trails.tags[tag]}
           </Badge>
         );
       })}

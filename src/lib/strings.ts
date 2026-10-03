@@ -13,7 +13,6 @@ export const en = {
     home: "Home",
     safety: "Safety",
     local: "Local",
-    explore: "Explore",
     slang: "Slang",
   },
 
@@ -26,15 +25,6 @@ export const en = {
   home: {
     todayIn: "Today in",
     pickDistrict: "Choose city",
-    glance: {
-      title: "Today at a glance",
-      weatherKo: "날씨",
-      airKo: "미세먼지",
-      exchangeKo: "환율",
-      air: "Air quality",
-      perUsd: "per 1 USD",
-      unavailable: "Not available",
-    },
   },
 
   // iPhone/iPad only: iOS has no install prompt, so Home explains how to add the app.
@@ -87,7 +77,6 @@ export const en = {
       none: "No special prep needed today.",
     },
     tipLabel: "Tip",
-    district: "District",
     seeDetails: "See full weather",
     pageTitle: "Weather",
     feelsLike: "Feels like",
@@ -506,7 +495,8 @@ export const en = {
     },
   },
 
-  explore: {
+  // Trails: the Home tab and trail pages.
+  trails: {
     title: "Trails",
     intro: "Short self-guided trips around Korea, mixing K-culture spots with local markets and food.",
     trailsTitle: "Trails",
@@ -522,7 +512,6 @@ export const en = {
     banner: "Places can close or change. Check hours before you go.",
     reportProblem: "Report a problem",
     reportSubject: "Problem with trail",
-    back: "Explore",
     trail: {
       time: "Time",
       difficulty: "Difficulty",
@@ -543,10 +532,6 @@ export const en = {
       source: "Source",
       lastChecked: "Last checked",
       needsReview: "Not yet reviewed.",
-    },
-    slang: {
-      title: "Daily slang archive",
-      hint: "Browse all the slang words",
     },
   },
 

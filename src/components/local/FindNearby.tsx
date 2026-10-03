@@ -71,7 +71,7 @@ export function FindNearby({ query, label }: { query: string; label: string }) {
           className="mt-3 w-full"
         >
           <Copy aria-hidden="true" className="size-5" />
-          {copied ? t.local.phrases.copied : t.explore.trail.copyKorean}
+          {copied ? t.local.phrases.copied : t.trails.trail.copyKorean}
         </Button>
         <p aria-live="polite" className="sr-only">{copied ? t.local.phrases.copied : ""}</p>
         <p className="mt-3 text-[0.9375rem] text-muted-foreground">

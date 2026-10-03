@@ -1,6 +1,6 @@
 // KReady service worker: basic offline fallback.
 // Bump VERSION when this file's caching logic changes.
-const VERSION = "v3";
+const VERSION = "v4"; // v4: new navigation; drops pages cached under old URLs (/explore)
 const STATIC_CACHE = `ksk-static-${VERSION}`;
 const PAGES_CACHE = `ksk-pages-${VERSION}`;
 const OFFLINE_URL = "/offline";
